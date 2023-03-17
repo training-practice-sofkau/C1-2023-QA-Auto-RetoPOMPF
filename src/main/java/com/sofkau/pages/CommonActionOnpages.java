@@ -15,7 +15,7 @@ public class CommonActionOnpages {
         this.driver = driver;
     }
 
-    protected void addWaitByVisibility(By locator, Duration wait){ //int
+    protected void addWaitByVisibility(WebElement locator, int wait){ //int
         WebDriverWait await = new WebDriverWait(driver,wait);
         await.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
