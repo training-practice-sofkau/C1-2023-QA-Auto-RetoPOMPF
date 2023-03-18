@@ -12,17 +12,19 @@ import static com.sofkau.setup.SetUpConstantes.ZONA_FIT_URL;
 import static com.sofkau.util.Log4j.LOG4J_PROPERTIES_FILE_PATH;
 
 public class WebUI {
-    protected WebDriver driver;
+    protected static WebDriver driver;
     private void setUpWebDriverChrome(){
         WebDriverManager.chromedriver().setup();
         ChromeOptions co=new ChromeOptions();
         co.addArguments("--remote-allow-origins=*");
+        co.addArguments("--incognito");
         driver=new ChromeDriver(co);
     }
     private void setUpWebDriverEdge(){
         WebDriverManager.edgedriver().setup();
         EdgeOptions co=new EdgeOptions();
         co.addArguments("--remote-allow-origins=*");
+        co.addArguments("--incognito");
         driver=new EdgeDriver(co);
     }
     private void setUpWebDriverUrl(){

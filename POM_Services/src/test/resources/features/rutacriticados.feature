@@ -8,4 +8,4 @@ Feature: Flujo de compra
     When Pongo el mouse sobre el boton categoria y escojo la opcion proteinas limpias
     And escojo los productos que deseo llevar y modifico su cantidad
     And Doy click en finalizar compra y hago el proceso hasta el pago
-    Then Redirige a la pagina final en donde nos indica el número de convenio
+    Then Redirige a la pagina final en donde nos indica el numero de convenio

@@ -4,7 +4,7 @@ Feature: Cambio de contrasena
   para mantener mi cuenta segura
 
   Scenario Outline: Cambio de contrasena
-    Given Estoy en la pagina principal de zona fit en el "navegador"
+    Given Estoy en la pagina principal de zona fit en el "chrome"
     When Hago click en el boton con mi nombre de usuario
     And doy click en detalles de cuenta
     And ingreso la clave anterior <claveAnterior> y la clave nueva <clave> y guardo los cambios

@@ -8,7 +8,7 @@ public class CompraPorCategoria extends WebUI{
     @Given("Estoy en la pagina principal de zona fit en el {string}")
     public void estoyEnLaPaginaPrincipalDeZonaFitEnEl(String string) {
         generalSetUp(string);
-        LOGGER.info("Se inicia la automatización");
+        LOGGER.info("Se inicia la automatizacion");
     }
     @When("Pongo el mouse sobre el boton categoria y escojo la opcion proteinas limpias")
     public void pongoElMouseSobreElBotonCategoriaYEscojoLaOpcionProteinasLimpias() {
@@ -22,8 +22,8 @@ public class CompraPorCategoria extends WebUI{
     public void doyClickEnFinalizarCompraYHagoElProcesoHastaElPago() {
 
     }
-    @Then("Redirige a la pagina final en donde nos indica el número de convenio")
-    public void redirigeALaPaginaFinalEnDondeNosIndicaElNúmeroDeConvenio() {
-
+    @Then("Redirige a la pagina final en donde nos indica el numero de convenio")
+    public void redirigeALaPaginaFinalEnDondeNosIndicaElNumeroDeConvenio() {
+        quitDriver();
     }
 }
