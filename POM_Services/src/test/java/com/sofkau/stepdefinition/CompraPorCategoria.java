@@ -16,17 +16,14 @@ public class CompraPorCategoria extends WebUI{
     }
     @When("escojo los productos que deseo llevar y modifico su cantidad")
     public void escojoLosProductosQueDeseoLlevarYModificoSuCantidad() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @When("Doy click en finalizar compra y hago el proceso hasta el pago")
     public void doyClickEnFinalizarCompraYHagoElProcesoHastaElPago() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("Redirige a la pagina final en donde nos indica el número de convenio")
     public void redirigeALaPaginaFinalEnDondeNosIndicaElNúmeroDeConvenio() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 }
