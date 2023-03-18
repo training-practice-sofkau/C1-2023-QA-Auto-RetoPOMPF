@@ -11,8 +11,8 @@ Feature: Reservar un vuelo
     Examples:
       | nombre | apellido   | pais             | cedula     |
       | Pepe   | Mojica     | Colombia         |   1000     |
-      | Bart   | Simpson    | Venezuela        |   2000 |
-      | Goku   | Son        |  Colombia        |   3000 |
+      | Bart   | Simpson    | Venezuela        |       2000 |
+      | Goku   | Son        |  Colombia        |       3000 |
 
 
   Scenario: No hay vuelos disponibles

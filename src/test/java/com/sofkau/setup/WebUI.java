@@ -6,12 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-
 import static com.sofkau.setup.ConstantSetup.*;
 import static com.sofkau.util.Log4j.*;
 import static io.cucumber.messages.internal.com.google.common.base.StandardSystemProperty.USER_DIR;
 
+
+
+
+
 public class WebUI {
+    private String SeleccionNavegador;
     protected WebDriver driver;
 
     private void setUpWebdriver(){
