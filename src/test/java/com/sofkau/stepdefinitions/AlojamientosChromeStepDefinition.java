@@ -1,5 +1,6 @@
 package com.sofkau.stepdefinitions;
 
+import com.sofkau.pages.AlojamientosChromePage;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,10 +13,12 @@ public class AlojamientosChromeStepDefinition extends WebUI {
     @Given("que estoy en la pagina de despegar con {string}")
     public void queEstoyEnLaPaginaDeDespegarCon(String navegador) {
         generalSetup(navegador);
+        LOGGER.info("Iniciando automatizacion");
     }
     @Given("que necesito un alojamiento para mi viaje")
     public void queNecesitoUnAlojamientoParaMiViaje() {
-
+        AlojamientosChromePage alojamientosChromePage = new AlojamientosChromePage(super.driver);
+        alojamientosChromePage.navigateToAlojamientos();
     }
     @When("seleccione las habitacion llenando los formularios")
     public void seleccioneLasHabitacionLlenandoLosFormularios() {
@@ -36,7 +39,7 @@ public class AlojamientosChromeStepDefinition extends WebUI {
     }
     @Then("debo obtener un mensaje de no disponibilidad")
     public void deboObtenerUnMensajeDeNoDisponibilidad() {
-
+        quiteDriver();
     }
 
 }
