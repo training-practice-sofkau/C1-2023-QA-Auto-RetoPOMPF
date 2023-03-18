@@ -1,0 +1,21 @@
+Feature: Reservar un vuelo
+  Yo como usuario de la pagina web despegar
+  Quiero dirigirme a la seccion de compras de vuelo
+  Para poder reservar un vuelo
+
+  Scenario Outline: Reserva exitosa de un vuelo
+    Given el usuario está en la página principal y selecciona la opción de vuelos
+    When seleccione su destino y llena el formulario  con los datos nombre <nombre>,    apellido <apellido>, pais <pais>, cedula <cedula>
+    Then debe observar que el vuelo se ha reservado exitosamente
+
+    Examples:
+      | nombre | apellido   | pais             | cedula     |
+      | Pepe   | Mojica     | Colombia         |   1000     |
+      | Bart   | Simpson    | Venezuela        |       2000 |
+      | Goku   | Son        |  Colombia        |       3000 |
+
+
+  Scenario: No hay vuelos disponibles
+    Given el usuario está en la página principal y selecciona la opcion de vuelos
+    When seleccione su destino para el cual no hay vuelos disponibles
+    Then debe observar un mensaje en el que se informe que no hay vuelos disponibles
