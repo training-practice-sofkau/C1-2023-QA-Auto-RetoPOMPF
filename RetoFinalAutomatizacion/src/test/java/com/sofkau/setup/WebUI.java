@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import static com.google.common.base.StandardSystemProperty.USER_DIR;
 import static com.sofkau.setup.ConstantSetup.ZONA_FIT_URL;
@@ -20,19 +21,33 @@ public class WebUI {
         WebDriverManager.edgedriver().setup();
     }
 
-    private void setUpWebdriverUrl() {
+    private void setUpWebdriverUrlChrome() {
         ChromeOptions co = new ChromeOptions();
         co.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(co);
-        driver = new EdgeDriver();
         driver.get(ZONA_FIT_URL);
         maximize();
+
+
+    }
+   private void setUpWebdriverUrlEdge() {
+        EdgeOptions co = new EdgeOptions();
+        co.addArguments("--remote-allow-origins=*");
+        driver = new EdgeDriver(co);
+    driver.get(ZONA_FIT_URL);
+    maximize();
     }
 
-    protected void generalSetUp() {
+    protected void generalSetUpChrome() {
         setUplog4j();
         setUpWebdriver();
-        setUpWebdriverUrl();
+        setUpWebdriverUrlChrome();
+    }
+
+    protected void generalSetUpEdge() {
+        setUplog4j();
+        setUpWebdriver();
+        setUpWebdriverUrlEdge();
     }
 
     protected void quiteDriver() {

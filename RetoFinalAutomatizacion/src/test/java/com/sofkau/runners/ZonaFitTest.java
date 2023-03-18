@@ -8,9 +8,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features"},
+        features = {"src/test/resources/features/practicezonafit.feature"},
         glue = {"com.sofkau.stepdefinitions"},
         publish = true
 )
-public class Test {
+public class ZonaFitTest {
 }
