@@ -10,6 +10,6 @@ Feature: Reservar un vuelo en despegar
 
 
   Scenario: Solicitud de reserva de vuelos en fecha no disponibles
-    Given el usuario esta en la pagina registro de vuelo
+    Given el usuario esta en la pagina registro formulario de vuelo
     When selecciona una fecha no disponible
     Then deberia obtener un mensaje vuelos no disponibles

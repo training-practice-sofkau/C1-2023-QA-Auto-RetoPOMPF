@@ -19,6 +19,6 @@
 
 
       Scenario: Solicitud de reserva invalida
-        Given el usuario esta en la pagina despegar seccion traslados
+        Given el usuario esta en la pagina despegar modulo traslados
         When selecciona un lugar de destino fuera del pais
         Then deberia obtener un mensaje exceda el limite de distancia del traslado
