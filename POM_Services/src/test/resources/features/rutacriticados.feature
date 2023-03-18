@@ -3,10 +3,8 @@ Feature: Flujo de compra
   quiero hacer una compra
   para mantener mi dieta regulada
 
-  Background:
-    Given Estoy en la pagina principal de zona fit en el "navegador"
-
   Scenario: Compra por categoria
+    Given Estoy en la pagina principal de zona fit en el "navegador"
     When Pongo el mouse sobre el boton categoria y escojo la opcion proteinas limpias
     And escojo los productos que deseo llevar y modifico su cantidad
     And Doy click en finalizar compra y hago el proceso hasta el pago
