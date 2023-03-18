@@ -5,42 +5,67 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
-import static com.sofkau.setup.ConstantSetup.DEMO_QA_URL;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import static com.sofkau.util.log4j.LOG4J_PROPERTIES_FILE_PATH;
 import static io.cucumber.messages.internal.com.google.common.base.StandardSystemProperty.USER_DIR;
 
 public class WebUI {
 
+
+
+
     protected WebDriver driver;
 
+    private void setUpWebdriver(String SeleccionNavegador){
 
-    private void setUpWebdriver() {
-        // System.setProperty(WEBDRIVER_CHROME_DRIVER,WEBDRIVER_CHROME_DRIVER_PATH);
-        WebDriverManager.chromedriver().setup();
+
+        switch ( SeleccionNavegador) {
+            case "Chrome":
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions co = new ChromeOptions();
+                co.addArguments("--remote-allow-origins=*");
+                co.addArguments("--incognito");
+                // co.addArguments("--disable-notifications");
+                co.addArguments("--disable-popup-blocking");
+                driver = new ChromeDriver(co);
+                break;
+            case "Edge":
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions eo = new EdgeOptions();
+                eo.addArguments("--remote-allow-origins=*");
+                eo.addArguments("--disable-notifications");
+                eo.addArguments("--disable-popup-blocking");
+                driver = new EdgeDriver(eo);
+                break;
+            default:
+                System.out.println("  Este navegador no existe :C"  );
+
+        }
+
+
     }
 
-    private void setUpWebdriverUrl() {
-        ChromeOptions co = new ChromeOptions();
-        co.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(co);
-        driver.get(DEMO_QA_URL);
-        maximize();
-    }
-
-
-    protected void generalSetup() {
+    protected void generalSetup(String seleccionNavegador){
         setUpLog4j();
-        setUpWebdriver();
+        setUpWebdriver(seleccionNavegador);
         setUpWebdriverUrl();
+
     }
 
-    protected void quiteDriver() {
+    protected void quiteDriver(){
         driver.quit();
     }
-
-    private void maximize() {
+    private void maximize(){
         driver.manage().window().maximize();
+    }
+
+    private void setUpWebdriverUrl(){
+        //driver = new ChromeDriver();
+        //driver = new EdgeDriver();
+        // driver.get(DEMO_QA_URL);
+        driver.get(ConstantSetup.URL_BASE_DESPEGAR);
+        maximize();
     }
 
 

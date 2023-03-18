@@ -19,7 +19,7 @@ Feature: Busqueda y reservar de un tiquete en despegar
       | Luis   | Hernandez | Colombia  | 505050505 | 15  | 09  | 1988 | Masculino |
 
   @ViajeMedellin
-  Scenario: Destino Medellin exitosa de un vuelo
+  Scenario: Destino Medellin exitosa de un vuelo "ch"
     Given el usuario esta en la pagina principal de despegar.com opcion vuelos
     When  el usuario elije un lugar de origen-destino,  opcion ida, fecha, cantidad de pasajeros, y clase de tiquete, y opcion buscar
     And el usuario elije el vuelo, indica el equipaje y realiza el checkout con sus datos

@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features/marvelSerie.feature"},
+        features = {"src/test/resources/features/marvelSerieId.feature"},
         glue = {"com.sofkau.stepdefinitions"},
         publish = true
 )
-public class MarvelSerieTest {
+public class MarvelSerieIdTest {
 }

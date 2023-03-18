@@ -6,8 +6,8 @@ Feature: Obtener todas las series de marvel
 
   @ListaSeries
   Scenario: Obtener todas las series de marvel con exito
-    Given que soy un usuario de la API de marvel
-    When el ususario solicito obtener todas las series de marvel
+    Given que soy el usuario de la API de marvel
+    When el ususario solicito obtener todas las series de marvel universe
     Then la API responde una lista de todas las series de marvel.
 
 
