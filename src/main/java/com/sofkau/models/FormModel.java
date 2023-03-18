@@ -1,6 +1,6 @@
 package com.sofkau.models;
 
-public class Customer {
+public class FormModel {
     private String cedula;
     private String email;
     private String name;
@@ -49,7 +49,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "\nCustomer{" +
+        return "\nFormModel{" +
                 "cedula='" + cedula + '\n' +
                 ", email='" + email + '\n' +
                 ", name='" + name + '\n' +
