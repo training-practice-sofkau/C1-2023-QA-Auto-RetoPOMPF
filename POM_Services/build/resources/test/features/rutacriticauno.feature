@@ -4,7 +4,7 @@ Feature: Acceso a la pagina
   para comprar mis suplementos habituales
 
   Background:
-    Given Estoy en la pagina principal de zona fit en el "chrome"
+    Given Estoy en la pagina principal de zona fit en el "navegador"
 
   Scenario: Log-In exitoso
     When Hago click en el boton acceder
