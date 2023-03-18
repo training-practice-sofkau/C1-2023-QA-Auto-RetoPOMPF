@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import static com.sofkau.setup.ConstantSetup.*;
 import static com.sofkau.util.Log4j.*;
@@ -14,17 +15,26 @@ import static io.cucumber.messages.internal.com.google.common.base.StandardSyste
 public class WebUI {
     protected WebDriver driver;
 
-    private void setUpWebdriver(){
-        //WebDriverManager.edgedriver().setup();
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions co = new ChromeOptions();
-        co.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(co);
+    private void setUpWebdriver(String navegador){
+        switch (navegador){
+            case "Chrome":
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions co = new ChromeOptions();
+                co.addArguments("--remote-allow-origins=*");
+                co.addArguments("--incognito");
+                driver = new ChromeDriver(co);
+                break;
+            case "Edge":
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions ed = new EdgeOptions();
+                ed.addArguments("--inprivate");
+                driver = new EdgeDriver(ed);
+        }
     }
 
-    protected void generalSetup(){
+    protected void generalSetup(String navegador){
         setUplog4j();
-        setUpWebdriver();
+        setUpWebdriver(navegador);
         setUpWebdriverUrl();
     }
 
@@ -36,9 +46,7 @@ public class WebUI {
     }
 
     private void setUpWebdriverUrl(){
-        //driver = new ChromeDriver();
-        //driver = new EdgeDriver();
-        driver.get(DEMO_QA_URL);
+        driver.get(DESPEGAR_URL);
         maximize();
     }
 
