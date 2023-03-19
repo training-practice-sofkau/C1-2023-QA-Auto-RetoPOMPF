@@ -29,11 +29,29 @@ public class CompraVueloPage extends CommonActionOnPages {
     @FindBy  (xpath="(//span[contains(@class, 'item-text')])[1]")
     private WebElement SelectorConfirmacionDestino;
 
+    @CacheLookup
+    @FindBy (xpath="//div[@class='sbox5-segments--lzKBc']//div[1]//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//input[1]")
+    private WebElement selectorFechaIda;
+    @CacheLookup
+    @FindBy (xpath="(//div[@class='sbox5-monthgrid-datenumber -weekday'])[5]")
+    private WebElement selectorDia;
+
+    @CacheLookup
+    @FindBy (xpath=" (//input[@placeholder='Vuelta'])[1]")
+    private WebElement selectorFechaVuelta;
+
+    @CacheLookup
+    @FindBy (xpath="(//div[@class='sbox5-monthgrid-datenumber'])[7]")
+    private WebElement selectorDiaRegreso;
+
+    @CacheLookup
+    @FindBy (xpath="    (//div[@class='sbox5-monthgrid-datenumber -weekday'])[5]")
+    private WebElement selectorDiaRegreso2;
 
 
-
-
-
+    @CacheLookup
+    @FindBy(xpath = "/html/body/nav/div[4]/div[1]/i")
+    public WebElement cLogin;
 
     public CompraVueloPage(WebDriver driver) {
         super(driver);
@@ -45,13 +63,10 @@ public class CompraVueloPage extends CommonActionOnPages {
         clearText(selectorOringen);
         click(selectorOringen);
         typeInto(selectorOringen, "Barranquilla");
-
-
     }
 
 
     public void filtrarOrigen ( String destino){
-        System.out.println(" Imprime algo pls " );
         click (selectorOringen);
         clearText(selectorOringen);
         selectorOringen.sendKeys(destino,Keys.ARROW_DOWN);
@@ -59,15 +74,9 @@ public class CompraVueloPage extends CommonActionOnPages {
         clickcondelay(SelectorConfirmacionOrigen);
     }
 
-
     public void filtrarDestino ( String destino){
-
-
-
         click(selectorDestino);
         typeInto(selectorOringen, "Bogota");
-
-        System.out.println(" Imprime algo pls " );
         click (selectorDestino);
         clearText(selectorDestino);
         selectorDestino.sendKeys(destino,Keys.ARROW_DOWN);
@@ -75,4 +84,20 @@ public class CompraVueloPage extends CommonActionOnPages {
         clickcondelay(SelectorConfirmacionDestino);
     }
 
+
+    public void seleccionarFechaIda (){
+        click(selectorFechaIda);
+        scroll(150);
+        clickcondelay(selectorDia);
+        System.out.println(" Imprime pls " );
+        click(selectorDiaRegreso);
+        click (selectorFechaVuelta);
+        scroll(150);
+        click (selectorDiaRegreso2);
+
+    }
+
+    public void closeLogin() throws InterruptedException {
+        cLogin.click();
+    }
 }

@@ -20,12 +20,13 @@ public class CompraVueloStepDefinition extends WebUI {
     }
 
     @When("seleccione su destino y llena el formulario")
-    public void seleccioneSuDestinoYLlenaElFormulario() {
+    public void seleccioneSuDestinoYLlenaElFormulario() throws InterruptedException {
         CompraVueloPage compraVueloPage = new CompraVueloPage(super.driver);
         compraVueloPage.FillMandatoryFields();
+        compraVueloPage.closeLogin();
         compraVueloPage.filtrarOrigen("Pereira");
         compraVueloPage.filtrarDestino("Bogota");
-
+        compraVueloPage.seleccionarFechaIda();
 
     }
 

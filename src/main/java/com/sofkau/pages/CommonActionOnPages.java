@@ -23,6 +23,11 @@ protected void typeInto(WebElement webElement, String value){
     webElement.sendKeys(value);
 }
 
+protected void scrollDown (WebElement webElement){
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("arguments[0].scrollIntoView();", webElement);
+}
+
 protected  void clearText (WebElement webElement){
     webElement.clear();
 }
@@ -55,6 +60,15 @@ protected void click (WebElement webElement){
         esperaExplicita(webElement);
         webElement.click();
     }
+
+
+    public void scroll(int scrollAmount){
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        String script = "window.scrollBy(0," + scrollAmount + ")";
+        jse.executeScript(script);
+    }
+}
+
 /*
     protected void typeInto (By locator, String  value ){
         driver.findElement(locator).sendKeys(value);
@@ -116,6 +130,6 @@ protected void click (WebElement webElement){
     }
 
     */
-}
+
 
 
