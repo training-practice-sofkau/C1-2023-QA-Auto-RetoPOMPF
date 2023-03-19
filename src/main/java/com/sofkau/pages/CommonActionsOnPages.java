@@ -24,7 +24,16 @@ public class CommonActionsOnPages {
         typeWait = new WebDriverWait(driver, Duration.ofSeconds(THIRTY_SECONDS.getValue()));
     }
 
+    protected void explicitWaitInit (WebElement webElement){
+        typeWait = new WebDriverWait(driver, Duration.ofSeconds( THIRTY_SECONDS.getValue()));
+        typeWait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
     protected void clickwithDelay(WebElement element){
+        typeWait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
+    protected void clickwithDelay(By element){
         typeWait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
@@ -53,5 +62,30 @@ public class CommonActionsOnPages {
 
     protected void click (By locator){
         driver.findElement(locator).click();
+    }
+
+    protected void clearText(By locator){
+        driver.findElement(locator).clear();
+    }
+
+    protected void typeInto(By locator, String value){
+        driver.findElement(locator).sendKeys(value);
+    }
+
+    protected void fillFieldsSlows(By locator, String value){
+        driver.findElement(locator).sendKeys(value, Keys.ARROW_DOWN, Keys.ENTER);
+    }
+
+    protected void typeWithDelay(WebElement webElement, String text, int delayInMilliseconds) {
+        explicitWaitInit(webElement);
+        webElement.click();
+        for (char c : text.toCharArray()) {
+            webElement.sendKeys(Character.toString(c));
+            try {
+                Thread.sleep(delayInMilliseconds);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

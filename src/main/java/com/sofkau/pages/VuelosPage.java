@@ -8,18 +8,32 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AlojamientosChromePage extends CommonActionsOnPages{
-
-    private By dateinicial = By.xpath("(//div[@class='sbox5-monthgrid-dates sbox5-monthgrid-dates-31']//div[@class='sbox5-monthgrid-datenumber -weekday -today'])[3]");
+public class VuelosPage extends CommonActionsOnPages{
 
     @CacheLookup
     @FindBy(xpath = "//i[contains(@class, 'login-incentive--close') and contains(@class, 'shifu-3-icon-close') and contains(@class, '-eva-3-mr-md')]")
     private WebElement popUpInitial;
 
-    @CacheLookup
-    @FindBy(xpath = "//label[@class='button-circle-label' and text()='Alojamientos']")
-    private WebElement botonAlojamientos;
+    private By iconFlights = By.xpath("//div[@class='button-content' and contains(label, 'Vuelos')]");
 
+    private By originField = By.xpath("(//input[contains(@placeholder, 'Ingresa desde d')])[1]");
+
+    private By citySelected = By.xpath("//ul[@class='ac-group-items']/li[@class='item -active']/span[@class='item-text']");
+
+    private By destinyField = By.xpath("(//input[contains(@placeholder, 'Ingresa hacia d')])[1]");
+
+    @CacheLookup
+    @FindBy(xpath = "//span[@class='switch-circle']")
+    private WebElement switchCheap;
+
+    private By btnBuscar = By.xpath("//button[@class='sbox5-box-button-ovr--3LK5x sbox5-3-btn sbox5-button -secondary -icon -lg']");
+
+    private By btnSiguiente = By.xpath("(//span[text()='Siguiente'])[1]");
+
+    private By btnPlus = By.xpath("(//a[@class='steppers-icon-right eva-3-icon-plus'])[1]");
+    private By btnContinuar = By.xpath("//em[@class= 'btn-text' and text()='Continuar']");
+    //
+    //////////////////
     @CacheLookup
     @FindBy(xpath = "//input[@type='text' and @class='input-tag' and contains(@placeholder, 'Ingresa una ciudad')]")
     private WebElement fieldDestiny;
@@ -59,14 +73,35 @@ public class AlojamientosChromePage extends CommonActionsOnPages{
     private WebElement botonMenos;
 
 
-    public AlojamientosChromePage(WebDriver driver) {
+    public VuelosPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public void navigateToAlojamientos(){
+    public void navigateToVuelos() throws InterruptedException {
         click(popUpInitial);
-        click(botonAlojamientos);
+        click(iconFlights);
+        Thread.sleep(1000);
+    }
+
+    public void selectOriginDestiny(String origin, String destiny){
+        clickwithDelay(originField);
+        clearText(originField);
+        fillFieldsSlows(originField, origin);
+        clickwithDelay(citySelected);
+        clickwithDelay(destinyField);
+        clearText(destinyField);
+        fillFieldsSlows(destinyField, destiny);
+        clickwithDelay(citySelected);
+    }
+
+    public void buscarVuelo(){
+        click(switchCheap);
+        click(btnBuscar);
+        scrollDown(160);
+        click(btnSiguiente);
+        clickwithDelay(btnPlus);
+        clickwithDelay(btnContinuar);
     }
 
     public void fillDestiny(String value){
@@ -80,7 +115,7 @@ public class AlojamientosChromePage extends CommonActionsOnPages{
         click(labelDateEntry);
         scrollDown(150);
         Thread.sleep(5000);
-        click(dateinicial);
+        //click(dateinicial);
     }
 
     public void fillDateExit() throws InterruptedException {
