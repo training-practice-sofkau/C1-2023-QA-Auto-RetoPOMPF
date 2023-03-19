@@ -5,5 +5,5 @@ Feature: List characters who were at an event
 
   Scenario: Characters in an event
     Given I was given a private and public key
-    When I make a request to the Marvel API to get the characters who participated in an event
-    Then I will obtain the list of characters who participated in a specific event, each one identified with a unique id
+    When I make a request to the Marvel API to get the characters who participated in an event with id '303'
+    Then I will obtain a list of characters who participated in an event with id '303', each one identified with unique id
