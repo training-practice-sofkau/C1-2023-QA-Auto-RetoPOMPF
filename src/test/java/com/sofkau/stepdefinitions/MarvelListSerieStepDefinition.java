@@ -37,7 +37,6 @@ public class MarvelListSerieStepDefinition extends MarverlListSerieSetup {
 
     @When("el ususario solicito obtener todas las series de marvel universe")
     public void elUsusarioSolicitoObtenerTodasLasSeriesDeMarvelUniverse() {
-
         response = when().get(url);
     }
 
@@ -50,13 +49,14 @@ public class MarvelListSerieStepDefinition extends MarverlListSerieSetup {
             JSONObject firstResult = (JSONObject) results.get(0);
             String title = (String) firstResult.get("title");
             System.out.println(title);
-            Assertions.assertEquals(" Fantastic Four by Dan Slott Vol. 1 (2021)", responseBody.get("title"));
+            Assertions.assertEquals(" Fantastic Four by Dan Slott Vol. 1 (2021)", title);
             Assertions.assertEquals(response.getStatusCode(), 200);
         } catch (ParseException e) {
             LOGGER.warn(e.getMessage());
             Assertions.fail();
         }
     }
+
 
     @Given("que soy un usuario de la API de Marvel Universe")
     public void queSoyUnUsuarioDeLaAPIDeMarvelUniverse() {
@@ -77,8 +77,7 @@ public class MarvelListSerieStepDefinition extends MarverlListSerieSetup {
             JSONArray results = (JSONArray) data.get("results");
             JSONObject firstResult = (JSONObject) results.get(0);
             String title = (String) firstResult.get("title");
-            System.out.println(title);
-            Assertions.assertEquals(" Fantastic Four by Dan Slott Vol. 1 (2021)", responseBody.get("title"));
+            Assertions.assertEquals(" Fantastic Four by Dan Slott Vol. 1 (2021)", title);
             Assertions.assertEquals(response.getStatusCode(), 400);
         } catch (ParseException e) {
             LOGGER.warn(e.getMessage());

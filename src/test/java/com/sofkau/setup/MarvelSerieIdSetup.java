@@ -13,7 +13,6 @@ public class MarvelSerieIdSetup {
     protected static String version = "v1";
     protected static String resourceType = "public";
     protected static String resourceSubtype = "series";
-
     protected static int resourceId = 26024;
     protected static String apiKey = "d8b3a1f603bf809767844474bdeb690d";
     protected static long timestamp = 1;
@@ -22,7 +21,6 @@ public class MarvelSerieIdSetup {
 
     protected void generalSetup() {
         setUpLog4j2();
-        setUpBases();
     }
 
     private void setUpLog4j2() {
@@ -30,11 +28,7 @@ public class MarvelSerieIdSetup {
     }
 
 
-    private void setUpBases() {
-        //RestAssured.baseURI = BASE_URI;
-        //RestAssured.basePath = BASE_PATH;
 
-    }
 
 
 }

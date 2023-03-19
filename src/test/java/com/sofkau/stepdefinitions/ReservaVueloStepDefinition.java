@@ -1,14 +1,25 @@
 package com.sofkau.stepdefinitions;
 
+import com.sofkau.models.Usuario;
+import com.sofkau.pages.ReservaVueloPage;
+import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ReservaVueloStepDefinition {
+import org.apache.log4j.Logger;
+
+public class ReservaVueloStepDefinition extends WebUI {
+
+    private ReservaVueloPage reservaVueloPage;
+
+    private Usuario usuario;
+
+    public static Logger LOGGER = Logger.getLogger(ReservaVueloStepDefinition.class);
 
 
     /**
-     * ESCENARIO 1
+     * escenario 1
      */
     @Given("el usuario esta en la pagina principal de despegar en la opcion vuelos")
     public void elUsuarioEstaEnLaPaginaPrincipalDeDespegarEnLaOpcionVuelos() {
@@ -30,31 +41,48 @@ public class ReservaVueloStepDefinition {
 
     }
 
-
     /**
-     * ESCENARIO 2
+     * escenario 2
+     *
+     * @param SeleccionNavegador
      */
-    @Given("el usuario esta en la pagina principal de despegar.com opcion vuelos")
-    public void elUsuarioEstaEnLaPaginaPrincipalDeDespegarComOpcionVuelos() {
+
+
+    @Given("el usuario esta en la pagina principal de despegar.com opcion vuelos {string}")
+    public void elUsuarioEstaEnLaPaginaPrincipalDeDespegarComOpcionVuelos(String SeleccionNavegador) {
+        generalSetup(SeleccionNavegador);
+        LOGGER.warn("Inicializando la automatizacion");
 
     }
 
     @When("el usuario elije un lugar de origen-destino,  opcion ida, fecha, cantidad de pasajeros, y clase de tiquete, y opcion buscar")
-    public void elUsuarioElijeUnLugarDeOrigenDestinoOpcionIdaFechaCantidadDePasajerosYClaseDeTiqueteYOpcionBuscar() {
-
+    public void elUsuarioElijeUnLugarDeOrigenDestinoOpcionIdaFechaCantidadDePasajerosYClaseDeTiqueteYOpcionBuscar() throws InterruptedException {
+        ReservaVueloPage reservaVueloPage = new ReservaVueloPage(super.driver, usuario);
+        reservaVueloPage.clickInicio();
+        reservaVueloPage.selectRuta();
+        reservaVueloPage.selectVuelo();
+        reservaVueloPage.llenarFormulario();
+        reservaVueloPage.llenarCorreoNumero();
+        reservaVueloPage.emitirFactura();
     }
 
     @Then("el usuario debera ver un mensaje reserva exitosa")
     public void elUsuarioDeberaVerUnMensajeReservaExitosa() {
+        try {
 
+        } catch (Exception e) {
+            LOGGER.warn(e.getMessage());
+        } finally {
+            //quiteDriver();
+        }
     }
 
 
-
-
     /**
-     * ESCENARIO 3
+     * escenario 3
      */
+
+
     @Given("el usuario se encuentra en la pagina principal  de despegar")
     public void elUsuarioSeEncuentraEnLaPaginaPrincipalDeDespegar() {
 
@@ -69,6 +97,7 @@ public class ReservaVueloStepDefinition {
     public void elUsuarioDeberaObservarUnMensajeNoHayVuelosDisponibles() {
 
     }
+
 
     @Given("el usuario se encuetra en la pagina principal de despegar.com")
     public void elUsuarioSeEncuetraEnLaPaginaPrincipalDeDespegarCom() {
@@ -89,6 +118,4 @@ public class ReservaVueloStepDefinition {
     public void deberaObservarUnMensajeVueloReservadoConEscala() {
 
     }
-
-
 }

@@ -7,20 +7,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+
 import static com.sofkau.util.log4j.LOG4J_PROPERTIES_FILE_PATH;
 import static io.cucumber.messages.internal.com.google.common.base.StandardSystemProperty.USER_DIR;
 
 public class WebUI {
 
 
-
-
     protected WebDriver driver;
 
-    private void setUpWebdriver(String SeleccionNavegador){
+    private void setUpWebdriver(String SeleccionNavegador) {
 
 
-        switch ( SeleccionNavegador) {
+        switch (SeleccionNavegador) {
             case "Chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions co = new ChromeOptions();
@@ -33,34 +32,35 @@ public class WebUI {
             case "Edge":
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions eo = new EdgeOptions();
-                eo.addArguments("--remote-allow-origins=*");
-                eo.addArguments("--disable-notifications");
-                eo.addArguments("--disable-popup-blocking");
+                //  eo.addArguments("--remote-allow-origins=*");
+                // eo.addArguments("--disable-notifications");
+                // eo.addArguments("--disable-popup-blocking");
                 driver = new EdgeDriver(eo);
                 break;
             default:
-                System.out.println("  Este navegador no existe :C"  );
+                System.out.println("  Este navegador no existe :C");
 
         }
 
 
     }
 
-    protected void generalSetup(String seleccionNavegador){
+    protected void generalSetup(String seleccionNavegador) {
         setUpLog4j();
         setUpWebdriver(seleccionNavegador);
         setUpWebdriverUrl();
 
     }
 
-    protected void quiteDriver(){
+    protected void quiteDriver() {
         driver.quit();
     }
-    private void maximize(){
+
+    private void maximize() {
         driver.manage().window().maximize();
     }
 
-    private void setUpWebdriverUrl(){
+    private void setUpWebdriverUrl() {
         //driver = new ChromeDriver();
         //driver = new EdgeDriver();
         // driver.get(DEMO_QA_URL);

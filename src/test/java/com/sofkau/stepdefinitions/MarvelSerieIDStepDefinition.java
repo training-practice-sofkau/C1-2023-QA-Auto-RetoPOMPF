@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,12 +14,11 @@ import org.junit.jupiter.api.Assertions;
 
 import static io.restassured.RestAssured.when;
 
-public class MarvelSerieIdStepDefinition extends MarvelSerieIdSetup {
+public class MarvelSerieIDStepDefinition extends MarvelSerieIdSetup {
 
 
-    public static final Logger LOGGER = Logger.getLogger(MarvelSerieIdStepDefinition.class);
+    public static final Logger LOGGER = Logger.getLogger(MarvelSerieIDStepDefinition.class);
     private Response response;
-    private RequestSpecification resquest;
 
 
     String url = String.format("%s://%s/%s/%s/%s/%d?apikey=%s&ts=%d&hash=%s",
@@ -32,7 +30,6 @@ public class MarvelSerieIdStepDefinition extends MarvelSerieIdSetup {
     @Given("que soy un usuario de la API de Marvel")
     public void queSoyUnUsuarioDeLaAPIDeMarvel() {
         generalSetup();
-
     }
 
     @When("solicito obtener la serie de Marvel por ID")
