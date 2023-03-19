@@ -1,9 +1,6 @@
 package com.sofkau.pages;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -52,5 +49,9 @@ public class CommonActionsOnPages {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         String script = "window.scrollBy(0," + scrollAmount + ")";
         jse.executeScript(script);
+    }
+
+    protected void click (By locator){
+        driver.findElement(locator).click();
     }
 }

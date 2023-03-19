@@ -3,9 +3,8 @@ Feature: Reservar alojamiento
   quiero dirigirme a la sección de alojamientos
   para poder reservar un hospedaje
 
-  @first
   Scenario: Reserva exitosa 2 habitaciones 3 adultos
-    Given que estoy en la pagina de despegar con "Edge"
+    Given que estoy en la pagina de despegar con "Chrome"
     And que necesito un alojamiento para mi viaje a "Medellin"
     When seleccione las habitacion llenando los formularios
     Then debe observar que el alojamiento se ha reservado exitosamente

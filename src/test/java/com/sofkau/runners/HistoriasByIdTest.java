@@ -7,9 +7,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features/alojamientosdespegar.feature"},
+        features = {"src/test/resources/features/servicioshistorias.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        publish = true
+        publish = true,
+        tags = "@first"
 )
-public class AlojamientoChromeTest {
+public class HistoriasByIdTest {
 }

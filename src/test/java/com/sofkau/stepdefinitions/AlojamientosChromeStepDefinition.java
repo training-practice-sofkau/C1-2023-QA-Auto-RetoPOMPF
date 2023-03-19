@@ -1,7 +1,6 @@
 package com.sofkau.stepdefinitions;
 
 import com.sofkau.pages.AlojamientosChromePage;
-import com.sofkau.pages.CommonActionsOnPages;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -25,7 +24,7 @@ public class AlojamientosChromeStepDefinition extends WebUI {
         alojamientosChromePage.fillDestiny(destino);
     }
     @When("seleccione las habitacion llenando los formularios")
-    public void seleccioneLasHabitacionLlenandoLosFormularios() {
+    public void seleccioneLasHabitacionLlenandoLosFormularios() throws InterruptedException {
             AlojamientosChromePage alojamientosChromePage = new AlojamientosChromePage(super.driver);
             alojamientosChromePage.fillDateEntry();
             alojamientosChromePage.fillDateExit();

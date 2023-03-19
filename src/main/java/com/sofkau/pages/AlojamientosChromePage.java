@@ -1,5 +1,6 @@
 package com.sofkau.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AlojamientosChromePage extends CommonActionsOnPages{
+
+    private By dateinicial = By.xpath("(//div[@class='sbox5-monthgrid-dates sbox5-monthgrid-dates-31']//div[@class='sbox5-monthgrid-datenumber -weekday -today'])[3]");
 
     @CacheLookup
     @FindBy(xpath = "//i[contains(@class, 'login-incentive--close') and contains(@class, 'shifu-3-icon-close') and contains(@class, '-eva-3-mr-md')]")
@@ -25,14 +28,16 @@ public class AlojamientosChromePage extends CommonActionsOnPages{
     @FindBy(xpath = "(//span[contains(@class, 'item-text')])[1]")
     private WebElement destinyDefinied;
 
+
     @CacheLookup
     @FindBy(xpath = "//input[@type='text' and @class='input-tag' and contains(@placeholder, 'Entrada')]")
     private WebElement labelDateEntry;
 
+    /*
     @CacheLookup
     @FindBy(xpath = "//div[@class='sbox5-monthgrid-dates sbox5-monthgrid-dates-31']//div[@class='sbox5-monthgrid-datenumber -weekday -today']")
     private WebElement labelDateselected;
-
+*/
     @CacheLookup
     @FindBy(xpath = "(//div[@class='sbox5-monthgrid-datenumber']/div[@class='sbox5-monthgrid-datenumber-number'])[30]")
     private WebElement labelDateExit;
@@ -48,6 +53,10 @@ public class AlojamientosChromePage extends CommonActionsOnPages{
     @CacheLookup
     @FindBy(xpath = "(//a[@class='sbox5-3-btn -md -link']//em[@class='btn-text'])[2]")
     private WebElement addHabitacion;
+
+    @CacheLookup
+    @FindBy(xpath = "(//*[@id='svg-minus-29Ddhw5'])[5]")
+    private WebElement botonMenos;
 
 
     public AlojamientosChromePage(WebDriver driver) {
@@ -67,19 +76,22 @@ public class AlojamientosChromePage extends CommonActionsOnPages{
         clickwithDelay(destinyDefinied);
     }
 
-    public void fillDateEntry(){
+    public void fillDateEntry() throws InterruptedException {
         click(labelDateEntry);
         scrollDown(150);
-        clickwithDelay(labelDateselected);
+        Thread.sleep(5000);
+        click(dateinicial);
     }
 
-    public void fillDateExit(){
+    public void fillDateExit() throws InterruptedException {
         clickwithDelay(labelDateExit);
+        Thread.sleep(5000);
         clickwithDelay(buttonAplicar);
     }
 
     public void selectHabitaciones(){
         clickwithDelay(habitaSelector);
         clickwithDelay(addHabitacion);
+        clickwithDelay(botonMenos);
     }
 }
