@@ -1,10 +1,8 @@
 package com.sofka.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LocatorPage extends CommonActionOnPage{
@@ -29,19 +27,32 @@ public class LocatorPage extends CommonActionOnPage{
 
     private final By finishBuy = By.xpath("//div[contains(@class,'wc-proceed-to-checkout')]/a[contains(@class,'checkout-button')]");
 
-    @CacheLookup
-    @FindBy(xpath="(//li[@id='item-3'])[1]")
-    private WebElement optionWebTables;
+    private final By documentNumber = By.id("billing_myfield12");
+    private final By email = By.id("billing_email");
+    private final By name = By.id("billing_first_name");
+    private final By lastName = By.id("billing_last_name");
+    private final By comboDepartmet = By.id("select2-billing_state-container");
+    private final By department = By.cssSelector("input[aria-owns='select2-billing_state-results']");
+    private final By comboCity = By.id("select2-billing_city-container");
+    private final By city = By.cssSelector("input[aria-owns='select2-billing_city-results']");
+    private final By address = By.id("billing_address_1");
+    private final By address2 = By.id("billing_address_2");
+    private final By phoneNumber = By.id("billing_phone");
+    private final By termCondition = By.id("terms");
+    private final By order = By.id("place_order");
 
-    @CacheLookup
-    @FindBy(id="addNewRecordButton")
-    private WebElement buttonAdd;
+    //private final By successMessage = By.xpath("//p[contains(@class,'success-color')]");
 
     public LocatorPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
+/**
+    public String getSuccessMessage(){
+        System.out.println(driver.findElement(successMessage).getText());
+        return driver.findElement(SuccessMessage).getText();
+    }
+*/
     public void navegar() {
         scrollP();
         click(product);
@@ -69,6 +80,54 @@ public class LocatorPage extends CommonActionOnPage{
     }
 
     public void formBill(){
+        clearTextP(documentNumber);
+        typeIntoP(documentNumber, "43019745");
+        clearTextP(email);
+        typeIntoP(email, "ganoxo6430@huvacliq.com");
+        clearTextP(name);
+        typeIntoP(name, "Gabriela");
+        clearTextP(lastName);
+        typeIntoP(lastName, "Montoya");
+        clickP(comboDepartmet);
+        typeIntoP(department, "Caldas");
+        pressEnterP(department);
+        clickP(comboCity);
+        typeIntoP(city, "Manizales");
+        pressEnterP(city);
+        clearTextP(address);
+        typeIntoP(address, "Cll 46 B#78-12");
+        clearTextP(address2);
+        typeIntoP(address2, "Casa 2do piso");
+        clearTextP(phoneNumber);
+        typeIntoP(phoneNumber, "3116547101");
+        scrollButton();
+        pressSpaceP(termCondition);
+        pressSpaceP(order);
+    }
 
+    public void formBillFailed(){
+        clearTextP(documentNumber);
+        typeIntoP(documentNumber, "43019745");
+        clearTextP(email);
+        typeIntoP(email, "ganoxo6430");
+        clearTextP(name);
+        typeIntoP(name, "Gabriela");
+        clearTextP(lastName);
+        typeIntoP(lastName, "Montoya");
+        clickP(comboDepartmet);
+        typeIntoP(department, "Caldas");
+        pressEnterP(department);
+        clickP(comboCity);
+        typeIntoP(city, "Manizales");
+        pressEnterP(city);
+        clearTextP(address);
+        typeIntoP(address, "Cll 46 B#78-12");
+        clearTextP(address2);
+        typeIntoP(address2, "Casa 2do piso");
+        clearTextP(phoneNumber);
+        typeIntoP(phoneNumber, "3116547101");
+        scrollButton();
+        pressSpaceP(termCondition);
+        pressSpaceP(order);
     }
 }

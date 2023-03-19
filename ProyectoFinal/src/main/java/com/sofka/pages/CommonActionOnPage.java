@@ -68,8 +68,17 @@ public class CommonActionOnPage{
         jse.executeScript("window.scrollBy(0,1800)");
     }
 
-    protected void goBackP() {driver.navigate().back();}
+    public void scrollNewsLetter(){
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollBy(0,7500)");
+    }
 
+    public void scrollButton(){
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollBy(0,1500)");
+    }
+
+    protected void goBackP() {driver.navigate().back();}
     public void clickElementF(WebElement element) {
         element.click();
     }
@@ -98,14 +107,4 @@ public class CommonActionOnPage{
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView();", element);
     }
-
-/**
-    protected void click (By locator) {
-        typeWait.until(ExpectedConditions.elementToBeClickable(locator)).click();
-    }
-    private void explicitWaitInit () {
-        typeWait = new WebDriverWait(driver, TEN_SECONDS.getValue());
-    }
-    private WebDriverWait typeWait;
- */
 }

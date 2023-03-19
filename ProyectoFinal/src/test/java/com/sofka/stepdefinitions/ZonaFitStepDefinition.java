@@ -34,8 +34,14 @@ public class ZonaFitStepDefinition extends WebUI {
 
     @When("agrega varios productos al carrito")
     public void agregaVariosProductosAlCarrito() {
-        locatorPage = new LocatorPage(driver);
-        locatorPage.navegar();
+        try{
+            locatorPage = new LocatorPage(driver);
+            locatorPage.navegar();
+        }catch (Exception exception){
+            quiteDriver();
+            Assertions.fail(exception.getMessage(), exception);
+            LOGGER.warn(exception.getMessage(), exception);
+        }
     }
 
     @When("completa la informacion del formulario de facturacion")
@@ -45,12 +51,14 @@ public class ZonaFitStepDefinition extends WebUI {
 
     @Then("mostrara un mensaje confirmando la compra")
     public void mostraraUnMensajeConfirmandoLaCompra() {
-
+        /*
+        String message = locatorPage.getSuccessMessage();
+        Assertions.assertEquals(expectMessagge.substring(1,25), "Gracias. Tu pedido ha sido recibido.");*/
     }
 
     @When("completa un campo con un dato invalido")
     public void completaUnCampoConUnDatoInvalido() {
-
+        locatorPage.formBillFailed();
     }
 
     @Then("mostrara un mensaje de error indicando el campo obligatorio al ingresar un dato invalido")
