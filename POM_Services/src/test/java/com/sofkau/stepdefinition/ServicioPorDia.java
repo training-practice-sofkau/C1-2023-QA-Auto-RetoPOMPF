@@ -10,8 +10,8 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 public class ServicioPorDia {
     public static Logger LOGGER = Logger.getLogger(String.valueOf(CompraPorCategoria.class));
-    @Given("El reportero esta en la pagina")
-    public void elReporteroEstaEnLaPagina() {
+    @Given("El reportero esta en la pagina de servicio diario")
+    public void elReporteroEstaEnLaPaginaDeServicioDiario() {
     }
     @When("hace la peticion al servicio diario")
     public void haceLaPeticionAlServicioDiario() {
