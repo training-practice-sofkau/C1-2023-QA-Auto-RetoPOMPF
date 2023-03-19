@@ -67,6 +67,22 @@ protected void click (WebElement webElement){
         String script = "window.scrollBy(0," + scrollAmount + ")";
         jse.executeScript(script);
     }
+
+
+
+    protected void typeWithDelay(WebElement webElement, String text, int delayInMilliseconds) {
+        esperaExplicita(webElement);
+        webElement.click();
+        for (char c : text.toCharArray()) {
+            webElement.sendKeys(Character.toString(c));
+            try {
+                Thread.sleep(delayInMilliseconds);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
 
 /*

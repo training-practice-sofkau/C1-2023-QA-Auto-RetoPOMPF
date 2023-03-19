@@ -82,6 +82,18 @@ public class CompraVueloPage extends CommonActionOnPages {
     @FindBy(xpath = "//*[@id=\"formData.travelers[0].nationality\"]/div/div/label")
     private WebElement paisResidencia;
 
+    @CacheLookup
+    @FindBy (xpath = "//input[@id='traveler-identification-number-0']")
+    private WebElement inputIdentificacion;
+
+    @CacheLookup
+    @FindBy (xpath = "//*[@id=\"formData.contactData.mainEmailAddress\"]")
+    private WebElement inputCorreo;
+
+
+
+
+
     public CompraVueloPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -89,25 +101,29 @@ public class CompraVueloPage extends CommonActionOnPages {
 
     public void FillMandatoryFields() {
         click(selectorBotonVuelos);
-        clearText(selectorOringen);
-        click(selectorOringen);
-        typeInto(selectorOringen, "Guajira");
+
+
     }
 
 
-    public void filtrarOrigen(String destino) {
+    public void filtrarOrigen(String origen) {
+        clearText(selectorOringen);
+        click(selectorOringen);
+        ////
         click(selectorOringen);
         clearText(selectorOringen);
-        selectorOringen.sendKeys(destino, Keys.ARROW_DOWN);
+        selectorOringen.sendKeys(origen, Keys.ARROW_DOWN);
         selectorOringen.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         clickcondelay(SelectorConfirmacionOrigen);
+
+        typeWithDelay(selectorOringen, "Guajira", 30);
     }
 
     public void filtrarDestino(String destino) {
         click(selectorDestino);
-        typeInto(selectorOringen, "Bogota");
-        click(selectorDestino);
-        clearText(selectorDestino);
+       // clearText(selectorDestino);
+        typeWithDelay(selectorDestino, "Bogota", 30);
+        click (selectorDestino);
         selectorDestino.sendKeys(destino, Keys.ARROW_DOWN);
         selectorDestino.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         clickcondelay(SelectorConfirmacionDestino);
@@ -150,6 +166,14 @@ public class CompraVueloPage extends CommonActionOnPages {
         clickcondelay(inputNombre1);
         typeInto(inputNombre1, "Santy");
         typeInto(inputApellidos, "Gomez");
+        clickcondelay(paisResidencia);
+        scroll(330);
+        typeInto(inputIdentificacion, "123456789");
+        scroll(330);
+        typeInto(inputCorreo,"correofalso@gmail.com");
+
+     //   typeInto(inputCorreo, "orreofalso@gmail.comc");
+
     }
 
 
