@@ -21,6 +21,7 @@ public class HistoriasStepDefinition {
     JSONObject responseBody = null;
     public static Logger LOGGER= Logger.getLogger(HistoriasStepDefinition.class);
 
+    //Scenario 1
     @Given("tengo la id {string} de una historia")
     public void tengoLaIdDeUnaHistoria(String idSelected) {
         id = idSelected;
@@ -45,5 +46,23 @@ public class HistoriasStepDefinition {
             LOGGER.warn(e.getMessage());
             Assertions.fail();
         }
+    }
+
+    //Scenario 2
+    @Given("tengo la id {string} de una historia invalida")
+    public void tengoLaIdDeUnaHistoriaInvalida(String idFail) {
+        id = idFail;
+    }
+    @When("envio una peticion con la id invalida de la historia")
+    public void envioUnaPeticionConLaIdInvalidaDeLaHistoria() {
+        RestAssured.baseURI = URI_MARVEL;
+        response = RestAssured.get(String.format(PATH_HISTORIAS_MARVEL, id, TIME_STAMP, APIKEY, HASH));
+    }
+    @Then("debo obtener un mensaje de error de historia no encontrada")
+    public void deboObtenerUnMensajeDeErrorDeHistoriaNoEncontrada() throws ParseException {
+        response.then().statusCode(404);
+        responseBody = (JSONObject) parser.parse(response.getBody().asString());
+        Assertions.assertEquals("We couldn't find that comic_story",responseBody.get("status"));
+        LOGGER.info("Prueba exitosa:" + response.asString());
     }
 }

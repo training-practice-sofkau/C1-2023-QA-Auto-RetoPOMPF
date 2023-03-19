@@ -13,3 +13,14 @@ Feature: Consultar historias id
       | "31445" |
       | "26024" |
       | "18454" |
+
+  @first
+  Scenario Outline: Consulta fallida
+    Given tengo la id <id> de una historia invalida
+    When envio una peticion con la id invalida de la historia
+    Then debo obtener un mensaje de error de historia no encontrada
+    Examples:
+      | id  |
+      | "1" |
+      | "2" |
+      | "3" |
