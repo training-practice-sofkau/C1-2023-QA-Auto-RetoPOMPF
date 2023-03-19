@@ -1,6 +1,7 @@
 package com.sofka.stepdefinitions;
 
-import com.sofka.pages.InicioSesionPage;
+import com.sofka.pages.CompraCategoriaPage;
+import com.sofka.pages.NewsLetterPage;
 import com.sofka.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,13 +9,13 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
-public class InicioSesionStepDefinition extends WebUI {
+public class CompraCategoriaStepDefinition extends WebUI {
     public static Logger LOGGER=Logger.getLogger(ZonaFitStepDefinition.class);
 
-    private InicioSesionPage inicioSesionPage;
+    private CompraCategoriaPage compraCategoriaPage;
 
-    @Given("que el cliente se encuentra en la pagina de inicio de sesion de ZonaFit con {string}")
-    public void queElClienteSeEncuentraEnLaPaginaDeInicioDeSesionDeZonaFitCon(String navegador) {
+    @Given("que el cliente esta en la pagina de inicio con {string}")
+    public void queElClienteEstaEnLaPaginaDeInicioCon(String navegador) {
         try{
             if (navegador.equals("chrome")){
                 generalSetUpGoogleChrome();
@@ -30,14 +31,19 @@ public class InicioSesionStepDefinition extends WebUI {
         }
     }
 
-    @When("ingresa el correo electronico {string} y la contrasena {string} posteriormente presiona el boton Iniciar Sesion")
-    public void ingresaElCorreoElectronicoYLaContrasenaPosteriormentePresionaElBotonIniciarSesion(String correo, String contrasena) {
-        inicioSesionPage = new InicioSesionPage(driver);
-        inicioSesionPage.formLogin(correo, contrasena);
+    @When("agrega varios productos al carrito de la categoria de aminoacidos")
+    public void agregaVariosProductosAlCarritoDeLaCategoriaDeAminoacidos() {
+        compraCategoriaPage = new CompraCategoriaPage(driver);
+        compraCategoriaPage.addProducts();
     }
 
-    @Then("mostrara su informacion personal y realizar compras")
-    public void mostraraSuInformacionPersonalYRealizarCompras() {
+    @When("completa los datos del formulario de facturacion")
+    public void completaLosDatosDelFormularioDeFacturacion() {
+
+    }
+
+    @Then("mostrara un mensaje de confirmacion de la compra")
+    public void mostraraUnMensajeDeConfirmacionDeLaCompra() {
 
     }
 }

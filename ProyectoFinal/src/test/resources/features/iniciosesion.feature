@@ -10,11 +10,11 @@ Feature: Inicio de sesion
 
   @LoginExitoso
   Scenario Outline: Iniciar sesion en la pagina de ZonaFit
-    Given que el cliente se encuentra en la pagina de inicio de sesion de ZonaFit con "navegador"
+    Given que el cliente se encuentra en la pagina de inicio de sesion de ZonaFit con "edge"
     When ingresa el correo electronico <correo> y la contrasena <contrasena> posteriormente presiona el boton Iniciar Sesion
     Then mostrara su informacion personal y realizar compras
 
     Examples:
-      | correo                | contrasena  |
-      | "ejemplo@correo.com"  | "1234abcd"  |
-      | "usuario@ejemplo.com" | "qwerty123" |
+      | correo                    | contrasena |
+      | "ganoxo6430@huvacliq.com" | "Zxcv123+" |
+      | "telano6132@etondy.com"   | "Asdf123+" |
