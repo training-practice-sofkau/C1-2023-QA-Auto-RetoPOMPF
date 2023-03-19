@@ -12,9 +12,10 @@ Feature: Inicio de sesión en la tienda web de ZonaFit
   Scenario Outline: Iniciar sesión con correo y contraseña
 
     Given que estoy en la pagina de inicio de sesion de ZonaFit desde "chrome"
-    When ingreso mi correo electronico "<correo>" y mi contrasena "<contrasena>"
-    And hago clic en el boton Iniciar sesion
-    Then debo ser redirigido a mi cuenta de ZonaFit
+    When  hago click enn el boton de "acceder/registrarse"
+    And ingreso mi correo electronico "<correo>" y mi contrasena "<contrasena>"
+    And hago click enn el boton dee "Acceder"
+    Then deberia ser redirigido nuevamente a la pagina principal y visualizar el "nombre" de usuario
 
     Examples:
       | correo                         | contrasena |
