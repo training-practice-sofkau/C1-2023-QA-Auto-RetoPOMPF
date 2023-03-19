@@ -3,7 +3,11 @@ Feature: viaje exitoso
   quiero comprar tiquetes
   para realizar viajes
 
-  Scenario: viaje exitoso
-    Given que estoy en la pagina principal de latam
-    When realizo todo el flujo de compra
+  Scenario Outline: viaje exitoso
+    Given que estoy en la pagina principal de latam usando el <navegador>
+    When realizo todo el flujo de compra para <cantidad> adultos saliendo desde <salida> hasta <llegada>
     Then confirmo la informacion antes de realizar la compra
+    Examples:
+    |cantidad|navegador|salida        |llegada      |
+    |3       |"chrome" |"bogota, bog" |"cali, clo"  |
+    |4       |"edge"   |"cali, clo"   |"bogota, bog"|

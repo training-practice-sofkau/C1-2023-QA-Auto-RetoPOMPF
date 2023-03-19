@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LatamPage extends CommonActionOnPages{
+
+    public static String confrimarFlujo1;
     Faker faker = new Faker();
     public static List<String> pasajero=new ArrayList<>();
     public void crearPasajero(){
@@ -54,7 +56,7 @@ public class LatamPage extends CommonActionOnPages{
     @FindBy(id="txtInputDestination_field")
     private WebElement llegada;
     @CacheLookup
-    @FindBy(id="btnItemAutoComplete_1")
+    @FindBy(id="btnItemAutoComplete_0")
     private WebElement ciudadLlegada;
 
     @CacheLookup
@@ -168,25 +170,30 @@ public class LatamPage extends CommonActionOnPages{
     @FindBy(id="FormCreditCardaddCreditCard")
     private WebElement tarjetaCredito;
 
+    @CacheLookup
+    @FindBy(id="saveButton")
+    private WebElement agregarTarjeta;
+
     public void esperar(int segundos){
         try {
             Thread.sleep(segundos);
         }catch (Exception e){
         }
     }
-    public void navigatePage() throws InterruptedException {
-        typeInto(origen,"bogota");
+    public void navigatePage(int cantidad, String ciudadsalida, String ciudadllegada) throws InterruptedException {
+        typeInto(origen,ciudadsalida);
         click(ciudadOrigen);
         click(llegada);
-        typeInto(llegada,"cali");
+        typeInto(llegada,ciudadllegada);
         esperar(1000);
         click(ciudadLlegada);
         click(fechaSalida);
         click(numFechaSalida);
         click(numFechaLlegada);
         click(seleccionPasajeros);
-        click(sumarAdulto);
-        click(sumarAdulto);
+        for(int i=1;i<=cantidad-1;i++){
+            click(sumarAdulto);
+        }
         click(buscar);
         driver.getCurrentUrl();
         CambiarPestana();
@@ -209,7 +216,7 @@ public class LatamPage extends CommonActionOnPages{
         click(asientoAliatorio);
         click(continuarMaletas);
         esperar(10000);
-        for(int i=1;i<4;i++){
+        for(int i=1;i<=cantidad;i++){
             crearPasajero();
             esperar(3000);
             click(By.id("passengerDetails-firstName-ADT_"+String.valueOf(i)));
@@ -220,10 +227,13 @@ public class LatamPage extends CommonActionOnPages{
             typeInto(By.id("passengerInfo-dateOfBirth-ADT_"+String.valueOf(i)),pasajero.get(4));
             click(By.id("documentInfo-documentNumber-ADT_"+String.valueOf(i)));
             typeInto(By.id("documentInfo-documentNumber-ADT_"+String.valueOf(i)),pasajero.get(5));
-            if(pasajero.get(6)=="2"){
+            System.out.println(pasajero.get(6));
+            /*if(pasajero.get(6).equals("2")){
                 click(genero);
-                click(femenino);
-            }
+                esperar(1000);
+                click(By.cssSelector(".MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.sc-fzqAui.xBvvB.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button[tabindex='-1']"));
+
+            }*/
             if(i==1){
                 click(ponerCorreo);
                 typeInto(ponerCorreo,"estiven.tr96@gmail.com");
@@ -242,7 +252,9 @@ public class LatamPage extends CommonActionOnPages{
         click(continuarPago);
         esperar(5000);
         click(tarjetaCredito);
-        //System.out.println(getText(By.cssSelector(".sc-AxhCb.eCWvbO.latam-typography.latam-typography--heading-04.sc-AxhUy.fxWvvr")));
+        esperar(1000);
+        confrimarFlujo1=getText(By.cssSelector(".sc-AxhCb.eCWvbO.latam-typography.latam-typography--heading-04.sc-AxhUy.fxWvvr"));
+
     }
 
 }

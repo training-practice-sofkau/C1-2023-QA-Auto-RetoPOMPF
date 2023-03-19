@@ -5,6 +5,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.google.common.base.StandardSystemProperty.USER_DIR;
@@ -14,7 +15,7 @@ import static com.sofkau.util.Log4j.LOG4J_PROPERTIES_FILE_PATH;
 public class WebUi {
 
     protected WebDriver driver;
-    private void setUpWebdriverUrl(){
+    private void setUpWebdriverUrlChrome(){
         ChromeOptions options=new ChromeOptions();
         options.addArguments("--incognito");
         DesiredCapabilities cap=new DesiredCapabilities();
@@ -24,14 +25,30 @@ public class WebUi {
         driver.get(DEMO_QA_URL);
         maximize();
     }
-    protected void generalSetup(){
+    protected void generalSetupChrome(){
         setUplog4j();
-        setUpWebdriver();
-        setUpWebdriverUrl();
+        setUpWebdriverChrome();
+        setUpWebdriverUrlChrome();
     }
-    private void setUpWebdriver(){
+    private void setUpWebdriverChrome(){
         WebDriverManager.chromedriver().setup();
+        //WebDriverManager.edgedriver().setup();
+    }
 
+    private void setUpWebdriverUrlEdge(){
+        driver=new EdgeDriver();
+        driver.get(DEMO_QA_URL);
+        maximize();
+    }
+
+    protected void generalSetupEdge(){
+        setUplog4j();
+        setUpWebdriverEdge();
+        setUpWebdriverUrlEdge();
+    }
+    private void setUpWebdriverEdge(){
+        //WebDriverManager.chromedriver().setup();
+        WebDriverManager.edgedriver().setup();
     }
 
     protected void quiteDriver(){
