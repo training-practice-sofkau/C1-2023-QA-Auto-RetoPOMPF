@@ -4,15 +4,14 @@ Feature: Reservar un vuelo normal
   para poder reservar un vuelo de ida y vuelta
 
   Scenario: Reservación exitosa con 3 pasajeros adultos
-    Given que debo llevar  3 personas en el viaje
-    When este en la pagina web de despegar
-    And seleccione un vuelo
-    Then deberá mostrar un mensaje de reserva exitosa
+    Given que debo llevar tres personas en el viaje por "Chrome"
+    When seleccione vuelos con  origen
+    Then debera mostrar un mensaje de reserva exitosa
 
-  Scenario Outline: Reservación de vuelo con 2 adultos y 1 menor
+  Scenario Outline: Reservación de vuelo con dos adultos y un menor
     Given que el usuario se encuentra en la página de vuelos
-    When selecciona el origen <origen>,destino <destino>, fecha de ida <fechaida> y vuelta <fechavuelta>
-    Then deberá mostrar un mensaje indicando vuelos no disponibles
+    When selecciona el origen <origen>, destino <destino>, fecha de ida <fechaida> y vuelta <fechavuelta>
+    Then debera mostrar un mensaje indicando vuelos no disponibles
 
     Examples:
       | origen    | destino   | fechaida     | fechavuelta  |

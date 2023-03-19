@@ -4,11 +4,11 @@ Feature: Reservar paquete disney
   para reservar un  paquete de disney
 
   Scenario: reserva paquete para tres días
-    Given que necesito un paquete para 2 adultos y 2 menores
+    Given que necesito un paquete para dos adultos y dos menores por navegador "Chrome"
     When seleccione fecha y la informacion
      Then debo observar la reserva generada con exito
 
   Scenario: reserva paquete para 6 días
-    Given que necesito un paquete para 2 adultos y 1 menor
+    Given que necesito un paquete para dos adultos y un menor
     When seleccione fecha y la informacion requerida
     Then debo obtener la reserva generada con exito
