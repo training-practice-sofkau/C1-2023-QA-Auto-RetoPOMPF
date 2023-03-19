@@ -5,6 +5,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.google.common.base.StandardSystemProperty.USER_DIR;
 import static com.sofkau.util.Log4j.LOG4J_PROPERTIES_FILE_PATH;
@@ -24,11 +25,20 @@ public class WebUi {
 
     private void setUpWebdriverUrl(String URL) {
         ChromeOptions co = new ChromeOptions();
+        co.addArguments("--incognito");
         co.addArguments("--remote-allow-origins=*");
+        co.addArguments("--disable-popup-blocking");
+        DesiredCapabilities cap=new DesiredCapabilities();
+        cap.setCapability(ChromeOptions.CAPABILITY, co);
+        co.merge(cap);
         driver = new ChromeDriver(co);
         driver.get(URL);
         maximize();
     }
+
+    ChromeOptions options=new ChromeOptions();
+
+
 
     protected void generalSetUp(String URL) {
         setUplog4j();
