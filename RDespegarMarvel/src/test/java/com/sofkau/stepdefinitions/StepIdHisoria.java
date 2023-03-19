@@ -1,6 +1,6 @@
 package com.sofkau.stepdefinitions;
 
-import com.sofkau.setup.MarvelEventosSetup;
+import com.sofkau.setup.MarvelHistoriaIdSetup;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,32 +14,38 @@ import org.junit.jupiter.api.Assertions;
 
 import static io.restassured.RestAssured.when;
 
-public class StepEventos extends MarvelEventosSetup {
+public class StepIdHisoria extends MarvelHistoriaIdSetup {
     public static final Logger LOGGER = Logger.getLogger(StepHistorias .class);
     private Response response;
     String url = baseURL + endpoint + "?apikey=" + apiKey + "&ts=" + timestamp + "&hash=" + hash;
     JSONParser parser = new JSONParser();
     JSONObject responseBody = null;
-    @Given("que soy un usuario de los  eventos de la API de marvel")
-    public void queSoyUnUsuarioDeLosEventosDeLaAPIDeMarvel() {
+
+    @Given("que soy un usuario de la API de marvel")
+    public void queSoyUnUsuarioDeLaAPIDeMarvel() {
         generalSetup();
     }
-    @When("solicito obtener eventos filtrados por historia")
-    public void solicitoObtenerEventosFiltradosPorHistoria() {
+    @When("solicito obtener historias filtrados por id")
+    public void solicitoObtenerHistoriasFiltradosPorId() {
         response = when().get(url);
     }
-    @Then("la API retorna el evento por id de comic")
-    public void laAPIRetornaElEventoPorIdDeComic() {
+    @Then("la API retornara la historia por id")
+    public void laAPIRetornaraLaHistoriaPorId() {
         try {
             responseBody = (JSONObject) parser.parse(response.getBody().asString());
             JSONObject data = (JSONObject) responseBody.get("data");
             LOGGER.info(data);
-            //JSONArray results = (JSONArray) data.get("results");
-            Assertions.assertEquals(response.getStatusCode(), 200);
+            JSONArray results = (JSONArray) data.get("results");
+            JSONObject firstResult = (JSONObject) results.get(0);
+            String title = (String) firstResult.get("title");
+            LOGGER.info(data);
+            Assertions.assertEquals("Cover #19947", title);
         } catch (ParseException e) {
             LOGGER.warn(e.getMessage());
             Assertions.fail();
         }
-
     }
+
+
+
 }
