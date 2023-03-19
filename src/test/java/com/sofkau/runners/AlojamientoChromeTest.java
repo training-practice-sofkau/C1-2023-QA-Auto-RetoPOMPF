@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         features = {"src/test/resources/features/alojamientosdespegar.feature"},
         glue = {"com.sofkau.stepdefinitions"},
-        publish = true
+        publish = true,
+        tags = "@first"
 )
 public class AlojamientoChromeTest {
 }

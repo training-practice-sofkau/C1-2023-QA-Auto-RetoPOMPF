@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.interactions.Actions;
 
 import static com.sofkau.setup.ConstantSetup.*;
 import static com.sofkau.util.Log4j.*;
@@ -37,7 +38,6 @@ public class WebUI {
         setUpWebdriver(navegador);
         setUpWebdriverUrl();
     }
-
     protected void quiteDriver(){
         driver.quit();
     }
