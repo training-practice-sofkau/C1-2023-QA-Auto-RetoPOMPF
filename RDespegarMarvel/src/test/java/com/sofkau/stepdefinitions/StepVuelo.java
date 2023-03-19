@@ -24,6 +24,7 @@ public class StepVuelo extends WebUI {
         pageVuelos.filtrarOrigen("Medellin");
         pageVuelos.filtrarDestino ("Cali");
         pageVuelos.seleccionarVuelo();
+        pageVuelos.llenarFormulario("yoli");
     }
     @Then("debera mostrar un mensaje de reserva exitosa")
     public void deberaMostrarUnMensajeDeReservaExitosa() {

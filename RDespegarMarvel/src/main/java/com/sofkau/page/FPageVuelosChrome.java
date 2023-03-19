@@ -78,6 +78,21 @@ public class FPageVuelosChrome extends CommonActionOnPage {
     private WebElement botonContinuar;
 
 
+    @CacheLookup
+    @FindBy(id = "#formData\\.travelers\\[0\\]\\.firstName")
+    private WebElement nombrePasajero;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"t48d4enq3zojpun80zwgr\"]")
+    private WebElement apellidoPasajero;
+
+    private final By name = By.id("yigu8lbrc9bb8zveey2uwd");
+
+
+
+
+
     private final By inicio = By.xpath("(//div[@class='sbox5-monthgrid-datenumber-number'][normalize-space()='18'])[1]");
 
     public void closeLogin() throws InterruptedException {
@@ -128,7 +143,16 @@ public class FPageVuelosChrome extends CommonActionOnPage {
         scroll(280);
         clickcondelay(botonSiguiente);
         clickcondelay(botonContinuar);
-        Thread.sleep(6000);
+        Thread.sleep(12000);
+
+    }
+
+    public void llenarFormulario(String nombre){
+    clearText(nombrePasajero);
+    typeInto(nombrePasajero, nombre);
+    clearTextl(name);
+    typeIntol(name, "Yoli");
+
 
     }
 

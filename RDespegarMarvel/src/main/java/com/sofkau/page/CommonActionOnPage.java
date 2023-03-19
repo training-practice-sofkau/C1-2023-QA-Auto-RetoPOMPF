@@ -14,10 +14,10 @@ public class CommonActionOnPage {
     public CommonActionOnPage(WebDriver driver) {
         this.driver = driver;
     }
-    protected void typeInto(By locator, String value){
+    protected void typeIntol(By locator, String value){
         driver.findElement(locator).sendKeys(value);
     }
-    protected void clearText(By locator){
+    protected void clearTextl(By locator){
         driver.findElement(locator).clear();
     }
     protected void click (WebElement webElement){
