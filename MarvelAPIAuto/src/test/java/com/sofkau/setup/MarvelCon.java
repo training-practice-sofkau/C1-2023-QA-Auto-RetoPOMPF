@@ -6,7 +6,6 @@ import static com.sofkau.setup.SetUpConsts.*;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 import static io.restassured.RestAssured.get;
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.hasItems;
 
 public class MarvelCon {

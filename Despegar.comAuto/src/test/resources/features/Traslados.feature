@@ -4,12 +4,12 @@ Feature: Go to my hotel
   So that
 
   Background: I am on the transfers page
-    Given I went to Despegar transfer page with a 'browser'
+    Given I went to Despegar transfer page with a browser 'browser'
 
   Scenario: Select a transfer option
-    Given I selected the required fields for my family and me
+    Given I selected the required fields for my family
     When I buy the first transfer option
-    Then I will be redirected to the payment page
+    Then I will be redirected to payment page
 
   Scenario: Compare prices
     Given I selected the required fields only for me

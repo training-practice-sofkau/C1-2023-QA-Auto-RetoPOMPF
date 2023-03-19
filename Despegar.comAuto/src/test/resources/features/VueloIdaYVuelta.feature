@@ -4,7 +4,7 @@ Feature: Normal Flight
   So that
 
   Background: I am on the home page
-    Given I went to Despegar home page (flights tab) with a 'browser'
+    Given I went to Despegar flights page with a browser 'browser'
     And I selected the passengers
     And I selected the destinations
     Then I will be redirected to the flight selection page
@@ -14,9 +14,9 @@ Feature: Normal Flight
     And I select the flight <class>
     Examples:
       | date of departure | date of return | class           |
-      | 10 OCT            | 12 OCT         | Economy         |
-      | 11 SEP            | 13 SEP         | First class     |
-      | 22 AUG            | 24 AUG         | Premium economy |
+      | '10 OCT'          | '12 OCT'       | Economy         |
+      | '11 SEP'          | '13 SEP'       | First class     |
+      | '22 AUG'          | '24 AUG'       | Premium economy |
 
   Scenario: No dates
-    When I activate the 'I haven't decided the dates yet' toggle switch
+    When I activate the I have not decided the dates yet toggle switch

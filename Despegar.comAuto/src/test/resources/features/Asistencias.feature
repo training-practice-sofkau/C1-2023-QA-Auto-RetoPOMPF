@@ -4,7 +4,7 @@ Feature: Obtain assistance
   So that
 
   Background: I am on the assistance page
-    Given I went to Despegar assistance page with a 'browser'
+    Given I went to Despegar assistance page with a browser 'browser'
 
   Scenario: Select an assistance option
     Given I selected the required fields for my family and me
