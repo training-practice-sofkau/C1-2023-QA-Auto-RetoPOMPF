@@ -19,15 +19,17 @@ public class LatamStepDefinition extends WebUi {
     private LatamPage latamPage;
     public static Logger LOGGER = Logger.getLogger(String.valueOf(LatamStepDefinition.class));
 
-    @Given("Given que estoy en la pagina de Latam Airlines")
-    public void givenQueEstoyEnLaPaginaDeLatamAirlines() {
-        generalSetUp(HOME_URL);
+    @Given("Given que estoy en la pagina de Latam Airlines en el navegador {string}")
+    public void givenQueEstoyEnLaPaginaDeLatamAirlinesEnElNavegador(String string) {
+        String nav = string;
+        generalSetUp(HOME_URL, nav);
         LOGGER.info("Inicio de la Automatizacion");
     }
-    @When("he ingresado los detalles de mi viaje")
-    public void heIngresadoLosDetallesDeMiViaje() {
+
+    @When("he ingresado los detalles de mi viaje con {string}")
+    public void heIngresadoLosDetallesDeMiViajeCon(String string) {
         latamPage  = new LatamPage(super.driver);
-        latamPage.fillSearchForm();
+        latamPage.fillSearchForm(string);
         latamPage.selectTickets();
     }
     @When("he ingresado los datos de los pasajeros")
@@ -35,14 +37,18 @@ public class LatamStepDefinition extends WebUi {
         List<Passenger> passengers = Passenger.createPassengers(3);
         latamPage.fillPassengers(passengers);
     }
-    @Then("se muestra la descripcion del viaje en el modulo de pagar")
-    public void seMuestraLaDescripcionDelViajeEnElModuloDePagar() {
-        try {
-            Thread.sleep(5000);
-            quitDriver();
-        }catch (Exception e){
-            Assertions.fail();
-        }
-
+    @Then("se muestra el modulo para pagar con PSE")
+    public void seMuestraElModuloParaPagarConPSE() {
+            try {
+                String obtainedMessage = latamPage.paymentWithPSE();
+                String ExpectedMessage = "Si ya eres parte de LATAM, ingresa tus datos:";
+                System.out.println(obtainedMessage);
+                Assertions.assertEquals(ExpectedMessage, obtainedMessage);
+                Thread.sleep(5000);
+                quitDriver();
+            }catch (Exception e){
+                e.getMessage();
+                quitDriver();
+            }
     }
 }

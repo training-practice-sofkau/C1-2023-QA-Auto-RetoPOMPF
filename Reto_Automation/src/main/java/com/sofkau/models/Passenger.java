@@ -67,12 +67,13 @@ public class Passenger {
         List<Passenger> passengers = new ArrayList<>();
 
         Faker faker = new Faker(new Locale("es"));
+        Faker fakerus = new Faker(new Locale("us"));
 
         String[] genders = {"Masculino", "Femenino"};
 
         for (int i = 0; i < numPassengers; i++) {
-            String firstName = faker.name().firstName();
-            String lastName = faker.name().lastName();
+            String firstName = fakerus.name().firstName();
+            String lastName = fakerus.name().lastName();
             String birthdate = generarFecha();
             String gender = genders[faker.random().nextInt(genders.length)];
             String documentNumber = faker.number().digits(10);

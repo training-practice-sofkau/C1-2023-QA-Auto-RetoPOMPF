@@ -36,18 +36,12 @@ public class LatamPage extends CommonActionOnPages{
     @CacheLookup
     @FindBy(id = "btnSearchCTA")
     private WebElement btnSearch;
-//    @CacheLookup
-//    @FindBy(xpath = "//div/descendant::*[528]")
-//    private WebElement selFechaIda;
-//    @CacheLookup
-//    @FindBy(xpath ="//div/descendant::*[534]")
-//    private WebElement selFechaLlegada;
     @CacheLookup
     @FindBy(id = "WrapperCardFlight0")
     private WebElement selTicketIda;
 
     @CacheLookup
-    @FindBy(xpath = "//div[@id='WrapperCardFlight0']//div[@role='button']")
+    @FindBy(css = ".card-flightstyle__WrapperFlightInfo-sc__sc-16r5pdw-17.ktzsYJ")
     private WebElement selTicketVuelta;
     @CacheLookup
     @FindBy(id = "BasicBundleAlertMessage")
@@ -62,33 +56,29 @@ public class LatamPage extends CommonActionOnPages{
     private final By leaveSeats = By.id("btnSeatMapLeave");
     private final By continueToPay = By.id("button-cart-confirm");
     private final By chooseLater = By.id("buttonChooseLater");
-    private final By genderFemale = By.cssSelector(".MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.sc-fzqAui.xBvvB.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button[tabindex='-1']");
+    private final By chooseBag = By.cssSelector("span[data-testid='personal-item-radio']");
+    private final By bottonContinue = By.id("undefined--button-wrapper");
     @CacheLookup
-    @FindBy(id="passengerDetails-firstName-ADT_1")
-    private WebElement inputName;
+    @FindBy(id = "mui-component-select-passengerInfo.gender")
+    private WebElement genderInput;
 
-    @CacheLookup
-    @FindBy(id="passengerDetails-lastName-ADT_1")
-    private WebElement inputLastName;
-
-    @CacheLookup
-    @FindBy(id="passengerInfo-dateOfBirth-ADT_1")
-    private WebElement inputdate;
     @CacheLookup
     @FindBy(id="documentInfo-documentNumber-ADT_1-label")
     private WebElement ponerId;
 
-    @CacheLookup
-    @FindBy(id = "mui-component-select-passengerInfo.gender")
-    private WebElement genderInput;
+    private final By buttonLoginLatam = By.cssSelector("button[id='cnt_main_login-btn'] span[class='MuiButton-label']");
+    private final By inputFinalEmail = By.id("form-input--alias");
+
+    private final By email = By.id("passengerInfo-emails-ADT_1");
+    private final By repeatContactInfo = By.id("repeatContactData-ADT_1-label");
     public LatamPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
 
-    public void fillSearchForm() {
-        typeInto(origin, "Medellin");
+    public void fillSearchForm(String origen) {
+        typeInto(origin,origen);
         click(btnAutoComplete);
         click(destination);
         typeInto(destination, "Pasto");
@@ -119,33 +109,45 @@ public class LatamPage extends CommonActionOnPages{
     public void leaveSeatsSelection() {
         click(leaveSeats);
         click(chooseLater);
+        click(chooseBag);
         click(continueToPay);
 //        click(By.id("hi"));
     }
 
     public void fillPassengers(List<Passenger> passengers) {
-//        for (Passenger passenger : passengers) {
-//
-//            System.out.println(passenger.getFirstName());
-//            System.out.println(passenger.getLastName());
-//            System.out.println(passenger.getBirthdate());
-//            System.out.println(passenger.getGender());
-//            System.out.println(passenger.getDocumentNumber());
-//            System.out.println(passenger.getPhoneNumber());
-//        }
-        click(inputName);
-        typeInto(inputName, passengers.get(0).getFirstName());
-        typeInto(inputLastName, passengers.get(0).getLastName());
-        typeInto(inputdate, passengers.get(0).getBirthdate());
-        switch (passengers.get(0).getGender()) {
-            case "Masculino":
-                System.out.println("Es masculino");
-                break;
-            case "Femenino":
-                click(genderInput);
-                click(genderFemale);
-                break;
+        System.out.println(passengers.size());
+        for(int i = 1; i<=passengers.size(); i++){
+            click(By.id("passengerDetails-firstName-ADT_"+i));
+            typeInto(By.id("passengerDetails-firstName-ADT_"+i), passengers.get(i-1).getFirstName());
+            typeInto(By.id("passengerDetails-lastName-ADT_"+i), passengers.get(i-1).getLastName());
+            typeInto(By.id("passengerInfo-dateOfBirth-ADT_"+i), passengers.get(i-1).getBirthdate());
+            System.out.println("Es masculino");
+            typeInto(By.id("documentInfo-documentNumber-ADT_"+i), passengers.get(i-1).getDocumentNumber());
+            typeInto(By.id("passengerInfo-phones0-number-ADT_"+i), passengers.get(i-1).getPhoneNumber());
+            if(i == 1){
+                typeInto(email, "contactowaiterapp@gmail.com");
+                click(repeatContactInfo);
+                enter(By.id("passengerInfo-phones0-number-ADT_"+i));
+            }else{
+                enter(By.id("documentInfo-documentNumber-ADT_"+i));
+            }
         }
+        try {
+            Thread.sleep(6000);
+        }catch (Exception e){
+            e.getMessage();
+        }
+        click(bottonContinue);
     }
 
+    public String paymentWithPSE() {
+        click(buttonLoginLatam);
+        click(inputFinalEmail);
+        String finalMessge = getText(By.id("form-text"));
+        return finalMessge;
+    }
 }
+
+
+
+

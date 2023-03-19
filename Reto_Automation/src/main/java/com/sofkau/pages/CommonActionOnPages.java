@@ -79,6 +79,9 @@ public class CommonActionOnPages {
         typeWait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
 //        webElement.click();
     }
+    protected  String getText (By locator){
+        return driver.findElement(locator).getText();
+    }
 
     protected void pressEnter(WebElement webElement){
         webElement.sendKeys(Keys.ENTER);
