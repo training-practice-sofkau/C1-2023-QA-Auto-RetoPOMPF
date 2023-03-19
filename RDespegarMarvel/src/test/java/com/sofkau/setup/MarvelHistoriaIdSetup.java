@@ -6,11 +6,11 @@ import static com.google.common.base.StandardSystemProperty.USER_DIR;
 import static com.sofkau.util.Log4j.LOG4J_PROPERTIES_FILE_PATH;
 
 
-public class MarvelEventosSetup {
+public class MarvelHistoriaIdSetup {
     
     protected static String baseURL = "https://gateway.marvel.com/v1/public/";
-    protected static int comicID = 1;
-    protected static String endpoint = "stories/" + comicID + "/events";
+    protected static int storiesID = 19947;
+    protected static String endpoint = "stories/" + storiesID ;
     protected static String apiKey = "34718a01c54fead5741ff10ad28dd1a4";
     protected static String timestamp = "1";
     protected static String hash = "0f5c4a5cf213cfa76f10a126813546bf";
