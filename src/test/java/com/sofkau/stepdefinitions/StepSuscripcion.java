@@ -32,7 +32,7 @@ public class StepSuscripcion extends WebUI {
 
     @When("lleno el formulario de suscribirse con mis datos y le doy clic al boton suscribirse")
     public void llenoElFormularioDeSuscribirseConMisDatosYLeDoyClicAlBotonSuscribirse() {
-        String email = "james@mail.com";
+        String email = "james@gmail.com";
         String name = " James";
         String phone = "123456789";
 
@@ -59,6 +59,8 @@ public class StepSuscripcion extends WebUI {
     public void afterTest() {
         quitDriver();
     }
+
+
 }
 
 

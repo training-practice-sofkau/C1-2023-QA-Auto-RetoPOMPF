@@ -1,6 +1,8 @@
 package com.sofkau.models;
 
+
 public class FormModel {
+
     private String cedula;
     private String email;
     private String name;
@@ -11,42 +13,81 @@ public class FormModel {
     private String noAddress;
     private String phone;
 
-    public String getCedula() {return cedula;}
+    public FormModel() {
+    }
 
-    public void setCedula(String cedula) {this.cedula = cedula;}
 
-    public String getEmail() {return email;}
+    public String getCedula() {
+        return cedula;
+    }
 
-    public void setEmail(String email) {this.email = email;}
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
 
-    public String getName() {return name;}
+    public String getEmail() {
+        return email;
+    }
 
-    public void setName(String name) {this.name = name;}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public String getLastName() {return lastName;}
+    public String getName() {
+        return name;
+    }
 
-    public void setLastName(String lastName) {this.lastName = lastName;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public String getRegion() {return region;}
+    public String getLastName() {
+        return lastName;
+    }
 
-    public void setRegion(String region) {this.region = region;}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-    public String getCity() {return city;}
+    public String getRegion() {
+        return region;
+    }
 
-    public void setCity(String city) {this.city = city;}
+    public void setRegion(String region) {
+        this.region = region;
+    }
 
-    public String getAddress() {return address;}
+    public String getCity() {
+        return city;
+    }
 
-    public void setAddress(String address) {this.address = address;}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-    public String getNoAddress() {return noAddress;}
+    public String getAddress() {
+        return address;
+    }
 
-    public void setNoAddress(String noAddress) {this.noAddress = noAddress;}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public String getPhone() {return phone;}
+    public String getNoAddress() {
+        return noAddress;
+    }
 
-    public void setPhone(String phone) {this.phone = phone;}
+    public void setNoAddress(String noAddress) {
+        this.noAddress = noAddress;
+    }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
     @Override
     public String toString() {
         return "\nFormModel{" +
@@ -61,4 +102,5 @@ public class FormModel {
                 ", phone='" + phone + '\'' +
                 '}';
     }
+
 }

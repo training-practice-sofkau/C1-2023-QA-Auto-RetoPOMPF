@@ -1,19 +1,17 @@
-Feature: comprar productos en oferta
-         Yo como cliente
-         quiero visualizar en la pagina web los productos en oferta
-         para comprarlos online
+Feature: Compra de productos zona fit
+  yo como cliente de la tienda virtual zonafit
+  necesito comprar comprar productos en el outlet
+  con el fin de hacer uso de ellos
 
-  Background: ingresar pagina de ofertas
-    Given el cliente se encuentra en la categoria de ofertas
+  Background:
+    Given que el cliente se encuentra en la pagina principal de la tienda zonafit
 
-  Scenario: llenar carrito de compras con productos en oferta
-    When el cliente seleccione los productos y los confirme en el carrito
-    Then el sistema dirige a la pagina del formulario de pago
-    Then el sistema debe calcular y mostrar el subtotal de los productos en la pagina del formulario de pago
+  @Scenario1
+  Scenario: medio de pago baloto
+    When el cliente selecciona los producto y ingresa la informacion requerida dejando como medio de pago la opcion baloto
+    Then el sistema debera muestra un mensaje de la confirmacion de la compra
 
-
-  Scenario: enviar pedido con productos en oferta
-    When el cliente seleccione los productos y los confirme en el carrito
-    And llene la informacion del formulario de pago y envie
-    Then el sistema confirma el envio del pedido
-    Then el sistema debe mostrar el correspondiente monto total en la factura
+  @Scenario2
+  Scenario: medio de pago efecty
+    When el cliente selecciona los productos y ingresa la informacion requerida dejando como medio de pago la opcion efecty
+    Then el sistema debera muestra un mensaje de la confirmacion de la compra

@@ -1,122 +1,112 @@
 package com.sofkau.stepdefinitions;
 
-import com.sofkau.models.FormModel;
-import com.sofkau.pages.PagCarrito;
-import com.sofkau.pages.CheckPag;
-import com.sofkau.pages.PagPago;
-import com.sofkau.pages.PagPrincipal;
+import com.sofkau.runners.ZonaFitTest;
 import com.sofkau.setup.WebUI;
+import com.sofkau.models.FormModel;
+import com.sofkau.pages.ZonaFitPaginaEscenarioDos;
+import com.sofkau.pages.ZonaFitPaginaEscenarioUno;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import static com.sofkau.pages.ZonaFitPaginaEscenarioUno.*;
+
+
 
 public class StepCompra extends WebUI {
-    private FormModel formModelSCE2;
-    private int totalFacturado;
-    private static  final Logger logger = LogManager.getLogger(StepCompra.class);
 
-    @Given("el cliente se encuentra en la categoria de ofertas")
-    public void elClienteSeEncuentraEnLaCategoriaDeOfertas() {
-        try{
-            generalSetUp();
-            PagPrincipal shoppingPag = new PagPrincipal(driver);
-            shoppingPag.selectCategoryOffer();
-        }catch (Exception e){
-            quitDriver();
-            logger.warn("Error al ingresar  categoria de ofertas\n ",e);
-            Assertions.fail(e.getMessage(),e);
-        }
-    }
-    @When("el cliente seleccione los productos y los confirme en el carrito")
-    public void elClienteSeleccioneLosProductosYLosConfirmeEnElCarrito() {
-        try{
-            PagPrincipal shoppingPag = new PagPrincipal(driver);
-            PagCarrito cartPage = new PagCarrito(driver);
-            shoppingPag.selectProductsRandom(3);
-            cartPage.pressFinalizeBuy();
-        }catch (Exception e){
-            logger.warn("Error al seleccionar productos\n ",e);
-            Assertions.fail(e.getMessage(),e);
-        }
-    }
-    @When("llene la informacion del formulario de pago y envie")
-    public void lleneLaInformacionDelFormularioDePagoYEnvie() {
-        try{
-            addAttributesCustomer();
-            PagPago formPayPage = new PagPago(driver, formModelSCE2);
-            formPayPage.fillFormPay();
-            totalFacturado= formPayPage.getTotalFacturado();
-        }catch(Exception e){
-            quitDriver();
-            logger.warn("error al llenar el formulario\n ",e);
-            Assertions.fail(e.getMessage(),e);
-        }
-    }
-    @Then("el sistema dirige a la pagina del formulario de pago")
-    public void elSistemaDirigeALaPaginaDelFormularioDePago(){
-        try{
-            PagPago formPayPage = new PagPago(driver, formModelSCE2);
-            Assertions.assertTrue(formPayPage.isTitleAppear());
-        }catch (AssertionError e){
-            quitDriver();
-            logger.warn("error, no se direcciona a la página de pago\n",e);
-            Assertions.fail(e.getMessage(),e);
-        }
-    }
-    @Then("el sistema debe calcular y mostrar el subtotal de los productos en la pagina del formulario de pago")
-    public void elSistemaDebeCalcularYMostrarElSubtotalDeLosProductosEnLaPaginaDelFormularioDePago() {
+    private static final Logger LOGGER = Logger.getLogger(ZonaFitTest.class);
+    private ZonaFitPaginaEscenarioUno zonaFitPaginaEscenarioUno;
+    public FormModel cliente;
+
+    //Background
+    @Given("que el cliente se encuentra en la pagina principal de la tienda zonafit")
+    public void queElClienteSeEncuentraEnLaPaginaPrincipalDeLaTiendaZonafit() {
+
         try {
-            PagPago formPayPage= new PagPago(driver, formModelSCE2);
-            Assertions.assertEquals(formPayPage.subTotalPrice(),formPayPage.getSubTotalPrice());
-            logger.info("validación subtotal de productos, la entrada fue <$"+formPayPage.subTotalPrice()+
-                    "> se obtuvo <$"+formPayPage.getSubTotalPrice()+">");
+            generalSetUp();
+        }catch (Exception exception){
             quitDriver();
-        }catch (AssertionError e){
+            Assertions.fail(exception.getMessage(),exception);
+            LOGGER.warn(exception.getMessage(), exception);
+        }
+
+    }
+    //Escenario 1
+    @When("el cliente selecciona los producto y ingresa la informacion requerida dejando como medio de pago la opcion baloto")
+    public void elClienteSeleccionaLosProductoYIngresaLaInformacionRequeridaDejandoComoMedioDePagoLaOpcionBaloto() {
+        try {
+            clienteGeneral();
+            ZonaFitPaginaEscenarioUno zonaFitPaginaEscenarioUno = new ZonaFitPaginaEscenarioUno(cliente, driver);
+            zonaFitPaginaEscenarioUno.llenarInformacion();
+
+        }catch (Exception exception){
             quitDriver();
-            logger.warn("error, el subtotal es incorrecto \n",e);
-            Assertions.fail(e.getMessage(),e);
+            Assertions.fail(exception.getMessage(),exception);
+            LOGGER.warn(exception.getMessage(), exception);
         }
     }
-    @Then("el sistema confirma el envio del pedido")
-    public void elSistemaConfirmaElEnvioDelPedido(){
-        try{
-            CheckPag confirmBuyPage = new CheckPag(driver);
-            Assertions.assertTrue(confirmBuyPage.isDisplayMessageConfirmBuy());
-        }catch (AssertionError e){
+    @Then("el sistema debera mostrar el numero del pedido")
+    public void elSistemaDeberaMostrarElNumeroDelPedido() {
+
+        try {
+            Assertions.assertEquals("CONVENIO RECAUDO ZONA FIT – BALOTO",
+                    "CONVENIO RECAUDO ZONA FIT – BALOTO","El texto es diferente");
+                    validacionPedido();
+
+
+        } catch (Exception exception){
             quitDriver();
-            logger.warn("no se confirma el envío \n",e);
-            Assertions.fail(e.getMessage(),e);
+            Assertions.fail(exception.getMessage(),exception);
+            LOGGER.warn(exception.getMessage(), exception);
         }
+
     }
-    @Then("el sistema debe mostrar el correspondiente monto total en la factura")
-    public void elSistemaDebeMostrarElCorrespondienteMontoTotalEnLaFactura(){
-        CheckPag confirmBuyPage = new CheckPag(driver);
-        try{
-            int precioFacturaPage = confirmBuyPage.getPrecioTotalFactura();
-            Assertions.assertEquals(totalFacturado,precioFacturaPage);
-            logger.info("validación del monto total en factura: la entrada fue <$"+totalFacturado+
-                    "> se obtuvo <$"+precioFacturaPage+">");
-            quitDriver();
-        }catch (AssertionError e){
-            quitDriver();
-            logger.warn("Verificación de datos de facturación fallida\n",e);
-            Assertions.fail(e.getMessage(),e);
-        }
+    //Funciones
+    private void clienteGeneral () {
+        cliente = new FormModel();
+        cliente.setCedula("123456789");
+        cliente.setEmail("james@gmail.com");
+        cliente.setName("james");
+        cliente.setLastName("munoz");
+        cliente.setRegion("antioquia");
+        cliente.setCity("medellin");
+        cliente.setAddress(" Calle 123 # 10-20");
+        cliente.setAddress(" 101");
+        cliente.setPhone("3149999999");
+
     }
 
-    protected void addAttributesCustomer(){
-        formModelSCE2 = new FormModel();
-        formModelSCE2.setCedula("897564321");
-        formModelSCE2.setName("James");
-        formModelSCE2.setLastName("Muñoz");
-        formModelSCE2.setEmail("james@gmail.com");
-        formModelSCE2.setAddress("calle 34");
-        formModelSCE2.setNoAddress("107-08");
-        formModelSCE2.setCity("Medellin");
-        formModelSCE2.setRegion("Antioquia");
-        formModelSCE2.setPhone("1234567890");
+
+    //Esenario 2
+    @When("el cliente selecciona los productos y ingresa la informacion requerida dejando como medio de pago la opcion efecty")
+    public void elClienteSeleccionaLosProductosYIngresaLaInformacionRequeridaDejandoComoMedioDePagoLaOpcionEfecty() {
+
+        try {
+            clienteGeneral();
+            ZonaFitPaginaEscenarioDos zonaFitPaginaEscenarioDos = new ZonaFitPaginaEscenarioDos(cliente, driver);
+            zonaFitPaginaEscenarioDos.digitarinformacion();
+
+        }catch (Exception exception){
+            quitDriver();
+            Assertions.fail(exception.getMessage(),exception);
+            LOGGER.warn(exception.getMessage(), exception);
+        }
+    }
+    @Then("el sistema debera muestra un mensaje de la confirmacion de la compra")
+    public void elSistemaDeberaMuestraUnMensajeDeLaConfirmacionDeLaCompra() {
+
+        try {
+
+            Assertions.assertEquals("Número de Convenio",
+                    "Número de Convenio","El texto es diferente");
+            validacionPedido();
+
+        } catch (Exception exception){
+            quitDriver();
+            Assertions.fail(exception.getMessage(),exception);
+
+        }
     }
 }

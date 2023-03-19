@@ -1,6 +1,5 @@
 package com.sofkau.pages.common;
 
-import com.sofkau.pages.PagPrincipal;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -108,14 +107,11 @@ public class CommonActionOnpages {
         }
         return elementsText;
     }
-
-    private PagPrincipal pagPrincipal;
-    ;
     private By botonWhatsappSelector = By.xpath("(//div[@class='joinchat__button__open'])[1]");
-    private By botonNecesitasAsesoriaSelector = By.xpath("(//div[@data-start='Abrir el chat'])[1]");
+    private By botonNecesitasAsesoriaSelector = By.xpath("(//div[@class='joinchat__agent__image'])[1]");
 
     public void clickBotonWhatsapp() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement botonWhatsapp = wait.until(ExpectedConditions.visibilityOfElementLocated(botonWhatsappSelector));
         botonWhatsapp.click();
     }
