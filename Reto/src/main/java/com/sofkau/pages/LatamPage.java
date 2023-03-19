@@ -37,8 +37,7 @@ public class LatamPage extends CommonActionOnPages{
         }
         pasajero.add(String.valueOf(faker.number().numberBetween(1950,2000)));
         pasajero.add(String.valueOf(faker.number().numberBetween(1115086000,1115086999)));
-        pasajero.add(String.valueOf(faker.number().digits(10)));
-        pasajero.add(String.valueOf(faker.number().numberBetween(1,2)));
+        pasajero.add(String.valueOf(faker.number().numberBetween(1,3)));
 
 
     }
@@ -140,7 +139,7 @@ public class LatamPage extends CommonActionOnPages{
     private WebElement ponerId;
     @CacheLookup
     @FindBy(id="passengerInfo-emails-ADT_1")
-    private WebElement ponerCelular;
+    private WebElement ponerCorreo;
     @CacheLookup
     @FindBy(id="mui-component-select-passengerInfo.gender")
     private WebElement genero;
@@ -148,6 +147,26 @@ public class LatamPage extends CommonActionOnPages{
     @CacheLookup
     @FindBy(css=".MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.sc-fzqAui.xBvvB.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button[tabindex='-1']")
     private WebElement femenino;
+
+    @CacheLookup
+    @FindBy(id="passengerInfo-phones0-number-ADT_1")
+    private WebElement ponerCelular;
+
+    @CacheLookup
+    @FindBy(id="repeatContactData-ADT_1-label")
+    private WebElement repetirInfo;
+
+    @CacheLookup
+    @FindBy(id="passengerFormSubmitButtonADT_1")
+    private WebElement guardarPasajero;
+
+    @CacheLookup
+    @FindBy(id="undefined--button-wrapper")
+    private WebElement continuarPago;
+
+    @CacheLookup
+    @FindBy(id="FormCreditCardaddCreditCard")
+    private WebElement tarjetaCredito;
 
     public void esperar(int segundos){
         try {
@@ -189,36 +208,41 @@ public class LatamPage extends CommonActionOnPages{
         click(continuar);
         click(asientoAliatorio);
         click(continuarMaletas);
-        crearPasajero();
-        System.out.println(pasajero.get(0));
-        System.out.println(pasajero.get(2));
-        System.out.println(pasajero.get(3));
-        System.out.println(pasajero.get(4));
         esperar(10000);
-        //click(ponerNombre);
-        typeInto(ponerNombre,pasajero.get(0));
-        typeInto(ponerApellido,pasajero.get(1));
-        typeInto(ponerFecha,pasajero.get(2)+"-");
-        typeInto(ponerFecha,pasajero.get(3)+"-");
-        typeInto(ponerFecha,pasajero.get(4));
-        System.out.println(pasajero.get(5));
-        click(ponerId);
-        typeInto(ponerId,pasajero.get(5));
-        click(ponerCelular);
-        typeInto(ponerCelular,pasajero.get(6));
-        System.out.println(pasajero.get(7));
-        if(pasajero.get(7)=="2"){
-            click(genero);
-            click(femenino);
+        for(int i=1;i<4;i++){
+            crearPasajero();
+            esperar(3000);
+            click(By.id("passengerDetails-firstName-ADT_"+String.valueOf(i)));
+            typeInto(By.id("passengerDetails-firstName-ADT_"+String.valueOf(i)),pasajero.get(0));
+            typeInto(By.id("passengerDetails-lastName-ADT_"+String.valueOf(i)),pasajero.get(1));
+            typeInto(By.id("passengerInfo-dateOfBirth-ADT_"+String.valueOf(i)),pasajero.get(2)+"-");
+            typeInto(By.id("passengerInfo-dateOfBirth-ADT_"+String.valueOf(i)),pasajero.get(3)+"-");
+            typeInto(By.id("passengerInfo-dateOfBirth-ADT_"+String.valueOf(i)),pasajero.get(4));
+            click(By.id("documentInfo-documentNumber-ADT_"+String.valueOf(i)));
+            typeInto(By.id("documentInfo-documentNumber-ADT_"+String.valueOf(i)),pasajero.get(5));
+            if(pasajero.get(6)=="2"){
+                click(genero);
+                click(femenino);
+            }
+            if(i==1){
+                click(ponerCorreo);
+                typeInto(ponerCorreo,"estiven.tr96@gmail.com");
+                click(repetirInfo);
+                click(ponerCelular);
+                typeInto(ponerCelular,"3136543214");
+                pressEnter(ponerCelular);
+                esperar(3000);
+            }else{
+                //click(ponerId);
+                pressEnter(By.id("documentInfo-documentNumber-ADT_"+String.valueOf(i)));
+                esperar(3000);
+            }
         }
-
-
-
-        //click(seleccionarBasic);
-
-
-
-
+        esperar(1000);
+        click(continuarPago);
+        esperar(5000);
+        click(tarjetaCredito);
+        //System.out.println(getText(By.cssSelector(".sc-AxhCb.eCWvbO.latam-typography.latam-typography--heading-04.sc-AxhUy.fxWvvr")));
     }
 
 }
