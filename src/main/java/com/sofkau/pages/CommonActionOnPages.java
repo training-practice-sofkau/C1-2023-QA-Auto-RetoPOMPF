@@ -1,16 +1,44 @@
 package com.sofkau.pages;
 
+import com.sofkau.util.TiempoEsperaExplicita;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.Key;
+
+import java.time.Duration;
+
+import static com.sofkau.util.TiempoEsperaExplicita.NUEVE_SEGUNDO;
 
 public class CommonActionOnPages {
     private WebDriver driver;
+
+    private By locator;
+    private  TiempoEsperaExplicita tiempoEsperaExplicita;
+
     public CommonActionOnPages(WebDriver driver){
+        super();
         this.driver = driver;
+
     }
-    protected void typeInto(By locator, String value){
+
+    protected void pressEnter (WebElement webElement){
+        webElement.sendKeys(Keys.ENTER);
+    }
+
+    protected void esperaExplicita(WebElement webElement){
+       WebDriverWait typeWait;
+       typeWait = new WebDriverWait(driver, Duration.ofSeconds(NUEVE_SEGUNDO.getValue()));
+       typeWait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+   /* protected void typeInto(By locator, String value){
         driver.findElement(locator).sendKeys(value);
     }
+    */
+   protected void typeInto(WebElement webElement, String value){
+       webElement.sendKeys(value);
+   }
+
     protected void  clearText(By locator){
         driver.findElement(locator).clear();
     }
@@ -35,6 +63,13 @@ public class CommonActionOnPages {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView();",driver.findElement(locator));
     }
+
+    public void scroll(int scrollAmount){
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        String script = "window.scrollBy(0," + scrollAmount + ")";
+        jse.executeScript(script);
+    }
+
     protected String getText(By locator){
         return driver.findElement(locator).getText();
     }
@@ -51,6 +86,7 @@ public class CommonActionOnPages {
         jse.executeScript("arguments[0].scrollIntoView();", driver.findElement(locator));
     }
 
+
     public void setZoom(int zoomLevel){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.body.style.zoom = '" +zoomLevel +"%'");
@@ -59,4 +95,14 @@ public class CommonActionOnPages {
     protected void tab(By locator) {
         driver.findElement(locator).sendKeys(Key.TAB);
     }
+    protected void clickcondelay (WebElement webElement){
+        esperaExplicita(webElement);
+        webElement.click();
+    }
+
+    protected  void clearText (WebElement webElement){
+        webElement.clear();
+    }
+
+
 }
