@@ -1,29 +1,25 @@
 package com.sofkau.stepdefinitions;
 
-import com.sofkau.runners.ZonaFitTest;
+import com.sofkau.pages.FlujoCompra;
 import com.sofkau.setup.WebUI;
 import com.sofkau.models.FormModel;
-import com.sofkau.pages.ZonaFitPaginaEscenarioDos;
-import com.sofkau.pages.ZonaFitPaginaEscenarioUno;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
-import static com.sofkau.pages.ZonaFitPaginaEscenarioUno.*;
 
-
+import static com.sofkau.pages.FlujoCompra.validacionPedido;
 
 public class StepCompra extends WebUI {
 
-    private static final Logger LOGGER = Logger.getLogger(ZonaFitTest.class);
-    private ZonaFitPaginaEscenarioUno zonaFitPaginaEscenarioUno;
+    private static final Logger LOGGER = Logger.getLogger(FlujoCompra.class);
+    private FlujoCompra compra;
     public FormModel cliente;
 
     //Background
     @Given("que el cliente se encuentra en la pagina principal de la tienda zonafit")
     public void queElClienteSeEncuentraEnLaPaginaPrincipalDeLaTiendaZonafit() {
-
         try {
             generalSetUp();
         }catch (Exception exception){
@@ -31,15 +27,14 @@ public class StepCompra extends WebUI {
             Assertions.fail(exception.getMessage(),exception);
             LOGGER.warn(exception.getMessage(), exception);
         }
-
     }
     //Escenario 1
     @When("el cliente selecciona los producto y ingresa la informacion requerida dejando como medio de pago la opcion baloto")
     public void elClienteSeleccionaLosProductoYIngresaLaInformacionRequeridaDejandoComoMedioDePagoLaOpcionBaloto() {
         try {
             clienteGeneral();
-            ZonaFitPaginaEscenarioUno zonaFitPaginaEscenarioUno = new ZonaFitPaginaEscenarioUno(cliente, driver);
-            zonaFitPaginaEscenarioUno.llenarInformacion();
+            FlujoCompra compra = new FlujoCompra(cliente, driver);
+            compra.llenarInformacion1();
 
         }catch (Exception exception){
             quitDriver();
@@ -49,19 +44,15 @@ public class StepCompra extends WebUI {
     }
     @Then("el sistema debera mostrar el numero del pedido")
     public void elSistemaDeberaMostrarElNumeroDelPedido() {
-
         try {
             Assertions.assertEquals("CONVENIO RECAUDO ZONA FIT – BALOTO",
                     "CONVENIO RECAUDO ZONA FIT – BALOTO","El texto es diferente");
                     validacionPedido();
-
-
         } catch (Exception exception){
             quitDriver();
             Assertions.fail(exception.getMessage(),exception);
             LOGGER.warn(exception.getMessage(), exception);
         }
-
     }
     //Funciones
     private void clienteGeneral () {
@@ -77,16 +68,14 @@ public class StepCompra extends WebUI {
         cliente.setPhone("3149999999");
 
     }
-
-
     //Esenario 2
     @When("el cliente selecciona los productos y ingresa la informacion requerida dejando como medio de pago la opcion efecty")
     public void elClienteSeleccionaLosProductosYIngresaLaInformacionRequeridaDejandoComoMedioDePagoLaOpcionEfecty() {
 
         try {
             clienteGeneral();
-            ZonaFitPaginaEscenarioDos zonaFitPaginaEscenarioDos = new ZonaFitPaginaEscenarioDos(cliente, driver);
-            zonaFitPaginaEscenarioDos.digitarinformacion();
+            FlujoCompra compra = new FlujoCompra(cliente, driver);
+            compra.llenarInformacion2();
 
         }catch (Exception exception){
             quitDriver();
@@ -98,7 +87,6 @@ public class StepCompra extends WebUI {
     public void elSistemaDeberaMuestraUnMensajeDeLaConfirmacionDeLaCompra() {
 
         try {
-
             Assertions.assertEquals("Número de Convenio",
                     "Número de Convenio","El texto es diferente");
             validacionPedido();
@@ -106,7 +94,6 @@ public class StepCompra extends WebUI {
         } catch (Exception exception){
             quitDriver();
             Assertions.fail(exception.getMessage(),exception);
-
         }
     }
 }

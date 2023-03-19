@@ -1,7 +1,7 @@
 package com.sofkau.pages;
 
 import com.sofkau.models.FormModel;
-import com.sofkau.pages.common.AccionComunDeLaPagina;
+import com.sofkau.pages.common.CommonActionPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ZonaFitPaginaEscenarioUno extends AccionComunDeLaPagina {
+public class FlujoCompra extends CommonActionPages {
 
 
     public final FormModel formModel;
@@ -29,7 +29,6 @@ public class ZonaFitPaginaEscenarioUno extends AccionComunDeLaPagina {
     private final By xcarrito = By.xpath("(//button[@class='mfp-close'])");
 
     private final By pagPrincipal = By.xpath("(//img[@class='header-logo-dark'])[1]");
-
     private final By cantidad1 = By.xpath("(//input[@value='+'])[1]");
     private final By cantidad2 = By.xpath("(//input[@value='+'])[2]");
     private final By cantidad3 = By.xpath("(//input[@value='+'])[3]");
@@ -62,8 +61,9 @@ public class ZonaFitPaginaEscenarioUno extends AccionComunDeLaPagina {
     @FindBy(xpath = "//*[@id=\"billing_state_field\"]/span/span/span[1]/span")
     private WebElement seleccionBotondepartamento;
 
-    private final By departamento = By.xpath("/html/body/span/span/span[1]/input");
-
+    @CacheLookup
+    @FindBy(xpath = "/html/body/span/span/span[1]/input")
+    private WebElement departamento;
     @CacheLookup
     @FindBy(xpath = "//*[@id=\"select2-billing_state-results\"]")
     private WebElement seleccionDepartamento;
@@ -72,8 +72,9 @@ public class ZonaFitPaginaEscenarioUno extends AccionComunDeLaPagina {
     @FindBy(xpath = "//*[@id=\"select2-billing_city-container\"]")
     private WebElement seleccionBotonCiudad;
 
-    private final By ciudad = By.xpath("/html/body/span/span/span[1]/input");
-
+    @CacheLookup
+    @FindBy(xpath = "/html/body/span/span/span[1]/input")
+    private WebElement ciudad;
     @CacheLookup
     @FindBy(xpath = "/html/body/span/span/span[2]")
     private WebElement seleccionCiudad;
@@ -102,11 +103,27 @@ public class ZonaFitPaginaEscenarioUno extends AccionComunDeLaPagina {
     @FindBy(xpath = "//*[@id=\"place_order\"]")
     private WebElement realizarPedido;
 
+
+    @CacheLookup
+    @FindBy(xpath = "(//span[@class='andes-button__content'])")
+    private WebElement ConfirmarCompra;
+
+    @CacheLookup
+    @FindBy(xpath = "(//input[@id='payment_method_woo-mercado-pago-basic'])")
+    private WebElement tarjetas;
+
+    @CacheLookup
+    @FindBy(xpath = "(//div[@class='group-media-object'])[3]")
+    private WebElement botonEfecty;
+
+    @CacheLookup
+    @FindBy(xpath = "//a[@class='andes-button andes-button--link button-link']")
+    private WebElement VolverSitio;
+
     //Validacion
     private static final By confirmacionPedido = By.xpath("//*[@id=\"main\"]/div[2]/div/div");
 
-
-    public ZonaFitPaginaEscenarioUno(FormModel formModel, WebDriver webDriver) {
+    public FlujoCompra(FormModel formModel, WebDriver webDriver) {
         super(webDriver);
         this.webDriver = webDriver;
         this.formModel = formModel;
@@ -114,7 +131,7 @@ public class ZonaFitPaginaEscenarioUno extends AccionComunDeLaPagina {
     }
 
     //Funciones
-    public void llenarInformacion() throws InterruptedException {
+    public void llenarInformacion1() throws InterruptedException {
 
         click(outlet);
         scrollDown();
@@ -140,60 +157,127 @@ public class ZonaFitPaginaEscenarioUno extends AccionComunDeLaPagina {
         click(cantidad2);
         Thread.sleep(4000);
         click(cantidad3);
-        Thread.sleep(4000);
-
-         */
+        Thread.sleep(4000);*/
         click(finalizarCompra);
-        Thread.sleep(8000);
+        Thread.sleep(5000);
         explicitWaitTime(numeroDeDocumento);
-        escribir(numeroDeDocumento, formModel.getCedula());
+        borrarTexto(numeroDeDocumento);
+        typeInto(numeroDeDocumento, formModel.getCedula());
         Thread.sleep(4000);
         explicitWaitTime(e_Mail);
         borrarTexto(e_Mail);
-        escribir(e_Mail, formModel.getEmail());
+        typeInto(e_Mail, formModel.getEmail());
         explicitWaitTime(nombre);
         borrarTexto(nombre);
-        escribir(nombre, formModel.getName());
+        typeInto(nombre, formModel.getName());
         explicitWaitTime(apellido);
         borrarTexto(apellido);
-        escribir(apellido, formModel.getLastName());
+        typeInto(apellido, formModel.getLastName());
         scrollDown(seleccionBotondepartamento);
         click(seleccionBotondepartamento);
-        escribir(departamento, formModel.getRegion());
+        typeInto(departamento, formModel.getRegion());
         explicitWaitTime(departamento);
         click(seleccionDepartamento);
         click(seleccionBotonCiudad);
-        escribir(ciudad, formModel.getCity());
+        typeInto(ciudad, formModel.getCity());
         explicitWaitTime(ciudad);
         click(seleccionCiudad);
         explicitWaitTime(direccion);
         borrarTexto(direccion);
-        escribir(direccion, formModel.getAddress());
+        typeInto(direccion, formModel.getAddress());
         explicitWaitTime(apartamento);
         borrarTexto(apartamento);
-        escribir(apartamento, formModel.getNoAddress());
+        typeInto(apartamento, formModel.getNoAddress());
         explicitWaitTime(numeroCelular);
         borrarTexto(numeroCelular);
-        escribir(numeroCelular, formModel.getPhone());
+        typeInto(numeroCelular, formModel.getPhone());
         Thread.sleep(4000);
         scroll(100);
         click(terminosCondiciones);
         Thread.sleep(3000);
         click(realizarPedido);
+    }
+
+    //Funciones
+    public void llenarInformacion2() throws InterruptedException {
+
+        click(outlet);
+        scrollDown();
+        Thread.sleep(1000);
+        click(anadirProducto1);
+        Thread.sleep(1000);
+        click(xcarrito);
+        Thread.sleep(1000);
+        scrollDown();
+        Thread.sleep(1000);
+        click(anadirProducto2);
+        Thread.sleep(1000);
+        click(xcarrito);
+        Thread.sleep(1000);
+        scrollDown();
+        Thread.sleep(1000);
+        click(anadirProducto3);
+        Thread.sleep(1000);
+        click(carrito);
+        Thread.sleep(4000);
+        /*click(cantidad1);
+        Thread.sleep(4000);
+        click(cantidad2);
+        Thread.sleep(4000);
+        click(cantidad3)*/
+        Thread.sleep(4000);
+        click(finalizarCompra);
+        Thread.sleep(5000);
+        explicitWaitTime(numeroDeDocumento);
+        borrarTexto(numeroDeDocumento);
+        typeInto(numeroDeDocumento, formModel.getCedula());
+        Thread.sleep(4000);
+        explicitWaitTime(e_Mail);
+        borrarTexto(e_Mail);
+        typeInto(e_Mail, formModel.getEmail());
+        explicitWaitTime(nombre);
+        borrarTexto(nombre);
+        typeInto(nombre, formModel.getName());
+        explicitWaitTime(apellido);
+        borrarTexto(apellido);
+        typeInto(apellido, formModel.getLastName());
+        scrollDown(seleccionBotondepartamento);
+        click(seleccionBotondepartamento);
+        typeInto(departamento, formModel.getRegion());
+        explicitWaitTime(departamento);
+        click(seleccionDepartamento);
+        click(seleccionBotonCiudad);
+        typeInto(ciudad, formModel.getCity());
+        explicitWaitTime(ciudad);
+        click(seleccionCiudad);
+        explicitWaitTime(direccion);
+        borrarTexto(direccion);
+        typeInto(direccion, formModel.getAddress());
+        explicitWaitTime(apartamento);
+        borrarTexto(apartamento);
+        typeInto(apartamento, formModel.getNoAddress());
+        explicitWaitTime(numeroCelular);
+        borrarTexto(numeroCelular);
+        typeInto(numeroCelular, formModel.getPhone());
+        Thread.sleep(4000);
+        scroll(100);
+        scrollDown(tarjetas);
+        Thread.sleep(5000);
+        click(tarjetas);
+        Thread.sleep(5000);
+        click(terminosCondiciones);
+        explicitWaitTime(realizarPedido);
+        click(realizarPedido);
+        explicitWaitTime(botonEfecty);
+        click(botonEfecty);
+        explicitWaitTime(ConfirmarCompra);
+        click(ConfirmarCompra);
 
     }
 
-                 /*JavascriptExecutor executor = (JavascriptExecutor) driver;
-        WebElement webElement = driver.findElement(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[1]"));
-        executor.executeScript("arguments[0].click();", webElement);
-        Thread.sleep(20000);
-         */
-
-
-
-
-
-    public static String validacionPedido(){return getText(confirmacionPedido).trim();}
-
-
+    public static String validacionPedido() {
+        return getText(confirmacionPedido).trim();
+    }
 }
+
+

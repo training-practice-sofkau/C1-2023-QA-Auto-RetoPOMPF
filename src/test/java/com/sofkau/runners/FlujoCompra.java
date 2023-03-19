@@ -12,5 +12,5 @@ import org.junit.runner.RunWith;
         tags = "",
         publish = true
 )
-public class Compra {
+public class FlujoCompra {
 }
