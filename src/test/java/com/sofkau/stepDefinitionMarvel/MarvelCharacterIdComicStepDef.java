@@ -5,13 +5,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 public class MarvelCharacterIdComicStepDef {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(MarvelCharacterIdComicStepDef.class);
+    public static Logger LOGGER= Logger.getLogger(MarvelCharacterIdComicStepDef.class);
 
     protected Response response;
 
@@ -30,10 +30,19 @@ public class MarvelCharacterIdComicStepDef {
     }
     @Then("la respuesta deberia incluir una lista de comics")
     public void laRespuestaDeberiaIncluirUnaListaDeComics() {
-        Assert.assertEquals(200, response.getStatusCode());
-        String responseBody = response.getBody().asString();
-        LOGGER.info(responseBody);
-        Assert.assertTrue(responseBody.contains("comics"));
+        try {
+            Assert.assertEquals(200, response.getStatusCode());
+            String responseBody = response.getBody().asString();
+            LOGGER.info(responseBody);
+            Assert.assertTrue(responseBody.contains("comics"));
+            LOGGER.info("La prueba paso exitosamente.");
+        } catch (AssertionError e) {
+            LOGGER.error("La prueba fallo. Error: {}" + e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            LOGGER.error("Ocurrio un error durante la ejecución de la prueba. Error: {}" + e.getMessage());
+            throw e;
+        }
 
     }
 }
