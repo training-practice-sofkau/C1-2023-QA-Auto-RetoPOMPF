@@ -14,6 +14,6 @@ public class ConstantSetup {
     public static final String LLAVE_API = "58072f62629500bea3bf4534f58df80e";
     public static long TS = 1;
     public static final String HASH = "55648b80e9df0cbb539b886852680b27";
-    public static final String ID_COMIC = "101";
+    public static final String ID_COMIC = "82967";
 
 }

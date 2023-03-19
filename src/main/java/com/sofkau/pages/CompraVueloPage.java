@@ -70,6 +70,18 @@ public class CompraVueloPage extends CommonActionOnPages {
     @FindBy(xpath = "//*[@id=\"passengers-modal-position\"]/passengers-modal/div/div[2]/span[4]/span/a/em")
     private WebElement botonContinuar;
 
+    @CacheLookup
+    @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/travelers-container/travelers/old-travelers/div/ul/li/ul/li/traveler/div/div[2]/div/div[1]/traveler-first-name-input/div/div/input-component-v2/div/div/div/input")
+    private WebElement inputNombre1;
+
+    @CacheLookup
+    @FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/div[1]/app[1]/checkout-form[1]/div[1]/form-component[1]/form[1]/div[1]/travelers-container[1]/travelers[1]/old-travelers[1]/div[1]/ul[1]/li[1]/ul[1]/li[1]/traveler[1]/div[1]/div[2]/div[1]/div[1]/traveler-last-name-input[1]/div[1]/div[1]/input-component-v2[1]/div[1]/div[1]/div[1]/input[1]")
+    private WebElement inputApellidos;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"formData.travelers[0].nationality\"]/div/div/label")
+    private WebElement paisResidencia;
+
     public CompraVueloPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -79,7 +91,7 @@ public class CompraVueloPage extends CommonActionOnPages {
         click(selectorBotonVuelos);
         clearText(selectorOringen);
         click(selectorOringen);
-        typeInto(selectorOringen, "Barranquilla");
+        typeInto(selectorOringen, "Guajira");
     }
 
 
@@ -126,12 +138,19 @@ public class CompraVueloPage extends CommonActionOnPages {
         clickcondelay(BotonBuscarVuelo);
     }
 
-    public void seleccionarPasajeros()  {
+    public void seleccionarPasajeros() {
         scroll(230);
         clickcondelay(botonSiguiente);
         clickcondelay(botonContinuar);
         //Thread.sleep(5000);
-
-
     }
+
+
+    public void llenarFormulario() {
+        clickcondelay(inputNombre1);
+        typeInto(inputNombre1, "Santy");
+        typeInto(inputApellidos, "Gomez");
+    }
+
+
 }

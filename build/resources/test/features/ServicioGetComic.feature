@@ -10,7 +10,7 @@ Feature: Obtener  listado de comics de Marvel
     Then se deberian visualizar todos los comics de marvel
 
 
-  #Scenario: Error al obtener todas las series de Marvel
-   # Given que soy un usuario de la API de Marvel Universe
-    #When el usuario  obtiene todas las series de marvel
-    #Then la API responde error en la solicitud
+  Scenario: Error Obtener todos los comics de Marvel de forma exitosa
+    Given que soy un usuario de la API de Marvel Universe e intento obtener todos los comics de Marvel
+    When se solicita el listado de comics de Marvel y no se envia el parametro de autenticacion
+    Then la API responde error en la solicitud
