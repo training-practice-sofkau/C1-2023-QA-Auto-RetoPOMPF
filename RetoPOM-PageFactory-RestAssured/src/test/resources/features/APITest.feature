@@ -6,8 +6,8 @@ Feature: Obtener las criptomonedas más populares en Coingecko
 
   Scenario: Limitar la cantidad de resultados en la lista de criptomonedas populares
     Given que tengo acceso al listado de criptomonedas populares en Coingecko
-    When quiero validar la lista de criptomonedas verificando las 5 criptos mas populares
-    Then la respuesta deberia ser exitosa
+    When quiero verificar las 5 criptos mas populares
+    Then la respuesta debe ser exitosa y puedo ver la informacion de las criptomonedas
 
 
 

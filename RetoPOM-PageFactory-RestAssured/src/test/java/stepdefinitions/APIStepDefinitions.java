@@ -3,24 +3,32 @@ package stepdefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import java.util.logging.Logger;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.junit.Assert;
 
 
 public class APIStepDefinitions {
+    private RequestSpecification request;
+    private Response response;
+    private String endpoint = "/search/trending";
+    private static Logger LOGGER = Logger.getLogger(APIStepDefinitions.class.getName());
     @Given("que tengo acceso al listado de criptomonedas populares en Coingecko")
     public void que_tengo_acceso_al_listado_de_criptomonedas_populares_en_coingecko() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        request = RestAssured.given();
     }
 
 
-    @When("quiero validar la lista de criptomonedas verificando las {int} criptos mas populares")
-    public void quiero_validar_la_lista_de_criptomonedas_verificando_las_criptos_mas_populares(Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @When("quiero verificar las {int} criptos mas populares")
+    public void quiero_verificar_las_criptos_mas_populares(Integer int1) {
+        response = request.get(endpoint);
+        Assert.assertEquals(response.getStatusCode(), 200);
     }
 
-    @Then("la respuesta deberia ser exitosa")
-    public void la_respuesta_deberia_ser_exitosa() {
+    @Then("la respuesta debe ser exitosa y puedo ver la informacion de las criptomonedas")
+    public void la_respuesta_debe_ser_exitosa_y_puedo_ver_la_informacion_de_las_criptomonedas(){
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
