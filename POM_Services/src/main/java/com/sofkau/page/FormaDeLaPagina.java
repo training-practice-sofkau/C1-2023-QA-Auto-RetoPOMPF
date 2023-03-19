@@ -9,6 +9,7 @@ import java.time.Duration;
 
 public class FormaDeLaPagina extends CommonActionOnPage {
     public static String convenio;
+    public static String boton;
     public FormaDeLaPagina(WebDriver driver) {
         super(driver);
     }
@@ -62,5 +63,18 @@ public class FormaDeLaPagina extends CommonActionOnPage {
     }
     public void puntoBaloto() {
         convenio=driver.findElement(By.xpath("(//strong[text()='1204346'])")).getText();
+    }
+    public void clickAcceder() {
+        click(By.xpath("(//a[@class='nav-top-link nav-top-not-logged-in icon primary button round is-small'])"));
+    }
+
+    public void ingresarCredenciales() {
+        typeInto(By.id("username"),"damir29305@etondy.com");
+        typeInto(By.id("password"),"Test.prueba00");
+        click(By.xpath("(//button[@class='woocommerce-button button woocommerce-form-login__submit wp-element-button'])"));
+    }
+
+    public void compararBotonAcceso() {
+        boton=driver.findElement(By.xpath("(//span[@class='header-account-title'])")).getText();
     }
 }
