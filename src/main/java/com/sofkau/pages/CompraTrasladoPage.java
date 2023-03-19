@@ -12,6 +12,8 @@ public class CompraTrasladoPage  extends CommonActionOnPages {
 
 
     public void FillMandatoryFields() {
-        setZoom(50);
+
     }
+
+
 }

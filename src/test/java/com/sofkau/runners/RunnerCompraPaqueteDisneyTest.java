@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features/CompraVuelo.feature"},
+        features = {"src/test/resources/features/CompraVueloChrome.feature"},
         glue = {"com.sofkau.stepdefinitions"},
         publish = true
 )

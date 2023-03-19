@@ -9,6 +9,6 @@ public class ServicioGetComicsIdPage  extends CommonActionOnPages{
     }
 
     public void FillMandatoryFields() {
-        setZoom(50);
+        //setZoom(50);
     }
 }

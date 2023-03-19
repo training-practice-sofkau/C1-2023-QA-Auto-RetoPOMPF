@@ -15,13 +15,13 @@ public class CompraPaqueteDisneyPage extends CommonActionOnPages {
         super(driver);
     }
 
-
+/*
     public void FillMandatoryFields() {
         setZoom(50);
     }
 
 
-
+*/
 
 
 }
