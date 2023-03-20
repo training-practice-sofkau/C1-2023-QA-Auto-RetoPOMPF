@@ -1,5 +1,7 @@
 package com.sofkau.pages;
 
+import com.github.javafaker.Faker;
+import com.sofkau.util.Pasajero;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class VuelosPage extends CommonActionsOnPages{
+
+    Faker faker = new Faker();
 
     @CacheLookup
     @FindBy(xpath = "//i[contains(@class, 'login-incentive--close') and contains(@class, 'shifu-3-icon-close') and contains(@class, '-eva-3-mr-md')]")
@@ -107,10 +111,6 @@ public class VuelosPage extends CommonActionsOnPages{
     private WebElement mensajeFinal;
 
 
-
-    /////////////////
-
-
     public VuelosPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -143,28 +143,33 @@ public class VuelosPage extends CommonActionsOnPages{
     }
 
     public void fillForm(){
-        typeWithDelay(fieldNombrePass1, "David", 150);
-        typeWithDelay(fieldApellidoPass1, "Bruselas", 150);
-        typeWithDelay(idNumber1, "54545411", 150);
+        Pasajero pass1 = new Pasajero(faker.name().firstName(), faker.name().lastName(),
+                faker.numerify("########"), "31"+faker.numerify("########"),
+                faker.address().fullAddress());
+        Pasajero pass2 = new Pasajero(faker.name().firstName(), faker.name().lastName(),
+                faker.numerify("########"));
+        typeWithDelay(fieldNombrePass1, pass1.getNombre(), 150);
+        typeWithDelay(fieldApellidoPass1, pass1.getApellido(), 150);
+        typeWithDelay(idNumber1, pass1.getCedula(), 150);
         scrollDown(400);
-        typeWithDelay(fieldNombrePass2, "Andrea", 150);
-        typeWithDelay(fieldApellidoPass2, "Paila", 150);
-        typeWithDelay(idNumber2, "65001224", 150);
+        typeWithDelay(fieldNombrePass2, pass2.getNombre(), 150);
+        typeWithDelay(fieldApellidoPass2, pass2.getApellido(), 150);
+        typeWithDelay(idNumber2, pass2.getCedula(), 150);
         scrollDown(600);
-        typeWithDelay(email1, "paila@gmail.com", 150);
-        typeWithDelay(email2, "paila@gmail.com", 150);
+        typeWithDelay(email1, pass1.getNombre() +"@gmail.com", 150);
+        typeWithDelay(email2, pass1.getNombre() +"@gmail.com", 150);
         scrollDown(400);
-        typeWithDelay(numeroTel, "3142925641", 150);
+        typeWithDelay(numeroTel, pass1.getCelular(), 150);
         scrollDown(400);
         click(selectorPSE);
         scrollDown(400);
         selectCombobox(comboBox);
         scrollDown(600);
-        typeWithDelay(campoNombre, "Andrea", 150);
-        typeWithDelay(campoApellido, "Paila", 150);
+        typeWithDelay(campoNombre, pass1.getNombre(), 150);
+        typeWithDelay(campoApellido, pass1.getApellido(), 150);
         scrollDown(100);
-        typeWithDelay(campoCedula, "65001224", 150);
-        typeWithDelay(campodireccion, "cra 65# 10a-20", 150);
+        typeWithDelay(campoCedula, pass1.getCedula(), 150);
+        typeWithDelay(campodireccion, pass1.getDireccion(), 150);
         scrollDown(950);
         clickwithDelay(terminosCondiciones);
         clickwithDelay(ultimoboton);
