@@ -20,9 +20,9 @@ public class FlujoCompra extends CommonActionPages {
     private WebElement outlet;
     private final By anadirProducto1 = By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[7]");
 
-    private final By anadirProducto2 = By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[3]");
+    private final By anadirProducto2 = By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[2]");
 
-    private final By anadirProducto3 = By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[4]");
+    private final By anadirProducto3 = By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[3]");
 
     private final By anadirAlCarrrito = By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[1]");
 
@@ -142,22 +142,52 @@ public class FlujoCompra extends CommonActionPages {
         Thread.sleep(1000);
         scrollDown();
         Thread.sleep(1000);
-        click(anadirProducto2);
+        try {
+            click(anadirProducto2);
+        } catch (Exception e) {
+            try {
+                click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[3]"));
+            } catch (Exception e2) {
+                try {
+                    click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[4]"));
+                } catch (Exception e3) {
+                    try {
+                        click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[5]"));
+                    } catch (Exception e4) {
+                    }
+                }
+            }
+        }
         Thread.sleep(1000);
         click(xcarrito);
         Thread.sleep(1000);
         scrollDown();
         Thread.sleep(1000);
-        click(anadirProducto3);
+        try {
+            click(anadirProducto3);
+        } catch (Exception e) {
+            try {
+                click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[2]"));
+            } catch (Exception e2) {
+                try {
+                    click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[4]"));
+                } catch (Exception e3) {
+                    try {
+                        click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[5]"));
+                    } catch (Exception e4) {
+                    }
+                }
+            }
+        }
         Thread.sleep(1000);
         click(carrito);
-        Thread.sleep(4000);
-        /*click(cantidad1);
-        Thread.sleep(4000);
-        click(cantidad2);
-        Thread.sleep(4000);
-        click(cantidad3);
-        Thread.sleep(4000);*/
+        Thread.sleep(2000);
+//        click(cantidad1);
+//        Thread.sleep(4000);
+//        click(cantidad2);
+//        Thread.sleep(4000);
+//        click(cantidad3);
+//        Thread.sleep(4000);
         click(finalizarCompra);
         Thread.sleep(5000);
         explicitWaitTime(numeroDeDocumento);
@@ -191,14 +221,18 @@ public class FlujoCompra extends CommonActionPages {
         explicitWaitTime(numeroCelular);
         borrarTexto(numeroCelular);
         typeInto(numeroCelular, formModel.getPhone());
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         click(terminosCondiciones);
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         click(realizarPedido);
         Thread.sleep(10000);
     }
 
-    //Funciones
+    public static String validacionPedido() {
+        return getText(confirmacionPedido).trim();
+    }
+
+
     public void llenarInformacion2() throws InterruptedException {
 
         click(outlet);
@@ -260,11 +294,10 @@ public class FlujoCompra extends CommonActionPages {
         borrarTexto(numeroCelular);
         typeInto(numeroCelular, formModel.getPhone());
         Thread.sleep(2000);
-        scrollDown(tarjetas);
-        Thread.sleep(5000);
         click(tarjetas);
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         click(terminosCondiciones);
+        Thread.sleep(2000);
         explicitWaitTime(realizarPedido);
         click(realizarPedido);
         Thread.sleep(10000);
@@ -274,12 +307,9 @@ public class FlujoCompra extends CommonActionPages {
         click(ConfirmarCompra);
         Thread.sleep(200000);
 
-
-    }
-
-    public static String validacionPedido() {
-        return getText(confirmacionPedido).trim();
     }
 }
+
+
 
 

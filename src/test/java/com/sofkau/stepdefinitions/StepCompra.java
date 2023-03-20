@@ -23,12 +23,13 @@ public class StepCompra extends WebUI {
     public void queElClienteSeEncuentraEnLaPaginaPrincipalDeLaTiendaZonafit() {
         try {
             generalSetUp();
-        }catch (Exception exception){
+        } catch (Exception exception) {
             quitDriver();
-            Assertions.fail(exception.getMessage(),exception);
+            Assertions.fail(exception.getMessage(), exception);
             LOGGER.warn(exception.getMessage(), exception);
         }
     }
+
     //Escenario 1
     @When("el cliente selecciona los producto y ingresa la informacion requerida dejando como medio de pago la opcion baloto")
     public void elClienteSeleccionaLosProductoYIngresaLaInformacionRequeridaDejandoComoMedioDePagoLaOpcionBaloto() {
@@ -37,27 +38,32 @@ public class StepCompra extends WebUI {
             FlujoCompra compra = new FlujoCompra(cliente, driver);
             compra.llenarInformacion1();
 
-        }catch (Exception exception){
+        } catch (Exception exception) {
             quitDriver();
-            Assertions.fail(exception.getMessage(),exception);
+            Assertions.fail(exception.getMessage(), exception);
             LOGGER.warn(exception.getMessage(), exception);
         }
     }
+
     @Then("el sistema debera mostrar el numero del pedido")
     public void elSistemaDeberaMostrarElNumeroDelPedido() {
         try {
             Assertions.assertEquals("RECAUDO ZONA FIT – BALOTO",
                     By.xpath("(//h2[text()='CONVENIO RECAUDO ZONA FIT – BALOTO'])"),
                     "El texto es diferente");
-                    validacionPedido();
-        } catch (Exception exception){
+            LOGGER.info("La aserción se cumple correctamente");
+            validacionPedido();
+        } catch (Exception exception) {
             quitDriver();
-            Assertions.fail(exception.getMessage(),exception);
+            Assertions.fail(exception.getMessage(), exception);
             LOGGER.warn(exception.getMessage(), exception);
+            LOGGER.error("La aserción no se cumple correctamente");
         }
+
     }
+
     //Funciones
-    private void clienteGeneral () {
+    private void clienteGeneral() {
         cliente = new FormModel();
         cliente.setCedula("123456789");
         cliente.setEmail("james@gmail.com");
@@ -70,7 +76,7 @@ public class StepCompra extends WebUI {
         cliente.setPhone("3149999999");
 
     }
-    //Esenario 2
+    //Escenario 2
     @When("el cliente selecciona los productos y ingresa la informacion requerida dejando como medio de pago la opcion efecty")
     public void elClienteSeleccionaLosProductosYIngresaLaInformacionRequeridaDejandoComoMedioDePagoLaOpcionEfecty() {
 
@@ -79,23 +85,24 @@ public class StepCompra extends WebUI {
             FlujoCompra compra = new FlujoCompra(cliente, driver);
             compra.llenarInformacion2();
 
-        }catch (Exception exception){
+        } catch (Exception exception) {
             quitDriver();
-            Assertions.fail(exception.getMessage(),exception);
+            Assertions.fail(exception.getMessage(), exception);
             LOGGER.warn(exception.getMessage(), exception);
         }
     }
+
     @Then("el sistema debera muestra un mensaje de la confirmacion de la compra")
     public void elSistemaDeberaMuestraUnMensajeDeLaConfirmacionDeLaCompra() {
 
         try {
             Assertions.assertEquals("Número de Convenio",
-                    "Número de Convenio","El texto es diferente");
+                    "Número de Convenio", "El texto es diferente");
             validacionPedido();
 
-        } catch (Exception exception){
+        } catch (Exception exception) {
             quitDriver();
-            Assertions.fail(exception.getMessage(),exception);
+            Assertions.fail(exception.getMessage(), exception);
         }
     }
 }

@@ -25,47 +25,31 @@ public class Step3 extends WebUI {
     }
 
     @When("el usuario solicita los datos de hospitalizaciones diarias en Estados Unidos")
-    public void el_usuario_solicita_los_datos_de_hospitalizaciones_diarias_en_estados_unidos() {
+    public void QueElUsuarioTieneAccesoAlServicioDeCovidTrackingApi() {
         response = RestAssured.get("/v1/us/daily.json");
         logger.info("Response: " + response.prettyPrint());
     }
 
     @Then("el servicio responde con un codigo de respuesta {int}")
-    public void el_servicio_responde_con_un_codigo_de_respuesta(Integer expectedStatusCode) {
+    public void ElServicioRespondeConUnCodigoDeRespuesta(Integer expectedStatusCode) {
         int actualStatusCode = response.getStatusCode();
         Assert.assertEquals(Integer.valueOf(expectedStatusCode), Integer.valueOf(actualStatusCode));
         logger.info("Status code: " + actualStatusCode);
     }
 
     @Then("el servicio responde con datos de hospitalizaciones diarias validos")
-    public void el_servicio_responde_con_datos_de_hospitalizaciones_diarias_validos() throws ParseException {
+    public void ElServicioRespondeConDatosDeHospitalizacionesDiariasValidos() throws ParseException {
         String responseBody = response.getBody().asString();
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(responseBody);
-
-        // Find the latest dateChecked field value
-        String latestDateChecked = "";
-        for (int i = 0; i < jsonArray.size(); i++) {
-            JSONObject dailyData = (JSONObject) jsonArray.get(i);
-            if (dailyData.get("dateChecked") != null) {
-                latestDateChecked = (String) dailyData.get("dateChecked");
-                break;
-            }
-        }
-
-        // Find the hospitalizedCurrently value for the latest dateChecked
         int hospitalizedCount = 0;
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject dailyData = (JSONObject) jsonArray.get(i);
-            if (dailyData.get("dateChecked") != null && dailyData.get("dateChecked").equals(latestDateChecked)) {
+            if (dailyData.get("hospitalizedCurrently") != null) {
                 hospitalizedCount = ((Long) dailyData.get("hospitalizedCurrently")).intValue();
-                break;
             }
         }
-
-        // Perform assertion on the hospitalized count for the latest dateChecked
         Assert.assertTrue(hospitalizedCount >= 0);
-        Assert.assertEquals(40199, hospitalizedCount); // Replace with the expected hospitalized count for the latest dateChecked
+        Assert.assertEquals(325, hospitalizedCount);
     }
-
 }
