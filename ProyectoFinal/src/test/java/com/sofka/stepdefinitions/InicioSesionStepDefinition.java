@@ -1,8 +1,6 @@
 package com.sofka.stepdefinitions;
 
-import com.sofka.pages.CompraCategoriaPage;
 import com.sofka.pages.InicioSesionPage;
-import com.sofka.pages.LocatorPage;
 import com.sofka.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -47,7 +45,7 @@ public class InicioSesionStepDefinition extends WebUI {
     @Then("mostrara su informacion personal y realizar compras")
     public void mostraraSuInformacionPersonalYRealizarCompras() {
         try{
-            String expectedMessage = "Hola";
+            String expectedMessage = "MI CUENTA";
             inicioSesionPage = new InicioSesionPage(driver);
             String currentMessage = inicioSesionPage.getConfirmationMessage(driver).getText().trim();
             Assertions.assertEquals(expectedMessage, currentMessage);

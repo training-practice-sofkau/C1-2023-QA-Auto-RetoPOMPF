@@ -69,7 +69,12 @@ public class CommonActionOnPage{
 
     public void scrollP(){
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,1800)");
+        jse.executeScript("window.scrollBy(0,800)");
+    }
+
+    public void scrollPCategory(){
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollBy(0,500)");
     }
 
     public void scrollNewsLetter(){

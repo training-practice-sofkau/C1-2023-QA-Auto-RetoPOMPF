@@ -15,22 +15,17 @@ public class LocatorPage extends CommonActionOnPage{
     private WebDriver webDriver;
     private ClienteZonaFit clienteZonaFit;
 
-    private final By product = By.xpath("(//div[@class='add-to-cart-button'])[1]");
-    private final By flavor = By.xpath("//div[contains(@class,'ux-swatch tooltip')]/span[contains(@style,'--swatch-color: #ddb471')]");
+    private final By category = By.xpath("(//div[contains(@class,'product-category')]//div[contains(@class,'box-image')])[13]");
+    private final By product = By.xpath("(//div[contains(@class,'box-text ')]//div[contains(@class,'add-to-cart-button')])[1]");
+    private final By flavor = By.xpath("//div[contains(@class,'ux-swatches')]//div[contains(@class,'swatch-vanilla')]");
     private final By buttonShopping = By.xpath("//div[contains(@class,'single_variation_wrap')]//button[contains(@class,'wp-element-button')]");
 
-    private final By product2 = By.xpath("(//div[@class='add-to-cart-button'])[2]");
-    private final By flavor2 = By.xpath("//div[contains(@class,'ux-swatch tooltip')]/span[contains(@style,'--swatch-color: #8224e3')]");
-    private final By buttonShopping2 = By.xpath("//div[contains(@class,'single_variation_wrap')]//button[contains(@class,'wp-element-button')]");
+    private final By product2 = By.xpath("(//form[contains(@class,'cart')]//button[contains(@name,'add-to-cart')])[1]");
 
-    private final By product3 = By.xpath("(//div[@class='add-to-cart-button'])[3]");
-    private final By flavor3 = By.xpath("(//div[contains(@class,'ux-swatch tooltip')]/span[contains(@style,'--swatch-color: #ffff00')])[1]");
-    private final By buttonShopping3 = By.xpath("//div[contains(@class,'single_variation_wrap')]//button[contains(@class,'wp-element-button')]");
+    private final By product3 = By.xpath("(//form[contains(@class,'cart')]//button[contains(@name,'add-to-cart')])[2]");
 
     private final By buttonViewShopping = By.xpath("//p[contains(@class,'woocommerce-mini-cart__buttons')]//a[contains(@class,'button wc-forward')]");
     private final By addProduct1 = By.xpath("(//div[contains(@class,'quantity')]//input[@value='+'])[1]");
-    private final By addProduct2 = By.xpath("(//div[contains(@class,'quantity')]//input[@value='+'])[2]");
-    private final By addProduct3 = By.xpath("(//div[contains(@class,'quantity')]//input[@value='+'])[3]");
 
     private final By finishBuy = By.xpath("//div[contains(@class,'wc-proceed-to-checkout')]/a[contains(@class,'checkout-button')]");
 
@@ -58,6 +53,7 @@ public class LocatorPage extends CommonActionOnPage{
 
     public void navegar() {
         scrollP();
+        click(category);
         click(product);
         click(flavor);
         click(buttonShopping);
@@ -65,14 +61,10 @@ public class LocatorPage extends CommonActionOnPage{
         goBackP();
 
         click(product2);
-        click(flavor2);
-        click(buttonShopping2);
-        goBackP();
         goBackP();
 
+        scrollPCategory();
         click(product3);
-        click(flavor3);
-        click(buttonShopping3);
 
         click(buttonViewShopping);
         click(addProduct1);
@@ -80,32 +72,6 @@ public class LocatorPage extends CommonActionOnPage{
     }
 
     public void formBill(){
-        clearTextP(documentNumber);
-        typeIntoP(documentNumber, clienteZonaFit.getDocumentNumber());
-        clearTextP(email);
-        typeIntoP(email, clienteZonaFit.getEmail());
-        clearTextP(name);
-        typeIntoP(name, clienteZonaFit.getName());
-        clearTextP(lastName);
-        typeIntoP(lastName, clienteZonaFit.getLastName());
-        clickP(comboDepartmet);
-        typeIntoP(department, clienteZonaFit.getDepartment());
-        pressEnterP(department);
-        clickP(comboCity);
-        typeIntoP(city, clienteZonaFit.getCity());
-        pressEnterP(city);
-        clearTextP(address);
-        typeIntoP(address, clienteZonaFit.getAddress());
-        clearTextP(address2);
-        typeIntoP(address2, clienteZonaFit.getAddress2());
-        clearTextP(phoneNumber);
-        typeIntoP(phoneNumber, clienteZonaFit.getPhoneNumber());
-        scrollButton();
-        pressSpaceP(termCondition);
-        pressSpaceP(order);
-    }
-
-    public void formBillFailed(){
         clearTextP(documentNumber);
         typeIntoP(documentNumber, clienteZonaFit.getDocumentNumber());
         clearTextP(email);

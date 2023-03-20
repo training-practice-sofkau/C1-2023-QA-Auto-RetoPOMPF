@@ -1,6 +1,5 @@
 package com.sofka.stepdefinitions;
 
-import com.sofka.pages.InicioSesionPage;
 import com.sofka.pages.NewsLetterPage;
 import com.sofka.setup.WebUI;
 import io.cucumber.java.en.Given;

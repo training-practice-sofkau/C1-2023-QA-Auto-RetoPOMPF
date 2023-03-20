@@ -28,7 +28,8 @@ public class InicioSesionPage extends CommonActionOnPage{
 
     private final By buttonAccess2 = By.xpath("//p[contains(@class,'form-row')]//button[contains(text(),'Acceder')]");
 
-    private final By message = By.xpath("//div[contains(@class,'page-wrapper')]//div[contains(@class,'woocommerce-notices-wrapper')]");
+    private final By message = By.xpath("//div[contains(@class,'my-account-header')]//div[contains(@class,'flex-col')]//h1[contains(@class,'uppercase')]");
+    private final By userName = By.xpath("//ul[contains(@class,'header-nav-main')]//div[contains(@class,'header-button')]//a[contains(@class,'account-login')]");
 
     public InicioSesionPage(WebDriver driver) {
         super(driver);
@@ -42,6 +43,7 @@ public class InicioSesionPage extends CommonActionOnPage{
         clearTextF(inputContrasena);
         typeIntoF(inputContrasena, contrasena);
         pressSpaceP(buttonAccess2);
+        click(userName);
     }
 
     public WebElement getConfirmationMessage (WebDriver webDriver){

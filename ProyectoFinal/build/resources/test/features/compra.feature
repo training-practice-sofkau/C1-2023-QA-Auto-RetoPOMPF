@@ -8,16 +8,9 @@ Feature: Comprar en linea
   Microsoft Edge = "edge"
   */
 
-  Background:
-    Given que el cliente se encuentra en la pagina principal con "chrome"
-    When agrega varios productos al carrito
-
   @CompraExitosa
   Scenario: Compra Exitosa
+    Given que el cliente se encuentra en la pagina principal con "chrome"
+    When agrega varios productos al carrito
     And completa la informacion del formulario de facturacion
     Then mostrara un mensaje confirmando la compra
-
-  @CompraNoExiosa
-  Scenario: Compra no exitosa por campo con valor invalido
-    And completa un campo con un dato invalido
-    Then mostrara un mensaje de error indicando el campo obligatorio al ingresar un dato invalido
