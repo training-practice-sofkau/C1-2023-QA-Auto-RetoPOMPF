@@ -4,8 +4,14 @@ Feature: Obtener una serie de Marvel por ID
   para poder visualizar la información de la serie
 
   @SeriePorIdExitosa
-  Scenario: Obtener una serie de Marvel por ID con éxito
+  Scenario Outline: Obtener una serie de Marvel por id con éxito
     Given que soy un usuario de la API de Marvel
-    When solicito obtener la serie de Marvel por ID
-    Then la API responde la informacion correspondiente
+    When solicito obtener la serie de Marvel por <id>
+    Then la API responde la informacion correspondiente <id>
+    Examples:
+      | id      |
+      | "26024" |
+      | "26023" |
+      | "26022" |
+
 
