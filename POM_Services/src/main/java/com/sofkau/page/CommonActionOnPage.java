@@ -23,6 +23,11 @@ public class CommonActionOnPage {
         Actions actions=new Actions(driver);
         actions.moveToElement(categoria).perform();
     }
+    protected void ponerMouseXpath(String string){
+        WebElement categoria = driver.findElement(By.xpath(string));
+        Actions actions=new Actions(driver);
+        actions.moveToElement(categoria).perform();
+    }
     protected void selectDate(By locator, String value){
         driver.findElement(locator).sendKeys(Keys.chord(Keys.CONTROL, "a"), value, Keys.ENTER);
     }

@@ -42,6 +42,7 @@ public class CompraPorCategoria extends WebUI{
                 LOGGER.info("| 1204346 | "+FormaDeLaPagina.convenio+" | no cumple |");
         }catch (Exception e){
             LOGGER.info(e.getMessage());
+            Assertions.fail();
         }finally {
             quitDriver();
         }

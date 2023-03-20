@@ -4,9 +4,6 @@ import io.cucumber.java.en.*;
 import org.apache.log4j.Logger;
 public class CambioDeContrasena extends WebUI{
     public static Logger LOGGER = Logger.getLogger(String.valueOf(CompraPorCategoria.class));
-    @When("Hago click en el boton con mi nombre de usuario")
-    public void hagoClickEnElBotonConMiNombreDeUsuario() {
-    }
     @When("doy click en detalles de cuenta")
     public void doyClickEnDetallesDeCuenta() {
     }

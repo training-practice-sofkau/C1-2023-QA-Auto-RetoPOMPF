@@ -10,6 +10,7 @@ import java.time.Duration;
 public class FormaDeLaPagina extends CommonActionOnPage {
     public static String convenio;
     public static String boton;
+    public static String error;
     public FormaDeLaPagina(WebDriver driver) {
         super(driver);
     }
@@ -68,7 +69,8 @@ public class FormaDeLaPagina extends CommonActionOnPage {
         click(By.xpath("(//a[@class='nav-top-link nav-top-not-logged-in icon primary button round is-small'])"));
     }
 
-    public void ingresarCredenciales() {
+    public void ingresarCredenciales() throws InterruptedException {
+        Thread.sleep(500);
         typeInto(By.id("username"),"damir29305@etondy.com");
         typeInto(By.id("password"),"Test.prueba00");
         click(By.xpath("(//button[@class='woocommerce-button button woocommerce-form-login__submit wp-element-button'])"));
@@ -76,5 +78,27 @@ public class FormaDeLaPagina extends CommonActionOnPage {
 
     public void compararBotonAcceso() {
         boton=driver.findElement(By.xpath("(//span[@class='header-account-title'])")).getText();
+    }
+
+    public void ingresarCredencialesIncorrectas() {
+        typeInto(By.id("username"),"damir29305@etondy.com");
+        typeInto(By.id("password"),"Hola.gansito123");
+        click(By.xpath("(//button[@class='woocommerce-button button woocommerce-form-login__submit wp-element-button'])"));
+    }
+
+    public void mensajeError() {
+        error=driver.findElement(By.xpath("(//a[@title='Password Lost and Found'])")).getText();
+    }
+    public void clickUsiario() {
+        ponerMouseXpath("(//a[@title='Mi cuenta'])[1]");
+        click(By.xpath("(//a[@href='https://zonafit.co/mi-cuenta/customer-logout/'])"));
+
+    }
+    public void cerrarSesion() {
+        click(By.xpath("(//a[text()='Confirmar y salir'])"));
+    }
+
+    public void botonAcceder() {
+        boton=driver.findElement(By.xpath("(//a[@class='nav-top-link nav-top-not-logged-in icon primary button round is-small'])")).getText();
     }
 }
