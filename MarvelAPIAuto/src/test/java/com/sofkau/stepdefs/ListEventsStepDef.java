@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ListEventsStepDef extends MarvelCon {
-    Logger log = LoggerFactory.getLogger(ListEventsStepDef.class);
+    private final Logger log = LoggerFactory.getLogger(ListEventsStepDef.class);
 
     @Given("I was granted a private and public key")
     public void iWasGrantedAPrivateAndPublicKey() {

@@ -4,7 +4,7 @@ Feature: Obtain assistance
   So that
 
   Background: I am on the assistance page
-    Given I went to Despegar assistance page with a browser 'browser'
+    Given I went to Despegar assistance page with a browser 'Chrome'
 
   Scenario: Select an assistance option
     Given I selected the required fields for my family and me
@@ -13,5 +13,5 @@ Feature: Obtain assistance
 
   Scenario: Pay the assistance
     Given I bought the recommended assistance option
-    When I fill all the  purchase fields
+    When I fill all the purchase fields
     Then I will be redirected to the booking confirmation page and awaiting payment
