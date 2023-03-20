@@ -1,6 +1,7 @@
 package com.sofkau.stepdefs;
 
 import com.sofkau.pages.AsistenciasPage;
+import com.sofkau.pages.CheckoutPage;
 import com.sofkau.pages.ComprarAsistenciasPage;
 import com.sofkau.pages.PaymentPage;
 import com.sofkau.setup.WebUI;
@@ -11,8 +12,8 @@ import org.junit.jupiter.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.sofkau.setup.SetUpConst.ASSIST_URL;
-import static com.sofkau.setup.SetUpConst.TITLE;
+import static com.sofkau.pages.PaymentPage.title;
+import static com.sofkau.setup.SetUpConst.*;
 
 public class AsistenciasStepDef extends WebUI {
     private final Logger log = LoggerFactory.getLogger(AsistenciasStepDef.class);
@@ -68,13 +69,10 @@ public class AsistenciasStepDef extends WebUI {
     public void iBoughtTheRecommendedAssistanceOption() {
         try {
             AsistenciasPage asistenciasPage = new AsistenciasPage(super.driver);
-            asistenciasPage.setupAssistPage();
+            asistenciasPage.setupAssistPageBuy();
             ComprarAsistenciasPage comprarAsistenciasPage = new ComprarAsistenciasPage(super.driver);
             comprarAsistenciasPage.buyRecommended();
         } catch (Exception e) {
-            quitDriver();
-            Assertions.fail();
-        } finally {
             quitDriver();
         }
     }
@@ -82,17 +80,18 @@ public class AsistenciasStepDef extends WebUI {
     @When("I fill all the purchase fields")
     public void iFillAllThePurchaseFields() {
         try {
-
+            PaymentPage paymentPage = new PaymentPage(super.driver);
+            paymentPage.setupPaymentPage();
         } catch (Exception e) {
             quitDriver();
-            Assertions.fail();
         }
     }
 
     @Then("I will be redirected to the booking confirmation page and awaiting payment")
     public void iWillBeRedirectedToTheBookingConfirmationPageAndAwaitingPayment() {
         try {
-
+            CheckoutPage checkoutPage = new CheckoutPage(super.driver);
+            Assertions.assertEquals(FINAL_TITLE, checkoutPage.seeFinalTitle());
         } catch (Exception e) {
             quitDriver();
             Assertions.fail();

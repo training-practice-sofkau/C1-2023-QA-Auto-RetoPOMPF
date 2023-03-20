@@ -140,4 +140,19 @@ public class AsistenciasPage extends CommonActions {
         applyPassengers();
         searchAssist();
     }
+
+    public void setupAssistPageBuy() {
+        closePopUp();
+        selectDestination();
+        selectDestinationLoc();
+        selectDDate();
+        selectOct();
+        selectDDay();
+        selectRDate();
+        selectRDay();
+        applyDate();
+        selectPassengers();
+        applyPassengers();
+        searchAssist();
+    }
 }

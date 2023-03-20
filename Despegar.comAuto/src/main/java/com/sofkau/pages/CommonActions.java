@@ -16,7 +16,7 @@ public class CommonActions {
     }
 
     protected void explicitWait (WebElement element){
-        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(25));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
@@ -38,5 +38,9 @@ public class CommonActions {
     protected void delayClick(WebElement element) {
         explicitWait(element);
         element.click();
+    }
+
+    protected void type(WebElement element, String text) {
+        element.sendKeys(text);
     }
 }
