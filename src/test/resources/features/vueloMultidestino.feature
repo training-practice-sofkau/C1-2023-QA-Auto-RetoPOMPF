@@ -9,7 +9,7 @@ Feature: Completar datos para realizar una compra de un vuelo multidestino en De
     And proporciono la información necesaria
     Then debo recibir un mensaje que indique que puedo pagar a traves de Efecty
 
-  Scenario:  No hay vuelos disponibles en las rutas multidestino deseadas en primera clase
+  Scenario:  No hay vuelos disponibles en las rutas elegida en primera clase
     Given que estoy en la página principal de Despegar.com.co
     When busco y selecciono un vuelo de ida y vuelta desde Armenia a Santa Marta para 8 adultos
     Then debo ver un mensaje indicando que no se encontraron vuelos con asientos disponibles para su busqueda

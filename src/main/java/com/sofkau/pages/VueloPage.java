@@ -63,6 +63,7 @@ public class VueloPage extends CommonActionOnPages {
     @FindBy(xpath = "//*[@id=\"component-modals\"]/div[3]/div[2]/div[1]/button")
     private WebElement aplicar;
 
+
     @CacheLookup
     @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[1]/div[1]/div[3]/span/span/label/span[1]")
     private WebElement cualquierFecha;

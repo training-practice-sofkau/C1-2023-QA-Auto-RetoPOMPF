@@ -1,9 +1,6 @@
 package com.sofkau.pages;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -32,12 +29,15 @@ public class CommonActionOnPages {
         element.click();
     }
 
+    protected void clickPOM(By locator) throws InterruptedException {
+        Thread.sleep(5000);
+        driver.findElement(locator).click();
+    }
+
     protected void clickcondelay (WebElement webElement){
         esperaExplicita(webElement);
         webElement.click();
     }
-
-
 
     protected void enter(WebElement element){
         element.sendKeys(Keys.ENTER);

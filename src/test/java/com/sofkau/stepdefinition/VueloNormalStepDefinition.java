@@ -10,15 +10,11 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 
 import static org.python.util.jython.logger;
-
-
 public class VueloNormalStepDefinition extends WebUI {
 
     public static Logger LOGGER=Logger.getLogger(VueloNormalStepDefinition.class);
 
     private Response response;
-
-
 
     @Given("que estoy en la pagina de Despegar.com.co en navegador {string}")
     public void queEstoyEnLaPaginaDeDespegarComCoEnNavegador(String navegadorSelect) {

@@ -9,13 +9,7 @@ Feature: Completar datos para realizar una compra de un vuelo en Despegar.com.co
     And proporciono la informacion necesaria
     Then debo recibir un mensaje que indique que puedo pagar a traves de PSE
 
-  Scenario Outline:  No hay vuelos disponibles en la ruta deseada en primera clase
-    Given que estoy en la pagina principal de Despegar.com.co
-    When busco y selecciono un vuelo de ida y vuelta desde origen a <destino> para dos adultos y un menor
-    Then veo un mensaje indicando que no hay vuelos disponibles para la ruta y fecha seleccionadas
-
-    Examples:
-      | destino       |
-      | "Santa Marta" |
-      | "San Andres"  |
-      | "Medellin"    |
+  Scenario:  No hay vuelos disponibles en la ruta deseada en primera clase
+    Given que estoy en la pagina principal de Despegar.com.co en el navegador 'Edge'
+    When busco y selecciono un vuelo de ida y vuelta desde origen a destino para tres adultos
+    Then veo un mensaje indicando que No hay vuelos disponibles en las rutas elegida en primera clase
