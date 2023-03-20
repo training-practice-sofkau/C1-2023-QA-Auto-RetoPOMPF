@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="86ce7a3d-c940-4a65-909b-1829727406e9" name="Changes" comment="Actualizzación proyecto">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sofkau/page/FPageVuelosChrome.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sofkau/page/FPageVuelosChrome.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/test/features/vuelosNavegador.feature" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/test/features/vuelosNavegador.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofkau/page/FPageVuelosChrome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofkau/page/FPageVuelosChrome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/vuelosNavegador.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/vuelosNavegador.feature" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="ScenarioServicio" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NGkcgPP7KcMmepY8eo6L7oCUMv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/10. SOFKAU/2. Programación/4. Automatización/RetoAutomatización/C1-2023-QA-Auto-RetoPOMPF/RDespegarMarvel&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\10. SOFKAU\2. Programación\4. Automatización\RetoAutomatización\C1-2023-QA-Auto-RetoPOMPF\RDespegarMarvel\src\main\java\com\sofkau" />
+      <recent name="D:\10. SOFKAU\2. Programación\4. Automatización\RetoAutomatización\C1-2023-QA-Auto-RetoPOMPF\RDespegarMarvel\src\test\java" />
+      <recent name="D:\10. SOFKAU\2. Programación\4. Automatización\RetoAutomatización\C1-2023-QA-Auto-RetoPOMPF\RDespegarMarvel\src\test\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sofkau.stepdefinitions" />
+      <recent name="com.sofkau.runners" />
+      <recent name="com.sofkau.model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.Navegadores">
+    <configuration name="Historia" type="JUnit" factoryName="JUnit">
+      <module name="RDespegarMarvel.test" />
+      <option name="PACKAGE_NAME" value="com.sofkau.runners" />
+      <option name="MAIN_CLASS_NAME" value="com.sofkau.runners.HistoriaTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HistoriaId" type="JUnit" factoryName="JUnit">
+      <module name="RDespegarMarvel.test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="PACKAGE_NAME" value="com.sofkau.runners" />
+      <option name="MAIN_CLASS_NAME" value="com.sofkau.runners.IdHistoriaTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Navegadores" type="JUnit" factoryName="JUnit">
+      <module name="RDespegarMarvel.test" />
+      <option name="PACKAGE_NAME" value="com.sofkau.runners" />
+      <option name="MAIN_CLASS_NAME" value="com.sofkau.runners.NavegadorTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.HistoriaId" />
+      <item itemvalue="JUnit.Historia" />
+      <item itemvalue="JUnit.Navegadores" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="86ce7a3d-c940-4a65-909b-1829727406e9" name="Changes" comment="" />
+      <created>1679297891774</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679297891774</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Ajuste test">
+      <created>1679299154031</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679299154031</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Ajuste test">
+      <created>1679299170646</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679299170646</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Ajuste Scenario de servicio Historias por id.">
+      <created>1679322034206</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679322034206</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Ajuste Scenario de servicio Historias por id.">
+      <created>1679322056435</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679322056435</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Ajuste Scenario outline para historias por id">
+      <created>1679328761487</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679328761487</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Ajuste Scenario outline para historias por id">
+      <created>1679329242128</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679329242128</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Actualizzación proyecto">
+      <created>1679330536278</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679330536278</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Actualizzación proyecto">
+      <created>1679332438897</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679332438897</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ajuste test" />
+    <MESSAGE value="Ajuste Scenario de servicio Historias por id." />
+    <MESSAGE value="Ajuste Scenario outline para historias por id" />
+    <MESSAGE value="Actualizzación proyecto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Actualizzación proyecto" />
+  </component>
+</project>
