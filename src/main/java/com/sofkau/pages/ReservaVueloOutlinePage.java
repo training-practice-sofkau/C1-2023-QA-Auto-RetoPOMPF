@@ -2,28 +2,25 @@ package com.sofkau.pages;
 
 import com.github.javafaker.Faker;
 import com.sofkau.models.Usuario;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ReservaVueloPage extends CommonActionOnPages {
-
+public class ReservaVueloOutlinePage extends CommonActionOnPages {
 
     private Usuario usuario;
 
     public static Logger LOGGER = Logger.getLogger(ReservaVueloPage.class);
 
     private static final String ASSERTION_EXCEPTION_MESSAGE = "No son los valores esperados";
+
+
 
 
     /**
@@ -205,7 +202,7 @@ public class ReservaVueloPage extends CommonActionOnPages {
     private WebElement comboBox;
 
 
-    public ReservaVueloPage(WebDriver driver, Usuario usuario) {
+    public ReservaVueloOutlinePage(WebDriver driver, Usuario usuario) {
         super(driver);
         this.usuario = usuario;
         PageFactory.initElements(driver, this);
