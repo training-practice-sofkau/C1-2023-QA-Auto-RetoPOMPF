@@ -167,7 +167,7 @@ public class VuelosPage extends CommonActionsOnPages{
         scrollDown(600);
         typeWithDelay(campoNombre, pass1.getNombre(), 150);
         typeWithDelay(campoApellido, pass1.getApellido(), 150);
-        scrollDown(100);
+        scrollDown(200);
         typeWithDelay(campoCedula, pass1.getCedula(), 150);
         typeWithDelay(campodireccion, pass1.getDireccion(), 150);
         scrollDown(950);
