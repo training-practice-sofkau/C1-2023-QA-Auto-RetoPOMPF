@@ -11,5 +11,5 @@ import org.junit.runner.RunWith;
         glue = {"com.sofkau.stepdefinitions"},
         publish = true
 )
-public class ZonaFitSnacksTest {
+public class ZonaFitGymTest {
 }
