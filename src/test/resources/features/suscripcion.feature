@@ -14,7 +14,7 @@ Feature: Suscripcion
     And lleno el formulario de suscribirse con "<email>", "<name>" y "<phone>" y le doy clic al boton suscribirse
     Then observo un texto que dice Gracias por suscribirse en la misma pagina
     Examples:
-      | email             | name | phone     | navegador |
-      | jaDSDSm@gmail.com | Jam  | 123456789 | chrome    |
-      | JuSDSDS@gmail.com | Ju   | 987654321 | edge      |
-      | ADSDSrl@gmail.com | Arl  | 555555555 | chrome    |
+      | email                 | name   | phone     | navegador |
+      | Juanisimom@gmail.com  | Juanes | 123456789 | chrome    |
+      | Jamesisimo@gmail.com  | jeims  | 987654321 | edge      |
+      | Arleysisimo@gmail.com | Arleis | 555555555 | chrome    |

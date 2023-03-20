@@ -1,4 +1,4 @@
-package com.sofkau.stepdefinitionservices;
+package com.sofkau.stepdefinitions;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

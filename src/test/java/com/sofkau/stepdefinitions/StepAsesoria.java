@@ -62,6 +62,7 @@ public class StepAsesoria extends WebUI {
         LOGGER.info("Valor esperado: " + expectedUrl);
         LOGGER.info("Valor actual: " + currentUrl);
         Assert.assertEquals(currentUrl, expectedUrl);
+        quitDriver();
     }
 
 

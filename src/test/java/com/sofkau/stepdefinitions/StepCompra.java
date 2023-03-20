@@ -15,8 +15,7 @@ import static com.sofkau.pages.FlujoCompra.validacionPedido;
 
 public class StepCompra extends WebUI {
 
-    private static final Logger LOGGER = Logger.getLogger(FlujoCompra.class);
-    private FlujoCompra compra;
+    private static final Logger LOGGER = Logger.getLogger(StepCompra.class);
     public FormModel cliente;
 
     //Background
@@ -48,14 +47,18 @@ public class StepCompra extends WebUI {
         String expectedText = "Gracias. Tu pedido ha sido recibido.";
         try {
             WebElement heading = driver.findElement(By.xpath("(//strong[normalize-space()='Gracias. Tu pedido ha sido recibido.'])[1]"));
-            Assertions.assertEquals(expectedText, heading.getText(), "El texto es diferente. Valor esperado: " + expectedText + " Valor actual: " + heading.getText());
+            Assertions.assertEquals(expectedText, heading.getText());
             LOGGER.info("La aserción se cumple correctamente");
+            LOGGER.error("Valor esperado: " + expectedText + " Valor actual: " + heading.getText());
             validacionPedido();
+            quitDriver();
         } catch (Exception exception) {
             quitDriver();
             Assertions.fail(exception.getMessage(), exception);
             LOGGER.warn(exception.getMessage(), exception);
             LOGGER.error("La aserción no se cumple correctamente");
+
+
         }
     }
     //Funciones

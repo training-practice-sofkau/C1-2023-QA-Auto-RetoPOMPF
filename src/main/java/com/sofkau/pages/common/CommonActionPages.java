@@ -30,8 +30,9 @@ public class CommonActionPages {
     }
     public void scrollDown() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,2800);");
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
+
 
     protected void scroll(int numero) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -54,6 +55,7 @@ public class CommonActionPages {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,20000)");
     }
+
 
 
     protected void explicitWaitTime(WebElement webElement) {

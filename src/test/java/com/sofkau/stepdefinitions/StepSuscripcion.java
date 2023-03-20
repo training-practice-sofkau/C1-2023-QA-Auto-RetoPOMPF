@@ -42,7 +42,7 @@ public class StepSuscripcion extends WebUI {
         pagPrincipal.setName(name);
         pagPrincipal.setPhone(phone);
         pagPrincipal.clickSubscribeButton();
-        Thread.sleep(4000);
+        Thread.sleep(3000);
     }
 
     @Then("observo un texto que dice Gracias por suscribirse en la misma pagina")
@@ -53,6 +53,7 @@ public class StepSuscripcion extends WebUI {
         LOGGER.info("Valor Esperado:" + expectedText);
         LOGGER.info("Valor Actual:" + actualText);
         assertEquals(expectedText, actualText);
+        quitDriver();
 
     }
 }

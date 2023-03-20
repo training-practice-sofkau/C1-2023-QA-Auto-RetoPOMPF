@@ -134,50 +134,38 @@ public class FlujoCompra extends CommonActionPages {
     public void llenarInformacion1() throws InterruptedException {
 
         click(outlet);
-        scroll(2000);
         click(anadirProducto1);
         Thread.sleep(1800);
         click(xcarrito);
-        scroll(2080);
+        scrollDown();
         Thread.sleep(1800);
 // añadirProducto2
-        try {
-            WebElement producto2 = driver.findElement(By.xpath("//button[@class='single_add_to_cart_button button alt wp-element-button' and contains(text(), 'Greens Powder · 100 gr Universal')]"));
-            // si encuentra el producto, no lo selecciona y continua con la ejecución del script
-        } catch (Exception e) {
+        int productosSeleccionados = 0;
+        for (int i = 2; i <= 5; i++) {
             try {
-                click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[3]"));
-            } catch (Exception e2) {
-                try {
-                    click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[4]"));
-                } catch (Exception e3) {
-                    try {
-                        click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[5]"));
-                    } catch (Exception e4) {
-                    }
+                WebElement producto = driver.findElement(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[" + i + "]"));
+                click(producto);
+                productosSeleccionados++;
+                if (productosSeleccionados == 2) {
+                    break;
                 }
+            } catch (Exception e) {
             }
         }
         Thread.sleep(1800);
         click(xcarrito);
         scrollDown();
-
 // añadirProducto3
-        try {
-            WebElement producto3 = driver.findElement(By.xpath("//button[@class='single_add_to_cart_button button alt wp-element-button' and contains(text(), 'Greens Powder · 100 gr Universal')]"));
-            // si encuentra el producto, no lo selecciona y continua con la ejecución del script
-        } catch (Exception e) {
+        productosSeleccionados = 0;
+        for (int i = 2; i <= 5; i++) {
             try {
-                click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[2]"));
-            } catch (Exception e2) {
-                try {
-                    click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[4]"));
-                } catch (Exception e3) {
-                    try {
-                        click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[5]"));
-                    } catch (Exception e4) {
-                    }
+                WebElement producto = driver.findElement(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[" + i + "]"));
+                click(producto);
+                productosSeleccionados++;
+                if (productosSeleccionados == 2) {
+                    break;
                 }
+            } catch (Exception e) {
             }
         }
         Thread.sleep(1800);
@@ -231,7 +219,6 @@ public class FlujoCompra extends CommonActionPages {
     }
 
 }
-
 
 
 
