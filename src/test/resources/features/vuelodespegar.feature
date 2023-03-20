@@ -10,6 +10,6 @@ Feature: Reservar un vuelo en despegar
 
 
   Scenario: Solicitud de reserva de vuelos en fecha no disponibles
-    Given el usuario esta en la pagina registro formulario de vuelo "Edge"
-    When selecciona una fecha no disponible
-    Then deberia obtener un mensaje vuelos no disponibles
+    Given el usuario esta en la pagina registro de vuelo con navegador "Edge"
+    When selecciona lugar origen y de destino de llegada
+    Then deberia obtener un mensaje de confirmacion de la reserva de la web
