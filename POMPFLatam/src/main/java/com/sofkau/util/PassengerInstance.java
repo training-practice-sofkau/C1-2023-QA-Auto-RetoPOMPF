@@ -11,6 +11,7 @@ public class PassengerInstance {
 
     public Passenger passenger1 = new Passenger();
     public Passenger passenger2 = new Passenger();
+    public Passenger passenger3 = new Passenger();
 
     public void fillPassengerInfo(){
         passenger1.setFirstName("Andres");
@@ -26,11 +27,21 @@ public class PassengerInstance {
         passenger2.setIdentification("1037789654");
         passenger2.setEmail("madisih297@necktai.com");
         passenger2.setPhone("6043435810");
+
+        passenger3.setFirstName("Matias");
+        passenger3.setLastName("Yepes");
+        passenger3.setDateOfBirth("20032022");
+        passenger3.setIdentification("10180089877");
+        passenger3.setEmail("madisih297@necktai.com");
+        passenger3.setPhone("6043435810");
+
+
     }
 
     public List<Passenger> getPassengerList(){
         passengers.add(passenger1);
         passengers.add(passenger2);
+        passengers.add(passenger3);
 
         return passengers;
     }

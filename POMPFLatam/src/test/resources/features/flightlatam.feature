@@ -6,5 +6,5 @@ Feature: comprar vuelo en Latam
   Scenario: Vuelo MDE-CLO
     Given el usuario ingresa a la pagina web de Latam
     When diligencia el formulario con Medellin y Cali como ciudades de origen y destino
-    Then retorna un mensaje con el resumen de la informacion de los vuelos
+    Then retorna un mensaje de confirmacion para compra de los vuelos
 

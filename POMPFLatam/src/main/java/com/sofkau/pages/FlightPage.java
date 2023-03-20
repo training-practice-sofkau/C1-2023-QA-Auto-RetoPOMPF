@@ -2,7 +2,6 @@ package com.sofkau.pages;
 
 import com.sofkau.models.Passenger;
 import com.sofkau.util.PassengerInstance;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,6 +40,10 @@ public class FlightPage extends CommonActionOnPages{
     private WebElement plusAdults;
 
     @CacheLookup
+    @FindBy(id="btnPlusInfant")
+    private WebElement plusInfant;
+
+    @CacheLookup
     @FindBy(id="departureDate")
     private WebElement departureDate;
 
@@ -72,23 +75,28 @@ public class FlightPage extends CommonActionOnPages{
     private final By seats = By.id("button9");
 
     private final By pickSeatsLater = By.id("btnSeatMapLeave");
-    private final By later = By.id("buttonChooseLater");
     private final By btnContinue = By.id("button-cart-confirm");
     private final By firstNameP1 = By.id("passengerDetails-firstName-ADT_1");
-    private final By btnP2 = By.id("accordion-passenger-ADT_2");
     private final By firstNameP2 = By.id("passengerDetails-firstName-ADT_2");
+    private final By firstNameP3 = By.id("passengerDetails-firstName-INF_1");
     private final By lastNameP1 = By.id("passengerDetails-lastName-ADT_1");
     private final By lastNameP2 = By.id("passengerDetails-lastName-ADT_2");
+    private final By lastNameP3 = By.id("passengerDetails-lastName-INF_1");
     private final By dateOfBirthP1 = By.id("passengerInfo-dateOfBirth-ADT_1");
     private final By dateOfBirthP2 = By.id("passengerInfo-dateOfBirth-ADT_2");
+    private final By dateOfBirthP3 = By.id("passengerInfo-dateOfBirth-INF_1");
     private final By identificationP1 = By.id("documentInfo-documentNumber-ADT_1");
     private final By identificationP2 = By.id("documentInfo-documentNumber-ADT_2");
+    private final By identificationP3 = By.id("documentInfo-documentNumber-INF_1");
     private final By emailP1 = By.id("passengerInfo-emails-ADT_1");
     private final By emailP2 = By.id("passengerInfo-emails-ADT_2");
+    private final By emailP3 = By.id("passengerInfo-emails-INF_1");
     private final By phoneP1 = By.id("passengerInfo-phones0-number-ADT_1");
     private final By phone2 = By.id("passengerInfo-phones0-number-ADT_2");
+    private final By phone3 = By.id("passengerInfo-phones0-number-INF_1");
     private final By saveP1 = By.id("passengerFormSubmitButtonADT_1");
     private final By saveP2 = By.id("passengerFormSubmitButtonADT_2");
+    private final By saveP3 = By.id("passengerFormSubmitButtonINF_1");
     private final By continueBtn = By.id("undefined--button-wrapper");
     private final By pse = By.id("cnt_main_login-btn");
     private final By text = By.xpath("//*[@id='form-text']/child::span[text()='Si ya eres parte de LATAM, ingresa tus datos:']");
@@ -100,6 +108,7 @@ public class FlightPage extends CommonActionOnPages{
         passengerInstance.fillPassengerInfo();
         Passenger passenger1 = passengerInstance.getPassengerList().get(0);
         Passenger passenger2 = passengerInstance.getPassengerList().get(1);
+        Passenger passenger3 = passengerInstance.getPassengerList().get(2);
 
         click(inputOriginField);
         typeInto(inputOriginField, DepartureCity);
@@ -112,6 +121,7 @@ public class FlightPage extends CommonActionOnPages{
         click(arrivalDay);
         click(addPassengerCTA);
         click(plusAdults);
+        click(plusInfant);
         click(search);
         changeTab();
         click(pickFlightOne);
@@ -124,7 +134,6 @@ public class FlightPage extends CommonActionOnPages{
         click(seats);
         Thread.sleep(2000);
         click(pickSeatsLater);
-        click(later);
         click(btnContinue);
         Thread.sleep(2000);
         click(firstNameP1);
@@ -144,6 +153,15 @@ public class FlightPage extends CommonActionOnPages{
         typeInto(emailP2, passenger2.getEmail());
         typeInto(phone2, passenger2.getPhone());
         click(saveP2);
+        click(firstNameP3);
+        typeInto(firstNameP3, passenger3.getFirstName());
+        typeInto(lastNameP3, passenger3.getLastName());
+        typeInto(dateOfBirthP3, passenger3.getDateOfBirth());
+        typeInto(identificationP3, passenger3.getIdentification());
+        pressEnter(identificationP3);
+        typeInto(emailP3, passenger1.getEmail());
+        typeInto(phone3, passenger1.getPhone());
+        click(saveP3);
         Thread.sleep(4000);
         click(continueBtn);
         Thread.sleep(2000);

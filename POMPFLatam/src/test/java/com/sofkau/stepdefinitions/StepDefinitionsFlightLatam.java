@@ -25,12 +25,19 @@ public class StepDefinitionsFlightLatam extends WebUI {
         FlightPage flightPage = new FlightPage(super.driver);
         flightPage.fillFieldsFlightOne();
     }
-    @Then("retorna un mensaje con el resumen de la informacion de los vuelos")
-    public void retornaUnMensajeConElResumenDeLaInformacionDeLosVuelos() throws InterruptedException {
-        FlightPage flightPage = new FlightPage(super.driver);
-        Assertions.assertEquals(MESSAGE, flightPage.getElementText());
-        LOGGER.info(flightPage.getElementText());
-        Assertions.assertNotNull(flightPage.getElementText());
+    @Then("retorna un mensaje de confirmacion para compra de los vuelos")
+    public void retornaUnMensajeDeConfirmacionParaCompraDeLosVuelos() throws InterruptedException {
+        try{
+            FlightPage flightPage = new FlightPage(super.driver);
+            Assertions.assertEquals(MESSAGE, flightPage.getElementText());
+            LOGGER.info("Mensaje confirmación: " + flightPage.getElementText());
+            Assertions.assertNotNull(flightPage.getElementText());
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage());
+            Assertions.fail();
+        } finally {
+            quiteDriver();
+        }
     }
 
 
