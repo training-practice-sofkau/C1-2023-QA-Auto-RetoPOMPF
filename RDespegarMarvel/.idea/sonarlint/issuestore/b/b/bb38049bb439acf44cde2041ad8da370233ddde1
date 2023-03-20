@@ -1,14 +1,0 @@
-
-z	java:S1166"eRename this field "SelectorConfirmacionOrigen" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åÜÒò
-€	java:S116>"fRename this field "SelectorConfirmacionDestino" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó¨–»şÿÿÿÿ
-
-java:S1130Ş"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(äĞûp
-
-java:S1130ì"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(¤¸ä¼
-d	java:S100É"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Îèû
-i
-java:S1128"NRemove this unused import 'org.openqa.selenium.support.ui.ExpectedConditions'.(û€Èéúÿÿÿÿ
-E
-java:S1068"/Remove this unused "selectorIda" private field.(Åª²š
-E
-java:S1068\"*Remove this unused "inicio" private field.(ãÑĞ˜ùÿÿÿÿ
