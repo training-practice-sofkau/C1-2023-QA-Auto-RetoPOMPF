@@ -51,7 +51,7 @@ public class Step4Definition extends WebUI {
         boolean isElementPresent = activity4Page.isElementPresent("//span[@class='header-account-title']");
         Assertions.assertTrue(isElementPresent, "El usuario no ha iniciado sesión correctamente");
         if (isElementPresent) {
-            LOGGER.info("La asercion de inicio de sesion ha sido exitosa");
+            LOGGER.info("Asercion: inicio de sesion exitoso");
         }
     }
 }

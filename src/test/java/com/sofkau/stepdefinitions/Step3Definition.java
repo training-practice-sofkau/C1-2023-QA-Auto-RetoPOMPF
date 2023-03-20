@@ -56,6 +56,7 @@ public class Step3Definition extends WebUI {
         ActivityPage activityPage = new ActivityPage(super.driver,s);
         String actual= activityPage.getMessage();
         Assertions.assertEquals(expected.substring(1,25),"Gracias por suscribirse!");
+        LOGGER.info("Cumple : El mensaje de confimacion de suscripcion  se muestra correctamente.");
 
     }
     @When("dejo un campo en blanco de los datos requeridos en el formulario")
@@ -70,7 +71,7 @@ public class Step3Definition extends WebUI {
         WebElement errorMessage = driver.findElement(By.xpath("(//div[@for='mce-FNAME'])[1]"));
         String errorText = errorMessage.getText();
         Assertions.assertEquals("Este campo es obligatorio.", errorText);
-        LOGGER.info("Cumple: El mensaje de error de suscripcion incompleta se muestra correctamente.");
+        LOGGER.info("Cumple : El mensaje de error de suscripcion incompleta se muestra correctamente.");
 
     }
     public void informationPerson(){

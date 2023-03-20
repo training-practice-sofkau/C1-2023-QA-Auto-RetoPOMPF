@@ -1,4 +1,7 @@
 Feature: Obtener datos del estado de CA
+  Como usuario de API Tracking Project
+  Quiero poder obtener los datos de COVID-19 de un estado
+  Para poder analizar y estar al tanto de la situación de dicho estado
 
   Scenario: Obtener todos los datos del estado de CA
     Given que el usuario tiene acceso a la API

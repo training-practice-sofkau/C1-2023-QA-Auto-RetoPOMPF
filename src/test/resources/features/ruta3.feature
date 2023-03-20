@@ -10,7 +10,7 @@ Feature: Subscripcion al NewsLetter en la pagina web de ZonaFit
 
 
   Background:
-    Given que me encuentro en el  sitio web de ZonaFit con "google"
+    Given que me encuentro en el  sitio web de ZonaFit con "navegador"
     When decido subscribirme al NewsLetter
 
   Scenario: Subscripcion exitosa

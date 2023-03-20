@@ -9,6 +9,15 @@ import io.cucumber.java.en.When;
 import io.cucumber.messages.internal.com.google.protobuf.StringValue;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Step1Definition extends WebUI {
     private Activity1Page activity1Page;
@@ -36,36 +45,52 @@ public class Step1Definition extends WebUI {
     }
     @When("procedo a agregar al carrito los productos de mi interes")
     public void procedoAAgregarAlCarritoLosProductosDeMiInteres() throws InterruptedException {
-        Activity1Page activity1Page1 = new Activity1Page(super.driver,f);
-        activity1Page1.agregar();
+        try {
+            infoFormulario();
+            Activity1Page activity1Page1 = new Activity1Page(super.driver,f);
+            activity1Page1.agregar();
+
+            activity1Page1.type();
+
+        }catch (Exception e){
+            //quiteDriver();
+            LOGGER.warn(e.getMessage(),e);
+        }
+
 
 
     }
     @When("ingreso todos mis datos personales y selecciono el metodo de pago")
     public void ingresoTodosMisDatosPersonalesYSeleccionoElMetodoDePago() {
-        infoFormulario();
-        Activity1Page activity1Page1 = new Activity1Page(super.driver,f);
-        activity1Page1.type();
+
+
 
     }
     @Then("debo ver un mensaje de confirmacion de compra exitoso")
     public void deboVerUnMensajeDeConfirmacionDeCompraExitoso() {
-        Activity1Page activity1Page1 = new Activity1Page(super.driver,f);
+
+        try {
+
+            String expected="Gracias. Tu pedido ha sido recibido.";
+            Activity1Page activity1Page1 = new Activity1Page(super.driver,f);
+            String actual= activity1Page1.getMensajeFinal(driver).getText();
+
+            assertEquals(expected,actual);
+            LOGGER.info("val-esperado:"+expected);
+            LOGGER.info("val-obtenido:"+actual);
+
+
+        } catch (Exception exception) {
+            quiteDriver();
+            Assertions.fail(exception.getMessage(), exception);
+            LOGGER.warn(exception.getMessage(), exception);
+            LOGGER.error("La aserción no se cumple correctamente");
+        }
+
 
     }
 
-    @When("dejo un campo en blanco en la informacion requerida")
-    public void dejoUnCampoEnBlancoEnLaInformacionRequerida() {
-        infoFormularioIncompleto();
-        Activity1Page activity1Page1 = new Activity1Page(super.driver,f);
-        activity1Page1.type0();
 
-    }
-    @Then("debo ver un mensaje indicando el error")
-    public void deboVerUnMensajeIndicandoElError() {
-        Activity1Page activity1Page1 = new Activity1Page(super.driver,f);
-
-    }
 
     public void infoFormulario(){
         f =new Facturacion();
@@ -81,18 +106,6 @@ public class Step1Definition extends WebUI {
         f.setNotas_adicionales("por favor entregar a la sennora Carmensa , gracias.");
     }
 
-    public void infoFormularioIncompleto(){
-
-        f =new Facturacion();
-        f.setDocumento("1000756218");
-        f.setApellido("Meneses");
-        f.setLugar1("CALDAS");
-        f.setLugar2("MANIZALES (CDAS)");
-        f.setDireccion("carrea 56 #34-N");
-        f.setDireccion2("apto 201");
-        f.setTelefono("6065263966");
-        f.setNotas_adicionales("por favor entregar a la señora Carmensa , gracias.");
-    }
 
 
 

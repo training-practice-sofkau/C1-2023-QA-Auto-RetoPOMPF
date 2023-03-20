@@ -8,7 +8,7 @@ Feature: Iniciar sesion en la pagina web de ZonaFit
   //Microsoft Edge= edge
 
   Scenario Outline: Iniciar sesion exitosamente con diferentes usuarios
-    Given que estoy en la pagina de ZonaFit en "google"
+    Given que estoy en la pagina de ZonaFit en "navegador"
     And doy click en el boton de acceder-registrarse
     When  ingreso el correo electronico <correo> y la contrasenna <contrasenna> y accedo
     Then deberia ser redirigido nuevamente a la pagina principal con mi sesion ya iniciada
