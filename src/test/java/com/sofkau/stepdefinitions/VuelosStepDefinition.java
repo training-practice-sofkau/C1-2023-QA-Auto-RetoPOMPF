@@ -27,6 +27,7 @@ public class VuelosStepDefinition extends WebUI {
     public void seleccioneElVueloMasBaratoDisponible() {
         VuelosPage vuelosPage = new VuelosPage(super.driver);
         vuelosPage.buscarVuelo();
+        vuelosPage.fillForm();
     }
     @Then("debe observar que el vuelo se ha reservado exitosamente")
     public void debeObservarQueElVueloSeHaReservadoExitosamente() {

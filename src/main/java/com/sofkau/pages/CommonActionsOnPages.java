@@ -76,6 +76,10 @@ public class CommonActionsOnPages {
         driver.findElement(locator).sendKeys(value, Keys.ARROW_DOWN, Keys.ENTER);
     }
 
+    protected void selectCombobox(WebElement webElement){
+        webElement.sendKeys(Keys.ENTER, Keys.ARROW_DOWN, Keys.ENTER);
+    }
+
     protected void typeWithDelay(WebElement webElement, String text, int delayInMilliseconds) {
         explicitWaitInit(webElement);
         webElement.click();

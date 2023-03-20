@@ -32,45 +32,78 @@ public class VuelosPage extends CommonActionsOnPages{
 
     private By btnPlus = By.xpath("(//a[@class='steppers-icon-right eva-3-icon-plus'])[1]");
     private By btnContinuar = By.xpath("//em[@class= 'btn-text' and text()='Continuar']");
-    //
-    //////////////////
-    @CacheLookup
-    @FindBy(xpath = "//input[@type='text' and @class='input-tag' and contains(@placeholder, 'Ingresa una ciudad')]")
-    private WebElement fieldDestiny;
 
     @CacheLookup
-    @FindBy(xpath = "(//span[contains(@class, 'item-text')])[1]")
-    private WebElement destinyDefinied;
-
-
-    @CacheLookup
-    @FindBy(xpath = "//input[@type='text' and @class='input-tag' and contains(@placeholder, 'Entrada')]")
-    private WebElement labelDateEntry;
-
-    /*
-    @CacheLookup
-    @FindBy(xpath = "//div[@class='sbox5-monthgrid-dates sbox5-monthgrid-dates-31']//div[@class='sbox5-monthgrid-datenumber -weekday -today']")
-    private WebElement labelDateselected;
-*/
-    @CacheLookup
-    @FindBy(xpath = "(//div[@class='sbox5-monthgrid-datenumber']/div[@class='sbox5-monthgrid-datenumber-number'])[30]")
-    private WebElement labelDateExit;
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[1]")
+    private WebElement fieldNombrePass1;
 
     @CacheLookup
-    @FindBy(xpath = "(//button[contains(@class, 'sbox5-3-btn') and contains(@class, '-primary') and contains(@class, '-md') and em[@class='btn-text' and text()='Aplicar']])[2]")
-    private WebElement buttonAplicar;
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[2]")
+    private WebElement fieldApellidoPass1;
 
     @CacheLookup
-    @FindBy(xpath = "(//div[@class='sbox5-3-first-input-wrapper']//input[@class='sbox5-3-first-input'])[2]")
-    private WebElement habitaSelector;
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[3]")
+    private WebElement fieldNombrePass2;
 
     @CacheLookup
-    @FindBy(xpath = "(//a[@class='sbox5-3-btn -md -link']//em[@class='btn-text'])[2]")
-    private WebElement addHabitacion;
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[4]")
+    private WebElement fieldApellidoPass2;
 
     @CacheLookup
-    @FindBy(xpath = "(//*[@id='svg-minus-29Ddhw5'])[5]")
-    private WebElement botonMenos;
+    @FindBy(xpath = "//input[@name='formData.travelers[0].identifications[0].number']")
+    private WebElement idNumber1;
+
+    @CacheLookup
+    @FindBy(xpath = "//input[@id='traveler-identification-number-1']")
+    private WebElement idNumber2;
+
+    @CacheLookup
+    @FindBy(xpath = "//input[@id='formData.contactData.mainEmailAddress']")
+    private WebElement email1;
+
+    @CacheLookup
+    @FindBy(xpath = "//input[@id='formData.contactData.repeatMainEmailAddress']")
+    private WebElement email2;
+
+    @CacheLookup
+    @FindBy(xpath = "//input[contains(@placeholder, 'Ingresa tu n')]")
+    private WebElement numeroTel;
+
+    @CacheLookup
+    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
+    private WebElement selectorPSE;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='card-selector-0']")
+    private WebElement comboBox;
+
+    @CacheLookup
+    @FindBy(xpath = "//input[@id='invoice-first-name-0']")
+    private WebElement campoNombre;
+
+    @CacheLookup
+    @FindBy(xpath = "//input[@id='invoice-last-name-0']")
+    private WebElement campoApellido;
+
+    @CacheLookup
+    @FindBy(xpath = "//input[@id='invoice-fiscal-identification-number-0']")
+    private WebElement campoCedula;
+
+    @CacheLookup
+    @FindBy(xpath = "//input[@class='input-tag invoice-fiscal-address-street ng-untouched ng-pristine ng-invalid']")
+    private WebElement campodireccion;
+
+    @CacheLookup
+    @FindBy(xpath = "(//i[@class='checkbox-check eva-3-icon-checkmark -eva-3-mr-sm'])[1]")
+    private WebElement terminosCondiciones;
+
+    @CacheLookup
+    @FindBy(xpath = "//a[@class='chk-button -lg -secondary eva-3-btn']/em[text()='Comprar sin asistencia']")
+    private WebElement ultimoboton;
+
+
+
+    /////////////////
 
 
     public VuelosPage(WebDriver driver) {
@@ -104,29 +137,31 @@ public class VuelosPage extends CommonActionsOnPages{
         clickwithDelay(btnContinuar);
     }
 
-    public void fillDestiny(String value){
-        click(fieldDestiny);
-        fieldDestiny.sendKeys(value, Keys.ARROW_DOWN);
-        fieldDestiny.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
-        clickwithDelay(destinyDefinied);
-    }
-
-    public void fillDateEntry() throws InterruptedException {
-        click(labelDateEntry);
-        scrollDown(150);
-        Thread.sleep(5000);
-        //click(dateinicial);
-    }
-
-    public void fillDateExit() throws InterruptedException {
-        clickwithDelay(labelDateExit);
-        Thread.sleep(5000);
-        clickwithDelay(buttonAplicar);
-    }
-
-    public void selectHabitaciones(){
-        clickwithDelay(habitaSelector);
-        clickwithDelay(addHabitacion);
-        clickwithDelay(botonMenos);
+    public void fillForm(){
+        typeWithDelay(fieldNombrePass1, "Jose", 150);
+        typeWithDelay(fieldApellidoPass1, "Nunez", 150);
+        typeWithDelay(idNumber1, "105223946", 150);
+        scrollDown(400);
+        typeWithDelay(fieldNombrePass2, "Brayan", 150);
+        typeWithDelay(fieldApellidoPass2, "Nunez", 150);
+        typeWithDelay(idNumber2, "105223945", 150);
+        scrollDown(600);
+        typeWithDelay(email1, "jose@gmail.com", 150);
+        typeWithDelay(email2, "jose@gmail.com", 150);
+        scrollDown(400);
+        typeWithDelay(numeroTel, "3212540612", 150);
+        scrollDown(400);
+        click(selectorPSE);
+        scrollDown(400);
+        selectCombobox(comboBox);
+        scrollDown(600);
+        typeWithDelay(campoNombre, "Jose", 150);
+        typeWithDelay(campoApellido, "nunez", 150);
+        scrollDown(100);
+        typeWithDelay(campoCedula, "105223946", 150);
+        typeWithDelay(campodireccion, "calle 140# 140a-30", 150);
+        scrollDown(950);
+        clickwithDelay(terminosCondiciones);
+        clickwithDelay(ultimoboton);
     }
 }
