@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CasosDeRecuperacionCovid19StepDefinition {
+public class positiveTestsViralStepDefinition {
     private static final Logger logger = LoggerFactory.getLogger(Covid19StepDefinition.class);
 
     private String endpoint;
