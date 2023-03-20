@@ -323,7 +323,7 @@ public class FPageVuelosChrome extends CommonActionOnPage {
     public void confirmarPago(){
         scroll(800);
         clickcondelay(sTerminosYCondiciones);
-        clickcondelay(botonComprar);
+        //clickcondelay(botonComprar);
 
     }
 
