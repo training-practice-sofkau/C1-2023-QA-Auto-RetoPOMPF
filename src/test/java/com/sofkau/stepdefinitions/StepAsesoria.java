@@ -5,17 +5,13 @@ import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class StepAsesoria extends WebUI {
-    public static Logger LOGGER = Logger.getLogger(String.valueOf(StepAsesoria.class));
-
-    private static final org.apache.log4j.Logger logger = LogManager.getLogger(StepAsesoria.class);
-
+    public static Logger LOGGER = Logger.getLogger((StepAsesoria.class));
     private CommonActionPages commonActionOnPages;
 
     @Given("que estoy en la pagina principal de zonafit")
@@ -25,7 +21,7 @@ public class StepAsesoria extends WebUI {
             commonActionOnPages = new CommonActionPages(driver);
             LOGGER.info("Se ha iniciado el driver y se ha accedido a la página de ZonaFit");
         } catch (Exception e) {
-            LOGGER.warning("Ha ocurrido un error al acceder a la página principal de ZonaFit: " + e.getMessage());
+            LOGGER.warn("Ha ocurrido un error al acceder a la página principal de ZonaFit: " + e.getMessage());
             Assert.fail("No se ha podido acceder a la página principal de ZonaFit");
         }
     }
@@ -36,7 +32,7 @@ public class StepAsesoria extends WebUI {
             commonActionOnPages.clickBotonWhatsapp();
             LOGGER.info("Se ha hecho clic en el botón de WhatsApp");
         } catch (Exception e) {
-            LOGGER.warning("Ha ocurrido un error al hacer clic en el botón de WhatsApp: " + e.getMessage());
+            LOGGER.warn("Ha ocurrido un error al hacer clic en el botón de WhatsApp: " + e.getMessage());
             Assert.fail("No se ha podido hacer clic en el botón de WhatsApp");
         }
     }
@@ -48,7 +44,7 @@ public class StepAsesoria extends WebUI {
             Thread.sleep(10000);
             LOGGER.info("Se ha hecho clic en la opción 'Necesitas asesoría'");
         } catch (Exception e) {
-            LOGGER.warning("Ha ocurrido un error al hacer clic en la opción 'Necesitas asesoría': " + e.getMessage());
+            LOGGER.warn("Ha ocurrido un error al hacer clic en la opción 'Necesitas asesoría': " + e.getMessage());
             Assert.fail("No se ha podido hacer clic en la opción 'Necesitas asesoría'");
         }
     }
@@ -63,8 +59,8 @@ public class StepAsesoria extends WebUI {
         String currentUrl = driver.getCurrentUrl();
         // Verificar que la URL actual sea igual a la URL de la página de WhatsApp
         String expectedUrl = "https://api.whatsapp.com/send/?phone=573054596254&text=Hola+Zona+FIT%2C+quisiera+informaci%C3%B3n+sobre+Tenemos+la+mayor+variedad+en+nutrici%C3%B3n+deportiva+-+Zona+FIT+Colombia&type=phone_number&app_absent=0";
-        logger.info("Valor esperado: " + expectedUrl);
-        logger.info("Valor actual: " + currentUrl);
+        LOGGER.info("Valor esperado: " + expectedUrl);
+        LOGGER.info("Valor actual: " + currentUrl);
         Assert.assertEquals(currentUrl, expectedUrl);
     }
 

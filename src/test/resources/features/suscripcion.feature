@@ -1,6 +1,7 @@
 Feature: Suscripcion
-
-
+  yo como cliente de ZonaFit
+  quiero realizar la suscripción al newsletter
+  para recibir novedades
 
   Background:
     Given que estoy en la pagina principal de zonafit.co

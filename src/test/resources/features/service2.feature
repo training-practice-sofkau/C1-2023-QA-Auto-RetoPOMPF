@@ -1,9 +1,10 @@
-Feature: Obtener datos de COVID-19
-  Yo como usuario
-  Quiero obtener datos actualizados de COVID-19
-  Para estar informado sobre la situacion de la pandemia
+Feature: Obtener los datos de hospitalizaciones diarias en Estados Unidos
+  Como usuario
+  Quiero obtener los datos de hospitalizaciones diarias en Estados Unidos
+  Para conocer la evolución de la pandemia
 
-  Scenario: Obtener datos de COVID-19 por estado
-    Given que el usuario hace una solicitud GET a la API de datos COVID-19
-    When la solicitud se realiza para obtener los datos de COVID-19 por estado
-    Then se debe devolver una respuesta exitosa con los datos de COVID-19 por estado
+  Scenario: Obtener los datos de hospitalizaciones diarias exitosamente
+    Given que el usuario tiene acceso al servicio de COVID Tracking API
+    When el usuario solicita los datos de hospitalizaciones diarias en Estados Unidos
+    Then el servicio responde con un codigo de respuesta 200
+    And el servicio responde con datos de hospitalizaciones diarias validos

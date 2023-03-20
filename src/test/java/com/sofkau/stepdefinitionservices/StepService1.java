@@ -14,9 +14,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Step2 extends WebUI {
+public class StepService1 extends WebUI {
 
-    private static final Logger LOGGER = LogManager.getLogger(Step2.class);
+    private static final Logger LOGGER = LogManager.getLogger(StepService1.class);
     private Response response;
 
     @Given("que el usuario hace una solicitud GET a la API de datos COVID-{int}")

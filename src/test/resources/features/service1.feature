@@ -1,9 +1,9 @@
-Feature: Obtener datos de COVID-19 en los Estados Unidos
-  Como usuario de la API de COVID Tracking Project
-  Quiero poder obtener los datos diarios de COVID-19 en los Estados Unidos
+Feature: Obtener datos de COVID-19
+  Yo como usuario
+  Quiero obtener datos actualizados de COVID-19
+  Para estar informado sobre la situacion de la pandemia
 
-  Scenario: Obtener los datos diarios de COVID-19 en los Estados Unidos
-    Given que tengo la URL del servicio "https://api.covidtracking.com/v1/us/daily.json"
-    When envio una solicitud GET al servicio
-    Then el codigo de respuesta debe ser 200
-    And la respuesta debe contener un JSON con la informacion de los datos diarios de COVID-19 en los Estados Unidos
+  Scenario: Obtener datos de COVID-19 por estado
+    Given que el usuario hace una solicitud GET a la API de datos COVID-19
+    When la solicitud se realiza para obtener los datos de COVID-19 por estado
+    Then se debe devolver una respuesta exitosa con los datos de COVID-19 por estado

@@ -3,6 +3,7 @@ package com.sofkau.pages;
 import com.sofkau.models.FormModel;
 import com.sofkau.pages.common.CommonActionPages;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -129,19 +130,15 @@ public class FlujoCompra extends CommonActionPages {
         this.formModel = formModel;
         PageFactory.initElements(webDriver, this);
     }
-
     //Funciones
     public void llenarInformacion1() throws InterruptedException {
 
         click(outlet);
-        scrollDown();
-        Thread.sleep(1000);
+        scroll(2000);
         click(anadirProducto1);
-        Thread.sleep(1000);
+        Thread.sleep(1800);
         click(xcarrito);
-        Thread.sleep(1000);
-        scrollDown();
-        Thread.sleep(1000);
+        scroll(2000);
         try {
             click(anadirProducto2);
         } catch (Exception e) {
@@ -158,11 +155,9 @@ public class FlujoCompra extends CommonActionPages {
                 }
             }
         }
-        Thread.sleep(1000);
+        Thread.sleep(1800);
         click(xcarrito);
-        Thread.sleep(1000);
         scrollDown();
-        Thread.sleep(1000);
         try {
             click(anadirProducto3);
         } catch (Exception e) {
@@ -179,21 +174,20 @@ public class FlujoCompra extends CommonActionPages {
                 }
             }
         }
-        Thread.sleep(1000);
+        Thread.sleep(1800);
         click(carrito);
-        Thread.sleep(2000);
-//        click(cantidad1);
-//        Thread.sleep(4000);
-//        click(cantidad2);
-//        Thread.sleep(4000);
-//        click(cantidad3);
-//        Thread.sleep(4000);
-        click(finalizarCompra);
-        Thread.sleep(5000);
+        click(cantidad1);
+        click(cantidad2);
+        click(cantidad3);
+        Thread.sleep(6000);
+        //click(finalizarCompra);
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].click();", finalizarCompra);
+        Thread.sleep(6000);
+
         explicitWaitTime(numeroDeDocumento);
         borrarTexto(numeroDeDocumento);
         typeInto(numeroDeDocumento, formModel.getCedula());
-        Thread.sleep(4000);
         explicitWaitTime(e_Mail);
         borrarTexto(e_Mail);
         typeInto(e_Mail, formModel.getEmail());
@@ -221,123 +215,15 @@ public class FlujoCompra extends CommonActionPages {
         explicitWaitTime(numeroCelular);
         borrarTexto(numeroCelular);
         typeInto(numeroCelular, formModel.getPhone());
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         click(terminosCondiciones);
-        Thread.sleep(2000);
         click(realizarPedido);
         Thread.sleep(10000);
     }
-
     public static String validacionPedido() {
         return getText(confirmacionPedido).trim();
     }
 
-
-    public void llenarInformacion2() throws InterruptedException {
-
-        click(outlet);
-        scrollDown();
-        Thread.sleep(1000);
-        click(anadirProducto1);
-        Thread.sleep(1000);
-        click(xcarrito);
-        Thread.sleep(1000);
-        scrollDown();
-        Thread.sleep(1000);
-        try {
-            click(anadirProducto2);
-        } catch (Exception e) {
-            try {
-                click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[3]"));
-            } catch (Exception e2) {
-                try {
-                    click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[4]"));
-                } catch (Exception e3) {
-                    try {
-                        click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[5]"));
-                    } catch (Exception e4) {
-                    }
-                }
-            }
-        }
-        Thread.sleep(1000);
-        click(xcarrito);
-        Thread.sleep(1000);
-        scrollDown();
-        Thread.sleep(1000);
-        try {
-            click(anadirProducto3);
-        } catch (Exception e) {
-            try {
-                click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[2]"));
-            } catch (Exception e2) {
-                try {
-                    click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[4]"));
-                } catch (Exception e3) {
-                    try {
-                        click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[5]"));
-                    } catch (Exception e4) {
-                    }
-                }
-            }
-        }
-        Thread.sleep(1000);
-        click(carrito);
-        Thread.sleep(2000);
-        /*click(cantidad1);
-        Thread.sleep(4000);
-        click(cantidad2);
-        Thread.sleep(4000);
-        click(cantidad3)*/
-        Thread.sleep(4000);
-        click(finalizarCompra);
-        Thread.sleep(5000);
-        explicitWaitTime(numeroDeDocumento);
-        borrarTexto(numeroDeDocumento);
-        typeInto(numeroDeDocumento, formModel.getCedula());
-        Thread.sleep(4000);
-        explicitWaitTime(e_Mail);
-        borrarTexto(e_Mail);
-        typeInto(e_Mail, formModel.getEmail());
-        explicitWaitTime(nombre);
-        borrarTexto(nombre);
-        typeInto(nombre, formModel.getName());
-        explicitWaitTime(apellido);
-        borrarTexto(apellido);
-        typeInto(apellido, formModel.getLastName());
-        scrollDown(seleccionBotondepartamento);
-        click(seleccionBotondepartamento);
-        typeInto(departamento, formModel.getRegion());
-        explicitWaitTime(departamento);
-        click(seleccionDepartamento);
-        click(seleccionBotonCiudad);
-        typeInto(ciudad, formModel.getCity());
-        explicitWaitTime(ciudad);
-        click(seleccionCiudad);
-        explicitWaitTime(direccion);
-        borrarTexto(direccion);
-        typeInto(direccion, formModel.getAddress());
-        explicitWaitTime(apartamento);
-        borrarTexto(apartamento);
-        typeInto(apartamento, formModel.getNoAddress());
-        explicitWaitTime(numeroCelular);
-        borrarTexto(numeroCelular);
-        typeInto(numeroCelular, formModel.getPhone());
-        Thread.sleep(2000);
-        click(tarjetas);
-        Thread.sleep(2000);
-        click(terminosCondiciones);
-        Thread.sleep(2000);
-        explicitWaitTime(realizarPedido);
-        click(realizarPedido);
-        Thread.sleep(10000);
-        explicitWaitTime(botonEfecty);
-        click(botonEfecty);
-        explicitWaitTime(ConfirmarCompra);
-        click(ConfirmarCompra);
-        Thread.sleep(200000);
-
-    }
 }
 
 
