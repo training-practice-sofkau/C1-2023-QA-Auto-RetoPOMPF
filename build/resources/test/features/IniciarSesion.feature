@@ -10,7 +10,7 @@ Feature: Iniciar sesion en la pagina ZonaFit
   //Microsoft Edge = "edge"
 
 Scenario: Iniciar sesion en ZonaFit
-  Given que estoy en la pagina principal de ZonaFit  desde "chrome"
+  Given que estoy en la pagina principal de ZonaFit  desde "edge"
   When  hago click en el boton de "acceder/registrarse"
   And ingreso mi informacion personal valida en su campo correspondiente como direccion de correo electronico y contrasena
   And hago click en el botonn de "Acceder"

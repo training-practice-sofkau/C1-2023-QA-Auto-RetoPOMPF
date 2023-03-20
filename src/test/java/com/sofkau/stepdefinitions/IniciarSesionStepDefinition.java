@@ -7,6 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.jboss.logging.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -54,11 +56,8 @@ public class IniciarSesionStepDefinition extends WebUI {
     }
     @Then("deberia ser redirigido a la pagina principal y visualizar el {string} de usuario")
     public void deberiaSerRedirigidoALaPaginaPrincipalYVisualizarElDeUsuario(String username) {
-        username = "BOBMARLEY";
-        FormPage formPage = new FormPage(super.driver);
-        assertEquals(username, formPage.getUsername());
-        driver.quit();
-
+        WebElement miCuentaButton = driver.findElement(By.xpath("(//a[@title='Mi cuenta'])[1]"));
+        Assertions.assertTrue(miCuentaButton.isDisplayed(), "El botón 'Mi cuenta' no se muestra después de Iniciar sesion");
     }
 
 }

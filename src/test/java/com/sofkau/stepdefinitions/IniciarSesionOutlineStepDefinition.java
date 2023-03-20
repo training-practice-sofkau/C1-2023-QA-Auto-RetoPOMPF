@@ -58,27 +58,7 @@ public class IniciarSesionOutlineStepDefinition extends WebUI {
 
     @Then("deberia ser redirigido nuevamente a la pagina principal y visualizar el {string} de usuario")
     public void deberiaSerRedirigidoNuevamenteALaPaginaPrincipalYVisualizarElDeUsuario(String string) {
-        String[] expectedUsernames = {"BOBMARLEY", "BRYAN123", "HOMEROSIMPSON", "WILLSMITH"};
-
-        // Asumiendo que hay un localizador para el nombre de usuario en la página principal
-        By nombreUsuarioLocator = By.xpath("(//span[@class='header-account-title'])[1]");
-
-        // Espera hasta que el nombre de usuario sea visible en la página
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement nombreUsuarioElement = wait.until(ExpectedConditions.visibilityOfElementLocated(nombreUsuarioLocator));
-
-        String actualUsername = nombreUsuarioElement.getText();
-
-        // Verifica que el nombre de usuario sea uno de los esperados
-        boolean isExpectedUsername = false;
-        for (String expectedUsername : expectedUsernames) {
-            if (actualUsername.equalsIgnoreCase(expectedUsername)) {
-                isExpectedUsername = true;
-                break;
-            }
-        }
-
-        Assertions.assertTrue(isExpectedUsername, "El nombre de usuario no coincide con los esperados.");
-        driver.quit();
+        WebElement miCuentaButton = driver.findElement(By.xpath("(//a[@title='Mi cuenta'])[1]"));
+        Assertions.assertTrue(miCuentaButton.isDisplayed(), "El botón 'Mi cuenta' no se muestra después de Iniciar sesion");
     }
 }

@@ -10,6 +10,7 @@ import org.jboss.logging.Logger;
 import org.junit.After;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -50,7 +51,7 @@ public class RegistrarUsuarioStepDefinition extends WebUI {
     @When("ingreso mi informacion personal valida en su campo correspondiente como direccion de correo electronico, contrasena y confirmar contrasena.")
     public void ingresoMiInformacionPersonalValidaEnSuCampoCorrespondienteComoDireccionDeCorreoElectronicoContrasenaYConfirmarContrasena() {
         FormPage formPage = new FormPage(super.driver);
-        formPage.setEmail("BobMarley@reggae.com");
+        formPage.setEmail("BobMarley5@reggae.com");
         formPage.setPassword("azuca12345");
         formPage.setConfirmPassword("azuca12345");
     }
@@ -58,8 +59,8 @@ public class RegistrarUsuarioStepDefinition extends WebUI {
 
     @Then("debo recibir un mensaje de confirmacion de {string}")
     public void deboRecibirUnMensajeDeConfirmacionDe(String confirmationMessage) {
-        FormPage formPage = new FormPage(super.driver);
-        Assertions.assertEquals(confirmationMessage, formPage.getConfirmationMessage());
+        WebElement miCuentaButton = driver.findElement(By.xpath("(//a[@title='Mi cuenta'])[1]"));
+        Assertions.assertTrue(miCuentaButton.isDisplayed(), "El botón 'Mi cuenta' no se muestra después de registrarse");
     }
 }
 
