@@ -1,5 +1,6 @@
 package com.sofkau.stepdefinitions;
 
+import com.sofkau.model.Usuario;
 import com.sofkau.pages.VueloFormPage;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
@@ -7,13 +8,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
-
+import org.junit.Assert;
 
 
 public class VueloStepDefinition extends WebUI {
     public static Logger LOGGER = Logger.getLogger(VueloStepDefinition.class);
     private Response response;
     private String requeestBody;
+    private Usuario usuario;
 
 
 
@@ -27,16 +29,19 @@ public class VueloStepDefinition extends WebUI {
         VueloFormPage vueloFormPage = new VueloFormPage(super.driver);
         vueloFormPage.fillMandatoryFields();
         vueloFormPage.closeLogin();
-        vueloFormPage.filtrarOrigen("Bogota");
-        vueloFormPage.filtrarDestino("Monteria");
-       // vueloFormPage.seleccionarPasajero();
-       // vueloFormPage.seleccionarFechaIda();
+        vueloFormPage.filtrarOrigen("Medellin");
+        vueloFormPage.filtrarDestino("Pereira");
     }
 
 
     @Then("deberia obtener un mensaje de confirmacion de la reserva")
     public void deberiaObtenerUnMensajeDeConfirmacionDeLaReserva() {
-
+        VueloFormPage vueloFormPage = new VueloFormPage(super.driver);
+        String esperadoMensaje = "\u00A1Genial! Ahora solo te falta realizar el pago.";
+        String mensajeActual = vueloFormPage.verMensajeFinal();
+        Assert.assertEquals(esperadoMensaje,mensajeActual);
+        LOGGER.info("La prueba ha pasado" + mensajeActual);
+        quiteDriver();
     }
 
 

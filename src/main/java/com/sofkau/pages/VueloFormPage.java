@@ -1,23 +1,31 @@
 package com.sofkau.pages;
 
+import com.sofkau.model.Usuario;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class VueloFormPage extends CommonActionOnPages {
+
+    public static Logger LOGGER = Logger.getLogger(VueloFormPage.class);
+    private Usuario usuario;
     public VueloFormPage(WebDriver driver) {
         super(driver);
+        this.usuario = usuario;
         PageFactory.initElements(driver, this);
     }
 //span[contains(@class, 'item-text')])[1]
     //private final By selectVuelo = By.xpath("//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[2]/div/div[1]/button");
 
     public WebElement cierreventana;
+
+
     @CacheLookup
     @FindBy (xpath="//a[@title='Vuelos']//div[@class='button-content']")
     private WebElement selectorBotonVuelos;
@@ -46,39 +54,112 @@ public class VueloFormPage extends CommonActionOnPages {
     @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[3]/button/em")
     private WebElement buscar;
 
-
     @CacheLookup
-    @FindBy(xpath = "(//*[@class='container-next-step -eva-3-bold text-next eva-3-link -eva-3-pt-sm -eva-3-pr-sm -eva-3-pb-sm -eva-3-pl-lg'])[1]")
-    private WebElement vuelo;
-
-    @CacheLookup
-    @FindBy(xpath = "//*[@id=\"passengers-modal-position\"]/passengers-modal/div/div[2]/span[4]/span/a/em")
+    @FindBy(xpath = "//*[@id=\"clusters\"]/span[1]/div/span/reduced-cluster/div/div/div/div/div[2]/span[3]/div/span")
     private WebElement botonContinuar;
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"passengers-modal-position\"]/passengers-modal/div/div[2]/span[1]/span[2]/div/a[2]")
+    private WebElement aumentarPersona;
 
     @CacheLookup
-    @FindBy (xpath="//div[@class='sbox5-segments--lzKBc']//div[1]//div[2]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//input[1]")
-    private WebElement selectorFechaIda;
-    @CacheLookup
-    @FindBy (xpath="(//div[@class='sbox5-monthgrid-datenumber -weekday'])[5]")
-    private WebElement selectorDia;
+    @FindBy(xpath = "//*[@id=\"passengers-modal-position\"]/passengers-modal/div/div[2]/span[1]/span[2]/div/a[2]")
+    private WebElement aumentarPersona1;
+
 
     @CacheLookup
-    @FindBy (xpath=" (//input[@placeholder='Vuelta'])[1]")
-    private WebElement selectorFechaVuelta;
+    @FindBy(xpath = "/html/body/span[6]/passengers-modal/div/div[2]/span[4]/span/a")
+    private WebElement continuarAlformulario;
 
     @CacheLookup
-    @FindBy (xpath="(//div[@class='sbox5-monthgrid-datenumber'])[7]")
-    private WebElement selectorDiaRegreso;
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[1]")
+    private WebElement nombreAdulto1;
 
     @CacheLookup
-    @FindBy (xpath="    (//div[@class='sbox5-monthgrid-datenumber -weekday'])[5]")
-    private WebElement selectorDiaRegreso2;
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[2]")
+    private WebElement apellidoAdulto1;
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"traveler-identification-number-0\"]")
+    private WebElement numeroDocumento;
+
+    @CacheLookup
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[3]")
+    private WebElement nombreAdulto2;
+    @CacheLookup
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[4]")
+    private WebElement apellidoAdulto2;
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"traveler-identification-number-1\"]")
+    private WebElement numeroDocumento2;
+
+    @CacheLookup
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[5]")
+    private WebElement nombreAdulto3;
+    @CacheLookup
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[6]")
+    private WebElement apellidoAdulto3;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"traveler-identification-number-2\"]")
+    private WebElement numeroDocumento3;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"formData.contactData.mainEmailAddress\"]")
+    private WebElement email;
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"formData.contactData.repeatMainEmailAddress\"]")
+    private WebElement confirmarEmail;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"formData.contactData.phones[0].number\"]")
+    private WebElement numeroTelefono;
+
+    @CacheLookup
+    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
+    private WebElement pse;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"card-selector-0\"]/option[3]")
+    private WebElement comboBox;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"invoice-first-name-0\"]")
+    private WebElement nombrePersonaPago;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"invoice-last-name-0\"]")
+    private WebElement apellidoPersonaPago;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"invoice-fiscal-identification-number-0\"]")
+    private WebElement cedulaPersonaPago;
+
+    @CacheLookup
+    @FindBy(xpath = "(//input[@role='presentation'])[18]")
+    private WebElement direccionPersonaPago;
 
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"vamt5bykhf8tq8s8gctio\"]")
+    private WebElement direccionPersa;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"checkout-content\"]/div[1]/buy-container/buy-component/div/agreement-component/div/ol/li/terms-checkbox-component/checkbox-component/span/div/label")
+    private WebElement aceptaTerminos;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"checkout-content\"]/div[1]/buy-container/buy-component/div/div/div/div[1]/button-component/div/a")
+    private WebElement comprarSinAistencia;
+
+    @CacheLookup
+    @FindBy(xpath = "/html/body/div[2]/div/div/app/debt-published/div/div[3]/debt-published-info/div/div/div[1]/div/span[2]")
+    private WebElement mensajeFinal;
     @CacheLookup
     @FindBy(xpath = "/html/body/nav/div[4]/div[1]/i")
     public WebElement cLogin;
+
+
+
 
     public void closeLogin() throws InterruptedException {
         cLogin.click();
@@ -86,40 +167,77 @@ public class VueloFormPage extends CommonActionOnPages {
     public void fillMandatoryFields() {
         clickElement(selectorBotonVuelos);
         clearText(selectorOringen);
-        clickElement(selectorOringen);
-        typeInto(selectorOringen, "Barranquilla");
-    }
-
-    public void seleccionarFechaIda (){
-       // clickElement(selectorFechaIda);
-        scroll(150);
-        clickcondelay(selectorDia);
-        System.out.println(" Imprime pls " );
-        clickElement(selectorDiaRegreso);
-        clickElement (selectorFechaVuelta);
-        scroll(150);
-        clickElement(selectorDiaRegreso2);
 
     }
+
 
     public void filtrarOrigen ( String destino){
-        clickElement (selectorOringen);
+        //scroll(150);
+        clickElement(selectorOringen);
+        typeInto(selectorOringen, "Medellin");
+        clickElement(selectorOringen);
+        clickElement(selectorOringen);
         clearText(selectorOringen);
         selectorOringen.sendKeys(destino,Keys.ARROW_DOWN);
         selectorOringen.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         clickcondelay(SelectorConfirmacionOrigen);
+        clearText(selectorOringen);
     }
 
     public void filtrarDestino ( String destino){
         clickElement(selectorDestino);
-        typeInto(selectorOringen, "Medellin");
+        typeInto(selectorOringen, "Pereira");
         clickElement (selectorDestino);
         clearText(selectorDestino);
-        clickcondelay(cualquierFecha);
-        clickcondelay(buscar);
         selectorDestino.sendKeys(destino,Keys.ARROW_DOWN);
         selectorDestino.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         clickcondelay(SelectorConfirmacionDestino);
+        clickcondelay(cualquierFecha);
+        clickcondelay(buscar);
+        scroll(280);
+        clickcondelay(botonContinuar);
+        clickElement(aumentarPersona);
+        clickElement(aumentarPersona1);
+        scroll(280);
+        clickcondelay(continuarAlformulario);
+      //  clickElement(nombreAdulto1);
+        typeWithDelay(nombreAdulto1,"Nevar",150);
+        scroll(280);
+        typeWithDelay(apellidoAdulto1,"Osp",150);
+        typeWithDelay(numeroDocumento,"187326",150);
+        scroll(280);
+        typeWithDelay(nombreAdulto2,"gelica",150);
+        typeWithDelay(apellidoAdulto2,"Mendeuz",150);
+        scroll(280);
+        typeWithDelay(numeroDocumento2,"171833",150);
+        typeWithDelay(nombreAdulto3,"Emiliay",150);
+        typeWithDelay(apellidoAdulto3,"Martineez",150);
+        scroll(280);
+        typeWithDelay(numeroDocumento3,"188363",150);
+        scroll(600);
+        typeWithDelay(email,"ospina_828@hotmail.com",150);
+        typeWithDelay(confirmarEmail,"ospina_828@hotmail.com",150);
+        scroll(400);
+        typeWithDelay(numeroTelefono,"347575",150);
+        scroll(280);
+        clickcondelay(pse);
+        scroll(400);
+        clickcondelay(comboBox);
+        scroll(600);
+        typeWithDelay(nombrePersonaPago,"Josre",150);
+        typeWithDelay(apellidoPersonaPago,"Lopelz",150);
+        typeWithDelay(cedulaPersonaPago,"56470866",150);
+        scroll(600);
+        typeWithDelay(direccionPersonaPago,"Mz 27",150);
+        scroll(800);
+        clickcondelay(aceptaTerminos);
+        clickcondelay(comprarSinAistencia);
+
+
+    }
+
+    public String verMensajeFinal(){
+        return getTextoFinal(mensajeFinal);
     }
     public void seleccionarPasajero() {
         scroll(280);
