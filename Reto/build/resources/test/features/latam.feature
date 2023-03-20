@@ -11,4 +11,4 @@ Feature: viaje exitoso
     |cantidad|navegador|salida        |llegada        |categoria          |
     |3       |"chrome" |"bogota, bog" |"cali, clo"    |"economy premium"  |
     |4       |"edge"   |"cali, clo"   |"bogota, bog"  |"economy"          |
-    |3       |"chrome" |"cali, clo"   |"medellin, mde"|"economy"          |
+    |5       |"chrome" |"cali, clo"   |"medellin, mde"|"economy"          |
