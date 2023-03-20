@@ -25,7 +25,7 @@ public class CommonActionsOnPages {
     }
 
     protected void explicitWaitInit (WebElement webElement){
-        typeWait = new WebDriverWait(driver, Duration.ofSeconds( THIRTY_SECONDS.getValue()));
+        typeWait = new WebDriverWait(driver, Duration.ofSeconds( ONE_MINUT.getValue()));
         typeWait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
@@ -81,6 +81,7 @@ public class CommonActionsOnPages {
     }
 
     protected  String getText (WebElement webElement){
+        explicitWaitInit(webElement);
         return webElement.getText();
     }
 

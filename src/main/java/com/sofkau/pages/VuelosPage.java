@@ -103,7 +103,7 @@ public class VuelosPage extends CommonActionsOnPages{
     private WebElement ultimoboton;
 
     @CacheLookup
-    @FindBy(xpath = "(//span[@class='eva-3-h3 cash-title'])[1]")
+    @FindBy(xpath = "/html/body/div[2]/div/div/app/debt-published/div/div[3]/debt-published-info/div/div/div[1]/div/span[2]")
     private WebElement mensajeFinal;
 
 
@@ -143,28 +143,28 @@ public class VuelosPage extends CommonActionsOnPages{
     }
 
     public void fillForm(){
-        typeWithDelay(fieldNombrePass1, "Jonatan", 150);
-        typeWithDelay(fieldApellidoPass1, "Vega", 150);
-        typeWithDelay(idNumber1, "116224915", 150);
+        typeWithDelay(fieldNombrePass1, "David", 150);
+        typeWithDelay(fieldApellidoPass1, "Bruselas", 150);
+        typeWithDelay(idNumber1, "54545411", 150);
         scrollDown(400);
         typeWithDelay(fieldNombrePass2, "Andrea", 150);
-        typeWithDelay(fieldApellidoPass2, "Martinez", 150);
-        typeWithDelay(idNumber2, "154227835", 150);
+        typeWithDelay(fieldApellidoPass2, "Paila", 150);
+        typeWithDelay(idNumber2, "65001224", 150);
         scrollDown(600);
-        typeWithDelay(email1, "hola15@gmail.com", 150);
-        typeWithDelay(email2, "hola15@gmail.com", 150);
+        typeWithDelay(email1, "paila@gmail.com", 150);
+        typeWithDelay(email2, "paila@gmail.com", 150);
         scrollDown(400);
-        typeWithDelay(numeroTel, "3202500212", 150);
+        typeWithDelay(numeroTel, "3142925641", 150);
         scrollDown(400);
         click(selectorPSE);
         scrollDown(400);
         selectCombobox(comboBox);
         scrollDown(600);
         typeWithDelay(campoNombre, "Andrea", 150);
-        typeWithDelay(campoApellido, "Martinez", 150);
+        typeWithDelay(campoApellido, "Paila", 150);
         scrollDown(100);
-        typeWithDelay(campoCedula, "154227835", 150);
-        typeWithDelay(campodireccion, "cra 60# 100a-20", 150);
+        typeWithDelay(campoCedula, "65001224", 150);
+        typeWithDelay(campodireccion, "cra 65# 10a-20", 150);
         scrollDown(950);
         clickwithDelay(terminosCondiciones);
         clickwithDelay(ultimoboton);

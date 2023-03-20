@@ -32,7 +32,9 @@ public class VuelosStepDefinition extends WebUI {
         vuelosPage.fillForm();
     }
     @Then("debe observar que el vuelo se ha reservado exitosamente")
-    public void debeObservarQueElVueloSeHaReservadoExitosamente() throws InterruptedException {
-        System.out.println("¡Genial! Ahora solo te falta realizar el pago.");
+    public void debeObservarQueElVueloSeHaReservadoExitosamente() {
+        VuelosPage vuelosPage = new VuelosPage(super.driver);
+        String actual = vuelosPage.getTextfinal();
+        Assertions.assertEquals("\u00A1Genial! Ahora solo te falta realizar el pago.", actual);
     }
 }
