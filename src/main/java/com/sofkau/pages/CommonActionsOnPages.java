@@ -80,6 +80,10 @@ public class CommonActionsOnPages {
         webElement.sendKeys(Keys.ENTER, Keys.ARROW_DOWN, Keys.ENTER);
     }
 
+    protected  String getText (WebElement webElement){
+        return webElement.getText();
+    }
+
     protected void typeWithDelay(WebElement webElement, String text, int delayInMilliseconds) {
         explicitWaitInit(webElement);
         webElement.click();

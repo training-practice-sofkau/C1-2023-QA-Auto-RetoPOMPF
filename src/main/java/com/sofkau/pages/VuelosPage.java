@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class VuelosPage extends CommonActionsOnPages{
 
@@ -101,6 +102,10 @@ public class VuelosPage extends CommonActionsOnPages{
     @FindBy(xpath = "//a[@class='chk-button -lg -secondary eva-3-btn']/em[text()='Comprar sin asistencia']")
     private WebElement ultimoboton;
 
+    @CacheLookup
+    @FindBy(xpath = "(//span[@class='eva-3-h3 cash-title'])[1]")
+    private WebElement mensajeFinal;
+
 
 
     /////////////////
@@ -138,30 +143,34 @@ public class VuelosPage extends CommonActionsOnPages{
     }
 
     public void fillForm(){
-        typeWithDelay(fieldNombrePass1, "Jose", 150);
-        typeWithDelay(fieldApellidoPass1, "Nunez", 150);
-        typeWithDelay(idNumber1, "105223946", 150);
+        typeWithDelay(fieldNombrePass1, "Jonatan", 150);
+        typeWithDelay(fieldApellidoPass1, "Vega", 150);
+        typeWithDelay(idNumber1, "116224915", 150);
         scrollDown(400);
-        typeWithDelay(fieldNombrePass2, "Brayan", 150);
-        typeWithDelay(fieldApellidoPass2, "Nunez", 150);
-        typeWithDelay(idNumber2, "105223945", 150);
+        typeWithDelay(fieldNombrePass2, "Andrea", 150);
+        typeWithDelay(fieldApellidoPass2, "Martinez", 150);
+        typeWithDelay(idNumber2, "154227835", 150);
         scrollDown(600);
-        typeWithDelay(email1, "jose@gmail.com", 150);
-        typeWithDelay(email2, "jose@gmail.com", 150);
+        typeWithDelay(email1, "hola15@gmail.com", 150);
+        typeWithDelay(email2, "hola15@gmail.com", 150);
         scrollDown(400);
-        typeWithDelay(numeroTel, "3212540612", 150);
+        typeWithDelay(numeroTel, "3202500212", 150);
         scrollDown(400);
         click(selectorPSE);
         scrollDown(400);
         selectCombobox(comboBox);
         scrollDown(600);
-        typeWithDelay(campoNombre, "Jose", 150);
-        typeWithDelay(campoApellido, "nunez", 150);
+        typeWithDelay(campoNombre, "Andrea", 150);
+        typeWithDelay(campoApellido, "Martinez", 150);
         scrollDown(100);
-        typeWithDelay(campoCedula, "105223946", 150);
-        typeWithDelay(campodireccion, "calle 140# 140a-30", 150);
+        typeWithDelay(campoCedula, "154227835", 150);
+        typeWithDelay(campodireccion, "cra 60# 100a-20", 150);
         scrollDown(950);
         clickwithDelay(terminosCondiciones);
         clickwithDelay(ultimoboton);
+    }
+
+    public String getTextfinal(){
+        return getText(mensajeFinal);
     }
 }

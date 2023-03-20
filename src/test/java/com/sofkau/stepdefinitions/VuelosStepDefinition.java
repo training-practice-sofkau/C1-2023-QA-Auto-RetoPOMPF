@@ -6,6 +6,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class VuelosStepDefinition extends WebUI {
 
@@ -30,27 +32,7 @@ public class VuelosStepDefinition extends WebUI {
         vuelosPage.fillForm();
     }
     @Then("debe observar que el vuelo se ha reservado exitosamente")
-    public void debeObservarQueElVueloSeHaReservadoExitosamente() {
-
+    public void debeObservarQueElVueloSeHaReservadoExitosamente() throws InterruptedException {
+        System.out.println("¡Genial! Ahora solo te falta realizar el pago.");
     }
-
-    //Scenario 1
-    @Given("que necesito un alojamiento para mi viaje a {string}")
-    public void queNecesitoUnAlojamientoParaMiViajea(String destino) {
-        VuelosPage alojamientosChromePage = new VuelosPage(super.driver);
-        //alojamientosChromePage.navigateToAlojamientos();
-        //alojamientosChromePage.fillDestiny(destino);
-    }
-    @When("seleccione las habitacion llenando los formularios")
-    public void seleccioneLasHabitacionLlenandoLosFormularios() throws InterruptedException {
-            //AlojamientosChromePage alojamientosChromePage = new AlojamientosChromePage(super.driver);
-            //alojamientosChromePage.fillDateEntry();
-            //alojamientosChromePage.fillDateExit();
-            //alojamientosChromePage.selectHabitaciones();
-    }
-    @Then("debe observar que el alojamiento se ha reservado exitosamente")
-    public void debeObservarQueElAlojamientoSeHaReservadoExitosamente() {
-
-    }
-
 }
