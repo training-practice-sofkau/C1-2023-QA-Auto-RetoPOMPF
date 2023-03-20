@@ -10,7 +10,7 @@ public class MarvelHistoriaIdSetup {
     
     protected static String baseURL = "https://gateway.marvel.com/v1/public/";
     protected static int storiesID = 19947;
-    protected static String endpoint = "stories/" + storiesID ;
+    protected static String endpoint = "stories/" ;
     protected static String apiKey = "34718a01c54fead5741ff10ad28dd1a4";
     protected static String timestamp = "1";
     protected static String hash = "0f5c4a5cf213cfa76f10a126813546bf";

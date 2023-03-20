@@ -50,6 +50,7 @@ public class StepVueloPorNavegadores extends WebUI {
             Assertions.assertEquals("\u00A1Geniall! Ahora solo te falta realizar el pago. ", actual);
             LOGGER.info("Actual: " + actual);
 
+
         }catch (AssertionError e){
             LOGGER.error( e.getMessage());
         }catch (Exception e){
