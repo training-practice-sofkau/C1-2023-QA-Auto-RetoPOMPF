@@ -5,12 +5,17 @@ import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.log4j.LogManager;
 import org.junit.Assert;
-
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
+
 public class StepAsesoria extends WebUI {
     public static Logger LOGGER = Logger.getLogger(String.valueOf(StepAsesoria.class));
+
+    private static final org.apache.log4j.Logger logger = LogManager.getLogger(StepAsesoria.class);
+
     private CommonActionPages commonActionOnPages;
 
     @Given("que estoy en la pagina principal de zonafit")
@@ -40,6 +45,7 @@ public class StepAsesoria extends WebUI {
     public void seleccionoLaOpcionNecesitasAsesoria() {
         try {
             commonActionOnPages.clickBotonNecesitasAsesoria();
+            Thread.sleep(10000);
             LOGGER.info("Se ha hecho clic en la opción 'Necesitas asesoría'");
         } catch (Exception e) {
             LOGGER.warning("Ha ocurrido un error al hacer clic en la opción 'Necesitas asesoría': " + e.getMessage());
@@ -49,26 +55,20 @@ public class StepAsesoria extends WebUI {
 
     @Then("soy redirigido a la pagina para la asesoria")
     public void soyRedirigidoALaPaginaParaLaAsesoria() {
-        try {
-            // Obtener las handles de todas las pestañas abiertas por el navegador
-            Set<String> handles = driver.getWindowHandles();
-            // Cambiar el foco del driver a la pestaña de la asesoría
-            for (String handle : handles) {
-                if (!handle.equals(driver.getWindowHandle())) {
-                    driver.switchTo().window(handle);
-                }
-            }
-            // Comparar la URL actual con la URL esperada
-            String expectedUrl = "https://api.whatsapp.com/send/?phone=573054596254&text=Hola+Zona+FIT%2C+quisiera+informaci%C3%B3n+sobre+Tenemos+la+" +
-                    "mayor+variedad+en+nutrici%C3%B3n+deportiva+-+Zona+FIT+Colombia&type=phone_number&app_absent=0";
-            String actualUrl = driver.getCurrentUrl();
-            Assert.assertEquals(expectedUrl, actualUrl, "La página actual no es la de asesoría");
-            LOGGER.info("La página actual es la de asesoría");
-        } catch (Exception e) {
-            LOGGER.warning("Ha ocurrido un error al verificar la redirección a la página de asesoría: " + e.getMessage());
-            Assert.fail("No se ha redirigido correctamente a la página de asesoría");
-        }
+        // Obtener una lista de las pestañas abiertas en el navegador
+        List<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
+        // Cambiar a la última pestaña de la lista (la que se abrió al hacer clic en el botón "Necesitas asesoría")
+        driver.switchTo().window(windowHandles.get(windowHandles.size() - 1));
+        // Obtener la URL actual
+        String currentUrl = driver.getCurrentUrl();
+        // Verificar que la URL actual sea igual a la URL de la página de WhatsApp
+        String expectedUrl = "https://api.whatsapp.com/send/?phone=573054596254&text=Hola+Zona+FIT%2C+quisiera+informaci%C3%B3n+sobre+Tenemos+la+mayor+variedad+en+nutrici%C3%B3n+deportiva+-+Zona+FIT+Colombia&type=phone_number&app_absent=0";
+        logger.info("Valor esperado: " + expectedUrl);
+        logger.info("Valor actual: " + currentUrl);
+        Assert.assertEquals(currentUrl, expectedUrl);
     }
+
+
 }
 
 

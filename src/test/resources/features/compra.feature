@@ -9,7 +9,7 @@ Feature: Compra de productos zona fit
   @Scenario1
   Scenario: medio de pago baloto
     When el cliente selecciona los producto y ingresa la informacion requerida dejando como medio de pago la opcion baloto
-    Then el sistema debera muestra un mensaje de la confirmacion de la compra
+    Then el sistema debera mostrar la pagina de confirmacion de compra
 
   @Scenario2
   Scenario: medio de pago efecty

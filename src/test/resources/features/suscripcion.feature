@@ -1,5 +1,7 @@
 Feature: Suscripcion
 
+
+
   Background:
     Given que estoy en la pagina principal de zonafit.co
 
@@ -11,4 +13,4 @@ Feature: Suscripcion
       | email             | name | phone     |
       | jaDSDSm@gmail.com | Jam  | 123456789 |
       | JuSDSDS@gmail.com | Ju   | 987654321 |
-      | ADSDSrl@gmail.com    | Arl  | 555555555 |
+      | ADSDSrl@gmail.com | Arl  | 555555555 |

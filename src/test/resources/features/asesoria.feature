@@ -1,5 +1,6 @@
-Feature: Acceso a chat de asesoría en linea
 
+Feature: Acceso a chat de asesoría en linea
+  // -*- coding: utf-8 -*-
   Scenario: acceder al chat de asesoria desde el boton flotante
     Given que estoy en la pagina principal de zonafit
     When doy clic en el boton flotante ubicado en la parte derecha de la pantalla

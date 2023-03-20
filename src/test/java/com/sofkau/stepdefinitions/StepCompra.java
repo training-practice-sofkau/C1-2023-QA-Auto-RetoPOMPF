@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import static com.sofkau.pages.FlujoCompra.validacionPedido;
 
@@ -44,13 +45,12 @@ public class StepCompra extends WebUI {
             LOGGER.warn(exception.getMessage(), exception);
         }
     }
-
-    @Then("el sistema debera mostrar el numero del pedido")
-    public void elSistemaDeberaMostrarElNumeroDelPedido() {
+    @Then("el sistema debera mostrar la pagina de confirmacion de compra")
+    public void elSistemaDeberaMostrarLaPaginaDeConfirmacionDeCompra() {
+        String expectedText = "Pedido Completado";
         try {
-            Assertions.assertEquals("RECAUDO ZONA FIT – BALOTO",
-                    By.xpath("(//h2[text()='CONVENIO RECAUDO ZONA FIT – BALOTO'])"),
-                    "El texto es diferente");
+            WebElement heading = driver.findElement(By.xpath("(//h2[text()='" + expectedText + "'])"));
+            Assertions.assertEquals(expectedText, heading.getText(), "El texto es diferente. Valor esperado: " + expectedText + " Valor actual: " + heading.getText());
             LOGGER.info("La aserción se cumple correctamente");
             validacionPedido();
         } catch (Exception exception) {
@@ -59,7 +59,6 @@ public class StepCompra extends WebUI {
             LOGGER.warn(exception.getMessage(), exception);
             LOGGER.error("La aserción no se cumple correctamente");
         }
-
     }
 
     //Funciones

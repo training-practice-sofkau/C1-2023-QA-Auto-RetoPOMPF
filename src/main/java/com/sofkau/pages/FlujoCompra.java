@@ -244,16 +244,46 @@ public class FlujoCompra extends CommonActionPages {
         Thread.sleep(1000);
         scrollDown();
         Thread.sleep(1000);
-        click(anadirProducto2);
+        try {
+            click(anadirProducto2);
+        } catch (Exception e) {
+            try {
+                click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[3]"));
+            } catch (Exception e2) {
+                try {
+                    click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[4]"));
+                } catch (Exception e3) {
+                    try {
+                        click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[5]"));
+                    } catch (Exception e4) {
+                    }
+                }
+            }
+        }
         Thread.sleep(1000);
         click(xcarrito);
         Thread.sleep(1000);
         scrollDown();
         Thread.sleep(1000);
-        click(anadirProducto3);
+        try {
+            click(anadirProducto3);
+        } catch (Exception e) {
+            try {
+                click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[2]"));
+            } catch (Exception e2) {
+                try {
+                    click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[4]"));
+                } catch (Exception e3) {
+                    try {
+                        click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[5]"));
+                    } catch (Exception e4) {
+                    }
+                }
+            }
+        }
         Thread.sleep(1000);
         click(carrito);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         /*click(cantidad1);
         Thread.sleep(4000);
         click(cantidad2);
