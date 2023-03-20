@@ -28,7 +28,7 @@ public class WebUI {
                 ChromeOptions co = new ChromeOptions();
                 co.addArguments("--remote-allow-origins=*");
                 co.addArguments("--incognito");
-               // co.addArguments("--disable-notifications");
+                co.addArguments("--disable-notifications");
                 co.addArguments("--disable-popup-blocking");
                 driver = new ChromeDriver(co);
                 break;
@@ -36,8 +36,7 @@ public class WebUI {
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions eo = new EdgeOptions();
                 eo.addArguments("--remote-allow-origins=*");
-                eo.addArguments("--disable-notifications");
-                eo.addArguments("--disable-popup-blocking");
+                eo.addArguments("-inprivate");
                 driver = new EdgeDriver(eo);
                 break;
             default:

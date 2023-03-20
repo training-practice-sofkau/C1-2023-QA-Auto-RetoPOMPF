@@ -84,19 +84,19 @@ public class CompraVueloPage extends CommonActionOnPages {
     private WebElement paisResidencia;
 
     @CacheLookup
-    @FindBy (xpath = "//input[@id='traveler-identification-number-0']")
+    @FindBy(xpath = "//input[@id='traveler-identification-number-0']")
     private WebElement inputIdentificacion;
 
     @CacheLookup
-    @FindBy (xpath = "//*[@id=\"formData.contactData.mainEmailAddress\"]")
+    @FindBy(xpath = "//*[@id=\"formData.contactData.mainEmailAddress\"]")
     private WebElement inputCorreo;
 
     @CacheLookup
-    @FindBy (xpath = "//*[@id=\"formData.contactData.repeatMainEmailAddress\"]")
+    @FindBy(xpath = "//*[@id=\"formData.contactData.repeatMainEmailAddress\"]")
     private WebElement inputconfirmarCorreo;
 
     @CacheLookup
-    @FindBy (xpath ="    //*[@id=\"formData.contactData.phones[0].number\"]")
+    @FindBy(xpath = "    //*[@id=\"formData.contactData.phones[0].number\"]")
     private WebElement inputNumeroCelular;
 
     @CacheLookup
@@ -130,20 +130,20 @@ public class CompraVueloPage extends CommonActionOnPages {
     @FindBy(xpath = "//*[@id=\"card-selector-0\"]/option[3]")
     private WebElement comboBox;
 
+    @CacheLookup
+    @FindBy(xpath = "/html/body/div[2]/div/div/app/debt-published/div/div[3]/debt-published-info/div/div/div[1]/div/span[2]")
+    private WebElement mensajeConfirmacionCompra;
 
 
     public CompraVueloPage(WebDriver driver, InformacionFormularioComprarVuelo persona) {
         super(driver);
-        this.persona = persona ;
-
+        this.persona = persona;
         PageFactory.initElements(driver, this);
-
     }
 
     public void FillMandatoryFields() {
         click(selectorBotonVuelos);
     }
-
 
     public void filtrarOrigen(String origen) {
         click(selectorOringen);
@@ -154,10 +154,11 @@ public class CompraVueloPage extends CommonActionOnPages {
         typeWithDelay(selectorOringen, persona.getOringen(), 30);
     }
 
+
     public void filtrarDestino(String destino) {
         click(selectorDestino);
         typeWithDelay(selectorDestino, persona.getDestino(), 30);
-        click (selectorDestino);
+        click(selectorDestino);
         selectorDestino.sendKeys(destino, Keys.ARROW_DOWN);
         selectorDestino.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         clickcondelay(SelectorConfirmacionDestino);
@@ -203,12 +204,10 @@ public class CompraVueloPage extends CommonActionOnPages {
         typeInto(inputCorreo, persona.getCorreo());
         typeInto(inputconfirmarCorreo, persona.getCorreo());
         typeInto(inputNumeroCelular, persona.getNumeroCelular());
-
         scroll(200);
         clickcondelay(selectorPagoSuRed);
         scroll(200);
         clickcondelay(comboBox);
-
         typeInto(inputNombreFactura, persona.getNombreFactura());
         typeInto(inputApellidoFactura, persona.getApellidoFactura());
         typeInto(inputIdentificacionFactura, persona.getNumeroDeIdentificacionFactura());
@@ -219,7 +218,7 @@ public class CompraVueloPage extends CommonActionOnPages {
         clickcondelay(botonPagarSinAsistencia);
     }
 
-
-
-
+    public String CompararTexto() {
+        return getText(mensajeConfirmacionCompra);
+    }
 }

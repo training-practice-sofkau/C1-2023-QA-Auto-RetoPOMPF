@@ -44,9 +44,7 @@ public class CommonActionOnPages {
         webElement.click();
     }
 
-    protected String getText(WebElement webElement) {
-        return webElement.getText();
-    }
+
 
     protected void esperaExplicita(WebElement webElement) {
         typeWait = new WebDriverWait(driver, Duration.ofSeconds(CUARENTA.getValor()));
@@ -61,6 +59,14 @@ public class CommonActionOnPages {
         esperaExplicita(webElement);
         webElement.click();
     }
+
+
+      protected String getText (WebElement webElement) {
+        esperaExplicita(webElement);
+        return webElement.getText();
+    }
+
+
 
 
     public void scroll(int scrollAmount) {
@@ -82,6 +88,8 @@ public class CommonActionOnPages {
             }
         }
     }
+
+
 
 
     protected void typeInto(By locator, String value) {

@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
+import org.junit.jupiter.api.Assertions;
 
 public class CompraVueloStepDefinition extends WebUI {
     private InformacionFormularioComprarVuelo persona;
@@ -35,22 +36,23 @@ public class CompraVueloStepDefinition extends WebUI {
 
     @Then("debe observar que el vuelo se ha reservado exitosamente")
     public void debeObservarQueElVueloSeHaReservadoExitosamente() {
-
+        CompraVueloPage compraVueloPage = new CompraVueloPage(super.driver,generarInfo());
+        String textoEnPantalla= compraVueloPage.CompararTexto();
+        Assertions.assertEquals("\u00A1Genial! Ahora solo te falta realizar el pago.",textoEnPantalla);
 
     }
 
 
     private InformacionFormularioComprarVuelo generarInfo() {
         persona = new InformacionFormularioComprarVuelo();
-        persona.setNombre("Juan");
-        persona.setApellido("Perez");
-        persona.setCorreo("correofalsoSanti@gmail.com");
-        persona.setNumeroCelular("123456789");
-        persona.setNumeroDocumento("123456789111");
-        persona.setNumeroDocumento("1234567891111");
+        persona.setNombre("Juanito");
+        persona.setApellido("Pereza");
+        persona.setCorreo("correofalsosaaSanti@gmail.com");
+        persona.setNumeroCelular("12345aa6789");
+        persona.setNumeroDocumento("12345678911122");
         persona.setNombreFactura("Factura");
         persona.setApellidoFactura("FacturApe");
-        persona.setNumeroDeIdentificacionFactura("123456789111");
+        persona.setNumeroDeIdentificacionFactura("12345678911122");
         persona.setDireccionFactura("Calle falsa 123");
         persona.setOringen("Bogota");
         persona.setDestino("Medellin");
