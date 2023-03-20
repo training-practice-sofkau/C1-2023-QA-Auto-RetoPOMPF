@@ -1,12 +1,19 @@
 package com.sofka.pages;
 
+import com.sofka.models.ClienteZonaFit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LocatorPage extends CommonActionOnPage{
     private WebDriver webDriver;
+    private ClienteZonaFit clienteZonaFit;
 
     private final By product = By.xpath("(//div[@class='add-to-cart-button'])[1]");
     private final By flavor = By.xpath("//div[contains(@class,'ux-swatch tooltip')]/span[contains(@style,'--swatch-color: #ddb471')]");
@@ -16,8 +23,8 @@ public class LocatorPage extends CommonActionOnPage{
     private final By flavor2 = By.xpath("//div[contains(@class,'ux-swatch tooltip')]/span[contains(@style,'--swatch-color: #8224e3')]");
     private final By buttonShopping2 = By.xpath("//div[contains(@class,'single_variation_wrap')]//button[contains(@class,'wp-element-button')]");
 
-    private final By product3 = By.xpath("(//div[@class='add-to-cart-button'])[4]");
-    private final By flavor3 = By.xpath("//div[contains(@class,'swatch-strawberry')]/span[contains(@style,'--swatch-color: #ff3a3a')]");
+    private final By product3 = By.xpath("(//div[@class='add-to-cart-button'])[3]");
+    private final By flavor3 = By.xpath("(//div[contains(@class,'ux-swatch tooltip')]/span[contains(@style,'--swatch-color: #ffff00')])[1]");
     private final By buttonShopping3 = By.xpath("//div[contains(@class,'single_variation_wrap')]//button[contains(@class,'wp-element-button')]");
 
     private final By buttonViewShopping = By.xpath("//p[contains(@class,'woocommerce-mini-cart__buttons')]//a[contains(@class,'button wc-forward')]");
@@ -41,18 +48,14 @@ public class LocatorPage extends CommonActionOnPage{
     private final By termCondition = By.id("terms");
     private final By order = By.id("place_order");
 
-    //private final By successMessage = By.xpath("//p[contains(@class,'success-color')]");
+    private final By messagge = By.xpath("(//main[@id='main']//div[contains(@class,'large-7')]//h2)[1]");
 
-    public LocatorPage(WebDriver driver){
+    public LocatorPage(WebDriver driver, ClienteZonaFit clienteZonaFit){
         super(driver);
+        this.clienteZonaFit = clienteZonaFit;
         PageFactory.initElements(driver, this);
     }
-/**
-    public String getSuccessMessage(){
-        System.out.println(driver.findElement(successMessage).getText());
-        return driver.findElement(SuccessMessage).getText();
-    }
-*/
+
     public void navegar() {
         scrollP();
         click(product);
@@ -73,33 +76,30 @@ public class LocatorPage extends CommonActionOnPage{
 
         click(buttonViewShopping);
         click(addProduct1);
-        click(addProduct2);
-        click(addProduct2);
-        click(addProduct3);
         click(finishBuy);
     }
 
     public void formBill(){
         clearTextP(documentNumber);
-        typeIntoP(documentNumber, "43019745");
+        typeIntoP(documentNumber, clienteZonaFit.getDocumentNumber());
         clearTextP(email);
-        typeIntoP(email, "ganoxo6430@huvacliq.com");
+        typeIntoP(email, clienteZonaFit.getEmail());
         clearTextP(name);
-        typeIntoP(name, "Gabriela");
+        typeIntoP(name, clienteZonaFit.getName());
         clearTextP(lastName);
-        typeIntoP(lastName, "Montoya");
+        typeIntoP(lastName, clienteZonaFit.getLastName());
         clickP(comboDepartmet);
-        typeIntoP(department, "Caldas");
+        typeIntoP(department, clienteZonaFit.getDepartment());
         pressEnterP(department);
         clickP(comboCity);
-        typeIntoP(city, "Manizales");
+        typeIntoP(city, clienteZonaFit.getCity());
         pressEnterP(city);
         clearTextP(address);
-        typeIntoP(address, "Cll 46 B#78-12");
+        typeIntoP(address, clienteZonaFit.getAddress());
         clearTextP(address2);
-        typeIntoP(address2, "Casa 2do piso");
+        typeIntoP(address2, clienteZonaFit.getAddress2());
         clearTextP(phoneNumber);
-        typeIntoP(phoneNumber, "3116547101");
+        typeIntoP(phoneNumber, clienteZonaFit.getPhoneNumber());
         scrollButton();
         pressSpaceP(termCondition);
         pressSpaceP(order);
@@ -107,27 +107,32 @@ public class LocatorPage extends CommonActionOnPage{
 
     public void formBillFailed(){
         clearTextP(documentNumber);
-        typeIntoP(documentNumber, "43019745");
+        typeIntoP(documentNumber, clienteZonaFit.getDocumentNumber());
         clearTextP(email);
-        typeIntoP(email, "ganoxo6430");
+        typeIntoP(email, clienteZonaFit.getEmail());
         clearTextP(name);
-        typeIntoP(name, "Gabriela");
+        typeIntoP(name, clienteZonaFit.getName());
         clearTextP(lastName);
-        typeIntoP(lastName, "Montoya");
+        typeIntoP(lastName, clienteZonaFit.getLastName());
         clickP(comboDepartmet);
-        typeIntoP(department, "Caldas");
+        typeIntoP(department, clienteZonaFit.getDepartment());
         pressEnterP(department);
         clickP(comboCity);
-        typeIntoP(city, "Manizales");
+        typeIntoP(city, clienteZonaFit.getCity());
         pressEnterP(city);
         clearTextP(address);
-        typeIntoP(address, "Cll 46 B#78-12");
+        typeIntoP(address, clienteZonaFit.getAddress());
         clearTextP(address2);
-        typeIntoP(address2, "Casa 2do piso");
+        typeIntoP(address2, clienteZonaFit.getAddress2());
         clearTextP(phoneNumber);
-        typeIntoP(phoneNumber, "3116547101");
+        typeIntoP(phoneNumber, clienteZonaFit.getPhoneNumber());
         scrollButton();
         pressSpaceP(termCondition);
         pressSpaceP(order);
+    }
+
+    public WebElement getConfirmationMessage (WebDriver webDriver){
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(15));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(messagge));
     }
 }

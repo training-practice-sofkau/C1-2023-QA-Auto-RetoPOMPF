@@ -10,6 +10,6 @@ Feature: Formulario suscripcion a newsletter
 
   @NewsletterExitoso
   Scenario: Suscribirse al newsletter exitosamente
-    Given que el cliente esta en la pagina principal con "edge"
+    Given que el cliente esta en la pagina principal con "navegador"
     When ingresa credenciales posteriormente envia el formulario
     Then mostrara un mensaje de confirmacion indicando que ha sido suscrito al newsletter

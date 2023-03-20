@@ -1,5 +1,6 @@
 package com.sofka.stepdefinitions;
 
+import com.sofka.pages.InicioSesionPage;
 import com.sofka.pages.NewsLetterPage;
 import com.sofka.setup.WebUI;
 import io.cucumber.java.en.Given;
@@ -44,6 +45,17 @@ public class NewsLetterDefinition extends WebUI {
 
     @Then("mostrara un mensaje de confirmacion indicando que ha sido suscrito al newsletter")
     public void mostraraUnMensajeDeConfirmacionIndicandoQueHaSidoSuscritoAlNewsletter() {
-
+        try{
+            String expectedMessage = "Gracias por suscribirse!";
+            newsLetterPage = new NewsLetterPage(driver);
+            String currentMessage = newsLetterPage.getConfirmationMessage(driver).getText().trim().substring(1);
+            Assertions.assertEquals(expectedMessage, currentMessage);
+            LOGGER.info(expectedMessage);
+            LOGGER.info(currentMessage);
+        } catch (Exception exception) {
+            quiteDriver();
+            Assertions.fail(exception.getMessage(),exception);
+            LOGGER.warn(exception.getMessage(),exception);
+        }
     }
 }

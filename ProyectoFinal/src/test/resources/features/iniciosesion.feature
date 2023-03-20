@@ -10,7 +10,7 @@ Feature: Inicio de sesion
 
   @LoginExitoso
   Scenario Outline: Iniciar sesion en la pagina de ZonaFit
-    Given que el cliente se encuentra en la pagina de inicio de sesion de ZonaFit con "edge"
+    Given que el cliente se encuentra en la pagina de inicio de sesion de ZonaFit con "navegador"
     When ingresa el correo electronico <correo> y la contrasena <contrasena> posteriormente presiona el boton Iniciar Sesion
     Then mostrara su informacion personal y realizar compras
 

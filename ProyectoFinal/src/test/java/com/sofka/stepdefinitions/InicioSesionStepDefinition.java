@@ -1,6 +1,8 @@
 package com.sofka.stepdefinitions;
 
+import com.sofka.pages.CompraCategoriaPage;
 import com.sofka.pages.InicioSesionPage;
+import com.sofka.pages.LocatorPage;
 import com.sofka.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -32,12 +34,27 @@ public class InicioSesionStepDefinition extends WebUI {
 
     @When("ingresa el correo electronico {string} y la contrasena {string} posteriormente presiona el boton Iniciar Sesion")
     public void ingresaElCorreoElectronicoYLaContrasenaPosteriormentePresionaElBotonIniciarSesion(String correo, String contrasena) {
-        inicioSesionPage = new InicioSesionPage(driver);
-        inicioSesionPage.formLogin(correo, contrasena);
+        try{
+            inicioSesionPage = new InicioSesionPage(driver);
+            inicioSesionPage.formLogin(correo, contrasena);
+        }catch (Exception exception){
+            quiteDriver();
+            Assertions.fail(exception.getMessage(), exception);
+            LOGGER.warn(exception.getMessage(), exception);
+        }
     }
 
     @Then("mostrara su informacion personal y realizar compras")
     public void mostraraSuInformacionPersonalYRealizarCompras() {
-
+        try{
+            String expectedMessage = "Hola";
+            inicioSesionPage = new InicioSesionPage(driver);
+            String currentMessage = inicioSesionPage.getConfirmationMessage(driver).getText().trim();
+            Assertions.assertEquals(expectedMessage, currentMessage);
+        } catch (Exception exception) {
+            quiteDriver();
+            Assertions.fail(exception.getMessage(),exception);
+            LOGGER.warn(exception.getMessage(),exception);
+        }
     }
 }

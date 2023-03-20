@@ -9,7 +9,7 @@ Feature: Comprar en linea
   */
 
   Background:
-    Given que el cliente se encuentra en la pagina principal con "edge"
+    Given que el cliente se encuentra en la pagina principal con "chrome"
     When agrega varios productos al carrito
 
   @CompraExitosa

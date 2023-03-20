@@ -33,8 +33,14 @@ public class CompraCategoriaStepDefinition extends WebUI {
 
     @When("agrega varios productos al carrito de la categoria de aminoacidos")
     public void agregaVariosProductosAlCarritoDeLaCategoriaDeAminoacidos() {
-        compraCategoriaPage = new CompraCategoriaPage(driver);
-        compraCategoriaPage.addProducts();
+        try{
+            compraCategoriaPage = new CompraCategoriaPage(driver);
+            compraCategoriaPage.addProducts();
+        }catch (Exception exception){
+            quiteDriver();
+            Assertions.fail(exception.getMessage(), exception);
+            LOGGER.warn(exception.getMessage(), exception);
+        }
     }
 
     @When("completa los datos del formulario de facturacion")

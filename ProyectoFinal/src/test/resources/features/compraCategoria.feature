@@ -10,7 +10,7 @@ Feature: Productos de la categoria aminoacidos
 
   @CategoriaAminoacidos
   Scenario: Compra exitosa con productos de la categoria de aminoacidos
-    Given que el cliente esta en la pagina de inicio con "edge"
+    Given que el cliente esta en la pagina de inicio con "navegador"
     When agrega varios productos al carrito de la categoria de aminoacidos
     And completa los datos del formulario de facturacion
     Then mostrara un mensaje de confirmacion de la compra
