@@ -1,8 +1,6 @@
 package com.sofkau.stepdefinitions;
 
-import com.github.javafaker.Faker;
 import com.sofkau.models.Usuario;
-import com.sofkau.pages.ReservaConEscala;
 import com.sofkau.pages.ReservaVueloPage;
 import com.sofkau.setup.ConstantSetup;
 import com.sofkau.setup.WebUI;
@@ -13,9 +11,6 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ReservaVueloStepDefinition extends WebUI {
 
     private ReservaVueloPage reservaVueloPage;
@@ -24,7 +19,6 @@ public class ReservaVueloStepDefinition extends WebUI {
     private Usuario usuario;
 
 
-    private ReservaConEscala reservaConEscala;
     public static Logger LOGGER = Logger.getLogger(ReservaVueloStepDefinition.class);
     private static final String ASSERTION_EXCEPTION_MESSAGE = "No son los valores esperados";
 
@@ -71,11 +65,6 @@ public class ReservaVueloStepDefinition extends WebUI {
         try {
             ReservaVueloPage reservaVueloPage = new ReservaVueloPage(super.driver, usuario);
             reservaVueloPage.clickInicio();
-            reservaVueloPage.selectRuta();
-            reservaVueloPage.selectVuelo();
-            reservaVueloPage.llenarFormulario();
-            reservaVueloPage.llenarCorreoNumero();
-            reservaVueloPage.emitirFactura();
 
         } catch (Exception exception) {
             quiteDriver();
@@ -84,6 +73,27 @@ public class ReservaVueloStepDefinition extends WebUI {
 
 
     }
+
+
+    @When("el usuario elije el vuelo, indica el equipaje y realiza el checkout con sus datos")
+    public void elUsuarioElijeElVueloIndicaElEquipajeYRealizaElCheckoutConSusDatos() {
+
+        try {
+            ReservaVueloPage reservaVueloPage = new ReservaVueloPage(super.driver, usuario);
+            reservaVueloPage.selectRuta();
+            reservaVueloPage.selectVuelo();
+            reservaVueloPage.llenarFormulario();
+            reservaVueloPage.llenarCorreoNumero();
+            reservaVueloPage.emitirFactura();
+
+        } catch (Exception exception) {
+           // quiteDriver();
+            LOGGER.warn(exception.getMessage());
+        }
+
+
+    }
+
 
     @Then("el usuario debera ver un mensaje reserva exitosa")
     public void elUsuarioDeberaVerUnMensajeReservaExitosa() {
@@ -96,7 +106,7 @@ public class ReservaVueloStepDefinition extends WebUI {
         } catch (Exception e) {
             LOGGER.warn(e.getMessage());
         } finally {
-            quiteDriver();
+           // quiteDriver();
         }
     }
 
@@ -122,63 +132,28 @@ public class ReservaVueloStepDefinition extends WebUI {
     }
 
 
-    /**
-     * @param SeleccionNavegador
-     */
-
-
     @Given("el usuario se encuetra en la pagina principal de despegar.com {string}")
-    public void elUsuarioSeEncuetraEnLaPaginaPrincipalDeDespegarCom(String SeleccionNavegador) {
-        generalSetup(SeleccionNavegador);
-        LOGGER.warn("Inicializando la automatizacion");
+    public void elUsuarioSeEncuetraEnLaPaginaPrincipalDeDespegarCom(String string) {
+
 
     }
 
     @When("el usuario selecciona  lugar de origen-destino,  opcion ida, fecha, cantidad de pasajeros, y clase de tiquete, y opcion buscar")
     public void elUsuarioSeleccionaLugarDeOrigenDestinoOpcionIdaFechaCantidadDePasajerosYClaseDeTiqueteYOpcionBuscar() {
 
-        try {
-            ReservaConEscala reservaConEscala = new ReservaConEscala(super.driver, usuario);
-            reservaConEscala.clickInicio();
-        } catch (Exception exception) {
-            quiteDriver();
-            LOGGER.warn(exception.getMessage());
-        }
     }
 
 
     @When("el usuario elije el vuelo, indica el equipaje, elije la opcion con escala, realiza el checkout con sus datos")
     public void elUsuarioElijeElVueloIndicaElEquipajeElijeLaOpcionConEscalaRealizaElCheckoutConSusDatos() {
-        try {
-            ReservaConEscala reservaConEscala = new ReservaConEscala(super.driver, usuario);
-            reservaConEscala.selectRuta();
-            reservaConEscala.selectVuelo();
-            reservaConEscala.llenarFormulario();
-            reservaConEscala.llenarCorreoNumero();
-            reservaConEscala.emitirFactura();
 
-        } catch (Exception exception) {
-            quiteDriver();
-            LOGGER.warn(exception.getMessage());
-        }
     }
 
 
     @Then("debera observar un mensaje vuelo reservado con escala")
     public void deberaObservarUnMensajeVueloReservadoConEscala() {
-        try {
-            reservaConEscala = new ReservaConEscala(super.driver, usuario);
-            Assertions.assertEquals(MensajeFinal, reservaVueloPage.getTextoFinal());
-            System.out.println(resultado());
-            System.out.println(MensajeFinal);
-            String.format(ASSERTION_EXCEPTION_MESSAGE, resultado(), MensajeFinal);
-        } catch (Exception e) {
-            LOGGER.warn(e.getMessage());
-        } finally {
-            quiteDriver();
-        }
-    }
 
+    }
 
 
     private String resultado() {

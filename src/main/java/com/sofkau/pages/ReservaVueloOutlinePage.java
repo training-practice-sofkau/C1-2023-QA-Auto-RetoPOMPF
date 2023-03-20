@@ -16,7 +16,7 @@ public class ReservaVueloOutlinePage extends CommonActionOnPages {
 
     private Usuario usuario;
 
-    public static Logger LOGGER = Logger.getLogger(ReservaVueloPage.class);
+    public static Logger LOGGER = Logger.getLogger(ReservaVueloOutlinePage.class);
 
     private static final String ASSERTION_EXCEPTION_MESSAGE = "No son los valores esperados";
 

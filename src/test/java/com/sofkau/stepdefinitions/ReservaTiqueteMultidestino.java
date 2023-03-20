@@ -1,9 +1,7 @@
 package com.sofkau.stepdefinitions;
 
 import com.sofkau.models.Usuario;
-import com.sofkau.pages.ReservaConEscala;
 import com.sofkau.pages.ReservaTiqueteMultidestinoPage;
-import com.sofkau.pages.ReservaVueloPage;
 import com.sofkau.setup.ConstantSetup;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
@@ -19,7 +17,6 @@ public class ReservaTiqueteMultidestino extends WebUI {
     private Usuario usuario;
 
 
-    private ReservaConEscala reservaConEscala;
     public static Logger LOGGER = Logger.getLogger(ReservaVueloStepDefinition.class);
     private static final String ASSERTION_EXCEPTION_MESSAGE = "No son los valores esperados";
 

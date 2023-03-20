@@ -20,13 +20,13 @@ Feature: Busqueda y reservar de un tiquete en despegar
 
   @ViajeCali
   Scenario: Destino Medellin exitosa de un vuelo
-    Given el usuario esta en la pagina principal de despegar.com opcion vuelos "Edge"
+    Given el usuario esta en la pagina principal de despegar.com opcion vuelos "Chrome"
     When  el usuario elije un lugar de origen-destino,  opcion ida, fecha, cantidad de pasajeros, y clase de tiquete, y opcion buscar
     And el usuario elije el vuelo, indica el equipaje y realiza el checkout con sus datos
     Then el usuario debera ver un mensaje reserva exitosa
 
   @ReservaFallida
-  Scenario: Reserva fallida de un vuelo primera clase
+  Scenario: Reserva fallida de un vuelo primera clase 
     Given el usuario se encuentra en la pagina principal  de despegar
     When el usuario elije el lugar de origen-destino,  opcion ida, fecha, cantidad de pasajeros, y clase de tiquete, y opcion buscar
     Then el usuario debera observar un mensaje no hay vuelos disponibles

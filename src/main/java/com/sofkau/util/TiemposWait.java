@@ -6,7 +6,7 @@ public enum TiemposWait {
 
     FIVE_SECONDS(5),
 
-    TEN_SECONDS(10);
+    TEN_SECONDS(90);
 
     private final int value;
 

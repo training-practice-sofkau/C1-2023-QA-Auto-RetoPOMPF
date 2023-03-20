@@ -1,10 +1,7 @@
 package com.sofkau.stepdefinitions;
 
-import com.github.javafaker.Faker;
 import com.sofkau.models.Usuario;
-import com.sofkau.pages.ReservaConEscala;
 import com.sofkau.pages.ReservaVueloOutlinePage;
-import com.sofkau.pages.ReservaVueloPage;
 import com.sofkau.setup.ConstantSetup;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
@@ -12,8 +9,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class ReservaVueloOutlineStepDefinition extends WebUI {
 

@@ -62,7 +62,6 @@ public class ReservaVueloPage extends CommonActionOnPages {
     @FindBy(xpath = "(//span[contains(@class, 'item-text')])[1]")
     private WebElement SelectorConfirmacionDestino;
 
-
     @CacheLookup
     @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[3]/button/em")
     private WebElement botonBuscar;
@@ -159,7 +158,7 @@ public class ReservaVueloPage extends CommonActionOnPages {
 
 
     @CacheLookup
-    @FindBy(xpath = "//span[@class='eva-3-h3 cash-title' and text()='¡Genial! Ahora solo te falta realizar el pago.']")
+    @FindBy(xpath = "(//span[@class='eva-3-h3 cash-title' and text()='¡Genial! Ahora solo te falta realizar el pago.'])[1]")
     private WebElement mensajeFinal;
 
 
@@ -237,10 +236,11 @@ public class ReservaVueloPage extends CommonActionOnPages {
             inputOrigen.sendKeys("MEDELLIN", Keys.ARROW_DOWN);
             inputOrigen.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
             clickcondelay(SelectorConfirmacionOrigen);
-            click(inputDestino);
+            clickcondelay(inputDestino);
             clearText(inputDestino);
             inputDestino.sendKeys("CALI", Keys.ARROW_DOWN);
-            clickcondelay(SelectorConfirmacionDestino);
+            inputDestino.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
+            click(SelectorConfirmacionDestino);
             clickcondelay(cualquierFecha);
             clickcondelay(botonBuscar);
         } catch (Exception exception) {

@@ -8,15 +8,7 @@ import static io.cucumber.messages.internal.com.google.common.base.StandardSyste
 
 public class MarvelSerieIdSetup {
 
-    protected static String protocol = "https";
-    protected static String host = "gateway.marvel.com";
-    protected static String version = "v1";
-    protected static String resourceType = "public";
-    protected static String resourceSubtype = "series";
-    protected static String id;
-    protected static String apiKey = "d8b3a1f603bf809767844474bdeb690d";
-    protected static long timestamp = 1;
-    protected static String hash = "a9c04f1195b3321b57632e6421449c29";
+
     public static final String APIMARVEL_URL="https://gateway.marvel.com/";
 
     protected void generalSetup() {
