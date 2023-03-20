@@ -146,7 +146,7 @@ public class FPageVuelosChrome extends CommonActionOnPage {
     private WebElement celular;
 
     @CacheLookup
-    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
+    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[6]")
     private WebElement medioDePago;
 
     @CacheLookup
@@ -215,14 +215,11 @@ public class FPageVuelosChrome extends CommonActionOnPage {
 
     //Métodos
     public void closeLogin() throws InterruptedException {
-        Thread.sleep(200);
-        cLogin.click();
+         cLogin.click();
     }
     public void selectedPage() throws InterruptedException  {
         selectorBotonVuelos.click();
     }
-
-
 
     public void filtrarOrigen ( String destino){
         click(selectorOringen);
@@ -250,7 +247,7 @@ public class FPageVuelosChrome extends CommonActionOnPage {
         clickcondelay(incrementarAdulto);
         clickcondelay(incrementarAdulto);
         clickcondelay(botonContinuar);
-        Thread.sleep(12000);
+
     }
     Pasajero pasajero1 = generarPasajero();
     public void formularioPasajero1() {

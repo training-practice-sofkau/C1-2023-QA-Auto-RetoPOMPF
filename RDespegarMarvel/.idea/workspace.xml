@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86ce7a3d-c940-4a65-909b-1829727406e9" name="Changes" comment="Ajuste Scenario outline para historias por id" />
+    <list default="true" id="86ce7a3d-c940-4a65-909b-1829727406e9" name="Changes" comment="Actualizzación proyecto">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89a5c39f7c3437941a4dadddd7e65bc869b22acb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bb38049bb439acf44cde2041ad8da370233ddde1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sofkau/page/FPageVuelosChrome.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sofkau/page/FPageVuelosChrome.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepHistorias.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepHistorias.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepIdHisoria.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepIdHisoria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepVuelo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepVuelo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepVueloPorNavegadores.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepVueloPorNavegadores.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sofkau/page/FPageVuelosChrome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofkau/page/FPageVuelosChrome.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +34,11 @@
     </projectState>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="ScenarioServicio" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -27,12 +50,12 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "last_opened_file_path": "D:/10. SOFKAU/2. Programación/4. Automatización/RetoAutomatización/C1-2023-QA-Auto-RetoPOMPF/RDespegarMarvel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/10. SOFKAU/2. Programación/4. Automatización/RetoAutomatización/C1-2023-QA-Auto-RetoPOMPF/RDespegarMarvel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\10. SOFKAU\2. Programación\4. Automatización\RetoAutomatización\C1-2023-QA-Auto-RetoPOMPF\RDespegarMarvel\src\main\java\com\sofkau" />
@@ -45,7 +68,7 @@
       <recent name="com.sofkau.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Historia">
+  <component name="RunManager" selected="JUnit.Navegadores">
     <configuration name="Historia" type="JUnit" factoryName="JUnit">
       <module name="RDespegarMarvel.test" />
       <option name="PACKAGE_NAME" value="com.sofkau.runners" />
@@ -135,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679329242128</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Actualizzación proyecto">
+      <created>1679330536278</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679330536278</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,6 +183,7 @@
     <MESSAGE value="Ajuste test" />
     <MESSAGE value="Ajuste Scenario de servicio Historias por id." />
     <MESSAGE value="Ajuste Scenario outline para historias por id" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajuste Scenario outline para historias por id" />
+    <MESSAGE value="Actualizzación proyecto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Actualizzación proyecto" />
   </component>
 </project>
