@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class FPageVuelosChrome extends CommonActionOnPage {
 
@@ -190,6 +191,14 @@ public class FPageVuelosChrome extends CommonActionOnPage {
     @FindBy(xpath = "//*[@id=\"checkout-content\"]/div[1]/buy-container/buy-component/div/div/div/div[1]/button-component/div/a/em[1]")
     private WebElement botonComprar;
 
+    @CacheLookup
+    @FindBy(xpath = "/html/body/div[2]/div/div/app/debt-published/div/div[2]/div/span[2]")
+    private WebElement confirmacionCompra;
+
+    @CacheLookup
+    @FindBy(xpath = "/html/body/div[2]/div/div/app/debt-published/div/div[3]/debt-published-info/div/div/div[1]/div/span[2]")
+    private WebElement mensajeFinal;
+
 
 
     //Método para generar pasajeros
@@ -213,17 +222,7 @@ public class FPageVuelosChrome extends CommonActionOnPage {
     public void selectedPage() throws InterruptedException  {
         selectorBotonVuelos.click();
     }
-    public void fillAssistanceForm(){
-        menu.click();
-        calendario.click();
-        scroll(250);
-        clickwithDelay(fechaInicio);
-        fechaInicio.click();
-        pressEnter(inicio);
-        System.out.println("hola mundo");
-        getText(fechaInicio);
-        System.out.println(getText(fechaInicio));
-    }
+
 
 
     public void filtrarOrigen ( String destino){
@@ -323,9 +322,16 @@ public class FPageVuelosChrome extends CommonActionOnPage {
     public void confirmarPago(){
         scroll(800);
         clickcondelay(sTerminosYCondiciones);
-        //clickcondelay(botonComprar);
+        clickcondelay(botonComprar);
 
     }
+
+    public String CompararTexto() {
+        return getText(mensajeFinal);
+    }
+
+
+
 
 
 }

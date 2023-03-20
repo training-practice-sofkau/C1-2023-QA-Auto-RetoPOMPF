@@ -48,10 +48,10 @@ public class CommonActionOnPage {
     public void pressTab(By locator){
         driver.findElement(locator).sendKeys(Keys.TAB);
     }
-    protected  String getText (WebElement webElement){
+    protected String getText (WebElement webElement) {
+        esperaExplicita(webElement);
         return webElement.getText();
-
-}
+    }
     public void scrollTo(WebElement element){
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView();", element);
@@ -84,5 +84,8 @@ public class CommonActionOnPage {
     protected void esperaImplicita (WebElement webElement){
         typeWait.until(ExpectedConditions.visibilityOf(webElement));
     }
+
+
+
 
 }

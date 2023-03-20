@@ -4,7 +4,7 @@ public enum LimitTime {
     ONE_SECONDS(1),
     FIVE_SECONDS(5),
     TEN_SECONDS(10),
-    THIRTY_SECONDS(60);
+    THIRTY_SECONDS(80);
 
     private final int value;
 

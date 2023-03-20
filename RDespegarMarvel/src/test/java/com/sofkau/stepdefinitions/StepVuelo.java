@@ -1,14 +1,20 @@
 package com.sofkau.stepdefinitions;
 
+import com.ibm.icu.text.CaseMap;
 import com.sofkau.page.FPageVuelosChrome;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class StepVuelo extends WebUI {
        public static Logger LOGGER = Logger.getLogger(String.valueOf(StepVuelo.class));
+
     @Given("que debo llevar tres personas en el viaje por {string}")
     public void que_debo_llevar_tres_personas_en_el_viaje_por(String navegador) {
         generalSetUp(navegador);
@@ -37,6 +43,12 @@ public class StepVuelo extends WebUI {
     }
     @Then("debera mostrar un mensaje de reserva exitosa")
     public void deberaMostrarUnMensajeDeReservaExitosa() {
+
+            FPageVuelosChrome pageVuelos = new FPageVuelosChrome(super.driver);
+            String actual = pageVuelos.CompararTexto();
+            Assertions.assertEquals("\u00A1Genial! Ahora solo te falta realizar el pago.", actual);
+            LOGGER.info("Prueba realizada con exito" + actual);
+
 
     }
 }
