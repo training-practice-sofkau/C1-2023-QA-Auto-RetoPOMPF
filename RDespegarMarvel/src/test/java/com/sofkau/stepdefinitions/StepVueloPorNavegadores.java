@@ -47,11 +47,11 @@ public class StepVueloPorNavegadores extends WebUI {
 
         try{
             String actual = pageVuelos.CompararTexto();
-            Assertions.assertEquals("\u00A1Genial! Ahora solo te falta realizar el pago. ", actual);
-            LOGGER.info("Prueba realizada con exito: " + actual);
+            Assertions.assertEquals("\u00A1Geniall! Ahora solo te falta realizar el pago. ", actual);
+            LOGGER.info("Actual: " + actual);
 
         }catch (AssertionError e){
-            LOGGER.error("Prueba fallida: " + e.getMessage());
+            LOGGER.error( e.getMessage());
         }catch (Exception e){
             LOGGER.error("Error en la ejecucion de la prueba: " + e.getMessage());
             throw e;
