@@ -1,6 +1,7 @@
 # RETO POM+PG y Rest-Assurred
 
 Plan de prueba: https://onedrive.live.com/edit.aspx?resid=1EB52AF2D9CBC362!15086&ithint=file%2cxlsx&authkey=!AL4KD5BuUchvIQY
+
 Matriz de riesgos: https://onedrive.live.com/edit.aspx?resid=1EB52AF2D9CBC362!15090&ithint=file%2cxlsx&authkey=!AIYP3G5MVL6XOik
 
 Ejercicio 1 
