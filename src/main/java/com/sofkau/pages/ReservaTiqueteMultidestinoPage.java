@@ -16,7 +16,7 @@ public class ReservaTiqueteMultidestinoPage extends CommonActionOnPages {
 
     private Usuario usuario;
 
-    public static Logger LOGGER = Logger.getLogger(ReservaVueloPage.class);
+    public static Logger LOGGER = Logger.getLogger(ReservaTiqueteMultidestinoPage.class);
 
     private static final String ASSERTION_EXCEPTION_MESSAGE = "No son los valores esperados";
 
@@ -63,9 +63,8 @@ public class ReservaTiqueteMultidestinoPage extends CommonActionOnPages {
 
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id=\"clusters\"]/span/div/span/cluster/div/div/div[2]/fare/span/span/div/buy-button/a/div/em")
+    @FindBy(xpath = "//*[@id=\"clusters\"]/span[1]/div/span/cluster/div/div/div[2]/fare/span/span/div/buy-button/a")
     private WebElement Elegirvuelo1;
-
 
     @CacheLookup
     @FindBy(xpath = "//*[@id=\"passengers-modal-position\"]/passengers-modal/div/div[2]/span[4]/span/a/em")
@@ -201,28 +200,30 @@ public class ReservaTiqueteMultidestinoPage extends CommonActionOnPages {
 
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-assistance\"]/div/div/div/div/div[3]/div[2]/div/div[1]/div/div/div/div/input")
+    @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[1]/div[1]/div[2]/div/div[1]/div/div/div/div/input")
     public static WebElement fechaPartida;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-assistance\"]/div/div/div/div/div[3]/div[2]/div/div[2]/div/div/div/div/input")
-    public static WebElement fechaLlegada;
+    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/div[1]/div[3]/div[24]/div")
+    public static WebElement fechaDia1;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/a[2]")
-    public static WebElement correrDerecha;
+    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/div[2]/div[3]/div[6]/div")
+    public static WebElement fechaDia2;
+
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/div[1]/div[3]/div[10]")
-    public static WebElement fechaInicial;
+    @FindBy(xpath = "//*[@id=\"upselling-popup-position\"]/upselling-popup/div/div[3]/div/div/button")
+    private WebElement continuarBotonMaleta;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/div[1]/div[3]/div[12]")
-    public static WebElement fechaFinal;
+    @FindBy(xpath = "//input[@id='rt-sbox5']")
+    private WebElement idayVuelta;
+
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[2]/div[1]/button")
-    public static WebElement botonFecha;
+    @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[1]/div[1]/div[4]/div/div/div/label")
+    public static WebElement cliclPasajero;
 
 
     @CacheLookup
@@ -244,7 +245,7 @@ public class ReservaTiqueteMultidestinoPage extends CommonActionOnPages {
             click(ventana);
             waitGeneral(vuelos);
             click(vuelos);
-            click(soloIda);
+            click(idayVuelta);
 
         } catch (Exception exception) {
             LOGGER.warn(exception.getMessage());
@@ -262,9 +263,15 @@ public class ReservaTiqueteMultidestinoPage extends CommonActionOnPages {
             clickcondelay(SelectorConfirmacionOrigen);
             click(inputDestino);
             clearText(inputDestino);
-            typeWithDelay(inputDestino, "MADRID", 350);
+            typeWithDelay(inputDestino, "CALI", 350);
             clickcondelay(SelectorConfirmacionDestino);
-            clickcondelay(cualquierFecha);
+            // Modifique esto clickcondelay(cualquierFecha);
+            //scroll(100);
+            clickcondelay(fechaPartida);
+            clickcondelay(fechaDia1);
+            //clickcondelay(fechaLlegada);
+            clickcondelay(fechaDia2);
+
             clickcondelay(botonBuscar);
         } catch (Exception exception) {
             LOGGER.warn(exception.getMessage());
@@ -273,15 +280,15 @@ public class ReservaTiqueteMultidestinoPage extends CommonActionOnPages {
 
 
     public void selectVuelo() {
-        scroll(700);
-        clickcondelay(escala);
+        scroll(500);
         clickcondelay(Elegirvuelo1);
+        scroll(200);
         clickcondelay(adultoMas);
         clickcondelay(adultoMas);
-        clickcondelay(botonContinuar);
+        //clickcondelay(botonContinuar);
+        clickcondelay(continuarBotonMaleta);
         scroll(500);
     }
-
 
     public void llenarFormulario() {
 
@@ -365,13 +372,6 @@ public class ReservaTiqueteMultidestinoPage extends CommonActionOnPages {
         clickcondelay(comprarSinAistencia);
 
     }
-    //click(banco);
-
-    //  for(int i = 0; i < 3; i++) {
-    //banco.sendKeys(Keys.ARROW_DOWN);
-    //}
-
-    //enter(banco);
 
 
     public String getTextoFinal() {

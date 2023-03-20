@@ -14,7 +14,7 @@ Feature: Busqueda y reservar de un tiquete multidestino en despegar
 
   @ReservaMultidestinoBogotaPereiraBogota
   Scenario: Reserva exitosa de armar tu tiquete
-    Given el usuario esta en la pagina principal  de despegar opcion vuelo
+    Given el usuario esta en la pagina principal  de despegar opcion vuelo "Chrome"
     When el usuario elije multidestino, el tramo uno de origen-destino, fecha salida, cantidad de pasajeros , tramo dos opcion destino, fecha salida,   opcion buscar, clase de tiquete
     And el usuario toma el vuelo, indica el equipaje y realiza el checkout con sus datos
     Then el usuario debera observar una reserva del vuelo

@@ -312,7 +312,6 @@ public class ReservaVueloPage extends CommonActionOnPages {
 
         scroll(500);
         typeInto(email, correoNumero.getCorreo());
-        //typeInto(email, "joer@gmail.com");
         typeInto(emailConfirmar, correoNumero.getCorreo());
         typeInto(numeroCelular, correoNumero.getNumero());
         scroll(200);
@@ -328,7 +327,6 @@ public class ReservaVueloPage extends CommonActionOnPages {
         Usuario usuarioFactura = llenarJavaFaker();
         scroll(500);
         clickcondelay(personaNatural);
-
         typeInto(nombreFactura, usuarioFactura.getNombre());
         scroll(200);
         typeInto(apellidoFactura, usuarioFactura.getApellido());
