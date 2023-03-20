@@ -10,16 +10,28 @@ import static com.google.common.base.StandardSystemProperty.USER_DIR;
 import static com.sofkau.util.Log4j.LOG4J_PROPERTIES_FILE_PATH;
 
 public class WebUI {
-    private static final String ZONA_FIT_URL = "https://zonafit.co//";
+    protected static final String ZONA_FIT_URL = "https://zonafit.co//";
     protected static WebDriver driver;
-
-    private void setUpWebdriver(){
+    protected void setUpWebdriver(){
+        setUplog4j();
         WebDriverManager.chromedriver().setup();
         ChromeOptions co = new ChromeOptions();
         co.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(co);
+        driver.get(ZONA_FIT_URL);
+        maximize();
+
     }
-    private void setUpWebdriverUrl(){
+    protected void setUpWebdriver1(){
+        setUplog4j();
+        WebDriverManager.edgedriver().setup();
+        EdgeOptions eo = new EdgeOptions();
+        eo.addArguments("--remote-allow-origins=*");
+        driver = new EdgeDriver(eo);
+        driver.get(ZONA_FIT_URL);
+        maximize();
+    }
+    protected void setUpWebdriverUrl(){
         driver.get(ZONA_FIT_URL);
         maximize();
     }

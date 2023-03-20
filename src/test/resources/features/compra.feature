@@ -3,6 +3,7 @@ Feature: Compra de productos ZonaFit
   necesito comprar comprar productos en el outlet
   con el fin de hacer uso de ellos
 
+
   Background:
     Given Que el cliente se encuentra en la pagina principal de la tienda zonafit
 

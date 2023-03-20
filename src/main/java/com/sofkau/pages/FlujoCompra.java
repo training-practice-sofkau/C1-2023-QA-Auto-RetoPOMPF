@@ -138,9 +138,12 @@ public class FlujoCompra extends CommonActionPages {
         click(anadirProducto1);
         Thread.sleep(1800);
         click(xcarrito);
-        scroll(2000);
+        scroll(2080);
+        Thread.sleep(1800);
+// añadirProducto2
         try {
-            click(anadirProducto2);
+            WebElement producto2 = driver.findElement(By.xpath("//button[@class='single_add_to_cart_button button alt wp-element-button' and contains(text(), 'Greens Powder · 100 gr Universal')]"));
+            // si encuentra el producto, no lo selecciona y continua con la ejecución del script
         } catch (Exception e) {
             try {
                 click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[3]"));
@@ -158,8 +161,11 @@ public class FlujoCompra extends CommonActionPages {
         Thread.sleep(1800);
         click(xcarrito);
         scrollDown();
+
+// añadirProducto3
         try {
-            click(anadirProducto3);
+            WebElement producto3 = driver.findElement(By.xpath("//button[@class='single_add_to_cart_button button alt wp-element-button' and contains(text(), 'Greens Powder · 100 gr Universal')]"));
+            // si encuentra el producto, no lo selecciona y continua con la ejecución del script
         } catch (Exception e) {
             try {
                 click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[2]"));
@@ -177,8 +183,8 @@ public class FlujoCompra extends CommonActionPages {
         Thread.sleep(1800);
         click(carrito);
         click(cantidad1);
-        click(cantidad2);
-        click(cantidad3);
+        //click(cantidad2);
+        //click(cantidad3);
         Thread.sleep(6000);
         //click(finalizarCompra);
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
@@ -187,7 +193,7 @@ public class FlujoCompra extends CommonActionPages {
 
         explicitWaitTime(numeroDeDocumento);
         borrarTexto(numeroDeDocumento);
-        typeInto(numeroDeDocumento, formModel.getCedula());
+        //typeInto(numeroDeDocumento, formModel.getCedula());
         explicitWaitTime(e_Mail);
         borrarTexto(e_Mail);
         typeInto(e_Mail, formModel.getEmail());
