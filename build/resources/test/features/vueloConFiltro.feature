@@ -5,9 +5,9 @@ Feature: Filtrar vuelos segun necesidad
 
   Scenario: Filtrar vuelos para que se adapte a mis preferencias
     Given que estoy en la pagina de Despegar.com.co
-    When busco y selecciono un vuelo de ida y vuelta desde Pereira a Santa Marta para tres adultos
+    When busco y selecciono un vuelo de ida y vuelta para tres adultos
     And Selecciono la aerolinea con la que deseo viajar
-    Then los resultados de búsqueda muestran opciones de vuelo que cumplen con mis criterios de aerolínea
+    Then los resultados de busqueda muestran opciones de vuelo que cumplen con mis criterios de aerolinea
 
   Scenario: Encontrar vuelos con cualquier fecha más barata
     Given que estoy en la pagina de Despegar.com.co

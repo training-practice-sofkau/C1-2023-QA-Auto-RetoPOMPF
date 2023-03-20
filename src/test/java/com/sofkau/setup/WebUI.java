@@ -1,15 +1,16 @@
 package com.sofkau.setup;
 
-import static com.google.common.base.StandardSystemProperty.USER_DIR;
-import static com.sofkau.setup.ConstantSetup.APIMARVEL_URL;
-import static com.sofkau.setup.ConstantSetup.DESPEGAR_URL;
-import static com.sofkau.util.Log4j.LOG4J_PROPERTIES_FILE_PATH;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+
+import static com.google.common.base.StandardSystemProperty.USER_DIR;
+import static com.sofkau.setup.ConstantSetup.DESPEGAR_URL;
+import static com.sofkau.util.Log4j.LOG4J_PROPERTIES_FILE_PATH;
 
 public class WebUI {
 
@@ -20,14 +21,29 @@ public class WebUI {
 
     protected WebDriver driver;
 
-    private void setUpWebdriver(){
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions co = new ChromeOptions();
-        co.addArguments("--remote-allow-origins=*");
-        co.addArguments("--incognito");
-        // co.addArguments("--disable-notifications");
-        co.addArguments("--disable-popup-blocking");
-        driver = new ChromeDriver(co);
+    private void setUpWebdriver(String navegadorSelect){
+
+        switch (navegadorSelect) {
+            case "Chrome":
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions co = new ChromeOptions();
+                co.addArguments("--remote-allow-origins=*");
+                co.addArguments("--incognito");
+                co.addArguments("--disable-popup-blocking");
+                driver = new ChromeDriver(co);
+                break;
+            case "Edge":
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions edgeOptionso = new EdgeOptions();
+                edgeOptionso.addArguments("--remote-allow-origins=*");
+                edgeOptionso.addArguments("--inprivate");
+                edgeOptionso.addArguments("--disable-popup-blocking");
+                driver = new EdgeDriver(edgeOptionso);
+                break;
+            default:
+                System.out.println("  Este navegador no existe :C");
+
+        }
     }
 
     private void setUpWebdriverUrl(){
@@ -35,26 +51,15 @@ public class WebUI {
         maximize();
     }
 
-    private void setUpWebdriverUrlMarvel(){
-        driver.get(APIMARVEL_URL);
-        maximize();
-    }
 
-
-    protected void generalSetUp(){
+    protected void generalSetUp(String navegadorSelect){
         setUplog4j();
-        setUpWebdriver();
-        setUpWebdriverUrl();
-    }
-
-    protected void generalSetUpMarvel(){
-        setUplog4j();
-        setUpWebdriver();
+        setUpWebdriver(navegadorSelect);
         setUpWebdriverUrl();
     }
 
 
-    private void  quiteDriver(){
+    protected void  quiteDriver(){
         driver.quit();
     }
 

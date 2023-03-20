@@ -6,7 +6,9 @@ public enum Espera {
     CINCO(5),
     DIEZ(10),
     TREINTA (30),
-    CUARENTA (40);
+    CUARENTA (40),
+    SESENTA (60),
+    CIENTOVEINTE (120);
 
 
     private int valor;

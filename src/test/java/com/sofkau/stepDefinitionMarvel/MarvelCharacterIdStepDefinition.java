@@ -1,29 +1,27 @@
 package com.sofkau.stepDefinitionMarvel;
 
-import com.sofkau.setup.WebUI;
+import com.sofkau.setup.WebUIMarvel;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Assertions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static com.sofkau.setup.ConstantSetup.APIMARVEL_URL;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class MarvelCharacterIdStepDefinition extends WebUI {
+public class MarvelCharacterIdStepDefinition extends WebUIMarvel {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(MarvelCharacterIdStepDefinition.class);
+    public static final Logger LOGGER = Logger.getLogger(MarvelCharacterIdStepDefinition.class);
 
 
-    String id = "1011334";
     String apiKey = "519be85584de1be15e49e05d435430d6";
     String ts = "1";
     String hash = "5dcd64e699b6a72f1e891978296aba78";
@@ -35,29 +33,24 @@ public class MarvelCharacterIdStepDefinition extends WebUI {
 
     @Given("que tengo acceso a la API de Marvel con credencial valida")
     public void queTengoAccesoALaAPIDeMarvelConCredencialValida() {
-        generalSetUpMarvel();
+        LOGGER.info("Iniciando la automatizacion...");
 
     }
-    @When("realizo una solicitud de la informacion")
-    public void realizoUnaSolicitudDeLaInformacion() {
+    @When("realizo una solicitud de la informacion con {string} del personaje")
+    public void realizoUnaSolicitudDeLaInformacionConDelPersonaje(String id) {
+
         RestAssured.baseURI = APIMARVEL_URL;
 
         response = given()
-                .log()
-                .all()
                 .when()
                 .get("/v1/public/characters/" + id + "?apikey=" + apiKey + "&ts=" + ts + "&hash=" + hash);
     }
 
-    @Then("deberia recibir una respuesta con informacion detallada del personaje")
-    public void deberiaRecibirUnaRespuestaConInformacionDetalladaDelPersonaje() {
-        response.then()
-                .log()
-                .all();
-
+    @Then("deberia recibir una respuesta con informacion detallada del personaje del {string} solicitado")
+    public void deberiaRecibirUnaRespuestaConInformacionDetalladaDelPersonajeDelSolicitado(String id) throws ParseException {
+        response.then();
 
         try {
-            LOGGER.info("Test Pasó");
             responseBody = (JSONObject) parser.parse(response.getBody().asString());
             Assertions.assertEquals( 200, response.getStatusCode());
             assertEquals("Ok", responseBody.get("status"));
@@ -65,15 +58,16 @@ public class MarvelCharacterIdStepDefinition extends WebUI {
             assertEquals(1L, dataObject.get("total"));
             JSONArray resultsArray = (JSONArray) dataObject.get("results");
             JSONObject characterObject = (JSONObject) resultsArray.get(0);
-            assertEquals(1011334L, characterObject.get("id"));
-            assertEquals("3-D Man", characterObject.get("name"));
-            assertEquals("", characterObject.get("description"));
-            JSONObject thumbnailObject = (JSONObject) characterObject.get("thumbnail");
-            assertEquals("http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784", thumbnailObject.get("path"));
-            assertEquals("jpg", thumbnailObject.get("extension"));
-        } catch (ParseException e) {
-            LOGGER.warn(e.getMessage());
-            Assertions.fail();
+            assertEquals(id, characterObject.get("id").toString());
+
+            LOGGER.info("La prueba paso exitosamente.");
+
+        } catch (AssertionError e) {
+            LOGGER.error("La prueba fallo. Error: " + e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            LOGGER.error("Ocurrio un error durante la ejecución de la prueba. Error: " + e.getMessage());
+            throw e;
         }
     }
 
