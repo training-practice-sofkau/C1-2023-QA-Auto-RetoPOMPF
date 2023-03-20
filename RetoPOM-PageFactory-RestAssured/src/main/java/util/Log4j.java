@@ -1,8 +1,8 @@
 package util;
 
 public enum Log4j {
-    LOG4J_PROPERTIES_FILE_PATH("/src/test/resources/log4j.properties"),
-    LOAD("");
+    LOG4J_PROPERTIES_FILE_PATH("/src/test/resources/log4j.properties");
+
 
     private final String value;
 

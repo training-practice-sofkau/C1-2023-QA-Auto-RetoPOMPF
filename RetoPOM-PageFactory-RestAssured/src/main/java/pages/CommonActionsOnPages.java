@@ -1,20 +1,16 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 
 public class CommonActionsOnPages {
     private WebDriver driver;
-    protected WebDriverWait wait;
+    private WebDriverWait wait;
 
 
     public CommonActionsOnPages(WebDriver driver) {
@@ -26,13 +22,25 @@ public class CommonActionsOnPages {
         driver.findElement(locator).sendKeys(value);
     }
 
+    protected void typeInto(WebElement webElement, String value) {
+        webElement.sendKeys(value);
+    }
+
     protected void clearText(By locator) {
+
         driver.findElement(locator).clear();
     }
 
     protected void click(By locator) {
+
         driver.findElement(locator).click();
     }
+
+    protected void click(WebElement webElement) {
+        //wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
+        webElement.click();
+    }
+
     protected void doubleClick(By locator) {
         driver.findElement(locator).click();
         driver.findElement(locator).click();
@@ -48,6 +56,10 @@ public class CommonActionsOnPages {
 
     protected void pressTab(By locator) {
         driver.findElement(locator).sendKeys(Keys.TAB);
+    }
+    protected void pressTab(WebElement webelement) {
+
+        webelement.sendKeys(Keys.TAB);
     }
 
     protected void typeIntoAndEsc(By locator, String value) {
@@ -67,17 +79,22 @@ public class CommonActionsOnPages {
     protected void implicitWait(long segundos) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(segundos));
     }
-    protected void explicitWait(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    protected  String getText (By locator){
+        return driver.findElement(locator).getText();
     }
-    public void switchTab(){
+    protected void explicitWait(By locator) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    public void switchTab() {
         driver.switchTo().defaultContent();
-        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
     }
-    public void scrollTo(By locator){
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
+
+    public void scrollTo(By locator) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView();", driver.findElement(locator));
     }
-    }
+}
 

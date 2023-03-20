@@ -6,14 +6,19 @@ Feature: Obtener las criptomonedas más populares en Coingecko
 
   Scenario: Limitar la cantidad de resultados en la lista de criptomonedas populares
     Given que tengo acceso al listado de criptomonedas populares en Coingecko
-    When quiero verificar las 5 criptos mas populares
-    Then la respuesta debe ser exitosa y puedo ver la informacion de las criptomonedas
+    When verifico el listado de las criptos mas populares
+    And obtengo una codigo de respuesta exitoso
+    Then puedo ver unicamente el nombre y el simbolo de las nueve criptomonedas populares
 
 
-
-
-  Scenario: Obtener informacion detallada de una criptomoneda popular
-    Given un listado de criptomonedas populares en Coingecko
-    When hago una peticion con el {id} ID de una criptomoneda
-    Then la respuesta deberia ser exitosa
-    And la respuesta contiene la informacion detallada de la criptomoneda
+  Scenario Outline: Obtener informacion detallada de una criptomoneda popular
+    Given que tengo acceso a un listado de criptomonedas en Coingecko
+    When hago una peticion con el "<id>" de una criptomoneda
+    Then obtengo un codigo de respuesta exitoso
+    And la respuesta contiene la informacion detallada de la criptomoneda y su valor en USD
+    Examples:
+      | id              |
+      | radiant-capital |
+      | hop-protocol    |
+      | camelot-token   |
+      | optimism        |
