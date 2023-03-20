@@ -35,9 +35,11 @@ public class FormStepDefinition extends WebUI {
         try {
             Assertions.assertEquals("Si ya eres parte de LATAM, ingresa tus datos:",formPage.assertion1());
             LOGGER.info(formPage.assertion1() + " = Si ya eres parte de LATAM, ingresa tus datos:"  );
+            quitDriver();
         } catch (Exception e) {
             LOGGER.warn(e.getMessage());
             Assertions.fail();
+            quitDriver();
         }
     }
 
