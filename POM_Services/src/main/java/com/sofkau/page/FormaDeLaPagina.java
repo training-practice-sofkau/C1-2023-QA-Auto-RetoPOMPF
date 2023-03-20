@@ -21,7 +21,7 @@ public class FormaDeLaPagina extends CommonActionOnPage {
         click(By.xpath("(//a[@class='nav-top-link'])[5]"));
     }
     public void clickProductos() throws InterruptedException {
-        for (int i=4;i<7;i++){
+        for (int i=3;i<6;i++){
             scroll(500);
             click(By.xpath(String.format("(//div[@class='image-fade_in_back'])[%s]",i)));
             scroll(500);

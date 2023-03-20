@@ -8,9 +8,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
-
 import static com.sofkau.setup.SetUpConstantes.COVID_ESTADOS;
-
 public class ServicioPorEstados {
     public static Logger LOGGER = Logger.getLogger(ServicioPorEstados.class);
     Response response;
