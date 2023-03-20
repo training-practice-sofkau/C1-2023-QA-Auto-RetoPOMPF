@@ -7,21 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
+
 
 public class LatamPage extends CommonActionOnPages{
 
     private final By departureDate = By.cssSelector("div.CalendarMonthGrid_month__horizontal:nth-child(3) > div:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(5) > span:nth-child(1)");
     private final By arrivalDate = By.cssSelector("div.CalendarMonthGrid_month__horizontal:nth-child(4) > div:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2)");
-
-
     private final By origin = By.id("txtInputOrigin_field");
     private final By btnAutoComplete = By.id("btnItemAutoComplete_0");
     private final By selIda_Vuelta = By.id("btnTripTypeCTA");
@@ -89,6 +82,7 @@ public class LatamPage extends CommonActionOnPages{
         click(passQuantity);
         click(addAdults);
         click(addAdults);
+        click(addAdults);
         click(btnSearch);
 //        selectTickets();
     }
@@ -103,7 +97,6 @@ public class LatamPage extends CommonActionOnPages{
         click(continueWithTop);
         click(buttonSeats);
         leaveSeatsSelection();
-//        click(selTicketIda);
     }
 
     public void leaveSeatsSelection() {
@@ -111,7 +104,6 @@ public class LatamPage extends CommonActionOnPages{
         click(chooseLater);
         click(chooseBag);
         click(continueToPay);
-//        click(By.id("hi"));
     }
 
     public void fillPassengers(List<Passenger> passengers) {
@@ -121,7 +113,6 @@ public class LatamPage extends CommonActionOnPages{
             typeInto(By.id("passengerDetails-firstName-ADT_"+i), passengers.get(i-1).getFirstName());
             typeInto(By.id("passengerDetails-lastName-ADT_"+i), passengers.get(i-1).getLastName());
             typeInto(By.id("passengerInfo-dateOfBirth-ADT_"+i), passengers.get(i-1).getBirthdate());
-            System.out.println("Es masculino");
             typeInto(By.id("documentInfo-documentNumber-ADT_"+i), passengers.get(i-1).getDocumentNumber());
             typeInto(By.id("passengerInfo-phones0-number-ADT_"+i), passengers.get(i-1).getPhoneNumber());
             if(i == 1){

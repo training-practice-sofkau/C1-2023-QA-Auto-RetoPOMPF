@@ -9,4 +9,4 @@ Feature: Compra de vuelos en Latam Airlines
       | nav    | origen       |
       | chrome | Medellin     |
       | edge   | Barranquilla |
-#      | chrome | Bogota       |
+      | chrome | Bogota       |

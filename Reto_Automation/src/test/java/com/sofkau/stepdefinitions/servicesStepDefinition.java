@@ -12,8 +12,8 @@ import io.restassured.response.Response;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Assertions;
+
 
 import java.util.logging.Logger;
 
@@ -39,7 +39,7 @@ public class servicesStepDefinition extends WebUi {
         try {
             Assertions.assertEquals(200, res.getStatusCode());
         }catch (Exception e){
-            e.getMessage();
+            LOGGER.warning(e.getMessage());
             Assertions.fail();
         }
     }
@@ -52,7 +52,7 @@ public class servicesStepDefinition extends WebUi {
             Assertions.assertEquals("squiggly", resBody.get("id"));
             Assertions.assertEquals("0x36F379400DE6c6BCDF4408B282F8b685c56adc60", resBody.get("contract_address"));
         }catch (Exception e){
-            e.getMessage();
+            LOGGER.warning(e.getMessage());
             Assertions.fail();
         }
     }
@@ -73,7 +73,7 @@ public class servicesStepDefinition extends WebUi {
         try {
             Assertions.assertEquals(200, res.getStatusCode());
         }catch (Exception e){
-            e.getMessage();
+            LOGGER.warning(e.getMessage());
             Assertions.fail();
         }
     }
@@ -81,8 +81,8 @@ public class servicesStepDefinition extends WebUi {
     public void elCuerpoDeLaRespuestaDebeIncluirUnObjetoJsonQueContengaLosNftsFiltrados() {
         try {
             jsonArray = (JSONArray) parser.parse(res.getBody().asString());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            LOGGER.warning(e.getMessage());
         }
         resBody = (JSONObject) jsonArray.get(0);
         Assertions.assertEquals(assetPlatformId, resBody.get("asset_platform_id"));

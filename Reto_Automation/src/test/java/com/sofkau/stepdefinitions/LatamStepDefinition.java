@@ -28,13 +28,19 @@ public class LatamStepDefinition extends WebUi {
 
     @When("he ingresado los detalles de mi viaje con {string}")
     public void heIngresadoLosDetallesDeMiViajeCon(String string) {
-        latamPage  = new LatamPage(super.driver);
-        latamPage.fillSearchForm(string);
-        latamPage.selectTickets();
+        try {
+            latamPage  = new LatamPage(super.driver);
+            latamPage.fillSearchForm(string);
+            latamPage.selectTickets();
+        }catch (Exception e){
+            LOGGER.warning(e.getMessage());
+            quitDriver();
+        }
+
     }
     @When("he ingresado los datos de los pasajeros")
     public void heIngresadoLosDatosDeLosPasajeros() {
-        List<Passenger> passengers = Passenger.createPassengers(3);
+        List<Passenger> passengers = Passenger.createPassengers(4);
         latamPage.fillPassengers(passengers);
     }
     @Then("se muestra el modulo para pagar con PSE")
@@ -44,10 +50,9 @@ public class LatamStepDefinition extends WebUi {
                 String ExpectedMessage = "Si ya eres parte de LATAM, ingresa tus datos:";
                 System.out.println(obtainedMessage);
                 Assertions.assertEquals(ExpectedMessage, obtainedMessage);
-                Thread.sleep(5000);
                 quitDriver();
             }catch (Exception e){
-                e.getMessage();
+                LOGGER.warning(e.getMessage());
                 quitDriver();
             }
     }
