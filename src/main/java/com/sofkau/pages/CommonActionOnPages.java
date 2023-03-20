@@ -10,7 +10,7 @@ public class CommonActionOnPages {
     }
     public void scrollDown() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,1000);");
+        jse.executeScript("window.scrollBy(0,2000);");
     }
 
     public void typeInto(By locator, String value){
