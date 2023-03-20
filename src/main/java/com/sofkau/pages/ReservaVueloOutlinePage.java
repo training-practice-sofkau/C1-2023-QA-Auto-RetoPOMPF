@@ -21,8 +21,6 @@ public class ReservaVueloOutlinePage extends CommonActionOnPages {
     private static final String ASSERTION_EXCEPTION_MESSAGE = "No son los valores esperados";
 
 
-
-
     /**
      * Localizadores
      */
@@ -235,7 +233,7 @@ public class ReservaVueloOutlinePage extends CommonActionOnPages {
             clickcondelay(SelectorConfirmacionOrigen);
             click(inputDestino);
             clearText(inputDestino);
-            typeWithDelay(inputDestino, "CALI", 350);
+            inputDestino.sendKeys("CALI", Keys.ARROW_DOWN);
             clickcondelay(SelectorConfirmacionDestino);
             clickcondelay(cualquierFecha);
             clickcondelay(botonBuscar);

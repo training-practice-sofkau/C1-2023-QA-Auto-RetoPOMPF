@@ -263,7 +263,7 @@ public class ReservaTiqueteMultidestinoPage extends CommonActionOnPages {
             clickcondelay(SelectorConfirmacionOrigen);
             click(inputDestino);
             clearText(inputDestino);
-            typeWithDelay(inputDestino, "CALI", 350);
+            inputDestino.sendKeys("CALI", Keys.ARROW_DOWN);
             clickcondelay(SelectorConfirmacionDestino);
             // Modifique esto clickcondelay(cualquierFecha);
             //scroll(100);

@@ -2,6 +2,7 @@ package com.sofkau.pages;
 
 import com.github.javafaker.Faker;
 import com.sofkau.models.Usuario;
+import jdk.vm.ci.meta.Local;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -238,7 +239,7 @@ public class ReservaVueloPage extends CommonActionOnPages {
             clickcondelay(SelectorConfirmacionOrigen);
             click(inputDestino);
             clearText(inputDestino);
-            typeWithDelay(inputDestino, "CALI", 350);
+            inputDestino.sendKeys("CALI", Keys.ARROW_DOWN);
             clickcondelay(SelectorConfirmacionDestino);
             clickcondelay(cualquierFecha);
             clickcondelay(botonBuscar);

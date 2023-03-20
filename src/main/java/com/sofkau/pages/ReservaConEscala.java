@@ -261,7 +261,7 @@ public class ReservaConEscala extends CommonActionOnPages {
             clickcondelay(SelectorConfirmacionOrigen);
             click(inputDestino);
             clearText(inputDestino);
-            typeWithDelay(inputDestino, "MADRID", 350);
+            inputDestino.sendKeys("CALI", Keys.ARROW_DOWN);
             clickcondelay(SelectorConfirmacionDestino);
             clickcondelay(cualquierFecha);
             clickcondelay(botonBuscar);
@@ -317,7 +317,6 @@ public class ReservaConEscala extends CommonActionOnPages {
 
 
     public static Usuario llenarJavaFaker() {
-
         Faker faker = new Faker();
         Usuario usuario = new Usuario();
         usuario.setNombre(faker.name().firstName());
@@ -364,13 +363,6 @@ public class ReservaConEscala extends CommonActionOnPages {
         clickcondelay(comprarSinAistencia);
 
     }
-    //click(banco);
-
-    //  for(int i = 0; i < 3; i++) {
-    //banco.sendKeys(Keys.ARROW_DOWN);
-    //}
-
-    //enter(banco);
 
 
     public String getTextoFinal() {

@@ -262,7 +262,7 @@ public class ReservarVueloCualquierFechaPage extends CommonActionOnPages{
             clickcondelay(SelectorConfirmacionOrigen);
             click(inputDestino);
             clearText(inputDestino);
-            typeWithDelay(inputDestino, "MADRID", 350);
+            inputDestino.sendKeys("CALI", Keys.ARROW_DOWN);
             clickcondelay(SelectorConfirmacionDestino);
             clickcondelay(cualquierFecha);
             clickcondelay(botonBuscar);

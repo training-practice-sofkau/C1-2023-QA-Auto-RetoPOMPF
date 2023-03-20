@@ -9,7 +9,5 @@ i
 9src/test/java/com/sofkau/setup/MarverlListSerieSetup.java,b\d\bd593bab24016efd073d2138bae57c926d871e03
 f
 6src/test/java/com/sofkau/setup/MarvelSerieIdSetup.java,4\c\4ce564a81f41a80e5e6809ef7e75df578587b049
-g
-7src/main/java/com/sofkau/pages/CommonActionOnPages.java,5\1\51c19bf62e6fdf8ea31f06688b9a5d487f77aab4
 ‡
 Wsrc/test/java/com/sofkau/stepdefinitions/ReservarVueloCualquierFechaStepDefinition.java,3\0\30d43e40bb9472b3739db1e8c47e6e97db2d1916
