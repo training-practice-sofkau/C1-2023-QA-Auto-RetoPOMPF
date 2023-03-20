@@ -1,12 +1,15 @@
 package com.sofkau.stepdefinitions;
 
 import com.sofkau.pages.OutlinePage;
+import com.sofkau.pages.Page;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ZonaFitOutlineStepDefinition extends WebUI {
     public static Logger LOGGER=Logger.getLogger(ZonaFitOutlineStepDefinition.class);

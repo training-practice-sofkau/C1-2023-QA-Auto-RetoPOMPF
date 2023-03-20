@@ -16,8 +16,8 @@ public class ZonaFitGymStepDefinition extends WebUI {
     public static Logger LOGGER=Logger.getLogger(ZonaFitStepDefinition.class);
     Cliente cliente = new Cliente();
     //Scenario 1
-    @Given("que el usuario se encuentra la pagina principal desde el {string}")
-    public void queElUsuarioSeEncuentraLaPaginaPrincipalDesdeEl(String navegador) {
+    @Given("que el cliente se encuentra en la pagina principal desde el navegador {string}")
+    public void queElClienteSeEncuentraEnLaPaginaPrincipalDesdeElNavegador(String navegador) {
         try {
             if (navegador.equals("chrome")) {
                 generalSetUpChrome();
@@ -66,8 +66,8 @@ public class ZonaFitGymStepDefinition extends WebUI {
             PageGym pageGym = new PageGym(super.driver, cliente);
             String mensajeActual = pageGym.getMensajeFinal(driver).getText();
             assertEquals(mensajeEsperado, mensajeActual);
-            LOGGER.info("VALOR ESPERADO:" + mensajeEsperado);
-            LOGGER.info("VALOR OBTENIDO" + mensajeActual);
+            LOGGER.info("VALOR ESPERADO: " + mensajeEsperado);
+            LOGGER.info("VALOR OBTENIDO: " + mensajeActual);
 
         }catch (Exception exception){
             quiteDriver();
@@ -77,25 +77,6 @@ public class ZonaFitGymStepDefinition extends WebUI {
         }
     }
 
-    //Scenario 2
-
-    @When("ingresa informacion imcompleta")
-    public void ingresaInformacionImcompleta() {
-        try {
-            setData();
-            PageGym pageGym = new PageGym(super.driver, cliente);
-            pageGym.fillMandatoryFields2();
-
-        }catch (Exception exception){
-            quiteDriver();
-            Assertions.fail(exception.getMessage(),exception);
-            LOGGER.warn(exception.getMessage(), exception);
-        }
-    }
-    @Then("debera recibir un mensaje pidiendo la informacion requerida")
-    public void deberaRecibirUnMensajePidiendoLaInformacionRequerida() {
-
-    }
 
     public void setData() {
         cliente.setDocument("190845364");

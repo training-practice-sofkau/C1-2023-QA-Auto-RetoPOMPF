@@ -19,20 +19,23 @@ public class Page  extends CommonActionOnPages {
     private final Cliente cliente;
 
     //Localizadores
-    private final By clickProducto1 = By.xpath("(//div[@class='add-to-cart-button'])[2]");
-    private final By clickSabor1 = By.xpath("(//span[@class='ux-swatch__color ux-swatch__color--single-color'])[6]");
+    private final By preEntrenos = By.xpath("(//img[@alt='Pre Entreno'])[2]");
+    private final By clickProducto1 = By.xpath("(//*[@class='primary is-small mb-0 button wp-element-button product_type_variable add_to_cart_button is-flat'])[4]");
+    private final By clickSabor1 = By.xpath("(//*[@class='ux-swatch__color ux-swatch__color--single-color'])[1]");
+
     private final By botonAgregar = By.xpath("//div[contains(@class,'woocommerce-variation-add-to-cart')]//button[contains(@class,'single_add_to_cart_button button alt wp-element-button')]");
 
-    private final By clickProducto2 = By.xpath("(//div[@class='add-to-cart-button'])[1]");
-    private final By clickSabor2 = By.xpath("//div[contains(@class,'ux-swatch tooltip')]/span[contains(@style,'--swatch-color: #ddb471')]");
+    private final By clickProducto2 = By.xpath("(//*[@class='primary is-small mb-0 button wp-element-button product_type_variable add_to_cart_button is-flat'])[8]");
+    private final By clickSabor2 = By.xpath("(//*[@class='ux-swatch__color ux-swatch__color--dual-color'])[1]");
 
-    private final By clickProducto3 = By.xpath("(//div[@class='add-to-cart-button'])[4]");
-    private final By clickSabor3 = By.xpath("(//span[@class='ux-swatch__color ux-swatch__color--single-color'])[15]");
+    private final By clickProducto3 = By.cssSelector("button[value='197810'][name='add-to-cart']");
+
     private final By botonVerCarrito = By.xpath("(//a[@class='button wc-forward wp-element-button'][normalize-space()='Ver carrito'])[1]");
 
     private final By botonCantidadMas1 = By.xpath("(//input[@value='+'])[1]");
     private final By botonCantidadMas2 = By.xpath("(//input[@value='+'])[2]");
     private final By botonCantidadMas3 = By.xpath("(//input[@value='+'])[3]");
+
     private final By botonFinalizarCompra = By.xpath("(//a[normalize-space()='Finalizar compra'])[1]");
 
     @CacheLookup
@@ -84,20 +87,21 @@ public class Page  extends CommonActionOnPages {
     }
 
     public void agregarProductos () {
-        scrollP();
+        scrollP2();
+        click(preEntrenos);
+        scrollP2();
         click(clickProducto1);
         click(clickSabor1);
         click(botonAgregar);
         goBack();
         goBack();
+        scrollP2();
         click(clickProducto2);
         click(clickSabor2);
         click(botonAgregar);
         goBack();
         goBack();
         click(clickProducto3);
-        click(clickSabor3);
-        click(botonAgregar);
         click(botonVerCarrito);
         click(botonCantidadMas1);
         click(botonCantidadMas2);

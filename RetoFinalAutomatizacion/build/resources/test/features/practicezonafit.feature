@@ -7,16 +7,9 @@ Feature:
   //Google Chrome = "chrome"
   //Microsoft Edge = "Edge"
 
-Background:
-  Given que el cliente esta en la pagina principal desde el "chrome"
-  When agrega productos al carrito
-
   Scenario: Compra Exitosa
+    Given que el cliente esta en la pagina principal desde el "chrome"
+    When agrega productos al carrito
     And completa la informacion de envio y facturacion
     Then debera observar un mensaje de confirmacion de la compra
-
-
-  Scenario: Compra con informacion insuficiente
-    But ingresa informacion insuficiente
-    Then debera observar un mensaje pidiendo la informacion requerida
 

@@ -7,6 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class OutlinePage extends CommonActionOnPages{
     private WebDriver webDriver;
@@ -22,18 +26,25 @@ public class OutlinePage extends CommonActionOnPages{
     private WebElement phone;
     private final By botonSuscribete = By.id("mc-embedded-subscribe");
 
+    private final By mensajeFinal = By.xpath("//div[text()=\"¡Gracias por suscribirse!\"]");
+
     public OutlinePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public void navegar () {
-        scrollTo(correo);
+        scrollP();
     }
     public void fillMandatoryFields(String email, String nombre, String telefono) {
         typeIntoFactory(correo,email);
         typeIntoFactory(name,nombre);
         typeIntoFactory(phone,telefono);
         click(botonSuscribete);
+    }
+
+    public WebElement getMensajeFinal(WebDriver webDriver) {
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(mensajeFinal));
     }
 }

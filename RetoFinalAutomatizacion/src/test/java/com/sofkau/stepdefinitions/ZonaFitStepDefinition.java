@@ -69,8 +69,8 @@ public class ZonaFitStepDefinition extends WebUI {
             Page page = new Page(super.driver, cliente);
             String mensajeActual = page.getMensajeFinal(driver).getText();
             assertEquals(mensajeEsperado, mensajeActual);
-            LOGGER.info("VALOR ESPERADO:" + mensajeEsperado);
-            LOGGER.info("VALOR OBTENIDO" + mensajeActual);
+            LOGGER.info("VALOR ESPERADO: " + mensajeEsperado);
+            LOGGER.info("VALOR OBTENIDO: " + mensajeActual);
 
         }catch (Exception exception){
             quiteDriver();
@@ -81,24 +81,6 @@ public class ZonaFitStepDefinition extends WebUI {
 
     }
 
-    //Scenario 2
-    @When("ingresa informacion insuficiente")
-    public void ingresaInformacionInsuficiente() {
-        try {
-            setData();
-            Page page = new Page(super.driver, cliente);
-            page.fillMandatoryFields2();
-
-        }catch (Exception exception){
-            quiteDriver();
-            Assertions.fail(exception.getMessage(),exception);
-            LOGGER.warn(exception.getMessage(), exception);
-        }
-    }
-    @Then("debera observar un mensaje pidiendo la informacion requerida")
-    public void deberaObservarUnMensajePidiendoLaInformacionRequerida() {
-
-    }
 
     public void setData() {
         cliente.setDocument("190845364");

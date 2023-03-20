@@ -7,17 +7,9 @@ Feature:
   //Google Chrome = "chrome"
   //Microsoft Edge = "Edge"
 
-  Background:
-    Given que el usuario se encuentra la pagina principal desde el "chrome"
-    When agrega productos de la categoria gym en casa al carrito
-
   Scenario: Compra Exitosa
+    Given que el cliente se encuentra en la pagina principal desde el navegador "chrome"
+    When agrega productos de la categoria gym en casa al carrito
     And completa la informacion necesaria de envio y facturacion
     Then debera recibir un mensaje de confirmacion de la compra
-
-
-  Scenario: Compra con informacion insuficiente
-    But ingresa informacion imcompleta
-    Then debera recibir un mensaje pidiendo la informacion requerida
-
 

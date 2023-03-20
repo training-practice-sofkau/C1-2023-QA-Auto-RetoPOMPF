@@ -19,10 +19,9 @@ public class PageGym extends CommonActionOnPages{
     private final Cliente cliente;
 
     //Localizadores
-    private final By clickSnacks = By.xpath("(//*[@class='product-category col'])[13]");
     private final By gymEnCasa = By.cssSelector("li[id='mega-menu-item-198599'] a[class='mega-menu-link']");
     private final By agregarProd1 = By.cssSelector("button[name='add-to-cart'][value='198366']");
-    private final By agregarProd2 = By.cssSelector("button[name='add-to-cart'][value='198362']");
+    private final By agregarProd2 = By.cssSelector("button[name='add-to-cart'][value='198365']");
     private final By agregarProd3 = By.cssSelector("button[name='add-to-cart'][value='198359']");
     private final By botonVerCarrito = By.xpath("(//*[@class='button wc-forward wp-element-button'])[1]");
     private final By botonCantidadMas1 = By.xpath("(//input[@value='+'])[1]");
@@ -86,9 +85,9 @@ public class PageGym extends CommonActionOnPages{
         click(gymEnCasa);
         click(agregarProd1);
         goBack();
-        scrollP2();
         click(agregarProd2);
         goBack();
+        scrollP2();
         click(agregarProd3);
         click(botonVerCarrito);
         click(botonCantidadMas1);
