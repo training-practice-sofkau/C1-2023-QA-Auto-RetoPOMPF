@@ -24,7 +24,7 @@ public class CompraVueloStepDefinition extends WebUI {
         CompraVueloPage compraVueloPage = new CompraVueloPage(super.driver);
         compraVueloPage.FillMandatoryFields();
         compraVueloPage.closeLogin();
-        compraVueloPage.filtrarOrigen("Guajira");
+        compraVueloPage.filtrarOrigen("Medellin");
         compraVueloPage.filtrarDestino("Bogota");
        //compraVueloPage.seleccionarFechaIda();
         compraVueloPage.clickCualquierFecha();

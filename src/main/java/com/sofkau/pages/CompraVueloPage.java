@@ -1,5 +1,4 @@
 package com.sofkau.pages;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -48,7 +47,6 @@ public class CompraVueloPage extends CommonActionOnPages {
     @FindBy(xpath = "    (//div[@class='sbox5-monthgrid-datenumber -weekday'])[5]")
     private WebElement selectorDiaRegreso2;
 
-
     @CacheLookup
     @FindBy(xpath = "/html/body/nav/div[4]/div[1]/i")
     public WebElement cLogin;
@@ -90,7 +88,44 @@ public class CompraVueloPage extends CommonActionOnPages {
     @FindBy (xpath = "//*[@id=\"formData.contactData.mainEmailAddress\"]")
     private WebElement inputCorreo;
 
+    @CacheLookup
+    @FindBy (xpath = "//*[@id=\"formData.contactData.repeatMainEmailAddress\"]")
+    private WebElement inputconfirmarCorreo;
 
+    @CacheLookup
+    @FindBy (xpath ="    //*[@id=\"formData.contactData.phones[0].number\"]")
+    private WebElement inputNumeroCelular;
+
+    @CacheLookup
+    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
+    private WebElement selectorPagoSuRed;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"invoice-first-name-0\"]")
+    private WebElement inputNombreFactura;
+
+    @CacheLookup
+    @FindBy(xpath = " (//input[@id='invoice-last-name-0'])[1]")
+    private WebElement inputApellidoFactura;
+
+    @CacheLookup
+    @FindBy(xpath = " //*[@id=\"invoice-fiscal-identification-number-0\"]")
+    private WebElement inputIdentificacionFactura;
+    @CacheLookup
+    @FindBy(xpath = " (//input[@role='presentation'])[12]")
+    private WebElement inputDireccionFactura;
+
+    @CacheLookup
+    @FindBy(xpath = "(//i[@class='checkbox-check eva-3-icon-checkmark -eva-3-mr-sm'])[1]")
+    private WebElement selectorTerminosYCondiciones;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"checkout-content\"]/div[1]/buy-container/buy-component/div/div/div/div[1]/button-component/div/a")
+    private WebElement botonPagarSinAsistencia;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"card-selector-0\"]/option[3]")
+    private WebElement comboBox;
 
 
 
@@ -101,22 +136,18 @@ public class CompraVueloPage extends CommonActionOnPages {
 
     public void FillMandatoryFields() {
         click(selectorBotonVuelos);
-
-
     }
 
 
     public void filtrarOrigen(String origen) {
-        clearText(selectorOringen);
-        click(selectorOringen);
-        ////
+        //  clearText(selectorOringen);
+        //click(selectorOringen);
         click(selectorOringen);
         clearText(selectorOringen);
         selectorOringen.sendKeys(origen, Keys.ARROW_DOWN);
         selectorOringen.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         clickcondelay(SelectorConfirmacionOrigen);
-
-        typeWithDelay(selectorOringen, "Guajira", 30);
+        typeWithDelay(selectorOringen, "Medellin", 30);
     }
 
     public void filtrarDestino(String destino) {
@@ -158,7 +189,6 @@ public class CompraVueloPage extends CommonActionOnPages {
         scroll(230);
         clickcondelay(botonSiguiente);
         clickcondelay(botonContinuar);
-        //Thread.sleep(5000);
     }
 
 
@@ -167,14 +197,27 @@ public class CompraVueloPage extends CommonActionOnPages {
         typeInto(inputNombre1, "Santy");
         typeInto(inputApellidos, "Gomez");
         clickcondelay(paisResidencia);
-        scroll(330);
         typeInto(inputIdentificacion, "123456789");
-        scroll(330);
-        typeInto(inputCorreo,"correofalso@gmail.com");
+        typeInto(inputCorreo, "santiokami.23@gamil.com");
+        typeInto(inputconfirmarCorreo, "santiokami.23@gamil.com");
+        typeInto(inputNumeroCelular, "3001234567");
 
-     //   typeInto(inputCorreo, "orreofalso@gmail.comc");
+        scroll(200);
+        clickcondelay(selectorPagoSuRed);
+        scroll(200);
+        clickcondelay(comboBox);
 
+        typeInto(inputNombreFactura, "Bart ");
+        typeInto(inputApellidoFactura, "Simpsom");
+        typeInto(inputIdentificacionFactura, "123456789");
+        typeInto(inputDireccionFactura, "Calle 123 # 45 - 67");
+        scroll(500);
+        clickcondelay(selectorTerminosYCondiciones);
+        scroll(500);
+        clickcondelay(botonPagarSinAsistencia);
     }
+
+
 
 
 }
