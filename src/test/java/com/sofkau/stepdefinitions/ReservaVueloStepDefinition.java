@@ -140,8 +140,6 @@ public class ReservaVueloStepDefinition extends WebUI {
         try {
             ReservaConEscala reservaConEscala = new ReservaConEscala(super.driver, usuario);
             reservaConEscala.clickInicio();
-
-
         } catch (Exception exception) {
             quiteDriver();
             LOGGER.warn(exception.getMessage());

@@ -12,9 +12,9 @@ Feature:  Busqueda y reservar de un tiquete en despegar
     Then el usuario debe observar una reserva del vuelo
 
 
-  @TiqueAerolineaLatam
-  Scenario: Reservar un tiquete exitoso en cualquier fecha dada por la pagina con la aerolinea LATAM EN
+  @TiqueIdaYVuelta
+  Scenario: Reservar un tiquete exitoso en cualquier fecha dada por la pagina con la aerolinea
     Given el usuario esta en la pagina principal de despegar
     When  el cliente elije el lugar de origen-destino, ida y vuelta, fecha inicio y regreso, cantidad de pasajeros, clase de tiquete, opcion buscar
-    And el usuario selecciona la aeroplinea LATAM, elije el vuelo, indica el equipaje y realiza el checkout con sus datos
+    And el usuario selecciona la aeroplinea, elije el vuelo, indica el equipaje y realiza el checkout con sus datos
     Then el usuario debe observar un mensaje reserva exitosa

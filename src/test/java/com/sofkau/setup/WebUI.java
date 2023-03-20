@@ -45,6 +45,14 @@ public class WebUI {
 
     }
 
+
+    protected void generalSetup1( ) {
+        setUpLog4j();
+        setUpWebdriverUrl();
+
+    }
+
+
     protected void generalSetup(String seleccionNavegador) {
         setUpLog4j();
         setUpWebdriver(seleccionNavegador);
