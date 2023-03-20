@@ -7,5 +7,3 @@ W
 .src/main/java/com/sofkau/util/Log4jValues.java,9\e\9e483b223fbdb0f6536dc35b1e642ce2a5b9c664
 X
 (src/main/java/com/sofkau/util/State.java,e\a\eabab42ea4bdfe4e71b6073ea792ac9542f12f8b
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35

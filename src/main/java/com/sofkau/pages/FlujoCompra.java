@@ -46,7 +46,7 @@ public class FlujoCompra extends CommonActionPages {
     private WebElement numeroDeDocumento;
 
     @CacheLookup
-    @FindBy(xpath = "(//input[@id='billing_myfield12'])[1]")
+    @FindBy(id = "billing_email")
     private WebElement e_Mail;
 
     @CacheLookup
