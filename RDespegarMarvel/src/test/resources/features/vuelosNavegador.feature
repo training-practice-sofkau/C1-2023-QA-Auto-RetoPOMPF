@@ -12,5 +12,5 @@ Feature: Reservar un vuelo normal
 
     Examples:
       | navegador |
-      | "Chrome"  |
       | "Edge"    |
+      | "Chrome"  |

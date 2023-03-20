@@ -11,17 +11,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89a5c39f7c3437941a4dadddd7e65bc869b22acb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bb38049bb439acf44cde2041ad8da370233ddde1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sofkau/page/FPageVuelosChrome.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sofkau/page/FPageVuelosChrome.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepHistorias.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepHistorias.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepIdHisoria.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepIdHisoria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepVuelo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepVuelo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepVueloPorNavegadores.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/sofkau/stepdefinitions/StepVueloPorNavegadores.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/test/features/vuelosNavegador.feature" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/test/features/vuelosNavegador.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sofkau/page/FPageVuelosChrome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sofkau/page/FPageVuelosChrome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/vuelosNavegador.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/vuelosNavegador.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679330536278</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Actualizzación proyecto">
+      <created>1679332438897</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679332438897</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -146,7 +146,7 @@ public class FPageVuelosChrome extends CommonActionOnPage {
     private WebElement celular;
 
     @CacheLookup
-    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[6]")
+    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
     private WebElement medioDePago;
 
     @CacheLookup
