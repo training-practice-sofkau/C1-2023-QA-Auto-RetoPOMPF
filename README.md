@@ -1,5 +1,10 @@
 # RETO POM+PG y Rest-Assurred
 
+A continuación se agregan las siguientes evidencias: 
+Plan de prueba https://onedrive.live.com/edit.aspx?resid=1EB52AF2D9CBC362!15086&ithint=file%2cxlsx&authkey=!AL4KD5BuUchvIQY
+Matriz de riesgos https://onedrive.live.com/edit.aspx?resid=1EB52AF2D9CBC362!15090&ithint=file%2cxlsx&authkey=!AIYP3G5MVL6XOik
+Rutas críticas de la página ZonaFit https://www.youtube.com/watch?v=7aOqDHObQGU
+
 Ejercicio 1 
 https://www.despegar.com.co/
 servicio
