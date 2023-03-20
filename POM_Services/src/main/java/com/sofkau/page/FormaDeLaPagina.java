@@ -11,6 +11,7 @@ public class FormaDeLaPagina extends CommonActionOnPage {
     public static String convenio;
     public static String boton;
     public static String error;
+    public static String mensaje;
     public FormaDeLaPagina(WebDriver driver) {
         super(driver);
     }
@@ -68,37 +69,45 @@ public class FormaDeLaPagina extends CommonActionOnPage {
     public void clickAcceder() {
         click(By.xpath("(//a[@class='nav-top-link nav-top-not-logged-in icon primary button round is-small'])"));
     }
-
     public void ingresarCredenciales() throws InterruptedException {
         Thread.sleep(500);
         typeInto(By.id("username"),"damir29305@etondy.com");
         typeInto(By.id("password"),"Test.prueba00");
         click(By.xpath("(//button[@class='woocommerce-button button woocommerce-form-login__submit wp-element-button'])"));
     }
-
     public void compararBotonAcceso() {
         boton=driver.findElement(By.xpath("(//span[@class='header-account-title'])")).getText();
     }
-
     public void ingresarCredencialesIncorrectas() {
         typeInto(By.id("username"),"damir29305@etondy.com");
         typeInto(By.id("password"),"Hola.gansito123");
         click(By.xpath("(//button[@class='woocommerce-button button woocommerce-form-login__submit wp-element-button'])"));
     }
-
     public void mensajeError() {
         error=driver.findElement(By.xpath("(//a[@title='Password Lost and Found'])")).getText();
     }
     public void clickUsiario() {
         ponerMouseXpath("(//a[@title='Mi cuenta'])[1]");
+    }
+    public void clickSalir(){
         click(By.xpath("(//a[@href='https://zonafit.co/mi-cuenta/customer-logout/'])"));
-
     }
     public void cerrarSesion() {
         click(By.xpath("(//a[text()='Confirmar y salir'])"));
     }
-
     public void botonAcceder() {
         boton=driver.findElement(By.xpath("(//a[@class='nav-top-link nav-top-not-logged-in icon primary button round is-small'])")).getText();
+    }
+    public void clickDetalles() {
+        click(By.xpath("(//a[@href='https://zonafit.co/mi-cuenta/edit-account/'])"));
+    }
+    public void cambioContrasena(String vieja,String nueva){
+        typeInto(By.id("password_current"),vieja);
+        typeInto(By.id("password_1"),nueva);
+        typeInto(By.id("password_2"),nueva);
+        click(By.xpath("(//button[@class='woocommerce-Button button wp-element-button'])"));
+    }
+    public void mensajeCambio() {
+        mensaje=driver.findElement(By.xpath("(//div[@class='message-container container success-color medium-text-center'])")).getText();
     }
 }

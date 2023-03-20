@@ -35,6 +35,7 @@ public class LogIn extends WebUI{
     @When("Hago click en cerrar sesion")
     public void hagoClickEnCerrarSesion() {
         FormaDeLaPagina formaDeLaPagina=new FormaDeLaPagina(super.driver);
+        formaDeLaPagina.clickSalir();
         formaDeLaPagina.cerrarSesion();
     }
     @Then("Vuelve a la pagina principal y muestra el boton de acceder")
