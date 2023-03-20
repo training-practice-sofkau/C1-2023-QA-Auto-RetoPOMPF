@@ -21,7 +21,7 @@ public class CommonActionOnPages {
         explicitWaitInit();
     }
     private void explicitWaitInit () {
-        typeWait = new WebDriverWait(driver, FIVE_SECONDS.getValue());
+        typeWait = new WebDriverWait(driver, TEN_SECONDS.getValue());
     }
     protected void typeInto(By locator, String value){
         driver.findElement(locator).sendKeys(value);

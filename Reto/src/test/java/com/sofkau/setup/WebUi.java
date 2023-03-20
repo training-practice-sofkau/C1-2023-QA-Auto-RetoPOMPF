@@ -25,6 +25,10 @@ public class WebUi {
         driver.get(DEMO_QA_URL);
         maximize();
     }
+
+    protected void inicializarLog4j(){
+        setUplog4j();
+    }
     protected void generalSetupChrome(){
         setUplog4j();
         setUpWebdriverChrome();

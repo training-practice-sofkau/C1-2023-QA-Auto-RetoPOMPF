@@ -9,6 +9,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.python.antlr.ast.Str;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +87,12 @@ public class LatamPage extends CommonActionOnPages{
     @FindBy(id="btnPlusAdults")
     private WebElement sumarAdulto;
 
-
+    @CacheLookup
+    @FindBy(id="btnCabinTypeCTA")
+    private WebElement cabina;
+    @CacheLookup
+    @FindBy(id="btnCabinType1")
+    private WebElement seleccionarCabina;
     public LatamPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
@@ -117,6 +123,7 @@ public class LatamPage extends CommonActionOnPages{
     @CacheLookup
     @FindBy(id="btn-confirm-and-continue")
     private WebElement continuar;
+
     @CacheLookup
     @FindBy(id="buttonChooseLater")
     private WebElement asientoAliatorio;
@@ -180,8 +187,11 @@ public class LatamPage extends CommonActionOnPages{
         }catch (Exception e){
         }
     }
-    public void navigatePage(int cantidad, String ciudadsalida, String ciudadllegada) throws InterruptedException {
+
+    public void paginaPrincipa(int cantidad, String ciudadsalida, String ciudadllegada,String categoria){
+        implicitWait(20);
         typeInto(origen,ciudadsalida);
+        esperar(1000);
         click(ciudadOrigen);
         click(llegada);
         typeInto(llegada,ciudadllegada);
@@ -190,30 +200,38 @@ public class LatamPage extends CommonActionOnPages{
         click(fechaSalida);
         click(numFechaSalida);
         click(numFechaLlegada);
+        if(categoria.equals("economy premium")){
+            click(cabina);
+            click(seleccionarCabina);
+        }
         click(seleccionPasajeros);
         for(int i=1;i<=cantidad-1;i++){
             click(sumarAdulto);
         }
+
         click(buscar);
+    }
+
+    public void seleccionarTickets(int cantidad, String ciudadsalida, String ciudadllegada,String categoria){
         driver.getCurrentUrl();
         CambiarPestana();
         driver.getCurrentUrl();
         click(seleccionarVueloIda);
         click(seleccionarBasicIda);
-        System.out.println("ola");
-
         esperar(5000);
-        System.out.println("ola1");
-        System.out.println(driver.getCurrentUrl());
-        System.out.println(driver.getTitle());
-
         click(seleccionarVueloVuelta);
         click(seleccionarBasicVuelta);
+    }
+
+    public void infoPasajeros(int cantidad, String ciudadsalida, String ciudadllegada, String categoria){
         click(irAsientos);
         esperar(7000);
         click(siguienteVuelo);
         click(continuar);
-        click(asientoAliatorio);
+        if(categoria.equals("economy")){
+            esperar(2000);
+            click(asientoAliatorio);
+        }
         click(continuarMaletas);
         esperar(10000);
         for(int i=1;i<=cantidad;i++){
@@ -227,12 +245,10 @@ public class LatamPage extends CommonActionOnPages{
             typeInto(By.id("passengerInfo-dateOfBirth-ADT_"+String.valueOf(i)),pasajero.get(4));
             click(By.id("documentInfo-documentNumber-ADT_"+String.valueOf(i)));
             typeInto(By.id("documentInfo-documentNumber-ADT_"+String.valueOf(i)),pasajero.get(5));
-            System.out.println(pasajero.get(6));
             /*if(pasajero.get(6).equals("2")){
                 click(genero);
                 esperar(1000);
                 click(By.cssSelector(".MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.sc-fzqAui.xBvvB.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button[tabindex='-1']"));
-
             }*/
             if(i==1){
                 click(ponerCorreo);
@@ -252,9 +268,8 @@ public class LatamPage extends CommonActionOnPages{
         click(continuarPago);
         esperar(5000);
         click(tarjetaCredito);
-        esperar(1000);
+        esperar(2000);
         confrimarFlujo1=getText(By.cssSelector(".sc-AxhCb.eCWvbO.latam-typography.latam-typography--heading-04.sc-AxhUy.fxWvvr"));
-
     }
 
 }

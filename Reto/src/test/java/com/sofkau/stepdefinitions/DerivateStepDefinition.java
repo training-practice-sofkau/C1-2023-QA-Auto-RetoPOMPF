@@ -4,9 +4,17 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.Assertions;
 
+import java.util.logging.Logger;
+
 public class DerivateStepDefinition {
+    JSONParser parser=new JSONParser();
+    JSONObject resbody=new JSONObject();
+    public static java.util.logging.Logger LOGGER = Logger.getLogger(String.valueOf(DerivateStepDefinition.class));
     private String body;
     private Response response;
 
@@ -17,7 +25,6 @@ public class DerivateStepDefinition {
     @When("envio una peticion para ver la informacion del nft con id {string}")
     public void envioUnaPeticionParaVerLaInformacionDelNftConId(String id) {
         response=RestAssured.given().get("https://api.coingecko.com/api/v3/derivatives/exchanges/"+id);
-        System.out.println(id);
     }
     @Then("recibo un codigo doscientos de respuesta exitosa")
     public void reciboUnCodigoDoscientosDeRespuestaExitosa() {
@@ -25,10 +32,12 @@ public class DerivateStepDefinition {
     }
     @Then("muestra la informacion del intercambio derivado")
     public void muestraLaInformacionDelIntercambioDerivado() {
-        body="a";
-        System.out.println(body);
-        body= response.asString();
-        System.out.println(body);
+        try{
+            resbody=(JSONObject) response.getBody();
+        } catch (Exception e) {
+            LOGGER.warning(e.getMessage());
+        }
+        Assertions.assertNotNull(resbody);
     }
 
 }
