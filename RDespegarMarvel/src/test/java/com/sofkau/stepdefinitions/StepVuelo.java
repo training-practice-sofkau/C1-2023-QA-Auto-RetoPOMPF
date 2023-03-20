@@ -26,6 +26,8 @@ public class StepVuelo extends WebUI {
         pageVuelos.formularioPasajero1();
         pageVuelos.formularioPasajero2();
         pageVuelos.formularioPasajero3();
+        pageVuelos.formularioContacto();
+        pageVuelos.llenarFormularioBanco();
         pageVuelos.llenarFormularioFactura();
         pageVuelos.confirmarPago();
     }

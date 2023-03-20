@@ -90,45 +90,83 @@ public class FPageVuelosChrome extends CommonActionOnPage {
     private WebElement apellidoPasajero;
     private final By inicio = By.xpath("(//div[@class='sbox5-monthgrid-datenumber-number'][normalize-space()='18'])[1]");
 
+
     @CacheLookup
-    @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/travelers-container/travelers/old-travelers/div/ul/li/ul/li/traveler/div/div[2]/div/div[1]/traveler-first-name-input/div/div/input-component-v2/div/div/div/input")
+    @FindBy(xpath = "(//input[@placeholder='Como figura en el documento de viaje'])[1]")
     private WebElement nombre1;
 
 
     @CacheLookup
-    @FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/div[1]/app[1]/checkout-form[1]/div[1]/form-component[1]/form[1]/div[1]/travelers-container[1]/travelers[1]/old-travelers[1]/div[1]/ul[1]/li[1]/ul[1]/li[1]/traveler[1]/div[1]/div[2]/div[1]/div[1]/traveler-last-name-input[1]/div[1]/div[1]/input-component-v2[1]/div[1]/div[1]/div[1]/input[1]")
+    @FindBy(xpath = "(//*[@placeholder='Como figura en el documento de viaje'])[2]")
     private WebElement apellido1;
 
 
     @CacheLookup
-    @FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/div[1]/app[1]/checkout-form[1]/div[1]/form-component[1]/form[1]/div[1]/travelers-container[1]/travelers[1]/old-travelers[1]/div[1]/ul[1]/li[1]/ul[1]/li[1]/traveler[1]/div[1]/div[2]/div[1]/div[2]/traveler-identification[1]/div[1]/div[1]/div[3]/div[1]/input-component-v2[1]/div[1]/div[1]/div[1]/input[1]")
+    @FindBy(xpath = "//*[@id=\"traveler-identification-number-0\"]")
     private WebElement documento1;
 
     @CacheLookup
+    @FindBy(xpath = "(//*[@placeholder='Como figura en el documento de viaje'])[3]")
+    private WebElement nombre2;
+
+
+    @CacheLookup
+    @FindBy(xpath = "(//*[@placeholder='Como figura en el documento de viaje'])[4]")
+    private WebElement apellido2;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"traveler-identification-number-1\"]")
+    private WebElement documento2;
+
+    @CacheLookup
+    @FindBy(xpath = "(//*[@placeholder='Como figura en el documento de viaje'])[5]")
+    private WebElement nombre3;
+
+
+    @CacheLookup
+    @FindBy(xpath = "(//*[@placeholder='Como figura en el documento de viaje'])[6]")
+    private WebElement apellido3;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"traveler-identification-number-2\"]")
+    private WebElement documento3;
+
+    @CacheLookup
     @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/div[1]/chk-email-form/chk-form-container/div/div[3]/div/chk-contact-main-email/div/chk-input/div/div/input")
-    private WebElement correo1;
+    private WebElement correo;
 
     @CacheLookup
     @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/div[1]/chk-email-form/chk-form-container/div/div[3]/div/chk-contact-repeat-main-email/div/chk-input/div/div/input")
-    private WebElement correoConfirmacion1;
+    private WebElement correoConfirmacion;
 
     @CacheLookup
-    @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/div[2]/payment-component/payment-method-selector/div/ul/div/payment-method-selector-radio-button-option[3]/li/p/label/i")
-    private WebElement celular1;
+    @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/contact-phone-container/div/chk-phone-form/chk-form-container/div/div[2]/div/chk-form/div/div/div[2]/chk-contact-phone-number/div/chk-input/div/div/input")
+    private WebElement celular;
 
     @CacheLookup
     @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
     private WebElement medioDePago;
 
+    @CacheLookup
+    @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/div[2]/payment-component/div/div[4]/payment-method/div/payment-method-selector-container/prepaid-payment-container/div/div[1]/cash-container/div/ul/li/div/cash-payment-info/div[1]/div/cash-select/div/div/div/div/div/select")
+    private WebElement banco;
+
+
+    @CacheLookup
+    @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/div[2]/payment-component/div/div[4]/payment-method/div/payment-method-selector-container/prepaid-payment-container/div/div[1]/cash-container/div/ul/li/div/cash-payment-info/div[1]/div/cash-select/div/div/div/div/div/select/option[3]")
+    private WebElement bancoSeleccionado;
+
 
 
     //Localizadores formulario factura
     @CacheLookup
-    @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/div[2]/payment-component/div/div[3]/payment-method/div/payment-method-selector-container/prepaid-payment-container/div/div[3]/invoice-component/div/div[2]/div/invoice-default-component/div/div[2]/div/div[2]/div/fiscal-first-name-input/div/div/input-component-v2/div/div/div/input")
+    @FindBy(xpath = "//*[@id=\"invoice-first-name-0\"]")
     private WebElement nombreFactura;
 
     @CacheLookup
-    @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/div[2]/payment-component/div/div[3]/payment-method/div/payment-method-selector-container/prepaid-payment-container/div/div[3]/invoice-component/div/div[2]/div/invoice-default-component/div/div[2]/div/div[3]/div/fiscal-last-name-input/div/div/input-component-v2/div/div/div/input")
+    @FindBy(xpath = "//*[@id=\"invoice-last-name-0\"]")
     private WebElement apellidoFactura;
 
     @CacheLookup
@@ -140,20 +178,29 @@ public class FPageVuelosChrome extends CommonActionOnPage {
     private WebElement ciudad;
 
     @CacheLookup
-    @FindBy(xpath = "/html/body/div[2]/div/div/app/checkout-form/div/form-component/form/div[1]/div[2]/payment-component/div/div[3]/payment-method/div/payment-method-selector-container/prepaid-payment-container/div/div[3]/invoice-component/div/div[2]/div/invoice-default-component/div/address/div/div[4]/div/address-street-input/div/div/input-component-v2/div/div/div/input")
+    @FindBy(xpath = "//input[@class=\"input-tag invoice-fiscal-address-street ng-untouched ng-pristine ng-invalid\"]\n")
     private WebElement direccion;
 
-    //Metodo para generar pasajeros
+    @CacheLookup
+    @FindBy(xpath = "(//i[@class='checkbox-check eva-3-icon-checkmark -eva-3-mr-sm'])[1]")
+    private WebElement sTerminosYCondiciones;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"checkout-content\"]/div[1]/buy-container/buy-component/div/div/div/div[1]/button-component/div/a/em[1]")
+    private WebElement botonComprar;
+
+
+
+    //Método para generar pasajeros
     public static Pasajero generarPasajero() {
         Faker faker = new Faker();
-
         Pasajero pasajero = new Pasajero();
         pasajero.setNombre(faker.name().firstName());
         pasajero.setApellido(faker.name().lastName());
         pasajero.setDocumento(faker.number().digits(10));
         pasajero.setCorreo(faker.internet().emailAddress());
-        pasajero.setTelefono(faker.phoneNumber().cellPhone());
-
+        pasajero.setTelefono(faker.number().digits(10));
         return pasajero;
     }
 
@@ -189,7 +236,7 @@ public class FPageVuelosChrome extends CommonActionOnPage {
 
     public void filtrarDestino ( String destino) throws InterruptedException {
         click(selectorDestino);
-        typeInto(selectorOringen, "Bogota");
+        typeInto(selectorOringen, destino);
         click (selectorDestino);
         clearText(selectorDestino);
         selectorDestino.sendKeys(destino,Keys.ARROW_DOWN);
@@ -217,57 +264,46 @@ public class FPageVuelosChrome extends CommonActionOnPage {
         clearText(documento1);
         typeInto(documento1, pasajero1.getDocumento());
         scroll(800);
-        clearText(correo1);
-        typeInto(correo1, pasajero1.getCorreo());
-        clearText(correoConfirmacion1);
-        typeInto(correoConfirmacion1, pasajero1.getCorreo());
-        scroll(800);
-        clearText(celular1);
-        typeInto(celular1, pasajero1.getTelefono());
-        scroll(800);
+
     }
 
     Pasajero pasajero2 = generarPasajero();
     public void formularioPasajero2() {
 
-        clearText(nombre1);
-        typeInto(nombre1, pasajero1.getNombre());
-        clearText(apellido1);
-        typeInto(apellido1, pasajero1.getApellido());
-        clearText(documento1);
-        typeInto(documento1, pasajero1.getDocumento());
-        scroll(800);
-        clearText(correo1);
-        typeInto(correo1, pasajero1.getCorreo());
-        clearText(correoConfirmacion1);
-        typeInto(correoConfirmacion1, pasajero1.getCorreo());
-        scroll(800);
-        clearText(celular1);
-        typeInto(celular1, pasajero1.getTelefono());
+        clearText(nombre2);
+        typeInto(nombre2, pasajero2.getNombre());
+        clearText(apellido2);
+        typeInto(apellido2, pasajero2.getApellido());
+        clearText(documento2);
+        typeInto(documento2, pasajero2.getDocumento());
         scroll(800);
       }
     Pasajero pasajero3 = generarPasajero();
     public void formularioPasajero3() {
 
-        clearText(nombre1);
-        typeInto(nombre1, pasajero1.getNombre());
-        clearText(apellido1);
-        typeInto(apellido1, pasajero1.getApellido());
-        clearText(documento1);
-        typeInto(documento1, pasajero1.getDocumento());
+        clearText(nombre3);
+        typeInto(nombre3, pasajero3.getNombre());
+        clearText(apellido3);
+        typeInto(apellido3, pasajero3.getApellido());
+        clearText(documento3);
+        typeInto(documento3, pasajero3.getDocumento());
         scroll(800);
-        clearText(correo1);
-        typeInto(correo1, pasajero1.getCorreo());
-        clearText(correoConfirmacion1);
-        typeInto(correoConfirmacion1, pasajero1.getCorreo());
+    }
+    public void formularioContacto(){
+        clearText(correo);
+        typeInto(correo, pasajero3.getCorreo());
+        clearText(correoConfirmacion);
+        typeInto(correoConfirmacion, pasajero3.getCorreo());
         scroll(800);
-        clearText(celular1);
-        typeInto(celular1, pasajero1.getTelefono());
+        clearText(celular);
+        typeInto(celular, pasajero3.getTelefono());
         scroll(800);
+
     }
     public void llenarFormularioBanco(){
         clickcondelay(medioDePago);
-        //clickcondelay(banco);
+        clickcondelay(banco);
+        clickcondelay(bancoSeleccionado);
         scroll(800);
     }
 
@@ -286,6 +322,8 @@ public class FPageVuelosChrome extends CommonActionOnPage {
 
     public void confirmarPago(){
         scroll(800);
+        clickcondelay(sTerminosYCondiciones);
+        clickcondelay(botonComprar);
 
     }
 
