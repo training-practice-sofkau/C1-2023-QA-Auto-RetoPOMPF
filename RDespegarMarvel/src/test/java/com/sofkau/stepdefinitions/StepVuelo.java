@@ -1,16 +1,12 @@
 package com.sofkau.stepdefinitions;
 
-import com.ibm.icu.text.CaseMap;
 import com.sofkau.page.FPageVuelosChrome;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class StepVuelo extends WebUI {
        public static Logger LOGGER = Logger.getLogger(String.valueOf(StepVuelo.class));

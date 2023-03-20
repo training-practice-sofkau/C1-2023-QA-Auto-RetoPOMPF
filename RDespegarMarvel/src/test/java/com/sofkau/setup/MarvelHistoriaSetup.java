@@ -3,7 +3,6 @@ package com.sofkau.setup;
 import org.apache.log4j.PropertyConfigurator;
 
 import static com.google.common.base.StandardSystemProperty.USER_DIR;
-
 import static com.sofkau.util.Log4j.LOG4J_PROPERTIES_FILE_PATH;
 
 

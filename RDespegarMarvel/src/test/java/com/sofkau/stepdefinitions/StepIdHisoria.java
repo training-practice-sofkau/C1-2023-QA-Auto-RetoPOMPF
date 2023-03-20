@@ -4,7 +4,6 @@ import com.sofkau.setup.MarvelHistoriaIdSetup;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.messages.Messages;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
@@ -13,7 +12,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Assertions;
 
-import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.when;
 
 public class StepIdHisoria extends MarvelHistoriaIdSetup {

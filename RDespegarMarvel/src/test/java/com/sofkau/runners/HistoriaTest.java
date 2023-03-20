@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        features = {"src/test/resources/features/historiaporcomic.feature"},
+        features = {"src/test/resources/features/historiasporcomic.feature"},
         glue = {"com.sofkau.stepdefinitions"},
         publish = true
 )
