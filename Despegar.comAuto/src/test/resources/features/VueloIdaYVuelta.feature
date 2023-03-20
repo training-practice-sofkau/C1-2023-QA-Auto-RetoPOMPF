@@ -4,7 +4,7 @@ Feature: Normal Flight
   So that
 
   Background: I am on the home page
-    Given I went to Despegar flights page with a browser 'browser'
+    Given I went to Despegar flights page with a browser 'Chrome'
     And I selected the passengers
     And I selected the destinations
     Then I will be redirected to the flight selection page

@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.sofkau.pages.PaymentPage.title;
 import static com.sofkau.setup.SetUpConst.*;
 
 public class AsistenciasStepDef extends WebUI {
@@ -21,9 +20,10 @@ public class AsistenciasStepDef extends WebUI {
     @Given("I went to Despegar assistance page with a browser {string}")
     public void iWentToDespegarAssistancePageWithABrowser(String browser) {
         try {
+            log.info("Init scenario");
             generalSetup(browser, ASSIST_URL);
         } catch (Exception e) {
-            // log.error("Wrong Setup provided");
+            log.error("Wrong Setup provided");
             quitDriver();
         }
     }
@@ -31,10 +31,11 @@ public class AsistenciasStepDef extends WebUI {
     @Given("I selected the required fields for my family and me")
     public void iSelectedTheRequiredFieldsForMyFamilyAndMe() {
         try {
+            log.info("Setup scenario");
             AsistenciasPage asistenciasPage = new AsistenciasPage(super.driver);
             asistenciasPage.setupAssistPage();
         } catch (Exception e) {
-            // log.error("Wrong steps provided");
+            log.error("Wrong steps provided");
             quitDriver();
         }
 
@@ -43,10 +44,11 @@ public class AsistenciasStepDef extends WebUI {
     @When("I buy the recommended assistance option")
     public void iBuyTheRecommendedAssistanceOption() {
         try {
+            log.info("Running selection");
             ComprarAsistenciasPage comprarAsistenciasPage = new ComprarAsistenciasPage(super.driver);
             comprarAsistenciasPage.buyRecommended();
         } catch (Exception e) {
-            // log.error("Wrong steps provided");
+            log.error("Wrong steps provided");
             quitDriver();
         }
     }
@@ -55,9 +57,13 @@ public class AsistenciasStepDef extends WebUI {
     public void iWillBeRedirectedToThePaymentPage() {
         try {
             PaymentPage paymentPage = new PaymentPage(super.driver);
-            Assertions.assertEquals(TITLE, paymentPage.seeTitle());
+            String eTitle = paymentPage.seeTitle();
+            Assertions.assertEquals(TITLE, eTitle);
+            log.info("Test passed");
+            log.info(String.format("Expected: %s", TITLE));
+            log.info(String.format("Actual: %s", eTitle));
         } catch (Exception e) {
-            // log.error("Test failed");
+            log.error("Test failed");
             quitDriver();
             Assertions.fail();
         } finally {
@@ -68,6 +74,7 @@ public class AsistenciasStepDef extends WebUI {
     @Given("I bought the recommended assistance option")
     public void iBoughtTheRecommendedAssistanceOption() {
         try {
+            log.info("Setup scenario");
             AsistenciasPage asistenciasPage = new AsistenciasPage(super.driver);
             asistenciasPage.setupAssistPageBuy();
             ComprarAsistenciasPage comprarAsistenciasPage = new ComprarAsistenciasPage(super.driver);
@@ -80,6 +87,7 @@ public class AsistenciasStepDef extends WebUI {
     @When("I fill all the purchase fields")
     public void iFillAllThePurchaseFields() {
         try {
+            log.info("Running selection");
             PaymentPage paymentPage = new PaymentPage(super.driver);
             paymentPage.setupPaymentPage();
         } catch (Exception e) {
@@ -91,7 +99,11 @@ public class AsistenciasStepDef extends WebUI {
     public void iWillBeRedirectedToTheBookingConfirmationPageAndAwaitingPayment() {
         try {
             CheckoutPage checkoutPage = new CheckoutPage(super.driver);
-            Assertions.assertEquals(FINAL_TITLE, checkoutPage.seeFinalTitle());
+            String eFTitle = checkoutPage.seeFinalTitle();
+            Assertions.assertEquals(FINAL_TITLE, eFTitle);
+            log.info("Test passed");
+            log.info(String.format("Expected: %s", FINAL_TITLE));
+            log.info(String.format("Actual: %s", eFTitle));
         } catch (Exception e) {
             quitDriver();
             Assertions.fail();

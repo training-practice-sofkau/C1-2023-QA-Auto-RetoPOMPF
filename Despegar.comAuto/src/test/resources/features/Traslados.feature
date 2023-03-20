@@ -4,7 +4,7 @@ Feature: Go to my hotel
   So that
 
   Background: I am on the transfers page
-    Given I went to Despegar transfer page with a browser 'browser'
+    Given I went to Despegar transfer page with a browser 'Chrome'
 
   Scenario: Select a transfer option
     Given I selected the required fields for my family
