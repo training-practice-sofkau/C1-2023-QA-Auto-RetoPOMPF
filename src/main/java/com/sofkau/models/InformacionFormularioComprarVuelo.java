@@ -11,6 +11,9 @@ public class InformacionFormularioComprarVuelo {
     private String apellidoFactura;
     private String numeroDeIdentificacionFactura;
     private String direccionFactura;
+    private String Oringen;
+    private String Destino;
+
 
     public String getNombre() {
         return nombre;
@@ -83,8 +86,25 @@ public class InformacionFormularioComprarVuelo {
         this.direccionFactura = direccionFactura;
     }
 
+    public String getOringen() {
+        return Oringen;
+    }
+
+    public void setOringen(String oringen) {
+        Oringen = oringen;
+    }
+
+    public String getDestino() {
+        return Destino;
+    }
+
+    public void setDestino(String destino) {
+        Destino = destino;
+    }
+
     public InformacionFormularioComprarVuelo() {
     }
+
 
     public InformacionFormularioComprarVuelo(String nombre, String apellido, String correo, String numeroCelular, String numeroDocumento, String nombreFactura, String apellidoFactura, String numeroDeIdentificacionFactura, String direccionFactura) {
         this.nombre = nombre;

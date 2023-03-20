@@ -1,4 +1,5 @@
 package com.sofkau.pages;
+import com.sofkau.models.InformacionFormularioComprarVuelo;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CompraVueloPage extends CommonActionOnPages {
+
+    private final InformacionFormularioComprarVuelo persona;
 
     @CacheLookup
     @FindBy(xpath = "//a[@title='Vuelos']//div[@class='button-content']")
@@ -129,9 +132,12 @@ public class CompraVueloPage extends CommonActionOnPages {
 
 
 
-    public CompraVueloPage(WebDriver driver) {
+    public CompraVueloPage(WebDriver driver, InformacionFormularioComprarVuelo persona) {
         super(driver);
+        this.persona = persona ;
+
         PageFactory.initElements(driver, this);
+
     }
 
     public void FillMandatoryFields() {
@@ -140,20 +146,17 @@ public class CompraVueloPage extends CommonActionOnPages {
 
 
     public void filtrarOrigen(String origen) {
-        //  clearText(selectorOringen);
-        //click(selectorOringen);
         click(selectorOringen);
         clearText(selectorOringen);
         selectorOringen.sendKeys(origen, Keys.ARROW_DOWN);
         selectorOringen.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         clickcondelay(SelectorConfirmacionOrigen);
-        typeWithDelay(selectorOringen, "Medellin", 30);
+        typeWithDelay(selectorOringen, persona.getOringen(), 30);
     }
 
     public void filtrarDestino(String destino) {
         click(selectorDestino);
-       // clearText(selectorDestino);
-        typeWithDelay(selectorDestino, "Bogota", 30);
+        typeWithDelay(selectorDestino, persona.getDestino(), 30);
         click (selectorDestino);
         selectorDestino.sendKeys(destino, Keys.ARROW_DOWN);
         selectorDestino.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
@@ -165,7 +168,6 @@ public class CompraVueloPage extends CommonActionOnPages {
         click(selectorFechaIda);
         scroll(150);
         clickcondelay(selectorDia);
-        System.out.println(" Imprime pls ");
         click(selectorDiaRegreso);
         click(selectorFechaVuelta);
         scroll(150);
@@ -194,23 +196,23 @@ public class CompraVueloPage extends CommonActionOnPages {
 
     public void llenarFormulario() {
         clickcondelay(inputNombre1);
-        typeInto(inputNombre1, "Santy");
-        typeInto(inputApellidos, "Gomez");
+        typeInto(inputNombre1, persona.getNombre());
+        typeInto(inputApellidos, persona.getApellido());
         clickcondelay(paisResidencia);
-        typeInto(inputIdentificacion, "123456789");
-        typeInto(inputCorreo, "santiokami.23@gamil.com");
-        typeInto(inputconfirmarCorreo, "santiokami.23@gamil.com");
-        typeInto(inputNumeroCelular, "3001234567");
+        typeInto(inputIdentificacion, persona.getNumeroDeIdentificacionFactura());
+        typeInto(inputCorreo, persona.getCorreo());
+        typeInto(inputconfirmarCorreo, persona.getCorreo());
+        typeInto(inputNumeroCelular, persona.getNumeroCelular());
 
         scroll(200);
         clickcondelay(selectorPagoSuRed);
         scroll(200);
         clickcondelay(comboBox);
 
-        typeInto(inputNombreFactura, "Bart ");
-        typeInto(inputApellidoFactura, "Simpsom");
-        typeInto(inputIdentificacionFactura, "123456789");
-        typeInto(inputDireccionFactura, "Calle 123 # 45 - 67");
+        typeInto(inputNombreFactura, persona.getNombreFactura());
+        typeInto(inputApellidoFactura, persona.getApellidoFactura());
+        typeInto(inputIdentificacionFactura, persona.getNumeroDeIdentificacionFactura());
+        typeInto(inputDireccionFactura, persona.getDireccionFactura());
         scroll(500);
         clickcondelay(selectorTerminosYCondiciones);
         scroll(500);

@@ -16,4 +16,7 @@ public class ConstantSetup {
     public static final String HASH = "55648b80e9df0cbb539b886852680b27";
     public static final String ID_COMIC = "82967";
 
+
+    // Constantes para las c
+
 }
