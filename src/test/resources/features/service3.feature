@@ -1,10 +1,10 @@
-Feature: Obtener datos de COVID-19 de EE.UU.
+Feature: Obtener los datos de hospitalizaciones diarias en Estados Unidos
   Como usuario
-  Quiero obtener datos diarios de COVID-19 de EE.UU.
-  Para tomar decisiones informadas sobre mi salud
+  Quiero obtener los datos de hospitalizaciones diarias en Estados Unidos
+  Para conocer la evolución de la pandemia
 
-  Scenario: Obtener datos de COVID-19 de EE.UU.
-    Given que tengo la URL del servicio COVID-19 de EE.UU.
-    When realizo una solicitud GET al servicio
-    Then la respuesta debe ser exitosa
-    And la respuesta debe contener datos diarios de COVID-19 de EE.UU.
+  Scenario: Obtener los datos de hospitalizaciones diarias exitosamente
+    Given que el usuario tiene acceso al servicio de COVID Tracking API
+    When el usuario solicita los datos de hospitalizaciones diarias en Estados Unidos
+    Then el servicio responde con un codigo de respuesta 200
+    And el servicio responde con datos de hospitalizaciones diarias validos

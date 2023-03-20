@@ -40,11 +40,17 @@ public class Step2 extends WebUI {
         Assertions.assertEquals(expectedStatusCode, actualStatusCode);
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(response.getBody().asString());
+        int bandera = 0;
         for (Object obj : jsonArray) {
             JSONObject json = (JSONObject) obj;
             String state = (String) json.get("state");
             Long positiveCases = (Long) json.get("positive");
-            LOGGER.info(state + " tiene " + positiveCases + " casos positivos de COVID-19.");
+            //LOGGER.info(state + " tiene " + positiveCases + " casos positivos de COVID-19.");
+            if (bandera == 0) {
+                Assertions.assertEquals("56886", positiveCases+"");
+                LOGGER.info("Valor esperado: 56886, Valor obtenido: "+positiveCases);
+                bandera = 1;
+            }
         }
     }
 }

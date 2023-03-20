@@ -105,7 +105,7 @@ public class FlujoCompra extends CommonActionPages {
 
 
     @CacheLookup
-    @FindBy(xpath = "(//span[@class='andes-button__content'])")
+    @FindBy(xpath = "(//span)[20]")
     private WebElement ConfirmarCompra;
 
     @CacheLookup
@@ -113,7 +113,7 @@ public class FlujoCompra extends CommonActionPages {
     private WebElement tarjetas;
 
     @CacheLookup
-    @FindBy(xpath = "(//div[@class='group-media-object'])[3]")
+    @FindBy(xpath = "(//label[@for='efecty'])[1]")
     private WebElement botonEfecty;
 
     @CacheLookup
@@ -192,10 +192,10 @@ public class FlujoCompra extends CommonActionPages {
         borrarTexto(numeroCelular);
         typeInto(numeroCelular, formModel.getPhone());
         Thread.sleep(4000);
-        scroll(100);
         click(terminosCondiciones);
         Thread.sleep(3000);
         click(realizarPedido);
+        Thread.sleep(10000);
     }
 
     //Funciones
@@ -259,8 +259,7 @@ public class FlujoCompra extends CommonActionPages {
         explicitWaitTime(numeroCelular);
         borrarTexto(numeroCelular);
         typeInto(numeroCelular, formModel.getPhone());
-        Thread.sleep(4000);
-        scroll(100);
+        Thread.sleep(2000);
         scrollDown(tarjetas);
         Thread.sleep(5000);
         click(tarjetas);
@@ -268,10 +267,13 @@ public class FlujoCompra extends CommonActionPages {
         click(terminosCondiciones);
         explicitWaitTime(realizarPedido);
         click(realizarPedido);
+        Thread.sleep(10000);
         explicitWaitTime(botonEfecty);
         click(botonEfecty);
         explicitWaitTime(ConfirmarCompra);
         click(ConfirmarCompra);
+        Thread.sleep(200000);
+
 
     }
 

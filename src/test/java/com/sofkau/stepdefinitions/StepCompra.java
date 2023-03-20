@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 
 import static com.sofkau.pages.FlujoCompra.validacionPedido;
 
@@ -45,8 +46,9 @@ public class StepCompra extends WebUI {
     @Then("el sistema debera mostrar el numero del pedido")
     public void elSistemaDeberaMostrarElNumeroDelPedido() {
         try {
-            Assertions.assertEquals("CONVENIO RECAUDO ZONA FIT – BALOTO",
-                    "CONVENIO RECAUDO ZONA FIT – BALOTO","El texto es diferente");
+            Assertions.assertEquals("RECAUDO ZONA FIT – BALOTO",
+                    By.xpath("(//h2[text()='CONVENIO RECAUDO ZONA FIT – BALOTO'])"),
+                    "El texto es diferente");
                     validacionPedido();
         } catch (Exception exception){
             quitDriver();
@@ -64,7 +66,7 @@ public class StepCompra extends WebUI {
         cliente.setRegion("antioquia");
         cliente.setCity("medellin");
         cliente.setAddress(" Calle 123 # 10-20");
-        cliente.setAddress(" 101");
+        cliente.setNoAddress(" 101");
         cliente.setPhone("3149999999");
 
     }

@@ -5,47 +5,67 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-
-import org.junit.Assert;
-import java.util.logging.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.junit.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Step3 extends WebUI {
 
+    private final Logger logger = LoggerFactory.getLogger(Step3.class);
     private Response response;
-    private final static Logger logger = Logger.getLogger(String.valueOf(Step3.class));
+    private JSONArray jsonArray;
 
-    @Given("^que tengo la URL del servicio COVID-19 de EE\\.UU\\.$")
-    public void tengo_la_url_del_servicio() {
-        RestAssured.baseURI = "https://api.covidtracking.com/v1/us/daily.json";
+    @Given("que el usuario tiene acceso al servicio de COVID Tracking API")
+    public void que_el_usuario_tiene_acceso_al_servicio_de_covid_tracking_api() {
+        RestAssured.baseURI = "https://api.covidtracking.com";
     }
 
-    @When("^realizo una solicitud GET al servicio$")
-    public void realizo_solicitud_GET() {
-        response = RestAssured.given().when().get();
+    @When("el usuario solicita los datos de hospitalizaciones diarias en Estados Unidos")
+    public void el_usuario_solicita_los_datos_de_hospitalizaciones_diarias_en_estados_unidos() {
+        response = RestAssured.get("/v1/us/daily.json");
+        logger.info("Response: " + response.prettyPrint());
     }
 
-    @Then("^la respuesta debe ser exitosa$")
-    public void la_respuesta_debe_ser_exitosa() {
-        Assert.assertEquals(response.getStatusCode(), 200);
-        logger.info("La respuesta es exitosa");
+    @Then("el servicio responde con un codigo de respuesta {int}")
+    public void el_servicio_responde_con_un_codigo_de_respuesta(Integer expectedStatusCode) {
+        int actualStatusCode = response.getStatusCode();
+        Assert.assertEquals(Integer.valueOf(expectedStatusCode), Integer.valueOf(actualStatusCode));
+        logger.info("Status code: " + actualStatusCode);
     }
 
-    @Then("^la respuesta debe contener datos diarios de COVID-19 de EE\\.UU\\.$")
-    public void la_respuesta_debe_contener_datos_diarios() throws Exception {
+    @Then("el servicio responde con datos de hospitalizaciones diarias validos")
+    public void el_servicio_responde_con_datos_de_hospitalizaciones_diarias_validos() throws ParseException {
         String responseBody = response.getBody().asString();
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(responseBody);
 
-        // Validar que el primer elemento del JSON tenga los atributos esperados
-        JSONObject jsonObject = (JSONObject) jsonArray.get(0);
-        Assert.assertTrue(jsonObject.containsKey("date"));
-        Assert.assertTrue(jsonObject.containsKey("positive"));
-        Assert.assertTrue(jsonObject.containsKey("negative"));
-        Assert.assertTrue(jsonObject.containsKey("death"));
+        // Find the latest dateChecked field value
+        String latestDateChecked = "";
+        for (int i = 0; i < jsonArray.size(); i++) {
+            JSONObject dailyData = (JSONObject) jsonArray.get(i);
+            if (dailyData.get("dateChecked") != null) {
+                latestDateChecked = (String) dailyData.get("dateChecked");
+                break;
+            }
+        }
 
-        logger.info("La respuesta contiene datos diarios de COVID-19 de EE.UU.");
+        // Find the hospitalizedCurrently value for the latest dateChecked
+        int hospitalizedCount = 0;
+        for (int i = 0; i < jsonArray.size(); i++) {
+            JSONObject dailyData = (JSONObject) jsonArray.get(i);
+            if (dailyData.get("dateChecked") != null && dailyData.get("dateChecked").equals(latestDateChecked)) {
+                hospitalizedCount = ((Long) dailyData.get("hospitalizedCurrently")).intValue();
+                break;
+            }
+        }
+
+        // Perform assertion on the hospitalized count for the latest dateChecked
+        Assert.assertTrue(hospitalizedCount >= 0);
+        Assert.assertEquals(40199, hospitalizedCount); // Replace with the expected hospitalized count for the latest dateChecked
     }
+
 }
