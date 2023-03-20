@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 public class CompraVueloPage extends CommonActionOnPages {
 
     private final InformacionFormularioComprarVuelo persona;
-
     @CacheLookup
     @FindBy(xpath = "//a[@title='Vuelos']//div[@class='button-content']")
     private WebElement selectorBotonVuelos;
@@ -173,7 +172,6 @@ public class CompraVueloPage extends CommonActionOnPages {
         click(selectorFechaVuelta);
         scroll(150);
         click(selectorDiaRegreso2);
-
     }
 
     public void closeLogin() throws InterruptedException {
@@ -222,3 +220,6 @@ public class CompraVueloPage extends CommonActionOnPages {
         return getText(mensajeConfirmacionCompra);
     }
 }
+
+
+
