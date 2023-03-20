@@ -90,7 +90,7 @@ public class FormPage extends  CommonActionOnPages{
         click(children);
         click(searchButtom);
         cambiarPestana();
-        Wait(outboundflight2);
+        //Wait(outboundflight2);
         click(outboundflight2);
         scrollTo(scrollflight);
         Wait(scrollflight);
