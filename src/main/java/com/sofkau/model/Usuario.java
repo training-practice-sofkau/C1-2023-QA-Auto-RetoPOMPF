@@ -3,79 +3,111 @@ package com.sofkau.model;
 public class Usuario {
     private String nombre;
     private String apellido;
-    private String pais;
-    private String documento;
-    private int dia;
-    private int mes;
-    private int anio;
-    private String genero;
 
+    private String documento;
+
+    private String lugarOrigen;
+    private String lugarDestino;
+
+    private String email;
+    private String confirmarEmail;
+    private String direccion;
+
+    private  String telefono;
 
     public Usuario() {
     }
 
+    public Usuario(String nombre, String apellido, String documento, String lugarOrigen, String lugarDestino, String email, String confirmarEmail, String direccion, String telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.documento = documento;
+        this.lugarOrigen = lugarOrigen;
+        this.lugarDestino = lugarDestino;
+        this.email = email;
+        this.confirmarEmail = confirmarEmail;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
 
-    public String getNombre() {
+    public String nombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public Usuario setNombre(String nombre) {
         this.nombre = nombre;
+        return this;
     }
 
-    public String getApellido() {
+    public String telefono() {
+        return telefono;
+    }
+
+    public Usuario setTelefono(String telefono) {
+        this.telefono = telefono;
+        return this;
+    }
+
+    public String apellido() {
         return apellido;
     }
 
-    public void setApellido(String apellido) {
+    public Usuario setApellido(String apellido) {
         this.apellido = apellido;
+        return this;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getDocumento() {
+    public String documento() {
         return documento;
     }
 
-    public void setDocumento(String documento) {
+    public Usuario setDocumento(String documento) {
         this.documento = documento;
+        return this;
     }
 
-    public int getDia() {
-        return dia;
+    public String lugarOrigen() {
+        return lugarOrigen;
     }
 
-    public void setDia(int dia) {
-        this.dia = dia;
+    public Usuario setLugarOrigen(String lugarOrigen) {
+        this.lugarOrigen = lugarOrigen;
+        return this;
     }
 
-    public int getMes() {
-        return mes;
+    public String lugarDestino() {
+        return lugarDestino;
     }
 
-    public void setMes(int mes) {
-        this.mes = mes;
+    public Usuario setLugarDestino(String lugarDestino) {
+        this.lugarDestino = lugarDestino;
+        return this;
     }
 
-    public int getAnio() {
-        return anio;
+    public String email() {
+        return email;
     }
 
-    public void setAnio(int anio) {
-        this.anio = anio;
+    public Usuario setEmail(String email) {
+        this.email = email;
+        return this;
     }
 
-    public String getGenero() {
-        return genero;
+    public String confirmarEmail() {
+        return confirmarEmail;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public Usuario setConfirmarEmail(String confirmarEmail) {
+        this.confirmarEmail = confirmarEmail;
+        return this;
+    }
+
+    public String direccion() {
+        return direccion;
+    }
+
+    public Usuario setDireccion(String direccion) {
+        this.direccion = direccion;
+        return this;
     }
 }

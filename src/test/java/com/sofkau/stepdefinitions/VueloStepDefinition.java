@@ -49,8 +49,8 @@ public class VueloStepDefinition extends WebUI {
 
     @Given("el usuario esta en la pagina registro formulario de vuelo {string}")
     public void elUsuarioEstaEnLaPaginaRegistroFormularioDeVuelo(String navegador2) {
-       // generalSetup(navegador2);
-        //LOGGER.warn("Inicio de la Automatizacion");
+       generalSetup(navegador2);
+        LOGGER.warn("Inicio de la Automatizacion");
     }
     @When("selecciona una fecha no disponible")
     public void seleccionaUnaFechaNoDisponible() {

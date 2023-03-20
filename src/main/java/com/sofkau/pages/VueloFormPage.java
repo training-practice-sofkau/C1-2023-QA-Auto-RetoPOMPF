@@ -1,5 +1,6 @@
 package com.sofkau.pages;
 
+import com.github.javafaker.Faker;
 import com.sofkau.model.Usuario;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Keys;
@@ -185,6 +186,11 @@ public class VueloFormPage extends CommonActionOnPages {
     }
 
     public void filtrarDestino ( String destino){
+        Usuario usuario1 = generarDatosUsuario();
+        Usuario usuario2 = generarDatosUsuario();
+        Usuario usuario3 = generarDatosUsuario();
+        Usuario usuario4 = generarDatosUsuario();
+
         clickElement(selectorDestino);
         typeInto(selectorOringen, "Pereira");
         clickElement (selectorDestino);
@@ -201,39 +207,52 @@ public class VueloFormPage extends CommonActionOnPages {
         scroll(280);
         clickcondelay(continuarAlformulario);
       //  clickElement(nombreAdulto1);
-        typeWithDelay(nombreAdulto1,"Nevar",150);
+        typeWithDelay(nombreAdulto1,usuario1.nombre(),150);
         scroll(280);
-        typeWithDelay(apellidoAdulto1,"Osp",150);
-        typeWithDelay(numeroDocumento,"187326",150);
+        typeWithDelay(apellidoAdulto1,usuario1.apellido(),150);
+        typeWithDelay(numeroDocumento, usuario1.documento(), 150);
         scroll(280);
-        typeWithDelay(nombreAdulto2,"gelica",150);
-        typeWithDelay(apellidoAdulto2,"Mendeuz",150);
+        typeWithDelay(nombreAdulto2, usuario2.nombre(), 150);
+        typeWithDelay(apellidoAdulto2, usuario2.apellido(), 150);
         scroll(280);
-        typeWithDelay(numeroDocumento2,"171833",150);
-        typeWithDelay(nombreAdulto3,"Emiliay",150);
-        typeWithDelay(apellidoAdulto3,"Martineez",150);
+        typeWithDelay(numeroDocumento2, usuario2.documento(), 150);
+        typeWithDelay(nombreAdulto3,usuario3.nombre(),150);
+        typeWithDelay(apellidoAdulto3,usuario3.apellido(),150);
         scroll(280);
-        typeWithDelay(numeroDocumento3,"188363",150);
+        typeWithDelay(numeroDocumento3,usuario3.documento(),150);
         scroll(600);
-        typeWithDelay(email,"ospina_828@hotmail.com",150);
-        typeWithDelay(confirmarEmail,"ospina_828@hotmail.com",150);
+        typeWithDelay(email,usuario1.email(),150);
+        typeWithDelay(confirmarEmail,usuario1.email(),150);
         scroll(400);
-        typeWithDelay(numeroTelefono,"347575",150);
+        typeWithDelay(numeroTelefono,usuario1.telefono(),150);
         scroll(280);
         clickcondelay(pse);
         scroll(400);
         clickcondelay(comboBox);
         scroll(600);
-        typeWithDelay(nombrePersonaPago,"Josre",150);
-        typeWithDelay(apellidoPersonaPago,"Lopelz",150);
-        typeWithDelay(cedulaPersonaPago,"56470866",150);
+        typeWithDelay(nombrePersonaPago,usuario4.nombre(),150);
+        typeWithDelay(apellidoPersonaPago,usuario4.apellido(),150);
+        typeWithDelay(cedulaPersonaPago,usuario4.documento(),150);
         scroll(600);
-        typeWithDelay(direccionPersonaPago,"Mz 27",150);
+        typeWithDelay(direccionPersonaPago,usuario4.direccion(),150);
         scroll(800);
         clickcondelay(aceptaTerminos);
         clickcondelay(comprarSinAistencia);
 
 
+    }
+    public static Usuario generarDatosUsuario() {
+        Faker faker = new Faker();
+
+        Usuario usuario = new Usuario();
+        usuario.setNombre(faker.name().firstName());
+        usuario.setApellido(faker.name().lastName());
+        usuario.setDocumento(faker.number().digits(10));
+        usuario.setEmail(faker.internet().emailAddress());
+        usuario.setTelefono("31" + faker.number().digits(8));
+        usuario.setDireccion(faker.address().fullAddress());
+
+        return usuario;
     }
 
     public String verMensajeFinal(){
