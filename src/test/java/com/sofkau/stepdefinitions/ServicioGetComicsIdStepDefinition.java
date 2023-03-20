@@ -1,14 +1,10 @@
 package com.sofkau.stepdefinitions;
 import com.sofkau.setup.SetupService;
 import io.restassured.response.Response;
-import jdk.nashorn.internal.runtime.options.LoggingOption;
 import org.apache.log4j.Logger;
-import com.sofkau.pages.CompraVueloPage;
-import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -41,17 +37,19 @@ public class ServicioGetComicsIdStepDefinition  extends SetupService {
     @Then("la API deberia responder con el comic solicitado")
     public void laAPIDeberiaResponderConElComicSolicitado() {
         try {
+            String dataJson = ("data");
+            String resultsJson = ("results");
+            String primerResultado = ("0");
+            String tituloJson = ("title");
+            String tituloEsperado = ("Marvel Previews (2017)");
+            String idEnviado = ("82967");
             responseBody = (JSONObject) parser.parse(respuesta.getBody().asString());
-            JSONObject data = (JSONObject) responseBody.get("data");
-            JSONArray results = (JSONArray) data.get("results");
+            JSONObject data = (JSONObject) responseBody.get(dataJson);
+            JSONArray results = (JSONArray) data.get(resultsJson);
             JSONObject firstResult = (JSONObject) results.get(0);
-            String ID_COMIC = (String) firstResult.get("82967");
-            String title = (String) firstResult.get("title");
-            // System.out.println(title);
-            // LOGGER.info(title);
-            //LOGGER.info(data);
-            //LOGGER.info(results);
-            Assertions.assertEquals("Marvel Previews (2017)", title);
+            String ID_COMIC = (String) firstResult.get(idEnviado);
+            String title = (String) firstResult.get(tituloJson);
+            Assertions.assertEquals(tituloEsperado, title);
             Assertions.assertEquals(respuesta.getStatusCode(), 200);
 
         }catch (ParseException e){

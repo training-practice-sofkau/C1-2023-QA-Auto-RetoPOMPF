@@ -35,16 +35,19 @@ public class ServicioGetComicStepDefinition  extends SetupService {
     @Then("se deberian visualizar todos los comics de marvel")
     public void seDeberianVisualizarTodosLosComicsDeMarvel() {
         try {
+
+            String dataJson = ("data");
+            String resultsJson = ("results");
+            String primerResultado = ("0");
+            String tituloJson = ("title");
+            String tituloEsperado = ("Marvel Previews (2017)");
+
             responseBody = (JSONObject) parser.parse(respuesta.getBody().asString());
-            JSONObject data = (JSONObject) responseBody.get("data");
-            JSONArray results = (JSONArray) data.get("results");
+            JSONObject data = (JSONObject) responseBody.get(dataJson);
+            JSONArray results = (JSONArray) data.get(resultsJson);
             JSONObject firstResult = (JSONObject) results.get(0);
-            String title = (String) firstResult.get("title");
-            System.out.println(title);
-            LOGGER.info(title);
-            LOGGER.info(data);
-            LOGGER.info(results);
-            Assertions.assertEquals("Marvel Previews (2017)", title);
+            String title = (String) firstResult.get(tituloJson);
+            Assertions.assertEquals(tituloEsperado, title);
             Assertions.assertEquals(respuesta.getStatusCode(), 200);
 
         }catch (ParseException e){
@@ -71,21 +74,20 @@ public class ServicioGetComicStepDefinition  extends SetupService {
     @Then("la API responde error en la solicitud")
     public void laAPIRespondeErrorEnLaSolicitud() {
 
+        String dataJson = ("data");
+        String resultsJson = ("results");
+        String tituloJson = ("title");
+        String tituloEsperado = ("");
 
         try {
             responseBody = (JSONObject) parser.parse(respuesta.getBody().asString());
-            JSONObject data = (JSONObject) responseBody.get("data");
-            JSONArray results = (JSONArray) data.get("results");
+            JSONObject data = (JSONObject) responseBody.get(dataJson);
+            JSONArray results = (JSONArray) data.get(resultsJson);
             JSONObject firstResult = (JSONObject) results.get(0);
-            String title = (String) firstResult.get("title");
-            System.out.println(title);
-            LOGGER.info(title);
-            LOGGER.info(data);
-            LOGGER.info(results);
-            Assertions.assertEquals("PetroskyMan", title);
+            String title = (String) firstResult.get(tituloJson);
             Assertions.assertEquals(respuesta.getStatusCode(), 200);
             LOGGER.info(respuesta.getStatusCode());
-            LOGGER.info(400);
+
 
 
         }catch (ParseException e){
@@ -97,5 +99,5 @@ public class ServicioGetComicStepDefinition  extends SetupService {
     }
 
 
-    }
+}
 

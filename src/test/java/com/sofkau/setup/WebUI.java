@@ -11,10 +11,6 @@ import org.openqa.selenium.edge.EdgeOptions;
 import static com.sofkau.util.Log4j.*;
 import static io.cucumber.messages.internal.com.google.common.base.StandardSystemProperty.USER_DIR;
 
-
-
-
-
 public class WebUI {
 
     protected WebDriver driver;
@@ -62,9 +58,6 @@ public class WebUI {
     }
 
     private void setUpWebdriverUrl(){
-        //driver = new ChromeDriver();
-        //driver = new EdgeDriver();
-       // driver.get(DEMO_QA_URL);
         driver.get(ConstantSetup.URL_BASE_DESPEGAR);
         maximize();
     }

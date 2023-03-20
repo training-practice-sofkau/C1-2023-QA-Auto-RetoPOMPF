@@ -204,7 +204,6 @@ public class CompraVueloPage extends CommonActionOnPages {
         typeInto(inputNumeroCelular, persona.getNumeroCelular());
         scroll(200);
         clickcondelay(selectorPagoSuRed);
-        scroll(200);
         clickcondelay(comboBox);
         typeInto(inputNombreFactura, persona.getNombreFactura());
         typeInto(inputApellidoFactura, persona.getApellidoFactura());

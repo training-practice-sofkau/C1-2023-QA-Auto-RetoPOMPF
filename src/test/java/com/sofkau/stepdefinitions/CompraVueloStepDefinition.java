@@ -45,14 +45,14 @@ public class CompraVueloStepDefinition extends WebUI {
 
     private InformacionFormularioComprarVuelo generarInfo() {
         persona = new InformacionFormularioComprarVuelo();
-        persona.setNombre("Juanito");
-        persona.setApellido("Pereza");
-        persona.setCorreo("correofalsosaaSanti@gmail.com");
-        persona.setNumeroCelular("12345aa6789");
-        persona.setNumeroDocumento("12345678911122");
-        persona.setNombreFactura("Factura");
+        persona.setNombre("Homero");
+        persona.setApellido("Simpson");
+        persona.setCorreo("Bartsimpson22@gmail.com");
+        persona.setNumeroCelular("32292020212");
+        persona.setNumeroDocumento("1005773000221");
+        persona.setNombreFactura("FacturaNombre");
         persona.setApellidoFactura("FacturApe");
-        persona.setNumeroDeIdentificacionFactura("12345678911122");
+        persona.setNumeroDeIdentificacionFactura("19227222123221");
         persona.setDireccionFactura("Calle falsa 123");
         persona.setOringen("Bogota");
         persona.setDestino("Medellin");
