@@ -4,6 +4,7 @@ import com.sofkau.setup.MarvelHistoriaIdSetup;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.messages.Messages;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
@@ -12,6 +13,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Assertions;
 
+import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.when;
 
 public class StepIdHisoria extends MarvelHistoriaIdSetup {
@@ -30,16 +32,17 @@ public class StepIdHisoria extends MarvelHistoriaIdSetup {
         response = when().get(url);
     }
     @Then("la API retornara la historia por id")
-    public void laAPIRetornaraLaHistoriaPorId() {
+    public void laAPIRetornaraLaHistoriaPorId( )  {
         try {
             responseBody = (JSONObject) parser.parse(response.getBody().asString());
             JSONObject data = (JSONObject) responseBody.get("data");
-            LOGGER.info(data);
             JSONArray results = (JSONArray) data.get("results");
             JSONObject firstResult = (JSONObject) results.get(0);
             String title = (String) firstResult.get("title");
             LOGGER.info(data);
             Assertions.assertEquals("Cover #19947", title);
+
+
         } catch (ParseException e) {
             LOGGER.warn(e.getMessage());
             Assertions.fail();
