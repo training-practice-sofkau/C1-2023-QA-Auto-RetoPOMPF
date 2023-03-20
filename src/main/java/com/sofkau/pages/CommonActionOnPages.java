@@ -14,18 +14,27 @@ public class CommonActionOnPages {
     private final WebDriver driver;
     private WebDriverWait typeWait;
 
-    /*Constructor*/
 
     public CommonActionOnPages(WebDriver driver) {
         this.driver = driver;
         explicitWaitInit();
     }
 
-    /*General functions*/
+    protected void esperaExplicita(WebElement webElement) {
+        typeWait = new WebDriverWait(driver, Duration.ofSeconds(TEN_SECONDS.getValue()));
+        typeWait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
 
     protected void explicitWaitInit() {
-        typeWait = new WebDriverWait(driver, TEN_SECONDS.getValue());
+        typeWait = new WebDriverWait(driver, Duration.ofSeconds(TEN_SECONDS.getValue()));
     }
+
+    protected void explicitWaitInit(WebElement webElement) {
+        typeWait = new WebDriverWait(driver, Duration.ofSeconds(TEN_SECONDS.getValue()));
+        typeWait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
 
     protected void waitGeneral(WebElement webElement) {
         typeWait.until(elementToBeClickable(webElement));
@@ -41,7 +50,6 @@ public class CommonActionOnPages {
         js.executeScript("window.scrollBy(0,-200)");
     }
 
-    /* functions for element type By*/
 
     protected void clearText(By locator) {
         driver.findElement(locator).clear();
@@ -81,21 +89,16 @@ public class CommonActionOnPages {
 
     }
 
-    protected void pathFile(WebElement webElement, String path) {
-        webElement.sendKeys(path);
+    protected void selectComboox(WebElement webElement) {
+        webElement.sendKeys(Keys.ENTER, Keys.ARROW_DOWN, Keys.ENTER);
     }
 
     protected void pressEnter(WebElement webElement) {
         typeWait.until(elementToBeClickable(webElement)).sendKeys(Keys.ENTER);
     }
 
-    protected String getText(WebElement webElement) {
-        return webElement.getText();
-    }
 
-    protected boolean getStatusElement(WebElement webElement) {
-        return webElement.isDisplayed();
-    }
+
 
     protected void pressEnter(By locator) {
         typeWait.until(elementToBeClickable(locator)).sendKeys(Keys.ENTER);
@@ -107,7 +110,18 @@ public class CommonActionOnPages {
     }
 
 
-
+    protected void typeWithDelay(WebElement webElement, String text, int delayInMilliseconds) {
+        esperaExplicita(webElement);
+        webElement.click();
+        for (char c : text.toCharArray()) {
+            webElement.sendKeys(Character.toString(c));
+            try {
+                Thread.sleep(delayInMilliseconds);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     protected void clickcondelay(WebElement webElement) {
         esperaExplicita(webElement);
@@ -115,15 +129,18 @@ public class CommonActionOnPages {
     }
 
 
-    protected void esperaExplicita(WebElement webElement) {
-        typeWait = new WebDriverWait(driver, (TEN_SECONDS.getValue()));
-        typeWait.until(ExpectedConditions.visibilityOf(webElement));
-    }
-
-
-    public void scroll(int scrollAmount){
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
+    public void scroll(int scrollAmount) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
         String script = "window.scrollBy(0," + scrollAmount + ")";
         jse.executeScript(script);
     }
+
+
+
+
+    public String getTextoFinal(WebElement webElement) {
+        esperaExplicita(webElement);
+        return webElement.getText();
+    }
+
 }

@@ -5,13 +5,27 @@ public class Usuario {
     private String apellido;
     private String pais;
     private String documento;
-    private int dia;
-    private int mes;
-    private int anio;
-    private String genero;
+    private int diaSalida;
+    private int diaLlegada;
+    private String correo;
+    private String numero;
 
+    private String direccion;
 
     public Usuario() {
+    }
+
+
+    public Usuario(String nombre, String apellido, String pais, String documento, int diaSalida, int diaLlegada, String correo, String numero, String direccion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.pais = pais;
+        this.documento = documento;
+        this.diaSalida = diaSalida;
+        this.diaLlegada = diaLlegada;
+        this.correo = correo;
+        this.numero = numero;
+        this.direccion = direccion;
     }
 
 
@@ -47,35 +61,43 @@ public class Usuario {
         this.documento = documento;
     }
 
-    public int getDia() {
-        return dia;
+    public int getDiaSalida() {
+        return diaSalida;
     }
 
-    public void setDia(int dia) {
-        this.dia = dia;
+    public void setDiaSalida(int diaSalida) {
+        this.diaSalida = diaSalida;
     }
 
-    public int getMes() {
-        return mes;
+    public int getDiaLlegada() {
+        return diaLlegada;
     }
 
-    public void setMes(int mes) {
-        this.mes = mes;
+    public void setDiaLlegada(int diaLlegada) {
+        this.diaLlegada = diaLlegada;
     }
 
-    public int getAnio() {
-        return anio;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setAnio(int anio) {
-        this.anio = anio;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

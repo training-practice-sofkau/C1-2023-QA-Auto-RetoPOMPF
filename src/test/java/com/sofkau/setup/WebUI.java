@@ -13,7 +13,7 @@ import static io.cucumber.messages.internal.com.google.common.base.StandardSyste
 
 public class WebUI {
 
-
+    public static final String MensajeFinal = "\\u00A1Genial! Ahora solo te falta realizar el pago.";
     protected WebDriver driver;
 
     private void setUpWebdriver(String SeleccionNavegador) {
@@ -31,11 +31,11 @@ public class WebUI {
                 break;
             case "Edge":
                 WebDriverManager.edgedriver().setup();
-                EdgeOptions eo = new EdgeOptions();
-                //  eo.addArguments("--remote-allow-origins=*");
-                // eo.addArguments("--disable-notifications");
-                // eo.addArguments("--disable-popup-blocking");
-                driver = new EdgeDriver(eo);
+                EdgeOptions edgeOptionso = new EdgeOptions();
+                edgeOptionso.addArguments("--remote-allow-origins=*");
+                edgeOptionso.addArguments("--inprivate");
+                edgeOptionso.addArguments("--disable-popup-blocking");
+                driver = new EdgeDriver(edgeOptionso);
                 break;
             default:
                 System.out.println("  Este navegador no existe :C");
@@ -62,8 +62,7 @@ public class WebUI {
 
     private void setUpWebdriverUrl() {
         //driver = new ChromeDriver();
-        //driver = new EdgeDriver();
-        // driver.get(DEMO_QA_URL);
+        // driver = new EdgeDriver();
         driver.get(ConstantSetup.URL_BASE_DESPEGAR);
         maximize();
     }

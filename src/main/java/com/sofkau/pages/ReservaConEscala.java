@@ -3,20 +3,14 @@ package com.sofkau.pages;
 import com.github.javafaker.Faker;
 import com.sofkau.models.Usuario;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ReservaVueloPage extends CommonActionOnPages {
+public class ReservaConEscala extends CommonActionOnPages {
 
 
     private Usuario usuario;
@@ -68,7 +62,7 @@ public class ReservaVueloPage extends CommonActionOnPages {
 
 
     @CacheLookup
-    @FindBy(xpath = "(//*[@class='container-next-step -eva-3-bold text-next eva-3-link -eva-3-pt-sm -eva-3-pr-sm -eva-3-pb-sm -eva-3-pl-lg'])[1]")
+    @FindBy(xpath = "//*[@id=\"clusters\"]/span/div/span/cluster/div/div/div[2]/fare/span/span/div/buy-button/a/div/em")
     private WebElement Elegirvuelo1;
 
 
@@ -205,7 +199,36 @@ public class ReservaVueloPage extends CommonActionOnPages {
     private WebElement comboBox;
 
 
-    public ReservaVueloPage(WebDriver driver, Usuario usuario) {
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-assistance\"]/div/div/div/div/div[3]/div[2]/div/div[1]/div/div/div/div/input")
+    public static WebElement fechaPartida;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-assistance\"]/div/div/div/div/div[3]/div[2]/div/div[2]/div/div/div/div/input")
+    public static WebElement fechaLlegada;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/a[2]")
+    public static WebElement correrDerecha;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/div[1]/div[3]/div[10]")
+    public static WebElement fechaInicial;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/div[1]/div[3]/div[12]")
+    public static WebElement fechaFinal;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[2]/div[1]/button")
+    public static WebElement botonFecha;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"filter-stops\"]/li/ul/div/checkbox-filter/checkbox-filter-item[4]/li/span/span[1]/span/label/i")
+    public static WebElement escala;
+
+    public ReservaConEscala(WebDriver driver, Usuario usuario) {
         super(driver);
         this.usuario = usuario;
         PageFactory.initElements(driver, this);
@@ -238,7 +261,7 @@ public class ReservaVueloPage extends CommonActionOnPages {
             clickcondelay(SelectorConfirmacionOrigen);
             click(inputDestino);
             clearText(inputDestino);
-            typeWithDelay(inputDestino, "CALI", 350);
+            typeWithDelay(inputDestino, "MADRID", 350);
             clickcondelay(SelectorConfirmacionDestino);
             clickcondelay(cualquierFecha);
             clickcondelay(botonBuscar);
@@ -249,7 +272,8 @@ public class ReservaVueloPage extends CommonActionOnPages {
 
 
     public void selectVuelo() {
-        scroll(280);
+        scroll(700);
+        clickcondelay(escala);
         clickcondelay(Elegirvuelo1);
         clickcondelay(adultoMas);
         clickcondelay(adultoMas);
@@ -328,7 +352,6 @@ public class ReservaVueloPage extends CommonActionOnPages {
         Usuario usuarioFactura = llenarJavaFaker();
         scroll(500);
         clickcondelay(personaNatural);
-
         typeInto(nombreFactura, usuarioFactura.getNombre());
         scroll(200);
         typeInto(apellidoFactura, usuarioFactura.getApellido());
@@ -353,6 +376,5 @@ public class ReservaVueloPage extends CommonActionOnPages {
     public String getTextoFinal() {
         return getTextoFinal(mensajeFinal);
     }
-
 
 }

@@ -18,9 +18,9 @@ Feature: Busqueda y reservar de un tiquete en despegar
      # | Ana    | Gomez     | Chile    | 404040404 | 30  | 01  | 1992 | Femenino  |
       #| Luis   | Hernandez | Colombia | 505050505 | 15  | 09  | 1988 | Masculino |
 
-  @ViajeMedellin
+  @ViajeCali
   Scenario: Destino Medellin exitosa de un vuelo
-    Given el usuario esta en la pagina principal de despegar.com opcion vuelos "Chrome"
+    Given el usuario esta en la pagina principal de despegar.com opcion vuelos "Edge"
     When  el usuario elije un lugar de origen-destino,  opcion ida, fecha, cantidad de pasajeros, y clase de tiquete, y opcion buscar
     And el usuario elije el vuelo, indica el equipaje y realiza el checkout con sus datos
     Then el usuario debera ver un mensaje reserva exitosa
@@ -33,7 +33,7 @@ Feature: Busqueda y reservar de un tiquete en despegar
 
   @ReservaConEscala
   Scenario: Reserva un vuelo con escala
-    Given el usuario se encuetra en la pagina principal de despegar.com
+    Given el usuario se encuetra en la pagina principal de despegar.com "Chrome"
     When   el usuario selecciona  lugar de origen-destino,  opcion ida, fecha, cantidad de pasajeros, y clase de tiquete, y opcion buscar
     And el usuario elije el vuelo, indica el equipaje, elije la opcion con escala, realiza el checkout con sus datos
     Then debera observar un mensaje vuelo reservado con escala
