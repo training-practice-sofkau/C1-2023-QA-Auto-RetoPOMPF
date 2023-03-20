@@ -1,19 +1,17 @@
 # RETO POM+PG y Rest-Assurred
-
-Ejercicio 1 
-https://www.despegar.com.co/
-servicio
-https://developer.marvel.com/documentation/apiresults
+EVIDENCIAS:
+https://1drv.ms/u/s!AkTjzN5zfaAMrBC_MuvBdi1KvEMb?e=tyGxNA
+PLAN DE CALIDAD:
+https://onedrive.live.com/edit.aspx?resid=1EB52AF2D9CBC362!15086&ithint=file%2cxlsx&authkey=!AL4KD5BuUchvIQY
+MATRIZ DE RIESGO:
+https://onedrive.live.com/edit.aspx?resid=1EB52AF2D9CBC362!15090&ithint=file%2cxlsx&authkey=!AIYP3G5MVL6XOik
 
 Ejercicio 2
 https://zonafit.co/
 servicio
 https://covidtracking.com/data
 
-Ejercicio 3
-https://www.latamairlines.com/
-Servicio 
-https://www.coingecko.com/en/api/documentation
+
 
 
 Se pide: 
