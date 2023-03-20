@@ -1,6 +1,5 @@
 package com.sofkau.stepdefinitions;
 
-import com.sofkau.page.FPageDisneyChrome;
 import com.sofkau.page.FPageVuelosChrome;
 import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
@@ -24,7 +23,11 @@ public class StepVuelo extends WebUI {
         pageVuelos.filtrarOrigen("Medellin");
         pageVuelos.filtrarDestino ("Cali");
         pageVuelos.seleccionarVuelo();
-        pageVuelos.llenarFormulario("yoli");
+        pageVuelos.formularioPasajero1();
+        pageVuelos.formularioPasajero2();
+        pageVuelos.formularioPasajero3();
+        pageVuelos.llenarFormularioFactura();
+        pageVuelos.confirmarPago();
     }
     @Then("debera mostrar un mensaje de reserva exitosa")
     public void deberaMostrarUnMensajeDeReservaExitosa() {
