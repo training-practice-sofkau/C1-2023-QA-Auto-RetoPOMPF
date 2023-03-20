@@ -4,7 +4,7 @@ Feature: Filtrar vuelos segun necesidad
   Para encontrar las opciones de vuelo que mejor se adapten a mis necesidades
 
   Scenario: Filtrar vuelos para que se adapte a mis preferencias
-    Given que estoy en la pagina de Despegar.com.co
+    Given que estoy en la pagina de Despegar.com.co en el navegador 'Chrome'
     When busco y selecciono un vuelo de ida y vuelta para tres adultos
     And Selecciono la aerolinea con la que deseo viajar
     Then los resultados de busqueda muestran opciones de vuelo que cumplen con mis criterios de aerolinea

@@ -7,8 +7,12 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class VueloOutlinePage extends CommonActionOnPages {
+public class VueloFiltroPage extends CommonActionOnPages{
 
+    public VueloFiltroPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     /**
      * Localizadores
@@ -38,26 +42,6 @@ public class VueloOutlinePage extends CommonActionOnPages {
     private WebElement listaDestino;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[1]/div[1]/div[2]/div/div[1]/div/div/div/div/input")
-    private WebElement fechaIda;
-
-    @CacheLookup
-    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/div[1]/div[3]/div[22]")
-    private WebElement diaIda;
-
-    @CacheLookup
-    @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[1]/div[1]/div[2]/div/div[2]/div/div/div/div/input")
-    private WebElement fechaRegreso;
-
-    @CacheLookup
-    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/div[1]/div[3]/div[29]")
-    private WebElement diaRegreso;
-
-    @CacheLookup
-    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[3]/div[2]/div[1]/button")
-    private WebElement aplicar;
-
-    @CacheLookup
     @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[1]/div[1]/div[3]/span/span/label/span[1]")
     private WebElement cualquierFecha;
 
@@ -65,11 +49,10 @@ public class VueloOutlinePage extends CommonActionOnPages {
     @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[3]/button")
     private WebElement buscar;
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"filter-airlines\"]")
+    private WebElement filtro;
 
-    public VueloOutlinePage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
 
 
     public void clickVuelo() throws InterruptedException {
@@ -81,9 +64,7 @@ public class VueloOutlinePage extends CommonActionOnPages {
         cLogin.click();
     }
 
-
     public void fillMandatoryFields() throws InterruptedException {
-
 
         closeLogin();
 
@@ -97,16 +78,17 @@ public class VueloOutlinePage extends CommonActionOnPages {
         destino.sendKeys("San Andres", Keys.ARROW_DOWN);
         clickcondelay(listaDestino);
 
-        clickcondelay(fechaIda);
-        clickcondelay(diaIda);
+        click(cualquierFecha);
 
-        clickcondelay(fechaRegreso);
-        clickcondelay(diaRegreso);
+        click(buscar);
+
+        scroll(1400);
+
+        clickcondelay(filtro);
+
+
+
 
     }
 
-
-
-
 }
-
