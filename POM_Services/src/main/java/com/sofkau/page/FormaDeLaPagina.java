@@ -72,7 +72,13 @@ public class FormaDeLaPagina extends CommonActionOnPage {
     public void ingresarCredenciales() throws InterruptedException {
         Thread.sleep(500);
         typeInto(By.id("username"),"damir29305@etondy.com");
-        typeInto(By.id("password"),"Test.prueba00");
+        typeInto(By.id("password"),"Prueba.test00");
+        click(By.xpath("(//button[@class='woocommerce-button button woocommerce-form-login__submit wp-element-button'])"));
+    }
+    public void ingresarCredenciales(String string) throws InterruptedException {
+        Thread.sleep(500);
+        typeInto(By.id("username"),"damir29305@etondy.com");
+        typeInto(By.id("password"),string);
         click(By.xpath("(//button[@class='woocommerce-button button woocommerce-form-login__submit wp-element-button'])"));
     }
     public void compararBotonAcceso() {
