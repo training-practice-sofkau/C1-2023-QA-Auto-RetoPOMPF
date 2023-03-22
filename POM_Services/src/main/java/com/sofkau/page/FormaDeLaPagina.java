@@ -25,7 +25,7 @@ public class FormaDeLaPagina extends CommonActionOnPage {
             scroll(500);
             click(By.xpath(String.format("(//div[@class='image-fade_in_back'])[%s]",i)));
             scroll(500);
-            if (i==6)
+            if (i==4)
                 click(By.xpath("(//div[@data-value='vanilla'])"));
             else
                 click(By.xpath("(//div[@data-value='banana'])"));
