@@ -38,7 +38,6 @@ public class AsistenciasStepDef extends WebUI {
             log.error("Wrong steps provided");
             quitDriver();
         }
-
     }
 
     @When("I buy the recommended assistance option")

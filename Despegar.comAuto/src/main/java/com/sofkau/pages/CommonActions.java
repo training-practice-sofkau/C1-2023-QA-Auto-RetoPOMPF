@@ -1,6 +1,7 @@
 package com.sofkau.pages;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,5 +43,15 @@ public class CommonActions {
 
     protected void type(WebElement element, String text) {
         element.sendKeys(text);
+    }
+
+    protected void tab(WebElement element) {
+        explicitWait(element);
+        element.sendKeys(Keys.TAB);
+    }
+
+    protected void enter(WebElement element) {
+        explicitWait(element);
+        element.sendKeys(Keys.ENTER);
     }
 }

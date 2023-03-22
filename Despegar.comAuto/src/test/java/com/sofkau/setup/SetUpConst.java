@@ -8,4 +8,5 @@ public class SetUpConst {
     public static final String FLIGHT_URL = "https://www.despegar.com.co/vuelos/";
     public static final String TITLE = "\u00A1Falta poco! Completa tus datos y finaliza tu compra";
     public static final String FINAL_TITLE = "\u00A1Genial! Ahora solo te falta realizar el pago.";
+    public static final String PRICE = " 151.238 ";
 }
