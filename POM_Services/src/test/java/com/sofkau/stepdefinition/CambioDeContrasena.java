@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 public class CambioDeContrasena extends WebUI{
     public static Logger LOGGER = Logger.getLogger(String.valueOf(CompraPorCategoria.class));
     @Given("Estoy con mi sesion iniciada con la clave {string}")
-    public void estoyConMiSesionIniciadaConLaClaveClaveAnterior(String string) throws InterruptedException {
+    public void estoyConMiSesionIniciadaConLaClaveClaveAnterior(String string){
         FormaDeLaPagina formaDeLaPagina=new FormaDeLaPagina(super.driver);
         formaDeLaPagina.clickAcceder();
         formaDeLaPagina.ingresarCredenciales(string);

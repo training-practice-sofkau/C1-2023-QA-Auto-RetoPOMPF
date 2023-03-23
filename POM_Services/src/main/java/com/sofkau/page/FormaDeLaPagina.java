@@ -1,13 +1,18 @@
 package com.sofkau.page;
 import com.sofkau.util.Log4j;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class FormaDeLaPagina extends CommonActionOnPage {
+    WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
     public static String convenio;
     public static String boton;
     public static String error;
@@ -15,68 +20,71 @@ public class FormaDeLaPagina extends CommonActionOnPage {
     public FormaDeLaPagina(WebDriver driver) {
         super(driver);
     }
-    public void clickOpcionProteinas() throws InterruptedException {
+    public void clickOpcionProteinas(){
         ponerMouse("header-vertical-menu__title");
-        Thread.sleep(300);
-        click(By.xpath("(//a[@class='nav-top-link'])[5]"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[@class='nav-top-link'])[5]"))).click();
     }
-    public void clickProductos() throws InterruptedException {
+    public void clickProductos(){
         for (int i=4;i<7;i++){
             scroll(500);
-            click(By.xpath(String.format("(//div[@class='image-fade_in_back'])[%s]",i)));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format("(//div[@class='image-fade_in_back'])[%s]",i)))).click();
             scroll(500);
             if (i==4)
-                click(By.xpath("(//div[@data-value='vanilla'])"));
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@data-value='vanilla'])"))).click();
             else
-                click(By.xpath("(//div[@data-value='banana'])"));
-            click(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])"));
-            click(By.className("mfp-close"));
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@data-value='banana'])"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.className("mfp-close"))).click();
             clickOpcionProteinas();
         }
-        click(By.className("header-cart-title"));
-        click(By.xpath("(//a[@class='button wc-forward wp-element-button'])"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.className("header-cart-title"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[@class='button wc-forward wp-element-button'])"))).click();
         scroll(200);
         for(int i=2;i<7;i++){
-            click(By.xpath("(//input [@type='button'])["+i+"]"));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input [@type='button'])["+i+"]"))).click();
             i++;
         }
     }
-    public void finalizarCompra() throws InterruptedException {
-        WebDriverWait typeWait= new WebDriverWait(driver, Duration.ofSeconds(10));;
+    public void finalizarCompra(){
         scroll(100);
-        click(By.xpath("(//a[@class='checkout-button button alt wc-forward wp-element-button'])"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[@class='checkout-button button alt wc-forward wp-element-button'])"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='billing_myfield12'])")));
         typeInto(By.xpath("(//input[@id='billing_myfield12'])"),"1021234598");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='billing_email'])")));
         typeInto(By.xpath("(//input[@id='billing_email'])"),"damir29305@etondy.com");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='billing_first_name'])")));
         typeInto(By.xpath("(//input[@id='billing_first_name'])"),"Natalia");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='billing_last_name'])")));
         typeInto(By.xpath("(//input[@id='billing_last_name'])"),"Quintero");
-        click(By.xpath("(//span[@id='select2-billing_state-container'])"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[@id='select2-billing_state-container'])"))).click();
         typeInto(By.xpath("(//input[@class='select2-search__field'])"),"Antioquia");
         tab(By.xpath("(//input[@class='select2-search__field'])"));
-        scroll(100);
-        click(By.xpath("(//span[@id='select2-billing_city-container'])"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[@id='select2-billing_city-container'])"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@class='select2-search__field'])")));
         typeInto(By.xpath("(//input[@class='select2-search__field'])"),"Medellin");
         tab(By.xpath("(//input[@class='select2-search__field'])"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='billing_address_1'])")));
         typeInto(By.xpath("(//input[@id='billing_address_1'])"),"Cra. 23b #84b192");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='billing_phone']")));
         typeInto(By.xpath("//input[@id='billing_phone']"),"3222025132");
-        scroll(800);
-        Thread.sleep(3000);
-        typeWait.until(ExpectedConditions.elementToBeClickable(By.id("terms"))).click();
-        typeWait.until(ExpectedConditions.elementToBeClickable(By.id("place_order"))).click();
+        driver.findElement(By.id("terms")).sendKeys(Keys.SPACE);
+        driver.findElement(By.id("place_order")).sendKeys(Keys.SPACE);
     }
     public void puntoBaloto() {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//strong[text()='1204346'])")));
         convenio=driver.findElement(By.xpath("(//strong[text()='1204346'])")).getText();
     }
     public void clickAcceder() {
         click(By.xpath("(//a[@class='nav-top-link nav-top-not-logged-in icon primary button round is-small'])"));
     }
-    public void ingresarCredenciales() throws InterruptedException {
-        Thread.sleep(500);
+    public void ingresarCredenciales(){
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("username"))).click();
         typeInto(By.id("username"),"damir29305@etondy.com");
         typeInto(By.id("password"),"Prueba.test00");
         click(By.xpath("(//button[@class='woocommerce-button button woocommerce-form-login__submit wp-element-button'])"));
     }
-    public void ingresarCredenciales(String string) throws InterruptedException {
-        Thread.sleep(500);
+    public void ingresarCredenciales(String string){
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("username")));
         typeInto(By.id("username"),"damir29305@etondy.com");
         typeInto(By.id("password"),string);
         click(By.xpath("(//button[@class='woocommerce-button button woocommerce-form-login__submit wp-element-button'])"));

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 public class LogIn extends WebUI{
     public static Logger LOGGER = Logger.getLogger(String.valueOf(CompraPorCategoria.class));
     @Given("Estoy con mi sesion iniciada")
-    public void estoyConMiSesionIciada() throws InterruptedException {
+    public void estoyConMiSesionIciada(){
         hagoClickEnElBotonAcceder();
         ingresoMiCorreoYContrasena();
     }
@@ -18,7 +18,7 @@ public class LogIn extends WebUI{
         formaDeLaPagina.clickAcceder();
     }
     @When("Ingreso mi correo y contrasena")
-    public void ingresoMiCorreoYContrasena() throws InterruptedException {
+    public void ingresoMiCorreoYContrasena(){
         FormaDeLaPagina formaDeLaPagina=new FormaDeLaPagina(super.driver);
         formaDeLaPagina.ingresarCredenciales();
     }
