@@ -1,6 +1,7 @@
 package com.sofkau.pages.common;
 
 import org.openqa.selenium.*;
+<<<<<<< HEAD
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -8,6 +9,12 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+=======
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+import org.openqa.selenium.JavascriptExecutor;
+>>>>>>> main
 
 public class CommonActionPages {
 
@@ -23,30 +30,46 @@ public class CommonActionPages {
         driver.findElement(locator).click();
     }
 
+<<<<<<< HEAD
     public void scrollTo(By locator) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("argument[0].scrollIntoView();", driver.findElement(locator));
 
     }
+=======
+>>>>>>> main
     public void scrollDown() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 
+<<<<<<< HEAD
+=======
+    protected void presionarEspacio(By locator) {
+        driver.findElement(locator).sendKeys(Keys.SPACE);
+    }
+>>>>>>> main
 
     protected void scroll(int numero) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("window.scrollBy(0," + numero + ");");
     }
+<<<<<<< HEAD
 
     protected static String getText(By locator) {
         return driver.findElement(locator).getText();
     }
 
+=======
+    protected static String getText(By locator) {
+        return driver.findElement(locator).getText();
+    }
+>>>>>>> main
     protected void typeInto(WebElement webElement, String value) {
         webElement.sendKeys(value);
     }
 
+<<<<<<< HEAD
     public void borrarTexto(WebElement webElement) {
         webElement.clear();
     }
@@ -62,10 +85,17 @@ public class CommonActionPages {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+=======
+    protected void explicitWaitTime(WebElement webElement) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+>>>>>>> main
     protected void click(WebElement webElement) {
         webElement.click();
     }
 
+<<<<<<< HEAD
     public void scrollTo(WebElement webElement) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView();", webElement);
@@ -83,6 +113,8 @@ public class CommonActionPages {
         return webElement.getText();
     }
 
+=======
+>>>>>>> main
     private By botonWhatsappSelector = By.xpath("(//div[@class='joinchat__button__open'])[1]");
     private By botonNecesitasAsesoriaSelector = By.xpath("(//div[@class='joinchat__agent__image'])[1]");
 
@@ -97,6 +129,7 @@ public class CommonActionPages {
         WebElement botonNecesitasAsesoria = wait.until(ExpectedConditions.visibilityOfElementLocated(botonNecesitasAsesoriaSelector));
         botonNecesitasAsesoria.click();
     }
+<<<<<<< HEAD
 
     public boolean isTextPresent(String text) {
         return driver.getPageSource().contains(text);
@@ -190,3 +223,8 @@ public class CommonActionPages {
 
 
 
+=======
+}
+
+
+>>>>>>> main

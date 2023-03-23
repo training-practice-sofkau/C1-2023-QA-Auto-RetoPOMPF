@@ -58,13 +58,17 @@ public class StepCompra extends WebUI {
             LOGGER.warn(exception.getMessage(), exception);
             LOGGER.error("La aserción no se cumple correctamente");
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
         }
     }
     //Funciones
     private void clienteGeneral() {
         cliente = new FormModel();
         cliente.setCedula("123456789");
+<<<<<<< HEAD
         cliente.setEmail("james@gmail.com");
         cliente.setName("james");
         cliente.setLastName("munoz");
@@ -73,5 +77,16 @@ public class StepCompra extends WebUI {
         cliente.setAddress(" Calle 123 # 10-20");
         cliente.setNoAddress(" 101");
         cliente.setPhone("3149999999");
+=======
+        cliente.setEmail("Ivan@gmail.com");
+        cliente.setName("Marquez");
+        cliente.setLastName("munoz");
+        cliente.setRegion("antioquia");
+        cliente.setCity("medellin");
+        cliente.setAddress(" Calle 123");
+        cliente.setNoAddress(" 101");
+        cliente.setPhone("3149999999");
+        cliente.setTexto("Espero que el pedido llegue antes del 30 de marzo del presente año ya que después de la fecha no estaré en la dirección");
+>>>>>>> main
     }
 }

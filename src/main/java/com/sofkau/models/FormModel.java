@@ -13,9 +13,24 @@ public class FormModel {
     private String noAddress;
     private String phone;
 
+<<<<<<< HEAD
     public FormModel() {
     }
 
+=======
+    private String texto;
+
+    public FormModel() {
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+>>>>>>> main
 
     public String getCedula() {
         return cedula;
@@ -99,6 +114,11 @@ public class FormModel {
                 ", address='" + address + '\n' +
                 ", noAddress='" + noAddress + '\n' +
                 ", phone='" + phone + '\'' +
+<<<<<<< HEAD
+=======
+                ", texto='" + texto + '\'' +
+
+>>>>>>> main
                 '}';
     }
 

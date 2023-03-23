@@ -9,6 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+<<<<<<< HEAD
+=======
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+>>>>>>> main
 
 public class FlujoCompra extends CommonActionPages {
 
@@ -16,6 +23,7 @@ public class FlujoCompra extends CommonActionPages {
     public final FormModel formModel;
     private WebDriver webDriver;
 
+<<<<<<< HEAD
     @CacheLookup
     @FindBy(xpath = "(//a[@class='dashicons-heart mega-menu-link'])[2]")
     private WebElement outlet;
@@ -33,13 +41,32 @@ public class FlujoCompra extends CommonActionPages {
     private final By cantidad1 = By.xpath("(//input[@value='+'])[1]");
     private final By cantidad2 = By.xpath("(//input[@value='+'])[2]");
     private final By cantidad3 = By.xpath("(//input[@value='+'])[3]");
+=======
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    @CacheLookup
+    @FindBy(xpath = "(//a[@class='dashicons-heart mega-menu-link'])[2]")
+    private WebElement outlet;
+    private final By anadirProducto1 = By.xpath("(//button[@class='single_add_to_cart_button button alt wp-element-button'])[1]");
+    @CacheLookup
+    @FindBy(xpath = "(//textarea[@id='order_comments'])[1]")
+    private WebElement texto;
+
+    private final By Contacto = By.xpath("(//span[normalize-space()='Contacto'])[1]");
+    private final By xcarrito = By.xpath("(//button[@class='mfp-close'])");
+    private final By cantidad1 = By.xpath("(//input[@value='+'])[1]");
+>>>>>>> main
 
     @CacheLookup
     @FindBy(xpath = "(//a[@class='button wc-forward wp-element-button'])[1]")
     private WebElement carrito;
 
     @CacheLookup
+<<<<<<< HEAD
     @FindBy(xpath = "//*[@id=\"main\"]/div[2]/div/div[2]/div[2]/div/div[1]/div/a")
+=======
+    @FindBy(xpath = "(//a[normalize-space()='Finalizar compra'])[1]")
+>>>>>>> main
     private WebElement finalizarCompra;
 
     @CacheLookup
@@ -96,6 +123,7 @@ public class FlujoCompra extends CommonActionPages {
     @FindBy(xpath = "(//label)[1]")
     private WebElement baloto;
 
+<<<<<<< HEAD
     @CacheLookup
     @FindBy(xpath = "//*[@id=\"terms\"]")
     private WebElement terminosCondiciones;
@@ -120,6 +148,14 @@ public class FlujoCompra extends CommonActionPages {
     @CacheLookup
     @FindBy(xpath = "//a[@class='andes-button andes-button--link button-link']")
     private WebElement VolverSitio;
+=======
+
+    private final By terminosCondiciones = By.xpath("//*[@id=\"terms\"]");
+
+    private final By realizarPedido = By.xpath("//*[@id=\"place_order\"]");
+
+
+>>>>>>> main
 
     //Validacion
     private static final By confirmacionPedido = By.xpath("//*[@id=\"main\"]/div[2]/div/div");
@@ -130,16 +166,26 @@ public class FlujoCompra extends CommonActionPages {
         this.formModel = formModel;
         PageFactory.initElements(webDriver, this);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     //Funciones
     public void llenarInformacion1() throws InterruptedException {
 
         click(outlet);
         click(anadirProducto1);
+<<<<<<< HEAD
         Thread.sleep(1800);
         click(xcarrito);
         scrollDown();
         Thread.sleep(1800);
 // añadirProducto2
+=======
+        click(xcarrito);
+        WebElement producto2 = driver.findElement(Contacto);
+        wait.until(ExpectedConditions.visibilityOf(producto2));
+>>>>>>> main
         int productosSeleccionados = 0;
         for (int i = 2; i <= 5; i++) {
             try {
@@ -152,9 +198,15 @@ public class FlujoCompra extends CommonActionPages {
             } catch (Exception e) {
             }
         }
+<<<<<<< HEAD
         Thread.sleep(1800);
         click(xcarrito);
         scrollDown();
+=======
+        click(xcarrito);
+        WebElement producto3 = driver.findElement(Contacto);
+        wait.until(ExpectedConditions.visibilityOf(producto3));
+>>>>>>> main
 // añadirProducto3
         productosSeleccionados = 0;
         for (int i = 2; i <= 5; i++) {
@@ -168,6 +220,7 @@ public class FlujoCompra extends CommonActionPages {
             } catch (Exception e) {
             }
         }
+<<<<<<< HEAD
         Thread.sleep(1800);
         click(carrito);
         click(cantidad1);
@@ -213,6 +266,32 @@ public class FlujoCompra extends CommonActionPages {
         click(terminosCondiciones);
         click(realizarPedido);
         Thread.sleep(10000);
+=======
+        click(carrito);
+        click(cantidad1);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//a[normalize-space()='Finalizar compra'])[1]")));
+        click(finalizarCompra);
+        typeInto(numeroDeDocumento, formModel.getCedula());
+        typeInto(e_Mail, formModel.getEmail());
+        typeInto(nombre, formModel.getName());
+        typeInto(apellido, formModel.getLastName());
+        click(seleccionBotondepartamento);
+        typeInto(departamento, formModel.getRegion());
+        click(seleccionDepartamento);
+        click(seleccionBotonCiudad);
+        typeInto(ciudad, formModel.getCity());
+        click(seleccionCiudad);
+        typeInto(direccion, formModel.getAddress());
+        typeInto(numeroCelular, formModel.getPhone());
+        WebElement terminos = driver.findElement(By.xpath("//*[@id=\"terms\"]"));
+        wait.until(ExpectedConditions.visibilityOf(terminos));
+        presionarEspacio(terminosCondiciones);
+        WebElement shop = driver.findElement(By.xpath("//*[@id=\"place_order\"]"));
+        wait.until(ExpectedConditions.visibilityOf(shop));
+        presionarEspacio(realizarPedido);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//strong[normalize-space()='Gracias. Tu pedido ha sido recibido.'])[1]")));
+
+>>>>>>> main
     }
     public static String validacionPedido() {
         return getText(confirmacionPedido).trim();

@@ -41,7 +41,11 @@ public class StepAsesoria extends WebUI {
     public void seleccionoLaOpcionNecesitasAsesoria() {
         try {
             commonActionOnPages.clickBotonNecesitasAsesoria();
+<<<<<<< HEAD
             Thread.sleep(10000);
+=======
+            Thread.sleep(50000);
+>>>>>>> main
             LOGGER.info("Se ha hecho clic en la opción 'Necesitas asesoría'");
         } catch (Exception e) {
             LOGGER.warn("Ha ocurrido un error al hacer clic en la opción 'Necesitas asesoría': " + e.getMessage());
@@ -66,6 +70,12 @@ public class StepAsesoria extends WebUI {
     }
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> main
 }
 
 
