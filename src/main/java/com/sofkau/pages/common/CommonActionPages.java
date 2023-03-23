@@ -33,6 +33,11 @@ public class CommonActionPages {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("window.scrollBy(0," + numero + ");");
     }
+    public void scrollTo(By locator){
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].scrollIntoView();", driver.findElement(locator));
+    }
+
     protected static String getText(By locator) {
         return driver.findElement(locator).getText();
     }
