@@ -1,5 +1,9 @@
 # RETO POM+PG y Rest-Assurred
 
+ADJUNTO PLAN DE CALIDAD Y MATRIZ DE RIESGO:
+PLAN: https://onedrive.live.com/edit.aspx?resid=1EB52AF2D9CBC362!15086&cid=1eb52af2d9cbc362&CT=1679355200783&OR=ItemsView
+MATRIZ: https://onedrive.live.com/edit.aspx?resid=1EB52AF2D9CBC362!15090&cid=1eb52af2d9cbc362&CT=1679355264408&OR=ItemsView
+
 Ejercicio 1 
 https://www.despegar.com.co/
 servicio
