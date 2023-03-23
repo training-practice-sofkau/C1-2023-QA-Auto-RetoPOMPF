@@ -30,8 +30,8 @@ public class FormPage extends  CommonActionOnPages{
     private static final By scrollflight = By.id("bundle-detail-0-flight-select");
     private static final By scrollflight2 = By.xpath("//*[@class='body-flightsstyle__FareRegulationsContainer-sc__sc-1p74not-10 hMWpLQ']");
     private static final By chairButtom = By.id("button9");
-    private static final By chair = By.xpath("(//*[@class='Seat__ButtonSeat-sc-4o384m-0 jccqap available standard'])[80]");
-    private static final By chair2 = By.xpath("(//*[@class='Seat__ButtonSeat-sc-4o384m-0 jccqap available standard'])[79]");
+    private static final By chair = By.xpath("//button[@class='Seat__ButtonSeat-sc-4o384m-0 jccqap selected standard']");
+    private static final By chair2 = By.xpath("((//button[@class='Seat__ButtonSeat-sc-4o384m-0 jccqap available standard'])[77]");
     private static final By chair3 = By.xpath("(//*[@class='Seat__ButtonSeat-sc-4o384m-0 jccqap available standard'])[78]");
     private static final By addchair = By.id("btn-next-flight");
     private static final By suitcase= By.id("btnSeatMapLeave");
@@ -106,13 +106,6 @@ public class FormPage extends  CommonActionOnPages{
         scrollTo(chairButtom);
         Wait(chairButtom);
         click(chairButtom);
-        Wait(chair);
-        scrollTo(chair);
-        click(chair);
-        Wait(chair2);
-        click(chair2);
-        Wait(chair3);
-        click(chair3);
         Wait(addchair);
         click(addchair);
         Wait(suitcase);
