@@ -48,12 +48,7 @@ public class VueloNoDisponiblePage extends CommonActionOnPages{
     @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[1]/div[1]/div[2]/div/div[1]/div/div/div/div/input")
     private WebElement fechaIda;
 
-    /*@CacheLookup
-    @FindBy(xpath = "//*[@id=\"component-modals\"]/div[3]/div[1]/div[2]/div[2]/div[3]/div[22]/div")
-    private WebElement diaIda;*/
-
     private final By diaIda = By.xpath("//*[@id=\"component-modals\"]/div[1]/div[1]/div[2]/div[2]/div[3]/div[22]/div");
-
 
     @CacheLookup
     @FindBy(xpath = "//*[@id=\"searchbox-sbox-box-flights\"]/div/div/div/div[3]/div[1]/div[1]/div[2]/div/div[2]/div/div/div/div/input")

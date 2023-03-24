@@ -160,8 +160,12 @@ public class VueloPage extends CommonActionOnPages {
     @FindBy(xpath ="    //*[@id=\"formData.contactData.phones[0].number\"]")
     private WebElement telefono;
 
-    @CacheLookup
+    /*@CacheLookup
     @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
+    private WebElement metodo;*/
+
+    @CacheLookup
+    @FindBy(xpath = "//*[text()='PSE ']")
     private WebElement metodo;
 
     @CacheLookup
