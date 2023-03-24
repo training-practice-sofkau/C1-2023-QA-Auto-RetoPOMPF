@@ -115,9 +115,10 @@ public class VueloFormPage extends CommonActionOnPages {
     private WebElement numeroTelefono;
 
     @CacheLookup
-    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
+    @FindBy(xpath = "//*[text()='PSE ']")
     private WebElement pse;
 
+    //(//i[@class='payment-method-aligned radio-circle'])[4]
     @CacheLookup
     @FindBy(xpath = "//*[@id=\"card-selector-0\"]/option[3]")
     private WebElement comboBox;
