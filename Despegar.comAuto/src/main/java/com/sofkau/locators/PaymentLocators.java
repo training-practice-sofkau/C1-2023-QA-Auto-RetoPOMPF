@@ -30,7 +30,7 @@ public class PaymentLocators {
     public static WebElement number;
 
     @CacheLookup
-    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[3]")
+    @FindBy(xpath = "//*[text()='PSE ']")
     public static WebElement method;
 
     @CacheLookup
