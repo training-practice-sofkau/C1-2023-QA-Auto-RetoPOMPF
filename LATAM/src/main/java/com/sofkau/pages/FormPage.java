@@ -24,7 +24,6 @@ public class FormPage extends  CommonActionOnPages{
     private static final By date = By.id("departureDate");
     private static final By numberdate1 = By.xpath("(//*[@class='sc-VuRhl eAAaRm' and text()='28'])[3]");
     private static final By numberdate2 =  By.xpath("(//*[@class='sc-VuRhl eAAaRm' and text()='30'])[3]");
-
     private static final By outboundflight = By.xpath("(//*[@class='card-flightstyle__WrapperInfoTop-sc__sc-16r5pdw-14 kThKNx'])[1]");
     private static final By outboundflight2 = By.xpath("(//*[@class='card-flightstyle__CardExpander-sc__sc-16r5pdw-2 eHxiMm'])[1]");
     private static final By scrollflight = By.id("bundle-detail-0-flight-select");

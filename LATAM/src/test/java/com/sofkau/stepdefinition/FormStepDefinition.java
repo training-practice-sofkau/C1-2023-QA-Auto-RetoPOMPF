@@ -38,7 +38,9 @@ public class FormStepDefinition extends WebUI {
         } catch (Exception e) {
             LOGGER.warn(e.getMessage());
             Assertions.fail();
+            quitDriver();
         }
+        quitDriver();
     }
 
 }
