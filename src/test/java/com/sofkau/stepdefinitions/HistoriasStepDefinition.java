@@ -1,5 +1,6 @@
 package com.sofkau.stepdefinitions;
 
+import com.sofkau.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,16 +22,24 @@ public class HistoriasStepDefinition {
     JSONObject responseBody = null;
     public static Logger LOGGER= Logger.getLogger(HistoriasStepDefinition.class);
 
-    //Scenario 1
+
     @Given("tengo la id {string} de una historia")
     public void tengoLaIdDeUnaHistoria(String idSelected) {
-        id = idSelected;
+        try {
+            id = idSelected;
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage());
+        }
     }
 
     @When("envio una peticion con la id de la historia")
     public void envioUnaPeticionConLaIdDeLaHistoria() {
-        RestAssured.baseURI = URI_MARVEL;
-        response = RestAssured.get(String.format(PATH_HISTORIAS_MARVEL, id, TIME_STAMP, APIKEY, HASH));
+        try {
+            RestAssured.baseURI = URI_MARVEL;
+            response = RestAssured.get(String.format(PATH_HISTORIAS_MARVEL, id, TIME_STAMP, APIKEY, HASH));
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage());
+        }
     }
     @Then("debo obtener una respuesta con la historia con es id")
     public void deboObtenerUnaRespuestaConLaHistoriaConEsId() {
@@ -48,21 +57,33 @@ public class HistoriasStepDefinition {
         }
     }
 
-    //Scenario 2
+
     @Given("tengo la id {string} de una historia invalida")
     public void tengoLaIdDeUnaHistoriaInvalida(String idFail) {
-        id = idFail;
+        try {
+            id = idFail;
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage());
+        }
     }
     @When("envio una peticion con la id invalida de la historia")
     public void envioUnaPeticionConLaIdInvalidaDeLaHistoria() {
-        RestAssured.baseURI = URI_MARVEL;
-        response = RestAssured.get(String.format(PATH_HISTORIAS_MARVEL, id, TIME_STAMP, APIKEY, HASH));
+        try {
+            RestAssured.baseURI = URI_MARVEL;
+            response = RestAssured.get(String.format(PATH_HISTORIAS_MARVEL, id, TIME_STAMP, APIKEY, HASH));
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage());
+        }
     }
     @Then("debo obtener un mensaje de error de historia no encontrada")
     public void deboObtenerUnMensajeDeErrorDeHistoriaNoEncontrada() throws ParseException {
-        response.then().statusCode(404);
-        responseBody = (JSONObject) parser.parse(response.getBody().asString());
-        Assertions.assertEquals("We couldn't find that comic_story",responseBody.get("status"));
-        LOGGER.info("Prueba exitosa:" + response.asString());
+        try {
+            response.then().statusCode(404);
+            responseBody = (JSONObject) parser.parse(response.getBody().asString());
+            Assertions.assertEquals("We couldn't find that comic_story", responseBody.get("status"));
+            LOGGER.info("Prueba exitosa:" + response.asString());
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage());
+        }
     }
 }

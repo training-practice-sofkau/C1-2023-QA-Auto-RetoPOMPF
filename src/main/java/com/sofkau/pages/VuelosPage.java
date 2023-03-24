@@ -75,7 +75,7 @@ public class VuelosPage extends CommonActionsOnPages{
     private WebElement numeroTel;
 
     @CacheLookup
-    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
+    @FindBy(xpath = "//*[text()='PSE ']")
     private WebElement selectorPSE;
 
     @CacheLookup
