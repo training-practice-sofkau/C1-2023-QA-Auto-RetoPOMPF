@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features/reservaVuelo.feature"},
         glue = {"com.sofkau.stepdefinitions"},
         publish = true
+
 )
 public class ReservaVueloTest {
 }

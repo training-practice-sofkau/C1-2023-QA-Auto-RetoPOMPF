@@ -2,20 +2,13 @@ package com.sofkau.pages;
 
 import com.github.javafaker.Faker;
 import com.sofkau.models.Usuario;
-import jdk.vm.ci.meta.Local;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ReservaVueloPage extends CommonActionOnPages {
 
@@ -192,7 +185,7 @@ public class ReservaVueloPage extends CommonActionOnPages {
     private WebElement adultoMas;
 
     @CacheLookup
-    @FindBy(xpath = "(//i[@class='payment-method-aligned radio-circle'])[4]")
+    @FindBy(xpath = "//*[text()='PSE ']")
     private WebElement pse;
 
 
@@ -317,7 +310,7 @@ public class ReservaVueloPage extends CommonActionOnPages {
         typeInto(numeroCelular, correoNumero.getNumero());
         scroll(200);
         clickcondelay(pse);
-        scroll(200);
+        scroll(400);
         selectComboox(comboBox);
         scroll(300);
     }

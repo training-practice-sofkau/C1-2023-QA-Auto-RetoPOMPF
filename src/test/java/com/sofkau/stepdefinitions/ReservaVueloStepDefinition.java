@@ -87,7 +87,7 @@ public class ReservaVueloStepDefinition extends WebUI {
             reservaVueloPage.emitirFactura();
 
         } catch (Exception exception) {
-           // quiteDriver();
+            quiteDriver();
             LOGGER.warn(exception.getMessage());
         }
 
@@ -106,7 +106,7 @@ public class ReservaVueloStepDefinition extends WebUI {
         } catch (Exception e) {
             LOGGER.warn(e.getMessage());
         } finally {
-           // quiteDriver();
+            quiteDriver();
         }
     }
 
