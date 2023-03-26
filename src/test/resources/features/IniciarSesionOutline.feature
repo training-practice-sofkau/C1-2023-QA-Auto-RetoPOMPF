@@ -18,8 +18,8 @@ Feature: Inicio de sesión en la tienda web de ZonaFit
     Then deberia ser redirigido nuevamente a la pagina principal y visualizar el "nombre" de usuario
 
     Examples:
-      | correo                         | contrasena |
-      | BobMarley@reggae.com          | azuca12345 |
-      | bryan123@gmail.com            | bryan2329  |
-      | homerosimpson@hotmail.com     | lisa4567   |
-      | willsmith@gmail.com           | will9876   |
+      | correo                    | contrasena |
+      | BobMarley@reggae.com      | azuca12345 |
+      | bryan123@gmail.com        | bryan2329  |
+      | homerosimpson@hotmail.com | lisa4567   |
+      | willsmith@gmail.com       | will9876   |

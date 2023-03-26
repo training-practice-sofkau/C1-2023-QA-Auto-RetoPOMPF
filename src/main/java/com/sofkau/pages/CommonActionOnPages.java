@@ -29,4 +29,8 @@ public class CommonActionOnPages {
         driver.findElement(locator).sendKeys(Keys.ENTER);
     }
 
+    protected void pressSpace (By locator){
+        driver.findElement(locator).sendKeys(Keys.SPACE);
+    }
+
 }
